@@ -1,8 +1,6 @@
 ## Mac
 .DS_Store
 
-## いらん
-*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
