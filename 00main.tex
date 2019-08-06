@@ -1,0 +1,50 @@
+%
+% THIS FILE IS "00main.tex".
+% MAIN TEX FILE
+%
+
+% 2019年度　物理科学研究会　会誌
+
+% use platex
+\documentclass[11pt,b5paper,papersize,dvipdfmx]{jsbook}
+% papersize: pdfの用紙サイズを変更
+% dvipdfmx: ドライバの指定
+% openary: 空白ページ削除（bookクラス）
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+
+% --------------------------------------
+\begin{document}
+
+\frontmatter
+% \ReadTeXFile{01hyoshi}
+% \ReadTeXFile{05kantogon}
+\tableofcontents % 目次出力
+\mainmatter
+
+
+\ReadTeXFile{11nsmr}
+\section{うんこ}
+\section{a}
+% \section{a}
+% \addcontents{toc}{bb}
+\ReadTeXFile{20temp}
+% \ReadTeXFile{15saijo}
+% \ReadTeXFile{15saijo2}
+% \ReadTeXFile{14kadono}
+% \ReadTeXFile{14kadono2}
+% \ReadTeXFile{12nkym}
+
+% \ReadTeXFile{06hensyukoki}
+% \ReadTeXFile{07ura-hyoshi}
+
+
+
+
+
+\end{document}
+%
+% お疲れさまです
+%

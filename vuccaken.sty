@@ -1,0 +1,108 @@
+%
+%     This file is "vuccaken.sty"
+%     2018-03-08 15:30 created
+%     2018-11-25 調整 \vaddcontentsline
+%     2019-08-06 微調整
+
+
+%\kaishititle{title}{na}{me}
+\newcommand{\kaishititle}[3]{%
+  \vchapter{#2 #3}{#1}
+  \vspace{-45pt}
+  \begin{flushright}
+    {\bf \large #2} \\ \vspace{3pt} %所属
+    {\bf \large #3} \\ \vspace{30pt} %名前
+  \end{flushright}}
+
+%\vchapter{name}{title}
+\newcommand{\vchapter}[2]{%
+  \if@openleft\cleardoublepage\else
+  \if@openright\cleardoublepage\else\clearpage\fi\fi
+  \plainifnotempty % 元: \thispagestyle{plain}
+  \global\@topnum\z@
+  \if@english \@afterindentfalse \else \@afterindenttrue \fi
+  \@omit@numberfalse
+  \@vchapter{#1}{#2}}
+
+%\@vchapter{name}{title}
+\def\@vchapter#1#2{%
+  \ifnum \c@secnumdepth >\m@ne
+    \if@mainmatter
+      \refstepcounter{chapter}%
+      \typeout{\@chapapp\thechapter\@chappos}%
+      \vaddcontentsline{toc}{chapter}%
+        {\protect\numberline
+        % {\if@english\thechapter\else\@chapapp\thechapter\@chappos\fi}%
+        {\@chapapp\thechapter\@chappos}#2}{#1}%
+    \else\vaddcontentsline{toc}{chapter}{#2}{#1}\fi
+  \else
+    \vaddcontentsline{toc}{chapter}{#2}{#1}%
+  \fi
+  \chaptermark{#2}%
+  \addtocontents{lof}{\protect\addvspace{10\jsc@mpt}}%
+  \addtocontents{lot}{\protect\addvspace{10\jsc@mpt}}%
+  \if@twocolumn
+    \@topnewpage[\@makechapterhead{#2}]%
+  \else
+    \@makechapterhead{#2}%
+    \@afterheading
+  \fi}
+
+%\vaddcontentsline{toc}{chapter}{title}{name}
+\def\vaddcontentsline#1#2#3#4{%
+  \addtocontents{#1}{\protect\contentsline{v#2}{#3}{#4}{\thepage}}} % 元
+  % \addtocontents{#1}{\protect\contentsline{v#2}{\vspace{0.5zw}\\\hspace{-3.8zw}#3}{#4}{\thepage}}} % 調整 2018/11/25
+
+%\addcontents{toc}{\vcontentsline{chapter}{title}{name}{page}}
+\long\def\addtocontents#1#2{%
+  \protected@write\@auxout
+      {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+      {\string\@writefile{#1}{#2}}}
+
+%\contentsline{chapter} 弄ってない
+\def\contentsline#1{\csname l@#1\endcsname}
+
+%\l@vchapter{title}{name}{page}
+\newcommand*{\l@vchapter}[3]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\jsc@mpt}
+    \begingroup
+      \parindent\z@
+      \rightskip\@tocrmarg
+      \parfillskip-\rightskip
+      \leavevmode\headfont
+      % \if@english\setlength\@lnumwidth{5.5em}\else\setlength\@lnumwidth{4.683zw}\fi
+      \setlength\@lnumwidth{\jsc@tocl@width}\advance\@lnumwidth 2.683zw
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      {\large #1}\\\samepage\nobreak\hfil#2\nobreak\hbox to\@pnumwidth{\hss#3}\par % 2019-08-06 \samepage 挿入
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+%本物の方も弄る（フォントサイズ -> \large）
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\jsc@mpt}
+    \begingroup
+      \parindent\z@
+      \rightskip\@tocrmarg
+      \parfillskip-\rightskip
+      \leavevmode\headfont
+      % \if@english\setlength\@lnumwidth{5.5em}\else\setlength\@lnumwidth{4.683zw}\fi
+      \setlength\@lnumwidth{\jsc@tocl@width}\advance\@lnumwidth 2.683zw
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      {\large #1}\nobreak\hfil\nobreak\hbox to\@pnumwidth{\hss#2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+
+%目次chapterで、英語、数字も太字にする。
+%\l@chapter、\l@vchapterの定義内にある。
+\renewcommand{\headfont}{\bfseries}
+
+
+%
+%
