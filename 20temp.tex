@@ -1,12 +1,8 @@
 %
-% date: 2018-08-06
+%   TEMPLATE
 %
 
-% use platex
 \documentclass[11pt,b5paper,papersize,dvipdfmx]{jsbook}
-% papersize: pdfの用紙サイズを変更
-% dvipdfmx: ドライバの指定
-% openary: 空白ページ削除（bookクラス）
 
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
@@ -15,13 +11,14 @@
 \begin{document}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
-\kaishititle{\LaTeX テンプレート（会誌原稿用）}{会計科学科4回生}{中山敦貴}
-% \chapter{\LaTeX テンプレート（会誌原稿用）}
+\kaishititle%
+  {\LaTeX テンプレート（会誌原稿用）}% title
+  {会計科学科4回生}% 所属
+  {テンプレくん}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 
 % \setcounter{tocdepth}{2} % 目次にどこまで表示するか
 % \tableofcontents % 目次出力
-
 % \clearpage % 改ページ
 
 %
@@ -82,13 +79,15 @@
 
 %
 \subsection{箇条書き}
-itemize: 番号なし
-\begin{itemize}
-  \item 箇条書き
-  \item できるやで
-  \item[(a)] 平成最後で
-  \item[ii)] おまんがな
-\end{itemize}
+\begin{samepage}
+  itemize: 番号なし
+  \begin{itemize}
+    \item 箇条書き
+    \item できるやで
+    \item[(a)] 平成最後で
+    \item[ii)] おまんがな
+  \end{itemize}
+\end{samepage}
 
 enumerate: 番号あり
 \begin{enumerate}
@@ -138,11 +137,11 @@ enumerate: 番号あり
 \section*{参考文献}
 \renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
 \begin{enumerate}
-\item 著者, 本やページの名前, (URL), 出版社, 出版年.
-\item (複数ある場合は追加)
-\item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+  \item 著者, 本やページの名前, (URL), 出版社, 出版年.
+  \item (複数ある場合は追加)
+  \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
 \end{enumerate}
-\renewcommand{\labelenumi}{\arabic{enumi}.} % default
+\renewcommand{\labelenumi}{\arabic{enumi}.} % set to default
 
 
 \end{document}
