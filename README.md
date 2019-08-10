@@ -1,7 +1,8 @@
 # kaishi2019
 2019年度会誌  a
 
-wiki: [会誌の件](https://github.com/vuccaken/kaishi2019/wiki/会誌の件)
+- wiki: [会誌の件](https://github.com/vuccaken/kaishi2019/wiki/会誌の件)
+- HP: [vuccaken HP](http://rp2017xy.starfree.jp)
 
 ## documentclass
 
@@ -34,7 +35,7 @@ kaishi2019/
 │ │ ├ test01.c
 │ │ └ test01.dat
 │ ├ fig/
-│   └ figure01.pdf
+│ │ └ figure01.pdf
 │ └ img/
 │   ├ image01.png
 │   ├ image02.jpg
