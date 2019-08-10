@@ -1,5 +1,5 @@
 # kaishi2019
-2019年度会誌
+2019年度会誌  a
 
 wiki: [会誌の件](https://github.com/vuccaken/kaishi2019/wiki/会誌の件)
 
