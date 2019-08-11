@@ -1,0 +1,38 @@
+{
+  // latex
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-e",
+        "$latex = q/ platex %O -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error -shell-escape %S /",
+        "-e",
+        "$bibtex = q/ pbibtex %O %B /",
+        "-e",
+        "$biber = q/ biber %O --bblencoding=utf8 -u -U --output_safechars %B /",
+        "-e",
+        "$makeindex = q/ pmendex %O -o %D %S /",
+        "-e",
+        "$dvipdf = q/ dvipdfmx %O -o %D %S /",
+        "-norc",
+        "-pdfdvi",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux", "*.toc",
+    "*.log", "*.dvi",
+    // "*.synctex.gz",
+    "*.fdb_latexmk", "*.fls", // latexmk
+    "*.nav", "*.snm" // beamer
+  ],
+  // syntax coloring
+  "files.associations": {
+    "*.sty": "latex"
+  },
+  //
+  //
+}
