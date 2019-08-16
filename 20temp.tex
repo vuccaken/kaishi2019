@@ -7,13 +7,12 @@
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
 
-% 以下本文 - - - - - - - - - - - - - - - - - - - - - - -
-\begin{document}
+\begin{document} % 以下本文
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
   {\LaTeX テンプレート（会誌原稿用）}% title
-  {会計科学科4回生}% 所属
+  {テンプレ科学科4回生}% 所属
   {テンプレくん}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 
@@ -23,15 +22,14 @@
 
 %
 \section*{はじめに}
-実際に会誌にするときはjsbookクラスにしますが、面倒なので提出はこれでいいです。
-テーマが複数ある場合は別ファイルで提出してください。\par
-完成版の雰囲気は、去年までの会誌を見てください。
+会誌ではjsbookクラスを使います。\par
+テーマが複数ある場合は別ファイルで提出してください。
 
 %
 \section{セクション}
 \subsection{サブセクション}
 \subsubsection{サブサブセクション}
-環境設定はこの前うpしたtex4tex.pdfにまとめてあります\footnote{Atomとかvscodeとかの高級エディタを使えば、シンタックハイライトだけでなく自動補完やショートカットなどもあって便利です。}。締め切りはSlackを見てください。\par
+LaTeXの環境設定についてはこの前うpしたtex4tex.pdfにまとめてあります\footnote{Atomとかvscodeとかの高級エディタを使えば、シンタックハイライトだけでなく自動補完やショートカットなどもあって便利です。}。締め切りはSlackかWikiを見てください。\par
 では、頑張ってください。
 
 %
@@ -133,15 +131,14 @@ enumerate: 番号あり
 \subsection{ソースコード}
 プログラムなどのソースコードを表示するにはlisting.styを使えばキレイに出力できますが、日本語に厳しい。そこで誰かが作ったplistings.styを代わりに使ってください。使い方はlisting.styと同じなので、そちらをキーワードにしてググってください。
 
-%
-\section*{参考文献}
-\renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
-\begin{enumerate}
-  \item 著者, 本やページの名前, (URL), 出版社, 出版年.
-  \item (複数ある場合は追加)
-  \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
-\end{enumerate}
-\renewcommand{\labelenumi}{\arabic{enumi}.} % set to default
+%% 参考文献
+\begin{sanko}
+  \begin{enumerate}
+    \item 著者, 本やページの名前, (URL), 出版社, 出版年.
+    \item (複数ある場合は追加)
+    \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+  \end{enumerate}
+\end{sanko}
 
 
 \end{document}
