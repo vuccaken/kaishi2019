@@ -4,13 +4,12 @@
 %
 
 
-\newcommand\nsmr{西村宗悟}
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 % 共通
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 
 \usepackage[expert,deluxe]{otf} % font
-\usepackage{amsmath,amssymb,cases} % 数式関係
+\usepackage{amsmath,amssymb} % 数式関係
 \usepackage{physics} % 便利パッケージ
 \usepackage{mathtools} % dcases environment
 \usepackage[dvipdfmx]{graphicx} % 図の挿入
@@ -18,13 +17,16 @@
 \usepackage{here} % option H で図を強制出力
 \usepackage{ascmac} % 枠を作るやつ
 \usepackage{url} % URLをそのまま表示してくれる
-\usepackage{plistings} % ソースコード表示
+% \usepackage{plistings} % ソースコード表示
 \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-\usepackage{tikz} % おえかきできるお
-\usepackage{okumacro} % \ruby
+\usepackage{tikz} % おえかきできるツール
 
 \usepackage{emath,emathR} % \ReadTeXFile
 \resettagform % emathによる数式番号改悪をリセット
+
+% left margin settings
+\addtolength{\oddsidemargin}{10truemm}   % odd(right) page
+\addtolength{\evensidemargin}{-10truemm} % even(left) page
 
 % 数式番号付加
 \def\atag{\refstepcounter{equation}\tag{\theequation}}
@@ -33,18 +35,21 @@
 \setcounter{tocdepth}{2}
 
 % 参考文献は enumerate 環境で出す。
-\newcommand\sanko{%
-    \addcontentsline{toc}{section}{参考文献}
-    \section*{参考文献}
-    % enumerate 環境の設定
-    \renewcommand{\labelenumi}{[\arabic{enumi}]}
-    }
-%
+\newenvironment{sanko}{%
+  \newcommand\sankoname{参考文献}
+  \addcontentsline{toc}{section}{\sankoname}
+  \section*{\sankoname}
+  \renewcommand{\labelenumi}{[\arabic{enumi}]} % [1], [2], ...
+}{%
+  \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
+}
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 % 11nsmr.tex
 % - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\newcommand\nsmr{西村宗悟}
 
 % define tani command
 \makeatletter % open at mark
@@ -52,6 +57,12 @@
 \makeatother % close at mark
 \newcommand\nstani[1]{\,\mathrm{#1}}
 \newcommand\stani[1]{\,\mathrm{[#1]}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+% 12nkym.tex
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,41 +74,20 @@
 \usepackage{lmodern}
 
 % 巻頭言・編集後記
-% ex: \kantogon{学部}{名前}{日付}
-\newenvironment{kantogon}[3]%
-  {%
-    % \addcontentsline{toc}{chapter}{\vspace{2zw}\\\hspace{-3.9zw}巻頭言}%
-    \addcontentsline{toc}{chapter}{巻頭言}%
-    \section*{巻頭言}%
-    \def\kantogonsyozoku{#1}%
-    \def\kantogonname{#2}%
-    \def\kantogondate{#3}%
-  }{%
-    \begin{flushright}%
-      \kantogondate\\
-      \kantogonsyozoku\hspace{0.5zw}\kantogonname%
-    \end{flushright}\par%
-  }
-%
-
-% ex: \hensyukoki{学部}{名前}{日付}
-\newenvironment{hensyukoki}[3]%
-  {%
-    \addcontentsline{toc}{chapter}{編集後記}%
-    \section*{編集後記}%
-    \def\hensyukokisyozoku{#1}%
-    \def\hensyukokiname{#2}%
-    \def\hensyukokidate{#3}%
-  }{%
-    \begin{flushright}%
-      \hensyukokidate\\
-      \hensyukokisyozoku\hspace{0.5zw}\hensyukokiname%
-    \end{flushright}\par%
-  }
-%
-
-
-
+% usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
+\newenvironment{preface}[4]{%
+  \newcommand\whatpreface{#1}%
+  \addcontentsline{toc}{chapter}{\whatpreface}%
+  \section*{\whatpreface}%
+  \def\prefacesyozoku{#2}%
+  \def\prefacename{#3}%
+  \def\prefacedate{#4}%
+}{%
+  \begin{flushright}%
+    \prefacedate\\
+    \prefacesyozoku\hspace{0.5zw}\prefacename%
+  \end{flushright}\par%
+}
 
 
 
