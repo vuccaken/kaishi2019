@@ -6,7 +6,7 @@
 % 2019年度　物理科学研究会　会誌
 
 % use platex
-\documentclass[11pt,b5paper,papersize,dvipdfmx]{jsbook}
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
 % papersize: pdfの用紙サイズを変更
 % dvipdfmx: ドライバの指定
 % openary: 空白ページ削除（bookクラス）
@@ -14,13 +14,13 @@
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
 
-
 % --------------------------------------
 \begin{document}
 
 \frontmatter
-% \ReadTeXFile{01hyoshi}
-% \ReadTeXFile{05kantogon}
+\ReadTeXFile{01hyoshi-omote}
+% \ReadTeXFile{02hyoshi-naka}
+\ReadTeXFile{03kantogon}
 \tableofcontents % 目次出力
 \mainmatter
 
@@ -33,17 +33,13 @@
 % \ReadTeXFile{14kadono}
 \ReadTeXFile{20temp}
 
-
 % nsmr, nkym, kadono, sj, abe
 % hukuda, yoshida, namba, fujiki, fujiwara
 
 
-% \ReadTeXFile{06hensyukoki}
-% \ReadTeXFile{07ura-hyoshi}
-
-
-
-
+% \ReadTeXFile{04hensyukoki}
+% \ReadTeXFile{05okuduke}
+% \ReadTeXFile{06hyoshi-ura}
 
 \end{document}
 %
