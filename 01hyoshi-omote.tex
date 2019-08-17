@@ -17,12 +17,22 @@
 \thispagestyle{empty}
 
 \begin{center}
-  物理科学研究会　2019年度会誌（仮）
+  {\Large 物理科学研究会　2019年度会誌（仮）}
 \end{center}
 
-\newpage 
-\quad \thispagestyle{empty}
-\newpage
+% 娯楽
+\newcounter{counter}
+\newcommand\looploop[2]{
+  \setcounter{counter}{0}
+  \loop\ifnum\value{counter}<#1
+    #2\stepcounter{counter}\ignorespaces
+  \repeat
+}
+
+\looploop{50}{\noindent| left \hfill \the\value{counter} \hfill right |\par}
+
+
+\cleardoublepage
 
 % 表紙
 %
