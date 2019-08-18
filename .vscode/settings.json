@@ -6,18 +6,20 @@
       "command": "latexmk",
       "args": [
         "-e",
-        "$latex = q/ platex %O -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error -shell-escape %S /",
+        "$latex = q/platex %O -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error -shell-escape %S/",
         "-e",
-        "$bibtex = q/ pbibtex %O %B /",
+        "$bibtex = q/pbibtex %O %B/",
         "-e",
-        "$biber = q/ biber %O --bblencoding=utf8 -u -U --output_safechars %B /",
+        "$biber = q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/",
         "-e",
-        "$makeindex = q/ pmendex %O -o %D %S /",
+        "$makeindex = q/pmendex %O -o %D %S/",
         "-e",
-        "$dvipdf = q/ dvipdfmx %O -o %D %S /",
+        "$dvipdf = q/dvipdfmx %O -o %D %S/",
         "-norc",
         "-pdfdvi",
-        "%DOC%"
+        "%DOC%",
+        "-e",
+        "$ENV{'TEXINPUTS'}='.//:' . $ENV{'TEXINPUTS'}",
       ]
     }
   ],
@@ -31,7 +33,8 @@
   ],
   // syntax coloring
   "files.associations": {
-    "*.sty": "latex"
+    "*.sty": "latex",
+    ".latexmkrc": "perl"
   },
   //
   //
