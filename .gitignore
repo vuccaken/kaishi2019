@@ -1,16 +1,9 @@
 ## Mac OS setting file:
 .DS_Store
 
-## Partial pdf files:
-01hyoshi-omote.pdf
-02hyoshi-naka.pdf
-03kantogon.pdf
-04hensyukoki.pdf
-05okuduke.pdf
-06hyoshi-ura.pdf
-11nsmr.pdf
-12nkym.pdf
-20temp.pdf
+## main 以外のpdfは要らない:
+*.pdf
+!00main.pdf
 
 
 
