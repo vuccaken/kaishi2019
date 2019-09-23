@@ -5,4 +5,4 @@ $makeindex        = 'mendex %O -o %D %S';
 $dvipdf           = 'dvipdfmx %O -o %D %S';
 
 # .sty を探索する場所を追加
-$ENV{'TEXINPUTS'} = './sty/:' . '../sty/:' . $ENV{'TEXINPUTS'};
+$ENV{'TEXINPUTS'} = './sty/;' . '../sty/;' . $ENV{'TEXINPUTS'};
