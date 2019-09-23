@@ -2,7 +2,7 @@
 .DS_Store
 
 ## main 以外のpdfは要らない:
-*.pdf
+tex/*.pdf
 !00main.pdf
 
 
