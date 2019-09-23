@@ -19,7 +19,7 @@
         "-pdfdvi",
         "%DOC%",
         "-e",
-        "$ENV{'TEXINPUTS'} = './sty/:' . '../sty/:' . $ENV{'TEXINPUTS'}",
+        "$ENV{'TEXINPUTS'} = './sty/;' . '../sty/;' . $ENV{'TEXINPUTS'}",
       ]
     }
   ],
