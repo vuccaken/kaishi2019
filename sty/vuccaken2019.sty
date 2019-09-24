@@ -16,6 +16,22 @@
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
 
+% windows がうんこなのでエラーが出る。
+\DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*mc/m/n}{} %
+\DeclareFontShape{JY1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{hmc}{m}{it}{<->ssub*mc/m/n}{} %
+\DeclareFontShape{JT1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+
 \usepackage{amsmath,amssymb} % 数式関係
 \usepackage{mathtools} % dcases environment
 \usepackage{physics} % 便利パッケージ
