@@ -3,6 +3,10 @@
 %    2019-08-06 created
 %
 
+%    main.tex からもタイプセットできるように
+%    自分のtexファイルのプリアンプルをコピペしてください。
+%    マクロが競合しそうなときは相談してください。
+
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 % 共通
@@ -11,15 +15,19 @@
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
+
 \usepackage{amsmath,amssymb} % 数式関係
-\usepackage{physics} % 便利パッケージ
 \usepackage{mathtools} % dcases environment
+\usepackage{physics} % 便利パッケージ
+
 \usepackage[dvipdfmx]{graphicx} % 図の挿入
 \usepackage{wrapfig} % 文章中に図
 \usepackage{here} % option H で図を強制出力
-\usepackage{ascmac} % 枠を作るやつ
+
 \usepackage{url} % URLをそのまま表示してくれる
+
 % \usepackage{plistings} % ソースコード表示
+\usepackage{ascmac} % 枠を作るやつ
 \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
 \usepackage{tikz} % おえかきできるツール
 
@@ -29,12 +37,9 @@
 % ソース探索のパス
 \graphicspath{{./src/}{../src/}}
 
-% left margin settings
+% inner margin settings
 \addtolength{\oddsidemargin}{10truemm}   % odd(right) page
 \addtolength{\evensidemargin}{-10truemm} % even(left) page
-
-% 数式番号付加
-\def\atag{\refstepcounter{equation}\tag{\theequation}}
 
 % 目次にどこまで表示するか
 \setcounter{tocdepth}{2}
@@ -49,11 +54,36 @@
   \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
 }
 
+% 数式番号付加
+\def\atag{\refstepcounter{equation}\tag{\theequation}}
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+% メインの本文以外の部分
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% 表紙
+
+% 巻頭言・編集後記
+% usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
+\newenvironment{preface}[4]{%
+  \newcommand\whatpreface{#1}%
+  \addcontentsline{toc}{chapter}{\whatpreface}%
+  \cleardoublepage%
+  \section*{\whatpreface}%
+  \def\prefacesyozoku{#2}%
+  \def\prefacename{#3}%
+  \def\prefacedate{#4}%
+}{%
+  \begin{flushright}%
+    \prefacedate\\
+    \prefacesyozoku\hspace{0.5zw}\prefacename%
+  \end{flushright}\par%
+}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 % 11nsmr.tex
 % - - - - - - - - - - - - - - - - - - - - - - - - -
-
 \newcommand\nsmr{西村宗悟}
 
 % define tani command
@@ -67,30 +97,39 @@
 % 12nkym.tex
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 
+% in math environment
+\newcommand\dsum{\sum\limits} % sum in text line
+\newcommand\naraba{\,\,\,\Rightarrow\,\,\,}
+\newcommand\spc{\,\,} % 程良いスペース。
+\newcommand\vc[1]{\vb*#1} % vector
+\newcommand\del\partial
+\newcommand\const{\mathrm{const.}}
 
+% in text line
+% \newcommand\qed{\hfill □\par} % put QED
+\newcommand\siki[1]{(\ref{eq:#1})}
+\newcommand\sikii[2]{(\ref{eq:#1}),\,(\ref{eq:#2})}
+\newcommand\zu[1]{図\ref{fig:#1}}
+\newcommand\zenkakko[1]{\!\!（\,#1\,）\!\!}
+\newcommand\ftj[1]{{\bfseries #1}}
+\newcommand\migi{→~}
+
+% 上付きバー \widebar
+\usepackage{accents}
+\makeatletter
+  \renewcommand\bar{\accentset{{\cc@style\underline{\mskip10mu}}}}
+\makeatother
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
-% その他
+% kadono
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 
-% 表紙
 
-% 巻頭言・編集後記
-% usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
-\newenvironment{preface}[4]{%
-  \newcommand\whatpreface{#1}%
-  \addcontentsline{toc}{chapter}{\whatpreface}%
-  \section*{\whatpreface}%
-  \def\prefacesyozoku{#2}%
-  \def\prefacename{#3}%
-  \def\prefacedate{#4}%
-}{%
-  \begin{flushright}%
-    \prefacedate\\
-    \prefacesyozoku\hspace{0.5zw}\prefacename%
-  \end{flushright}\par%
-}
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+% kfuji
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 
 
