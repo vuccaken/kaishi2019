@@ -5,6 +5,8 @@
 %     2018-11-25 調整 \vaddcontentsline
 %     2019-08-06 微調整
 
+%  require "jsbook class"
+
 
 %\kaishititle{title}{na}{me}
 \newcommand{\kaishititle}[3]{%
@@ -54,13 +56,15 @@
   \addtocontents{#1}{\protect\contentsline{v#2}{#3}{#4}{\thepage}}} % 元
   % \addtocontents{#1}{\protect\contentsline{v#2}{\vspace{0.5zw}\\\hspace{-3.8zw}#3}{#4}{\thepage}}} % 調整 2018/11/25
 
+% 弄ってない
 %\addcontents{toc}{\vcontentsline{chapter}{title}{name}{page}}
 \long\def\addtocontents#1#2{%
   \protected@write\@auxout
       {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
       {\string\@writefile{#1}{#2}}}
 
-%\contentsline{chapter} 弄ってない
+% 弄ってない
+%\contentsline{chapter}
 \def\contentsline#1{\csname l@#1\endcsname}
 
 %\l@vchapter{title}{name}{page}
