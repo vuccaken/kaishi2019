@@ -45,14 +45,12 @@
 
 
 \backmatter
-% \setcounter{chapter}{0}
-\chapter{ばっくまた}
+\markboth{}{} % headerのchaper nameとsection nameを消す
 \vReadTeXFile{04hensyukoki} % odd
 \clearpage
 \vReadTeXFile{05okuduke} % even
-\cleardoublepage % odd
-\thispagestyle{empty}
-\newpage
+\clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
+\ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整
 \vReadTeXFile{06hyoshi-ura} % even
 
 \end{document}
