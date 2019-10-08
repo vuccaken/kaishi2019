@@ -3,7 +3,12 @@
 %    ## MAIN TEX FILE ##
 %
 
-% 2019年度　物理科学研究会　会誌
+%    † 2019年度　物理科学研究会　会誌 †
+%          『白夜』 第4号
+
+% 10 members:
+% nsmr, nkym, kadono, sj, abe,
+% hukuda, yoshida, namba, fujiki, fujiwara
 
 % use platex
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
@@ -17,29 +22,36 @@
 % --------------------------------------
 \begin{document}
 
+\newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
+
 \frontmatter
-\ReadTeXFile{tex/01hyoshi-omote}
-% \ReadTeXFile{tex/02hyoshi-naka}
-\ReadTeXFile{tex/03kantogon}
+\vReadTeXFile{01hyoshi-omote}
+\cleardoublepage
+% \vReadTeXFile{02hyoshi-naka}
+% \cleardoublepage
+\vReadTeXFile{03kantogon}
 \tableofcontents % 目次出力
+
+
 \mainmatter
+\vReadTeXFile{11nsmr}
+\vReadTeXFile{12nkym}
+% \vReadTeXFile{13}
+% \vReadTeXFile{14}
+\vReadTeXFile{kfuji}
+\vReadTeXFile{kadono}
+\vReadTeXFile{20temp}
+% \vReadTeXFile{50template}
 
 
-\ReadTeXFile{tex/11nsmr}
-\ReadTeXFile{tex/12nkym}
-% \ReadTeXFile{13}
-% \ReadTeXFile{14}
-% \ReadTeXFile{15saijo}
-% \ReadTeXFile{14kadono}
-\ReadTeXFile{tex/20temp}
-
-% nsmr, nkym, kadono, sj, abe
-% hukuda, yoshida, namba, fujiki, fujiwara
-
-
-% \ReadTeXFile{04hensyukoki}
-% \ReadTeXFile{05okuduke}
-% \ReadTeXFile{06hyoshi-ura}
+\backmatter
+\markboth{}{} % headerのchaper nameとsection nameを消す
+\vReadTeXFile{04hensyukoki} % odd
+\clearpage
+\vReadTeXFile{05okuduke} % even
+\clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
+\ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整
+\vReadTeXFile{06hyoshi-ura} % even
 
 \end{document}
 %

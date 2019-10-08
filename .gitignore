@@ -3,7 +3,7 @@
 
 <<<<<<< Updated upstream
 ## main 以外のpdfは要らない:
-*.pdf
+tex/*.pdf
 !00main.pdf
 =======
 ## タイプセットしてできたpdfは要らない:
