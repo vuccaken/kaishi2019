@@ -4,9 +4,10 @@
 
 ## タイプセットしてできたpdfは要らない:
 tex/*.pdf
+/*.pdf
 # !00main.pdf
-00main.pdf
->>>>>>> Stashed changes
+# 00main.pdf
+
 
 
 #### tex default
