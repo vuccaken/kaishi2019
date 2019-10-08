@@ -1,11 +1,7 @@
 ## Mac OS setting file:
 .DS_Store
 
-<<<<<<< Updated upstream
-## main 以外のpdfは要らない:
-tex/*.pdf
-!00main.pdf
-=======
+
 ## タイプセットしてできたpdfは要らない:
 tex/*.pdf
 # !00main.pdf
