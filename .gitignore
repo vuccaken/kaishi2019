@@ -1,13 +1,19 @@
 ## Mac OS setting file:
 .DS_Store
 
+<<<<<<< Updated upstream
 ## main 以外のpdfは要らない:
 *.pdf
 !00main.pdf
+=======
+## タイプセットしてできたpdfは要らない:
+tex/*.pdf
+# !00main.pdf
+00main.pdf
+>>>>>>> Stashed changes
 
 
-
-####
+#### tex default
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
