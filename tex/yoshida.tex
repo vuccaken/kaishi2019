@@ -1,9 +1,219 @@
 \documentclass{jsarticle}
 
 \usepackage{amsmath}
+\usepackage{multicol}
 \usepackage{bm}
+\usepackage{subfigure}
+\usepackage{here}
 
 \begin{document}
-数理論理学
 
+\section{イントロ}
+\subsection{厳密}
+数学はいくつかの前提となる命題（公理と呼ばれる）から出発して推論によって新たな命題（いくつかの重要な命題は定理と呼ばれる）を次々に導く,といったような議論の展開をする.推論とは前提から結論を導くことである.したがって,
+数学の正しさを追求すると最後には我々の使う論理の正しさ,すなわち推論の正しさに行き着くのである.
+では,正しい推論とは何で決まるのだろうか.それは推論の形式である.そして,どの推論の形式が正しいのかを次の章で議論する.こうして正しい推論の形式がわかると,その形式だけを用いて数学を展開することで確固たる厳密性が得られるのだ.そう,我々は数学の形式化を目指すのである.
+
+\subsection{数学の形式化}
+
+\section{命題論理}
+この章では数学の形式化の第一歩として,命題論理を解説する.
+\subsection{命題}
+命題とは,真か偽のいずれか一方がはっきり定まる文のことである.
+命題の真偽を真理値と言い,真をT,偽をFで表す.以下にいくつかの命題を挙げる.\\
+\\
+\textcircled{\scriptsize 1}太郎は100点である.\\
+\textcircled{\scriptsize 2}太郎は100点ではない.（太郎は100点である,ではない.）\\
+\textcircled{\scriptsize 3}太郎と花子が100点である.（太郎が100点である,かつ花子が100点である.）\\
+\textcircled{\scriptsize 4}太郎か花子が100点である.（太郎が100点である,または花子が100点である.）\\
+\textcircled{\scriptsize 5}太郎が100点ならば花子も100点である.（太郎が100点である,ならば花子が100点である.）\\
+\textcircled{\scriptsize 6}太郎と花子が100点ならば次郎は100点ではない.\\
+\\
+これらの命題を観察すると\textcircled{\scriptsize 1}のようにこれ以上分割できない命題と
+\textcircled{\scriptsize 2}～\textcircled{\scriptsize 6}のようにより小さい命題と否定詞（ない）,接続詞（かつ,または,ならば）によって構成される命題があることがわかるだろう.前者を原子命題,後者を複合命題という.
+
+\subsection{記号化}
+これからの議論において,我々は個々の命題の内容については興味がない.というのも我々の目的は正しい推論の形式を見つけ出すことにあるからだ.よって,命題を記号化する.こうして議論を進めることで命題一般について正しい推論の形式をみつけることができる.そして記号として得られた正しい推論に,どんな具体的な命題を代入しようとも成り立つというわけである.\\
+次のように命題を記号化する。\\
+\\
+原子命題$\cdots$A,B,C,\dots\\
+否定詞$\cdots$$\lnot$(ない)\\
+接続詞$\cdots$$\land$(かつ),$\lor$(または),$\to$(ならば)\\
+\\
+誤解を生まないよう複雑な命題には括弧を用いるが,命題と否定詞・接続詞の結合力を$\lnot>\land=\lor>\to$と定めることで,煩雑な括弧を省略する。\\
+例) (($\lnot$A)$\land$($\lnot$B))$\to$(A$\to$B) は $\lnot$A$\land$$\lnot$B$\to$(A$\to$B) と括弧を省略できる。\\
+\\
+命題\textcircled{\scriptsize 1}～\textcircled{\scriptsize 6}を記号化すると次のようになる。\\
+A$\cdots$太郎は100点である。,B$\cdots$花子は100点である。,C$\cdots$次郎は100点である。\\
+\textcircled{\scriptsize 1}A\\
+\textcircled{\scriptsize 2}$\lnot$A\\
+\textcircled{\scriptsize 3}A$\land$B\\
+\textcircled{\scriptsize 4}A$\lor$B\\
+\textcircled{\scriptsize 5}A$\to$B\\
+\textcircled{\scriptsize 6}(A$\land$B)$\to$($\lnot$C) 結合力の定義から,括弧はなくてもよい。\\
+
+\subsection{複合命題の真理値}
+命題$\varphi,\psi$の真理値に対して命題$\lnot\varphi,\varphi\land\psi,\varphi\lor\psi,\varphi\to\psi$の真理値を次のように定義する。\\
+\begin{table}[H]
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{|c||c|}\hline
+$\varphi$&$\lnot\varphi$ \\ \hline \hline
+T&F \\ \hline
+F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{|c|c||c|c|c|}\hline
+$\varphi$&$\psi$&$\varphi\land\psi$&$\varphi\lor\psi$&$\varphi\to\psi$ \\ \hline \hline
+T&T&T&T&T \\ \hline
+T&F&F&T&F \\ \hline
+F&T&F&T&T \\ \hline
+F&F&F&F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+これらの命題は意味を持った我々の世界の命題を記号で置き換えたものに過ぎない.したがって.....\\
+どんなに複雑な複合命題でもそれを構成する原子命題の真理値からスタートして,上の定義から真理値を定めることができる。
+
+\subsection{論理的真理}
+複合命題を構成する原子命題に真理値を割り当てることを真理値割り当てと言う。各割り当てに対して複合命題の真理値がどうなるかを示した表を真理表と言う。複合命題を構成する原子命題が$n$個のときこれらへの真理値のわりあて方は$2^n$通りあり,真理表も$2^n$行となる。
+複合命題の中にはいかなる真理値わりあてに対しても真となる命題があり,これをトートロジーと言う。\\
+例えばA$\to$(B$\to$A)という命題の真理表をかくと下のようになる。\\
+\begin{table}[H]
+\begin{center}
+\caption{真理表}
+\begin{tabular}{|c|c||c|c|}\hline
+A&B&B$\to$A&A$\to$(B$\to$A) \\ \hline \hline
+T&T&T&T \\ \hline
+T&F&T&T \\ \hline
+F&T&F&T \\ \hline
+F&F&T&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+この命題は真理表のすべての行で真となっておりトートロジーである。
+
+\subsection{推論}
+いよいよ推論について議論しよう.繰り返しになるが推論とは前提から結論を導くことであり,論理学はこの推論を扱う学問に他ならない.\\
+次の二つの推論において,\textcircled{\scriptsize ア}は正しい推論の形式であり,\textcircled{\scriptsize イ}は誤った推論の形式である。\\
+\begin{table}[H]
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{lll}
+\textcircled{\scriptsize ア}&前提&A$\to$B \\
+&&A \\ \hline
+&結論&B \\
+\end{tabular}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{lll}
+\textcircled{\scriptsize イ}&前提&A$\to$B \\
+&&$\lnot$A \\ \hline
+&結論&$\lnot$B \\
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+では,正しい推論とはどういったものを言うのだろうか。推論とは,前提が全て正しいならばこれこれが言えるということである。つまり正しい推論とは前提が全て真ならば結論も必ず真となるような推論である。逆に言えば,前提が全て真であるにもかかわらず,結論が偽になることはないということであり,これは前提を$\varphi_1,\varphi_2,\dots,\varphi_n$結論を$\psi$としたとき,命題$\varphi_1\land\varphi_2\land,\dots,\land\varphi_n\to\psi$がトートロジーになることに他ならない。\\
+実際に推論\textcircled{\scriptsize ア},\textcircled{\scriptsize イ}が正しいかどうかを真理表をかいて確かめると以下のようになる。
+\begin{table}[H]
+\begin{center}
+\caption{\textcircled{\scriptsize ア}}
+\begin{tabular}{|c|c||c|c|c|}\hline
+A&B&A$\to$B&(A$\to$B)$\land$A&((A$\to$B)$\land$A)$\to$B \\ \hline \hline
+T&T&T&T&T \\ \hline
+T&F&F&F&T \\ \hline
+F&T&T&F&T \\ \hline
+F&F&T&F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\caption{\textcircled{\scriptsize イ}}
+\begin{tabular}{|c|c||c|c|c|c|c|}\hline
+A&B&A$\to$B&$\lnot$A&(A$\to$B)$\land\lnot$A&$\lnot$B&((A$\to$B)$\land\lnot$A)$\to\lnot$B \\ \hline \hline
+T&T&T&F&F&F&T \\ \hline
+T&F&F&F&F&T&T \\ \hline
+F&T&T&T&T&F&F \\ \hline
+F&F&T&T&T&T&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+したがってやはり\textcircled{\scriptsize ア}は正しい推論であり,\textcircled{\scriptsize イ}は誤った推論であることがわかる。
+
+\section{述語論理}
+\subsection{数学における推論}
+前章で正しい推論がいかなるものであるか,またその判定方法がわかった.さっそく数学に応用してみよう.\\
+前章の推論\textcircled{\scriptsize ア}は正しい推論であった.\\
+A$\cdots$三角形の２角が等しい.\\
+B$\cdots$二等辺三角形である.\\
+とすると,正しい二つの前提から,正しい結論を導くことに成功している.なかなかいい感じである.
+では,次の推論についてその正しさを判定してみよう.\\
+\begin{table}[H]
+\begin{tabular}{ll}
+前提&任意の$x$,$y$について,$x\cdot y>0$ \\ \hline
+結論&$2\cdot 3>0$\\
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\begin{tabular}{ll}
+前提&$1=1$ \\ \hline
+結論&$n$が存在して,$n=n$\\
+\end{tabular}
+\end{table}
+命題論理では命題単位でしか記号化できないため,これらの推論を記号化すると前提A,結論Bとなる.はたしてこの推論の形式は正しいだろうか.これを判定するにはA$\to$Bの真理値表をかいてこれがトートロジーになるかをみればよかった.これは明らかにトートロジーにならない.この推論は正しいはずなのだが,命題論理ではうまく扱えない.
+
+\subsection{記号化}
+次のように記号化する. \\
+項$\cdots$ \\
+ある決まった対象を$a$,$b$などと記号化し,これを定項という.また,不定の対象を$x$,$y$などと記号化し,これを変項という. \\
+\\
+関数$\cdots$ \\
+足し算や累乗などの関数を$f$,$g$などと記号化し,$x+y$,$3^x$などを$f(x,y)$,$g(x)$と表す. \\
+\\
+述語$\cdots$　\\
+$\circ\circ$は整数である,$\circ\circ$は$\times\times$より大きい,など対象の性質や対象同士の関係を述語といい$F$,$G$などと記号化する.さらに$x$は整数である,$x$は$y$より大きい,を$F(x)$,$G(x,y)$と記号化する.これらは$x$,$y$に具体的な対象（定項）を代入することで命題となり真偽が確定する. \\
+\\
+量化$\cdots$ \\
+任意の$x$に対して$F(x)$を$\forall xF(x)$,$x$が存在して$F(x)$を$\exists xF(x)$と記号化する.ここで$\forall xF(x)$,$\exists xF(x)$は真偽が確定するので,命題である.また,任意の$x$に対して$y$が存在して$G(x,y)$は$\forall x\exists yG(x,y)$と記号化できる.これを多重量化という.これも真偽が決まるので命題であるが,$\exists yG(x,y)$は命題ではない.ここで,$y$を束縛変項といい,$x$を自由変項という.束縛変項は実質的には変項ではない.$\exists \times G(x,\times)$の$\times$にどんな変項記号（$x$を除く）が入っても意味は変わらないからである.\\
+\\
+それでは前述の推論に現れた命題,任意の$x$,$y$について,$x\cdot y>0$を記号化してみよう.まず定数は$0$であり,これを定項記号$a$で記号化する.このなかで関数は$\cdot$であり,これを$f$と記号化する.また述語は$>$であり,これを$G$と記号化すると,以下のようになる.\\
+\\
+$\forall x\forall yG(f(x,y),a)$ \\
+
+\subsection{命題の真理値}
+前章で一つの命題を記号化したわけであるが,我々は記号化によって命題一般について成り立つ形式を探りたいのだ.したがってこのように記号化される命題一般について議論を進めることになる.そこでまず,前章で記号化した命題の真理値がどのようになるか見ていこう. \\
+\\
+$\forall x\forall yG(f(x,y),a)$ \\
+\\
+この命題の真理値を決定するには次の二つを定めなければならない.
+\begin{itemize}
+\item 対象領域
+\item 定項,関数,述語の解釈
+\end{itemize}
+この二つを命題の解釈という.例えば$2$以上の自然数を対象領域とし,定項$a$を$4$,関数$f$を$+$,述語$G$を$>$と解釈すると,この命題は真になる.また,整数を対象領域とし,定項$a$を$0$,関数$f$を$\cdot$,述語$G$を$>$と解釈すると,この命題は偽になる. \\
+命題論理における真理値割り当てについてもう一度考えてみよう.真理値割り当てとは複合命題を構成する原子命題に真理値を割り当てることであった.これは次のように考えることができるのではないだろうか.各原子命題記号に具体的な命題として解釈を与えた結果,原子命題の真偽が決まり（これが真理値割り当て）,よって複合命題の真偽が決まった.このように考えると真理値割り当ては,命題論理における解釈である.
+
+\subsection{恒真命題}
+命題論理において,いかなる真理値割り当て（解釈）においても真となる命題をトートロジーといった.述語論理においても任意の解釈のもとで真となる命題が存在し,これを恒真命題という.ではこれをどう判定すればよいだろう.命題論理のときは真理値表をかいて,全ての行で真となるかを見ればよかった.しかし,述語論理においてはこのように機械的に判定する方法（決定手続きという）が存在しないことが,証明されている.
+
+\subsection{意味論と構文論}
+命題論理では推論の正しさをトートロジーによって判定した,しかし述語論理においては恒真命題の決定手続きが存在しない.よって今までの方法では,述語論理の推論の正しさを判定できない.そこでこれから先に議論を進めるには命題の真偽によって推論の正しさを判定する意味論から脱却し,前提となる論理式（後述）から\underline{正しい}論理式を導く規則について考える構文論の方へと進まなければならない.\\
+\\
+※注意 \\
+説明の都合上正しいという言葉を使ったが,構文論では意味抜きされた体系を扱うため,そこに真偽は考えない.
+
+
+\section{構文論}
+\subsection{これからの議論展開}
 \end{document}
+
