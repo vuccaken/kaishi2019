@@ -75,6 +75,11 @@ cd (略)/github/kaishi2019
 
 ```
 latexmk tex/nkym.tex
+```
+
+or
+
+```
 latexmk 00main.tex
 ```
 
@@ -107,18 +112,19 @@ set TEXINPUTS='.//;'
 ```
 
 この手順は、ターミナルを起動するたびに行わなければならない。
-それが面倒なら、ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。または、 `texmf.cnf` とかでググってください。
+それが面倒なら、ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。
+または、 `texmf.cnf` とかでググってください。
 
 パスが通ればあとは普通に platex -> dvipdfmf を実行すればよい。
 
 ```
 platex tex/nkym.tex
-dvipdf nkym.dvi
+dvipdfmx nkym.dvi
 ```
 
 ```
 platex 00main.tex
-dvipdf 00main.dvi
+dvipdfmx 00main.dvi
 ```
 
 
