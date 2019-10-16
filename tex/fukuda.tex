@@ -19,6 +19,7 @@
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
+  {磁気単極子(モノポール)の存在仮定下における電磁気学の考察}% title
   {理工学部物理科学科}% 所属
   {福田大和}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
@@ -34,6 +35,13 @@
 \subsection{マクスウェル方程式}
 早速始めていきます。兎にも角にも、まずはマクスウェル方程式を見て頂きましょう。
 \subsubsection{積分形}
+\begin{numcases}
+{}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_o} \int_V \rho dV \\
+\oint_C \mathbf{E}\cdot d\mathbf{r} = -\frac{d}{dt}\int_S \mathbf{B}\cdot dS \\
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_o}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{numcases}
 
 以上の四つがマクスウェル方程式と呼ばれる、電磁気学全てを支配する方程式達です。
 
