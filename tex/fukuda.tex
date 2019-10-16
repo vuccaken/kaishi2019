@@ -1,39 +1,30 @@
 % use platex
-\documentclass[11pt,b5paper,papersize,dvipdfmx]{jsarticle}
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
 % 会誌は B5 サイズです
 
-% - - - - - - - - - - - - - - - - - - - - - - - - %
-\title{電磁気についていろいろ(詳細が思いつかないだけ)} % タイトル
-\author{理工学部物理科学科　福田大和} % 所属・名前
-\date{\today} % 日付
-% - - - - - - - - - - - - - - - - - - - - - - - - %
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
 
-% パッケージを使う
-\usepackage[expert,deluxe]{otf} % font
-\usepackage{amsmath,amssymb,cases} % 数式関係
-\usepackage[dvipdfmx]{graphicx} % 図の挿入
-\usepackage{here} % option H で図を強制出力
-\usepackage{url} % URLをそのまま表示してくれる
-\usepackage{ascmac} % 枠を作るやつ
-\usepackage{physics} % 便利パッケージ
-\usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-\usepackage{tikz} % おえかきできるお
-% 必要ならば適宜追加してください
-\usepackage{plistings} % ソースコード表示
-% \usepackage{nakayamacro} % nkymが使ってるマクロ集
-
-% 自作マクロを使っても構いません
-% この辺（プリアンブル）に書いてください
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
 
 
 % 以下本文 - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \begin{document}
 
-\maketitle % タイトル出力
-\setcounter{tocdepth}{2} % 目次にどこまで表示するか
-\tableofcontents % 目次出力
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {電磁気についていろいろ(詳細が思いつかないだけ)}% title
+  {理工学部物理科学科}% 所属
+  {福田大和}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
 
-\clearpage % 改ページ
+% \maketitle % タイトル出力
+% \setcounter{tocdepth}{2} % 目次にどこまで表示するか
+% \tableofcontents % 目次出力
+
+% \clearpage % 改ページ
 
 \section{はじめに}
 前半で電磁気学の概要をかなーーーーーーーーーーーり駆け足で説明し、後半では私個人の考えを展開していきます。あらかじめ注意して頂きたいのですが、この説明は私の説明しやすい順番で、私の理解が及ぶ範囲で説明しています。具体的には、多くの電磁気学の教科書はクーロンの法則などの、あまり電磁気学に触れたことのない方にも直感的に分かりやすい関係式から初めて、マクスウェル方程式を導き、云々、という展開が一般的かと思います。しかし、今回は初めに電磁気学全てを支配するマクスウェル方程式を提示し、種々の関係式を導くという順序です。この順序にした理由は二つあり、一つは私が前述したような一般的な説明に馴染めないということ。ありていに言うと、うまく説明できる自信がない為です。もう一つは、ここでの主題である磁気単極子についての議論をするときに、この順序で説明した方がすんなり受け入れていただけるのではと考えたからです。あらかじめ断っておきますが、間違っている可能性も十二分にあり得ますのでそのことに留意してお読みいただければ幸いです。
@@ -42,9 +33,9 @@
 \subsection{マクスウェル方程式}
 早速始めていきます。兎にも角にも、まずはマクスウェル方程式を見て頂きましょう。
 \subsubsection{積分形}
-\begin{align}
+% \begin{align}
 
-\end{align}
+% \end{align}
 以上の四つがマクスウェル方程式と呼ばれる、電磁気学全てを支配する方程式達です。
 
 \subsubsection{微分形}
