@@ -1,4 +1,15 @@
+%
+%    Y O S H I D A
+%
+
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
 
 \usepackage{amsmath}
 \usepackage{multicol}
@@ -6,16 +17,13 @@
 \usepackage{subfigure}
 \usepackage{here}
 
-\usepackage{vuccaken}
-\usepackage{vuccaken2019}
-
 \begin{document}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
-  {\LaTeX テンプレート（会誌原稿用）}% title
-  {テンプレ科学科4回生}% 所属
-  {テンプレくん}% name
+  {ろんりがく}% title
+  {テンプレ科学科1回生}% 所属
+  {よしだ}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 
 \section{イントロ}
@@ -225,5 +233,17 @@ $\forall x\forall yG(f(x,y),a)$ \\
 
 \section{構文論}
 \subsection{これからの議論展開}
+
+
+%% 参考文献
+\begin{sanko}
+  \begin{enumerate}
+    \item 著者, 本やページの名前, (URL), 出版社, 出版年.
+    \item (複数ある場合は追加)
+    \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+  \end{enumerate}
+\end{sanko}
+
+
 \end{document}
 
