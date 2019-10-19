@@ -110,7 +110,15 @@ c^2 \bigtriangledown\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\par
 \label{Faradaydif1.2.2}
 \bigtriangledown\times\mathbf{E} = 0
 \end{numcases}
-はい、先程提示したガウスの法則とファラデーの法則です。が、少し違いますよね？ファラデーの法則と\ref{Faraday1.2.2}式、\ref{Faradaydif1.2.2}式を見比べてみてください。右辺がどちらも0になっているのが分かるかと思います。これは静電場は時間変化しないから時間tで微分している項を0にしただけなのですが、この関係を{\bf 渦なしの法則}と呼びます。電場を閉曲線で線積分すると0になる、もしくは、電場の回転は0であると表現することもできます。これの何が重要なのか。それは保存力というものを考えると分かるかと思います。
+はい、先程提示したガウスの法則とファラデーの法則です。が、少し違いますよね？ファラデーの法則と\ref{Faraday1.2.2}式、\ref{Faradaydif1.2.2}式を見比べてみてください。右辺がどちらも0になっているのが分かるかと思います。これは静電場は時間変化しないから時間tで微分している項を0にしただけなのですが、この関係を{\bf 渦なしの法則}と呼びます。電場を閉曲線で線積分すると0になる、もしくは、電場の回転は0であると表現することもできます。これの何が重要なのか。それは保存力というものを考えると分かるかと思います。保存力という言葉は高校で既に聞き及んでいることと思いますが、改めて確認したいと思います。
+\subsubsection{〈静電ポテンシャル〉}
+力$F=(F_x,F_y,F_z)$を考えます。（電磁気学では普通、3次元の問題を取り扱うためこう置きましたが、何次元でも構いません)\footnote{相対性理論を考慮すると3次元以外も考える必要があるようですが、勉強不足で分かりません！$\cdots$来年の今頃には分かるようになれるだろうか(遠い目)}この時、力Fの成分が
+\begin{align}
+F_x=-\frac{\partial U}{\partial x} , 
+F_y=-\frac{\partial U}{\partial y} , 
+F_z=-\frac{\partial U}{\partial z}
+\end{align}
+によって一つの関数$U(x,y,z)$から導かれるとき、この力は保存力である。\cite{mechanics}とのことです。さすがにこれで説明したと言い張るのはどうかと思うので付け加えると、上の定義によると、保存力Fは位置で決まるベクトルなようですから、
 \subsection{静磁場}
 \subsection{時間変化}
 \subsection{}
@@ -126,15 +134,20 @@ c^2 \bigtriangledown\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\par
 
 \subsection{微分形→積分形}
 
+\begin{thebibliography}{9}
+\bibitem{mechanics} 戸田 盛和,『物理入門コース 力学』,岩波書店,2017/12/5
+\bibitem{Maxwel} 小宮山 進・竹川 敦,『マクスウェル方程式から始める電磁気学』,裳華房,2016/9/15 第二版
 
-\section{参考文献}
-\renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
-\begin{enumerate}
-\item 小宮山 進・竹川 敦,『マクスウェル方程式から始める電磁気学』,裳華房,2016/9/15 第二版
-\item (複数ある場合は追加)
-\item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
-\end{enumerate}
-\renewcommand{\labelenumi}{\arabic{enumi}.} % default
+\end{thebibliography}
+
+%\section{参考文献}
+%\renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
+%\begin{enumerate}
+%\item 小宮山 進・竹川 敦,『マクスウェル方程式から始める電磁気学』,裳華房,2016/9/15 第二版
+%\item (複数ある場合は追加)
+%\item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+%\end{enumerate}
+%\renewcommand{\labelenumi}{\arabic{enumi}.} % default
 
 \end{document}
 
