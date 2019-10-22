@@ -1,0 +1,100 @@
+%
+%    comment for 'fukuda.tex'
+%
+
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+\begin{document}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {fukuda.tex のかうせい}% title
+  {校正科学科}% 所属
+  {nkym}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+\section*{はじめに}
+早速校正です。反論は歓迎します。2019-10-22
+
+\section{校正}
+
+\begin{itemize}
+  \item 真空の誘電率って$\epsilon_o$じゃなくて$\epsilon_0$では？
+  \item ナブラは \code|\bigtriangledown| じゃなくて \code|\nabla| で出せます：
+    $\bigtriangledown \phi \to \nabla \phi$.
+  \item 式番号を参照するとき、かっこ \texttt{()}をつけた方がいいです。
+    \ex
+    \begin{align}
+      F = ma \label{eq:nu-ton}
+    \end{align}
+    (\ref{eq:nu-ton})式より、、、\par
+    または、\texttt{vuccaken2019.sty}でnkymが定義している \code{\siki} コマンド；
+    %
+    \begin{metatex}[gobble=6]
+      \newcommand\siki[1]{(\ref{eq:#1})}
+    \end{metatex}
+    %
+    を使うと楽です。
+    \ex \siki{nu-ton}より、、、
+  \item 52行目あたりに
+    %
+    \begin{metatex}[gobble=6]
+      $\mathbf{E}:電場、\mathbf{B}:磁場、\mathbf{j}:流束、\mathbf{n}:法線ベクトル、C:任意の閉曲線、S:任意の閉曲面、V:任意の閉曲面Sに囲まれた体積、\rho :電荷密度、c:光速$
+    \end{metatex}
+    とありますが、面倒臭がらずにちゃんと
+    \begin{metatex}[gobble=6]
+      $\mathbf{E}$:電場、$\mathbf{B}$:磁場、$\mathbf{j}$:流束、$\mathbf{n}$:法線ベクトル、$C$:任意の閉曲線、$S$:任意の閉曲面、$V$:任意の閉曲面$S$に囲まれた体積、$\rho$:電荷密度、$c$:光速
+    \end{metatex}
+    と書きましょう。
+  \item \code{\footnote}は句点（ピリオド）の前に付けるのが普通っぽいです\footnote{こんな感じで}。
+  \item あとは文章中の数式に\code{$ $}を付けるのを忘れないようにするのと、半角全角を間違えないように......
+\end{itemize}
+
+\section{好み}
+\begin{itemize}
+  \item 被積分関数と微小量の間にスペースを入れた方が美しいです。
+    \begin{align}
+      \int f(x) dx \to \int f(x) \, dx
+    \end{align}
+  \item
+    もっと言えば、微小量を表すdは変数ではなく$\sin$とか$\log$とかの記号と同じようなものなので、イタリック体ではなくローマン体にするのが正しいとされます。
+    \begin{align}
+      dx \to \mathrm{d}x
+    \end{align}
+    でもさすがにこれは面倒なので無視するか、\texttt{physics}パッケージを使うのがよいです。以下\texttt{physics}パッケージの例（ソースも見てね）：
+    \begin{align}
+      \int f(x) \dd{x}, \quad 
+      \dv{y}{x}, \quad
+      \pdv[2]{f}{x}{y}, \quad \text{など}
+    \end{align}
+  \item \texttt{fukuda.tex}の(1.20)式のようにdisplay styleでカンマを使う時は\code{\quad}でスペースを入れると絶妙です（個人的には）：
+  \begin{align}
+    F_x = - \pdv{U}{x},\quad
+    F_y = - \pdv{U}{y},\quad
+    F_z = - \pdv{U}{z}
+  \end{align}
+  \item (2.20)式は、かっこを大きくした方が美しいかと（個人的には）：
+  \begin{align}
+    \mathbf{F}= \left(
+      -\pdv{x}U, -\pdv{y}U, -\pdv{z}U
+    \right)
+  \end{align}
+  % OR, use \qty command defined in physics.sty:
+  % \begin{align}
+  %   \mathbf{F}= \qty(
+  %     -\pdv{x}U, -\pdv{y}U, -\pdv{z}U
+  %   ), \\
+  %   \mathbf{F}= \pqty{
+  %     -\pdv{x}U, -\pdv{y}U, -\pdv{z}U
+  %   }
+  % \end{align}
+\end{itemize}
+
+
+\end{document}
+
+
