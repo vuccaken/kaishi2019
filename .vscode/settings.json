@@ -26,7 +26,8 @@
   "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux", "*.toc",
-    "*.log", "*.dvi",
+    "*.log",
+    "*.dvi",
     // "*.synctex.gz",
     "*.fdb_latexmk", "*.fls", // latexmk
     "*.nav", "*.snm" // beamer
