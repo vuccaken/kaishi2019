@@ -1,0 +1,37 @@
+
+%  comment用
+
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+%   comment
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\usepackage{listings,jlisting} % ソースコード表示
+\usepackage{xparse} % \DeclareDocumentCommand
+\usepackage{realboxes} % \Colorbox
+
+\newcommand\ex{\par\noindent{\bfseries 例：}}
+
+\lstnewenvironment{metatex}[1][]{%
+  \lstset{%
+    #1,
+    language = tex,
+    basicstyle     = \ttfamily\small,
+    frame          = tb,
+    % framesep = 0.5zw,
+    % rulesep = 1zw,
+    % framextopmargin = -20pt,
+    framexleftmargin = 1zw,
+    framexrightmargin = 1zw,
+    % numbers        = left,
+    xleftmargin    = 2zw,
+    xrightmargin   = 0zw,
+    columns        = [l]{fullflexible},
+    breaklines     = true,
+    breakindent    = 0zw,
+    backgroundcolor=\color{green!10},
+}}{}
+
+\DeclareDocumentCommand{\code}{v}{%
+    \Colorbox{green!10}%
+    {\csname lstinline\endcsname[basicstyle=\ttfamily]!#1!}%
+}
