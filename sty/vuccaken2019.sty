@@ -28,7 +28,7 @@
 
 \usepackage{url} % URLをそのまま表示してくれる
 
-\usepackage{listings,jlisting} % ソースコード表示
+% \usepackage{listings,jlisting} % ソースコード表示
 \usepackage{ascmac} % 枠を作るやつ
 \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
 \usepackage{tikz} % おえかきできるツール
@@ -75,38 +75,6 @@
 % \DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
 
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-%   comment
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-\usepackage{xparse} % \DeclareDocumentCommand
-\usepackage{realboxes} % \Colorbox
-
-\newcommand\ex{\par\noindent{\bfseries 例：}}
-
-\lstnewenvironment{metatex}[1][]{%
-  \lstset{%
-    #1,
-    language = tex,
-    basicstyle     = \ttfamily\small,
-    frame          = tb,
-    % framesep = 0.5zw,
-    % rulesep = 1zw,
-    % framextopmargin = -20pt,
-    framexleftmargin = 1zw,
-    framexrightmargin = 1zw,
-    % numbers        = left,
-    xleftmargin    = 2zw,
-    xrightmargin   = 0zw,
-    columns        = [l]{fullflexible},
-    breaklines     = true,
-    breakindent    = 0zw,
-    backgroundcolor=\color{green!10},
-}}{}
-
-\DeclareDocumentCommand{\code}{v}{%
-    \Colorbox{green!10}%
-    {\csname lstinline\endcsname[basicstyle=\ttfamily]!#1!}%
-}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 % メインの本文以外の部分
