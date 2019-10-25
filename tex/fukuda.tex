@@ -8,12 +8,10 @@
 
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
-\usepackage{cases}    %追加ありがとうございます、nkymさん！
 
 % スタイルファイルの読み込みや自作マクロは、
 % 最終的には vuccaken2019.sty の中に書いてください。
 % とりあえずはここに書いてもらって構いません。
-
 
 \begin{document} % 以下本文
 
@@ -48,20 +46,20 @@
 \subsubsection{〈積分形〉}
 \begin{numcases}
 {}
-\label{Gauss}
+\label{eq:Gauss}
 \int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
-\label{Faraday}
+\label{eq:Faraday}
 \oint_C \mathbf{E}\cdot d\mathbf{r} = -\frac{d}{dt}\int_S \mathbf{B}\cdot\mathbf{n} dS \\
-\label{Gauss2}
+\label{eq:Gauss2}
 \int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
-\label{Ampere}
+\label{eq:Ampere}
 c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
 \end{numcases}
 以上の四つがマクスウェル方程式と呼ばれる、電磁気学全てを支配する方程式達です。尚、文字の意味は$\mathbf{E}$:電場、$\mathbf{B}$:磁場、$\mathbf{j}$:流束、$\mathbf{n}$:法線ベクトル、$C$:任意の閉曲線、$S$:任意の閉曲面、$V$:任意の閉曲面Sに囲まれた体積、$\rho$ :電荷密度、$c$:光速です。各方程式にはそれぞれ名前があり、
-\ref{Gauss}式はガウスの法則、(\ref{Faraday})式はファラデーの法則、(\ref{Gauss2})式は磁場に関するファラデーの法則、(\ref{Anpere})式はアンペール－マクスウェルの法則と呼ばれています。(\ref{Gauss})式と(\ref{Faraday})式が電場、(\ref{Gauss2})式と(\ref{Ampere})式が磁場に関する法則となんとなく考えて頂ければ結構です。
+\siki{Gauss}式はガウスの法則、\siki{Faraday}式はファラデーの法則、\siki{Gauss2}式は磁場に関するファラデーの法則、\siki{Anpere}式はアンペール－マクスウェルの法則と呼ばれています。\siki{Gauss})式と\siki{Faraday}式が電場、\siki{Gauss2}式と\siki{Ampere}式が磁場に関する法則となんとなく考えて頂ければ結構です。
 \subsubsection{〈微分形〉}
 次に、積分形で書かれた上のマクスウェル方程式を微分形に変形したいと思います。 \par
-まずはガウスの法則から。(\ref{Gauss})式の左辺をガウスの定理で変形してやって、
+まずはガウスの法則から。\siki{Gauss}式の左辺をガウスの定理で変形してやって、
 \begin{align}
 \int_V \bigtriangledown\cdot\mathbf{E} dV = \frac{1}{\epsilon_0} \int_V \rho dV
 \end{align}
@@ -70,7 +68,7 @@ $V$は任意の体積としているので、
 \bigtriangledown\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}
 \end{align}
 これがガウスの法則の微分形になります。\par
-続いて、ファラデーの法則。(\ref{Faraday})の左辺にストークスの定理で変形してやって、
+続いて、ファラデーの法則。\siki{Faraday}の左辺にストークスの定理で変形してやって、
 \begin{align}
 \int_S (\bigtriangledown\times\mathbf{E})\cdot\mathbf{n} dS = -\frac{d}{dt}\int_S \mathbf{B}\cdot \mathbf{n} dS
 \end{align}
@@ -91,13 +89,13 @@ c^2 \bigtriangledown\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\par
 以上より、マクスウェル方程式の微分形をまとめると、
 \begin{numcases}
 {}
-\label{Gaussdif}
+\label{eq:Gaussdif}
 \bigtriangledown\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
-\label{Faradaydif}
+\label{eq:Faradaydif}
 \bigtriangledown\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}\\
-\label{Gauss2dif}
+\label{eq:Gauss2dif}
 \bigtriangledown\cdot \mathbf{B} = 0\\
-\label{Amperedif}
+\label{eq:Amperedif}
 c^2 \bigtriangledown\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
 \end{numcases}
 となります。
@@ -105,40 +103,40 @@ c^2 \bigtriangledown\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\par
 さて、ここからは前章で提示したマクスウェル方程式をガチャガチャいじって楽しんでいこうと思います。まずは静電場。ここで使うのは以下の2式です。
 \begin{numcases}
 {}
-\label{Gauss1.2.2}
+\label{eq:Gauss1.2.2}
 \int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
-\label{Faraday1.2.2}
+\label{eq:Faraday1.2.2}
 \oint_C \mathbf{E}\cdot d\mathbf{r} = 0
 \end{numcases}
 微分形だとこうなります。
 \begin{numcases}
 {}
-\label{Gaussdif1.2.2}
-\bigtriangledown\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
-\label{Faradaydif1.2.2}
-\bigtriangledown\times\mathbf{E} = 0
+\label{eq:Gaussdif1.2.2}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\label{eq:Faradaydif1.2.2}
+\nabla\times\mathbf{E} = 0
 \end{numcases}
-はい、先程提示したガウスの法則とファラデーの法則です。が、少し違いますよね？ファラデーの法則と(\ref{Faraday1.2.2})式、(\ref{Faradaydif1.2.2})式を見比べてみてください。右辺がどちらも0になっているのが分かるかと思います。これは静電場は時間変化しないから時間tで微分している項を0にしただけなのですが、この関係を{\bf 渦なしの法則}と呼びます。電場を閉曲線で線積分すると0になる、もしくは、電場の回転は0であると表現することもできます。これの何が重要なのか。それは保存力というものを考えると分かるかと思います。保存力という言葉は高校で既に聞き及んでいることと思いますが、改めて確認したいと思います。
+はい、先程提示したガウスの法則とファラデーの法則です。が、少し違いますよね？ファラデーの法則と\siki{Faraday1.2.2}式、\siki{Faradaydif1.2.2}式を見比べてみてください。右辺がどちらも0になっているのが分かるかと思います。これは静電場は時間変化しないから時間tで微分している項を0にしただけなのですが、この関係を{\bf 渦なしの法則}と呼びます。電場を閉曲線で線積分すると0になる、もしくは、電場の回転は0であると表現することもできます。これの何が重要なのか。それは保存力というものを考えると分かるかと思います。保存力という言葉は高校で既に聞き及んでいることと思いますが、改めて確認したいと思います。
 \subsubsection{〈静電ポテンシャル〉}
 力$\mathbf{F}=(F_x,F_y,F_z)$を考えます。（電磁気学では普通、3次元の問題を取り扱うためこう置きましたが、何次元でも構いません\footnote{相対性理論を考慮すると3次元以外も考える必要があるようですが、勉強不足で分かりません！$\cdots$来年の今頃には分かるようになれるといいなぁ(遠い目)})この時、力$\mathbf{F}$の成分が
 \begin{align}
-\label{consevativeP}
-F_x=-\frac{\partial U}{\partial x} , 
-F_y=-\frac{\partial U}{\partial y} , 
+\label{eq:consevativeP}
+F_x=-\frac{\partial U}{\partial x} , \quad
+F_y=-\frac{\partial U}{\partial y} , \quad
 F_z=-\frac{\partial U}{\partial z}
 \end{align}
 によって一つの関数$U(x,y,z)$から導かれるとき、この力は保存力である。\cite{mechanics}とのことです。\par
-詳しく見ていきましょう。(\ref{consevativeP})式を見てください。成分ごとに分けて書いているので分かりにくいかもしれないので、こう書いてみましょう。
+詳しく見ていきましょう。\siki{consevativeP}式を見てください。成分ごとに分けて書いているので分かりにくいかもしれないので、こう書いてみましょう。
 \begin{align}
 \mathbf{F}=(-\frac{\partial }{\partial x}U,-\frac{\partial }{\partial y}U , -\frac{\partial }{\partial z}U)
 \end{align}
 お分かりいただけましたか?つまり、
 \begin{align}
-\label{conservative}
+\label{eq:conservative}
 \mathbf{F}=-\nabla U
 \end{align}
 こう書けます。このUを力学ではポテンシャル(位置エネルギー)と呼びます。\par
-次に(\ref{conservative})式の両辺を、任意の2点A,Bの間を、任意の経路ｒでA→Bに線積分してみます。
+次に\siki{conservative}式の両辺を、任意の2点A,Bの間を、任意の経路ｒでA→Bに線積分してみます。
 \begin{align}
 \int_A^B \mathbf{F}\cdot d\mathbf{r}=-\int_A^B \nabla U\cdot d\mathbf{r}\\
 \label{potential}
@@ -153,17 +151,35 @@ F_z=-\frac{\partial U}{\partial z}
 \end{numcases}
 \begin{numcases}
 {}
-\bigtriangledown\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
-\bigtriangledown\times\mathbf{E} = 0
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\nabla\times\mathbf{E} = 0
 \end{numcases}
 電場$\mathbf{E}$が保存力であるとわかると思います。つまり、渦なしの法則=電場は保存力、というわけです。そして、電場$\mathbf{E}$は保存力なので、
 \begin{align}
+\label{eq:Epotential}
 \mathbf{E}=-\nabla\Phi
 \end{align}
-と書くことができ、$\Phi$ を静電ポテンシャルと呼びます。
+と書くことができ、$\Phi$ を静電ポテンシャルと呼びます。$-$がついているのは、静電ポテンシャルは一般的に無限遠を基準点にとるためです。
 \subsubsection{〈クーロンの法則〉}
-次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。(\ref{Gauss1.2.2})式を
+次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。が、式変形だけではい、終わり、だとなにをしているのかわからなくなしそうなので、場面設定していきます。
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=10cm]{img/fig-sin.pdf}
+%  \caption{}　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　後でお絵かき。お絵かきしてから書く！忘れるなかれ
+%  \label{fig:sin}
+%\end{figure}
+
 \subsubsection{〈ポアソン方程式〉}
+次で静電場は最後になります。…最後に、してしまいます。\par
+ここではポアソン方程式と呼ばれる関係式を紹介したいと思います。使うのは微分形の\siki{Gaussdif1.2.2}式です。まず、\siki{Gaussdif1.2.2}の$\mathbf{E}$に\siki{Epotential}式を代入すると、
+\begin{align}
+\nabla\cdot(-\nabla\Phi ) =  \frac{\rho}{\epsilon_0}
+\end{align}
+これをラプラシアン$\nabla^2$を用いて書き直して、
+\begin{align}
+\nabla^2 \Phi = - \frac{\rho}{\epsilon_0}
+\end{align}
+この式をポアソン方程式といいます。本当はこの方程式の一般解を求めなければならないのですが、本題には関係ないこと、そして私の頭の都合上省略させていただきます。
 
 \subsection{静磁場}
 \subsubsection{〈ベクトルポテンシャル〉}
