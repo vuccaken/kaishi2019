@@ -230,16 +230,59 @@ c^2 \nabla\times(\nabla\times\mathbf{A}) = \frac{\mathbf{j}}{\epsilon_0}
 \end{align}
 ここから、この方程式を解いて、ベクトルポテンシャル$\mathbf{A}$の解を求めなければならないのですが、お気づきでしょうか？この方程式、ポアソン方程式と全く同じ形をしています。つまり、ポアソン方程式の一般解を考えればよいのです。よって、
 \begin{align}
+\label{eq:vecP}
 \mathbf{A}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'
 \end{align}
 これがベクトルポテンシャルとなります。
 
 \subsubsection{〈ビオ-サバールの法則〉}
+続いて、先程求めたベクトルポテンシャルの式\shiki{vecP}を変形していきます。まず、両辺の回転をとると、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\nabla\left(\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'\right)
+\end{align}
+微分と積分の順序を入れ替えて、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \nabla\times\frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'
+\end{align}
+この式の右辺を$\mathbf{r}=(x,y,z)$の各成分で書き下すと、
+\begin{numcases}
+{}
+\mathbf{B_x}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_y (z-z')-j_z (y-y')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\mathbf{B_y}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_z (x-x')-j_x (z-z')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\mathbf{B_z}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_x (y-y')-j_y (x-x')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\end{numcases}
+よって、回転の定義を考えれば、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j}(\mathbf{r'})\times(\mathbf{r}-\mathbf{r'})}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\end{align}
+これをビオ－サバールの法則といいます。
 
-
-\subsubsection{〈磁気双極子〉}
+%\subsubsection{〈磁気双極子〉}                                            これ必要か？
 
 \subsection{時間変化}
+電磁気学概説の最後は時間変化を考えていきます。使うのは当然、マクスウェル方程式4つ全てです。
+\begin{numcases}
+{}
+\label{eq:Gauss1.2.4}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
+\label{eq:Faraday1.2.4}
+\oint_C \mathbf{E}\cdot d\mathbf{r} = -\frac{d}{dt}\int_S \mathbf{B}\cdot\mathbf{n} dS \\
+\label{eq:Gauss21.2.4}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
+\label{eq:Ampere1.2.4}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{numcases}
+\begin{numcases}
+{}
+\label{eq:Gaussdif1.2.4}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\label{eq:Faradaydif1.2.4}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}\\
+\label{eq:Gauss2dif1.2.4}
+\nabla\cdot \mathbf{B} = 0\\
+\label{eq:Amperedif1.2.4}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+\end{numcases}
 \subsubsection{〈電磁誘導〉}
 \subsubsection{〈インダクタンス〉}
 \subsubsection{〈電磁波〉}
