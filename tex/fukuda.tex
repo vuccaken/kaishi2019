@@ -34,17 +34,14 @@
 \section{前提知識}
 \subsection{注意事項}
 \begin{itemize}
-\item ここではベクトルは太字で書きます。例えば、Aというベクトルは$\mathbf{A}$と書き、$\vec{A}$とは書きません
-\item 高校数学及び物理は知っているものとして話すので、電場、点電荷などといった用語の説明は完全に省いています。各語句については『マクスウェル方程式から始める電磁気学』に則るものとします。
+\item ここではベクトルは太字で書きます。例えば、Aというベクトルは$\mathbf{A}$と書き、$\vec{A}$とは書きません。
+\item ベクトル解析の説明は一切ありません。
+\item 各語句については『マクスウェル方程式から始める電磁気学』に則るものとします。
 \end{itemize}
-\subsection{ベクトル解析}
-\subsection{ガウスの定理}
-\subsection{ストークスの定理}
-
 
 \section{電磁気学概説}
 \subsection{マクスウェル方程式}
-ようやく電磁気学です。兎にも角にも、まずはマクスウェル方程式を見て頂きましょう。
+まずは、電磁気学です。兎にも角にも、まずはマクスウェル方程式を見て頂きましょう。
 \subsubsection{〈積分形〉}
 \begin{numcases}
 {}
@@ -103,7 +100,7 @@ c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\partial\mathb
 \label{eq:Gauss2dif}
 \nabla\cdot \mathbf{B} = 0\\
 \label{eq:Amperedif}
-c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
 \end{numcases}
 となります。
 \subsection{静電場}
@@ -188,6 +185,8 @@ F_z=-\frac{\partial U}{\partial z}
 \end{align}
 この式をポアソン方程式といいます。本当はこの方程式の一般解を求めなければならないのですが、本題には関係ないこと、そして私の頭の都合上省略させていただきます。
 
+%きちんと書く予定。予定。
+
 \subsection{静磁場}
 話は変わって、電場ではなく磁場について考えていきます。使うのは先程使わなかったマクスウェル方程式
 \begin{numcases}
@@ -197,19 +196,47 @@ F_z=-\frac{\partial U}{\partial z}
 \label{eq:Ampere1.2.3}
 c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS
 \end{numcases}
-\shiki{Gauss2.12.3}と\shiki{Ampere1.2.3}です。微分形だとこうです。
+\shiki{Gauss2.1.2.3}と\shiki{Ampere1.2.3}です。微分形だとこうです。
 \begin{numcases}
 {}
 \label{eq:Gauss2dif1.2.3}
 \nabla\cdot \mathbf{B} = 0 \\
 \label{eq:Amperedif1.2.3}
-c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0}
 \end{numcases}
 静磁場を考えるので、時間微分の項は全て消してあります。
 \subsubsection{〈ベクトルポテンシャル〉}
-
+最初に考えるのは、ベクトルポテンシャルというものです。\shiki{Gauss2dif1.2.3}をご覧ください。左辺に$\mathbf{B}=\nabla\times\mathbf{A}$というものを代入してみます。
+\begin{align}
+\nabla\cdot(\nabla\times\mathbf{A})
+\end{align}
+ベクトル解析における公式で、任意のベクトル$\mathbf{r}$について、$\nabla\cdot(\nabla\mathbf{r})=0$が成り立つので、
+\begin{align}
+\nabla\cdot(\nabla\times\mathbf{A})=0
+\end{align}
+が成立します。つまり、磁場$\mathbf{B}$を$\nabla\times\mathbf{A}$というもので置き換えても問題ないわけです。このベクトル$\mathbf{A}$をベクトルポテンシャルといいます。\par
+では、\shiki{Amperedif1.2.3}にも代入してみましょう。
+\begin{align}
+c^2 \nabla\times(\nabla\times\mathbf{A}) = \frac{\mathbf{j}}{\epsilon_0}
+\end{align}
+これもベクトル解析の公式$\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}$を用いて、
+\begin{align}
+\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}=\frac{\mathbf{j}}{\epsilon_0 c^2}
+\end{align}
+ここにクーロンゲージと呼ばれる制限を設けます。$\nabla\cdot\mathbf{A}=0$\par
+これを用いて、
+\begin{align}
+\nabla^2\mathbf{A}=-\frac{\mathbf{j}}{\epsilon_0 c^2}
+\end{align}
+ここから、この方程式を解いて、ベクトルポテンシャル$\mathbf{A}$の解を求めなければならないのですが、お気づきでしょうか？この方程式、ポアソン方程式と全く同じ形をしています。つまり、ポアソン方程式の一般解を考えればよいのです。よって、
+\begin{align}
+\mathbf{A}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'
+\end{align}
+これがベクトルポテンシャルとなります。
 
 \subsubsection{〈ビオ-サバールの法則〉}
+
+
 \subsubsection{〈磁気双極子〉}
 
 \subsection{時間変化}
@@ -219,7 +246,11 @@ c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0}
 
 
 \section{磁気単極子の存在仮定}
-\subsection{なるようになーれー}
+ここからは、前の章とは打って変わって、マクスウェル方程式を疑ってかかっていきます。先に申し上げますと、磁気単極子を仮定しますから、当然磁気単極子の存在を認めていない電磁気学の基礎方程式、マクスウェル方程式は矛盾だらけの代物となります。つまり、これは単なる思考実験、妄想の産物です。科学的根拠は皆無です。それを踏まえたうえでお読みください。
+\subsection{具体例}
+では、実際に具体例をいくつか考えていきます。
+\subsubsection{〈例１〉}
+磁気単極子が単独である状況を考えます。これは至極単純で、磁場を$\mathbf{B}$、磁荷を$q_m$
 
 \section{おまけ}
 \subsection{積分形→微分形}
