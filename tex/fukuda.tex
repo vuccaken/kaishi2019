@@ -19,7 +19,7 @@
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
-  {磁気単極子の存在仮定下における電磁気学の考察}% title
+  {マクスウェル方程式から始める電磁気学}% title
   {理工学部物理科学科1回生}% 所属
   {福田大和}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
@@ -29,7 +29,7 @@
 % \clearpage % 改ページ
 
 \section*{はじめに}
-前半で電磁気学の概要をかなーーーーーーーーーーーり駆け足で説明し、後半では私個人の考えを展開していきます。前半の説明は私の説明しやすい順番で、私の理解が及ぶ範囲で説明しています。具体的には、多くの電磁気学の教科書はクーロンの法則などの、あまり電磁気学に触れたことのない方にも直感的に分かりやすい関係から初めて、マクスウェル方程式を導き、云々、という展開が一般的かと思います。しかし、今回は初めに電磁気学全てを支配するマクスウェル方程式を提示し、種々の関係を導くという順序です。この順序にした理由は二つあり、一つは私が前述したような一般的な説明に馴染めないということ。ありていに言うと、うまく説明できる自信がない為です。もう一つは、ここでの主題である磁気単極子についての議論をするときに、この順序で説明した方がすんなり受け入れていただけるのではと考えたからです。あらかじめ断っておきますが、間違っている可能性も十二分にあり得ますのでそのことに留意してお読みいただければ幸いです。
+電磁気学の概要をかなーーーーーーーーーーーり駆け足で説明いたします。説明は私が学んだ中で最もしっくりきた本を基にしています。具体的には、多くの電磁気学の教科書はクーロンの法則などの、あまり電磁気学に触れたことのない方にも直感的に分かりやすい関係から初めて、マクスウェル方程式を導き、云々、という展開が一般的かと思います。しかし、今回は初めに電磁気学全てを支配するマクスウェル方程式を提示し、種々の関係を導くという順序です。間違っている可能性も十二分にあり得ますのでそのことに留意してお読みいただければ幸いです。
 
 \section{前提知識}
 \subsection{注意事項}
@@ -60,7 +60,7 @@ c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\
 c\epsilon_0 \mu=1
 \end{align}
 の関係があるため、読む本によっては別の表記になっているかもしれません。
-各方程式にはそれぞれ名前があり、\shiki{Gauss}はガウスの法則、\shiki{Faraday}はファラデーの法則、\shiki{Gauss2}は磁場に関するファラデーの法則、\shiki{Anpere}はアンペール－マクスウェルの法則と呼ばれています。\shiki{Gauss})と\shiki{Faraday}が電場、\shiki{Gauss2}と\shiki{Ampere}が磁場に関する法則となんとなく考えて頂ければ結構です。
+各方程式にはそれぞれ名前があり、\shiki{Gauss}はガウスの法則、\shiki{Faraday}はファラデーの法則、\shiki{Gauss2}は磁場に関するガウスの法則、\shiki{Anpere}はアンペール－マクスウェルの法則と呼ばれています。\shiki{Gauss})と\shiki{Faraday}が電場、\shiki{Gauss2}と\shiki{Ampere}が磁場に関する法則となんとなく考えて頂ければ結構です。
 \subsubsection{〈微分形〉}
 次に、積分形で書かれた上のマクスウェル方程式を微分形に変形したいと思います。 \par
 まずはガウスの法則から。\shiki{Gauss}の左辺をガウスの定理で変形してやって、
@@ -85,7 +85,7 @@ $S$は任意の閉曲面としているので、
 \nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}
 \end{align}
 これがファラデーの法則の微分形となります。
-続いて、と行きたいところですが、磁場に関するガウスの法則とアンペール－マクスウェルの法則に」ついては、それぞれガウスの法則とファラデーの法則の変形と全く同じなので導出は割愛させていただきます\footnote{最後のおまけに一応掲載。}。結果だけ示すと、
+続いて、と行きたいところですが、磁場に関するガウスの法則とアンペール－マクスウェルの法則については、それぞれガウスの法則とファラデーの法則の変形と全く同じなので導出は割愛させていただきます\footnote{最後のおまけに一応掲載。}。結果だけ示すと、
 \begin{align}
 \nabla\cdot \mathbf{B} = 0\\
 c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\partial\mathbf{E}}{\partial t}
@@ -257,9 +257,7 @@ c^2 \nabla\times(\nabla\times\mathbf{A}) = \frac{\mathbf{j}}{\epsilon_0}
 \end{align}
 これをビオ－サバールの法則といいます。
 
-%\subsubsection{〈磁気双極子〉}                                            これ必要か？
-
-\subsection{時間変化}                                                             %時間変化の例は考えないかもしれないので後回し
+\subsection{時間変化}                                                            
 電磁気学概説の最後は時間変化を考えていきます。使うのは当然、マクスウェル方程式4つ全てです。
 \begin{numcases}
 {}
@@ -283,37 +281,71 @@ c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\
 \label{eq:Amperedif1.2.4}
 c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
 \end{numcases}
-\subsubsection{〈電磁誘導〉}
-
 \subsubsection{〈インダクタンス〉}
+
+
 \subsubsection{〈電磁波〉}
 
-
-\section{磁気単極子の存在仮定}
-ここからは、前の章とは打って変わって、マクスウェル方程式を疑ってかかっていきます。先に申し上げますと、磁気単極子を仮定しますから、当然磁気単極子の存在を認めていない電磁気学の基礎方程式、マクスウェル方程式は矛盾だらけの代物となります。つまり、これは単なる思考実験、妄想の産物です。科学的根拠は皆無です。それを踏まえたうえでお読みください。
-\subsection{具体例}
-では、実際に具体例をいくつか考えていきます。
-\subsubsection{〈例１〉}
-磁気単極子が単独である状況を考えます。これは至極単純で、磁場を$\mathbf{B}$、磁荷を$q_m$とすると、磁気単極子から距離$r$の点Pでの磁場は、
-\begin{align}
-\mathbf{B_P}(\mathbf{r})=\frac{q_m}{4\pi\mu}\frac{\mathbf{r}}{|\mathbf{r}|^3}
-\end{align}
-これを任意の閉曲面$S$(ただし、閉曲面の内側に磁気単極子を含む)で積分してやれば、
-\begin{align}
-\label{eq:Gaussjm}
-\mathbf{B}(\mathbf{r})=\frac{q_m}{\mu}
-\end{align}
-となり、磁場についてのマクスウェル方程式と矛盾が生じてしまいます。よって、磁気単極子を仮定するならば、磁場についてのガウスの法則を\shiki{Gaussjm}で置き換えてやればよいように思われます。
-\subsubsection{〈例2〉}
-磁気単極子と電子が距離$a$だけ離れて存在するときを考えます。
 
 \section{おまけ}
 \subsection{積分形→微分形}
 \subsubsection{〈磁場に関するガウスの法則〉}
+\begin{align}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0
+\end{align}
+左辺にガウスの定理を適用して、
+\begin{align}
+\int_V \nabla\cdot\mathbf{B}dV = 0
+\end{align}
+$V$は任意の体積としているので、
+\begin{align}
+\nabla\cdot\mathbf{B}=0
+\end{align}
 
 \subsubsection{〈アンペール－マクスウェルの法則〉}
+\begin{align}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{align}
+左辺にストークスの定理を適用して、
+\begin{align}
+c^2 \int_S (\nabla\times\mathbf{B})\cdot\mathbf{n}dS = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{align}
+$S$は任意の閉曲面としているので、
+\begin{align}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+\end{align}
 
 \subsection{微分形→積分形}
+\subsubsection{〈ガウスの法則〉}
+\begin{align}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}
+\end{align}
+両辺を任意の体積$V$で積分して、
+\begin{align}
+\int_V (\nabla\cdot\mathbf{E})\cdot\mathbf{n}dV=\int_V \frac{\rho}{\epsilon_0}dV
+\end{align}
+左辺にガウスの定理を適用して、
+\begin{align}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV
+\end{align}
+
+\subsubsection{〈ファラデーの法則〉}
+\begin{align}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}
+\end{align}
+両辺を閉曲面$S$で積分して、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n}dS = -\int_S \frac{\partial\mathbf{B}}{\partial t}\cdot\mathbf{n}dS
+\end{align}
+左辺にストークスの定理を適用して、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n} dS = -\frac{d}{dt}\int_S \mathbf{B}\cdot \mathbf{n} dS
+\end{align}
+他二つは省略。
+\subsection{ガウスの定理}
+
+\subsection{ストークスの定理}
+
 
 \begin{thebibliography}{9}
 \bibitem{mechanics} 戸田 盛和,『物理入門コース 力学』,岩波書店,2017/12/5
