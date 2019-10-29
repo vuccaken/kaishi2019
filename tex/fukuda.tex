@@ -259,7 +259,7 @@ c^2 \nabla\times(\nabla\times\mathbf{A}) = \frac{\mathbf{j}}{\epsilon_0}
 
 %\subsubsection{〈磁気双極子〉}                                            これ必要か？
 
-\subsection{時間変化}
+\subsection{時間変化}                                                             %時間変化の例は考えないかもしれないので後回し
 電磁気学概説の最後は時間変化を考えていきます。使うのは当然、マクスウェル方程式4つ全てです。
 \begin{numcases}
 {}
@@ -284,6 +284,7 @@ c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\
 c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
 \end{numcases}
 \subsubsection{〈電磁誘導〉}
+
 \subsubsection{〈インダクタンス〉}
 \subsubsection{〈電磁波〉}
 
@@ -293,7 +294,18 @@ c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\math
 \subsection{具体例}
 では、実際に具体例をいくつか考えていきます。
 \subsubsection{〈例１〉}
-磁気単極子が単独である状況を考えます。これは至極単純で、磁場を$\mathbf{B}$、磁荷を$q_m$
+磁気単極子が単独である状況を考えます。これは至極単純で、磁場を$\mathbf{B}$、磁荷を$q_m$とすると、磁気単極子から距離$r$の点Pでの磁場は、
+\begin{align}
+\mathbf{B_P}(\mathbf{r})=\frac{q_m}{4\pi\mu}\frac{\mathbf{r}}{|\mathbf{r}|^3}
+\end{align}
+これを任意の閉曲面$S$(ただし、閉曲面の内側に磁気単極子を含む)で積分してやれば、
+\begin{align}
+\label{eq:Gaussjm}
+\mathbf{B}(\mathbf{r})=\frac{q_m}{\mu}
+\end{align}
+となり、磁場についてのマクスウェル方程式と矛盾が生じてしまいます。よって、磁気単極子を仮定するならば、磁場についてのガウスの法則を\shiki{Gaussjm}で置き換えてやればよいように思われます。
+\subsubsection{〈例2〉}
+磁気単極子と電子が距離$a$だけ離れて存在するときを考えます。
 
 \section{おまけ}
 \subsection{積分形→微分形}
