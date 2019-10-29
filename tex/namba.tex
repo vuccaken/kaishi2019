@@ -38,31 +38,38 @@
 流体は圧力によって圧縮され体積を変化させる性質（圧縮性）をもつが、圧縮性及び粘性を無視した流体を理想流体という。仮に理想流体を管に流した場合、管の壁付近と中心部での速度は等しくなる。ただし、理想流体は粘性がないためエネルギー損失や抵抗力が存在せず、実在する気体と矛盾する。
 一方、実在流体を壁付近で粘性の影響を大きく受けて速度が遅い領域（境界層）と壁から離れた境界層より外側の領域（主流）に分けると、主流領域では粘性の影響が小さく、理想流体とみなすことができる。
 \par
-\section{揚力}
+\subsection{揚力}
 揚力と聞くと物体を下から上に持ち上げる力を連想するかもしれないが、実は少し違う。揚力とは、物体に働く力のうち、流れの方向に垂直な成分のことである。（重力は例外）つまり流れの方向及び物体の運動の方向に垂直に働く力であればそれは揚力であり、球技において変化球が曲がるのは揚力が働いているためである。なお、揚力に対して流れの方向に平行な成分を抗力という。
 \par
 \section{ベルヌーイの定理}
-
-
-
-
-
+ここでは理想流体の定常流れ\footnote{時間によって変化しない流れ。}についてエネルギーを考える。
+密度$\rho$の流体の一次元流れ\footnote{一つの流線に沿った流れ。}において、断面積$A$の断面における流速$v$、圧力$p$、高さ$z$、流量$Q$であるとすると$A$を単位時間当たりに通過する流体の質量は$\rhoQ$であるから、運動エネルギー、位置エネルギー、圧力によって伝達される仕事はそれぞれ$\rhoQv^2/2$,$\rhoQgz$,$pAv$と表される。
+エネルギー損失がなければ（理想流体であれば）、流体の力学的エネルギーは保存されるので、
+\begin{equation}
+pAv+\frac{\rhoQv^2}{2}+\rhoQgz=const
+\end{equation}
+両辺を$\rhoQg$で割ると、
+\begin{equation}
+\frac{p}{\rhog}+\frac{v^2}{2g}+z=const
+\end{equation}
+上の式をベルヌーイの定理という。
+\par
 \section{複素ポテンシャル}
 後々一定の条件下での揚力を式で表していくが、その時に使う関数をここで示しておく。ここで、$u$、$v$はそれぞれ$x$、$y$方向の速度成分である。次の関係式を満足する関数$\phi$($x$,$y$,$t$)を速度ポテンシャルという。
 \begin{equation}
-$u$=\frac{\partial\phi}{\partial$x$}, $v$=\frac{\partial\phi}{\partial$y$}
+u=\frac{\partial\phi}{\partialx}, v=\frac{\partial\phi}{\partialy}
 \end{equation}
 また、次の関係式を満足する関数$\psi$($x$,$y$,$t$)を流れ関数という。
 \begin{equation}
-$u$=\frac{\partial\psi}{\partial$y$}, $v$=-\frac{\partial\psi}{\partial$x$}
+u=\frac{\partial\psi}{\partialy}, v=-\frac{\partial\psi}{\partialx}
 \end{equation}
 虚数単位$i$を用いて次のように$W$を定義する。
 \begin{equation}
-$W$=\phi+$i$\psi
+W=\phi+i\psi
 \end{equation}
 この$W$を複素ポテンシャルといい、複素座標を$z$=$x$+$i$$y$と定義すれば$W$を$z$の関数として表すことができ、次の式が成り立つ。
 \begin{equation}
-
+\frac{dW}{dz}=\frac{dW}{dz}\frac{\partialz}{\partialx}=\frac{\partialW}{\partialz}=\frac{\partial\phi}{\partialx}+i\frac{\partial\psi}{\partialx}=u-iv
 \end{equation}
 
 
