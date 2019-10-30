@@ -67,12 +67,16 @@ u=\frac{\partial\psi}{\partialy}, v=-\frac{\partial\psi}{\partialx}
 \begin{equation}
 W=\phi+i\psi
 \end{equation}
-この$W$を複素ポテンシャルといい、複素座標を$z$=$x$+$i$$y$と定義すれば$W$を$z$の関数として表すことができ、次の式が成り立つ。
+この$W$を複素ポテンシャルといい、複素座標を$z=x+iy$と定義すれば$W$を$z$の関数として表すことができ、次の式が成り立つ。
 \begin{equation}
 \frac{dW}{dz}=\frac{dW}{dz}\frac{\partialz}{\partialx}=\frac{\partialW}{\partialz}=\frac{\partial\phi}{\partialx}+i\frac{\partial\psi}{\partialx}=u-iv
 \end{equation}
-
-
+複素ポテンシャルを用いれば二次元ポテンシャルを関数で表すことができる。
+\section{円柱周りの複素ポテンシャル}
+それでは、これまで求めた式を用いて一様な流体中に置かれた円柱に働く揚力を求めてみる。揚力$L$は、円柱上の圧力$p$、円柱から十分に離れた場所での圧力$p_\infty$とすると、
+\begin{equation}
+L=-int\_0^2\pi(p-p_\infty)\cos\thetaRd\theta
+\end{equation}
 
 
 
@@ -81,7 +85,7 @@ W=\phi+i\psi
 \begin{sanko}
   \begin{enumerate}
     \item 藤田勝久,基本を学ぶ流体力学,森北出版株式会社,2009.
-    \item 石綿良三,流体力学入門,森北出版株式会社,2000
+    \item 石綿良三,流体力学入門,森北出版株式会社,2000.
     \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
   \end{enumerate}
 \end{sanko}
