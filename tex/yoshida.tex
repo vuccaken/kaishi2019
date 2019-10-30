@@ -1,9 +1,496 @@
-\documentclass{jsarticle}
+%
+%    Y O S H I D A
+%
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
 
 \usepackage{amsmath}
+\usepackage{multicol}
 \usepackage{bm}
+\usepackage{subfigure}
+\usepackage{here}
 
 \begin{document}
-数理論理学
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {ろんりがく}% title
+  {テンプレ科学科1回生}% 所属
+  {よしだ}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+\section{イントロ}
+\subsection{厳密}
+数学はいくつかの前提となる命題（公理と呼ばれる）から出発して推論によって新たな命題（いくつかの重要な命題は定理と呼ばれる）を次々に導く,といったような議論の展開をする.推論とは前提から結論を導くことである.したがって,
+数学の正しさを追求すると最後には我々の使う論理の正しさ,すなわち推論の正しさに行き着くのである.
+では,正しい推論とは何で決まるのだろうか.それは推論の形式である.そして,どの推論の形式が正しいのかを次の章で議論する.こうして正しい推論の形式がわかると,その形式だけを用いて数学を展開することで確固たる厳密性が得られるのだ.そう,我々は数学の形式化を目指すのである.
+
+\subsection{数学の形式化}
+
+\section{命題論理}
+この章では数学の形式化の第一歩として,命題論理を解説する.
+\subsection{命題}
+命題とは,真か偽のいずれか一方がはっきり定まる文のことである.
+命題の真偽を真理値と言い,真をT,偽をFで表す.以下にいくつかの命題を挙げる.\\
+\\
+\textcircled{\scriptsize 1}太郎は100点である.\\
+\textcircled{\scriptsize 2}太郎は100点ではない.（太郎は100点である,ではない.）\\
+\textcircled{\scriptsize 3}太郎と花子が100点である.（太郎が100点である,かつ花子が100点である.）\\
+\textcircled{\scriptsize 4}太郎か花子が100点である.（太郎が100点である,または花子が100点である.）\\
+\textcircled{\scriptsize 5}太郎が100点ならば花子も100点である.（太郎が100点である,ならば花子が100点である.）\\
+\textcircled{\scriptsize 6}太郎と花子が100点ならば次郎は100点ではない.\\
+\\
+これらの命題を観察すると\textcircled{\scriptsize 1}のようにこれ以上分割できない命題と
+\textcircled{\scriptsize 2}～\textcircled{\scriptsize 6}のようにより小さい命題と否定詞（ない）,接続詞（かつ,または,ならば）によって構成される命題があることがわかるだろう.前者を原子命題,後者を複合命題という.
+
+\subsection{記号化}
+これからの議論において,我々は個々の命題の内容については興味がない.というのも我々の目的は正しい推論の形式を見つけ出すことにあるからだ.よって,命題を記号化する.こうして議論を進めることで命題一般について正しい推論の形式をみつけることができる.そして記号として得られた正しい推論に,どんな具体的な命題を代入しようとも成り立つというわけである.\\
+次のように命題を記号化する。\\
+\\
+原子命題$\cdots$A,B,C,\dots\\
+否定詞$\cdots$$\lnot$(ない)\\
+接続詞$\cdots$$\land$(かつ),$\lor$(または),$\to$(ならば)\\
+\\
+誤解を生まないよう複雑な命題には括弧を用いるが,命題と否定詞・接続詞の結合力を$\lnot>\land=\lor>\to$と定めることで,煩雑な括弧を省略する。\\
+例) (($\lnot$A)$\land$($\lnot$B))$\to$(A$\to$B) は $\lnot$A$\land$$\lnot$B$\to$(A$\to$B) と括弧を省略できる。\\
+\\
+命題\textcircled{\scriptsize 1}～\textcircled{\scriptsize 6}を記号化すると次のようになる。\\
+A$\cdots$太郎は100点である。,B$\cdots$花子は100点である。,C$\cdots$次郎は100点である。\\
+\textcircled{\scriptsize 1}A\\
+\textcircled{\scriptsize 2}$\lnot$A\\
+\textcircled{\scriptsize 3}A$\land$B\\
+\textcircled{\scriptsize 4}A$\lor$B\\
+\textcircled{\scriptsize 5}A$\to$B\\
+\textcircled{\scriptsize 6}(A$\land$B)$\to$($\lnot$C) 結合力の定義から,括弧はなくてもよい。\\
+
+\subsection{複合命題の真理値}
+命題$\varphi,\psi$の真理値に対して命題$\lnot\varphi,\varphi\land\psi,\varphi\lor\psi,\varphi\to\psi$の真理値を次のように定義する。\\
+\begin{table}[H]
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{|c||c|}\hline
+$\varphi$&$\lnot\varphi$ \\ \hline \hline
+T&F \\ \hline
+F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{|c|c||c|c|c|}\hline
+$\varphi$&$\psi$&$\varphi\land\psi$&$\varphi\lor\psi$&$\varphi\to\psi$ \\ \hline \hline
+T&T&T&T&T \\ \hline
+T&F&F&T&F \\ \hline
+F&T&F&T&T \\ \hline
+F&F&F&F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+これらの命題は意味を持った我々の世界の命題を記号で置き換えたものに過ぎない.したがって.....\\
+どんなに複雑な複合命題でもそれを構成する原子命題の真理値からスタートして,上の定義から真理値を定めることができる。
+
+\subsection{論理的真理}
+複合命題を構成する原子命題に真理値を割り当てることを真理値割り当てと言う。各割り当てに対して複合命題の真理値がどうなるかを示した表を真理表と言う。複合命題を構成する原子命題が$n$個のときこれらへの真理値のわりあて方は$2^n$通りあり,真理表も$2^n$行となる。
+複合命題の中にはいかなる真理値わりあてに対しても真となる命題があり,これをトートロジーと言う。\\
+例えばA$\to$(B$\to$A)という命題の真理表をかくと下のようになる。\\
+\begin{table}[H]
+\begin{center}
+\caption{真理表}
+\begin{tabular}{|c|c||c|c|}\hline
+A&B&B$\to$A&A$\to$(B$\to$A) \\ \hline \hline
+T&T&T&T \\ \hline
+T&F&T&T \\ \hline
+F&T&F&T \\ \hline
+F&F&T&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+この命題は真理表のすべての行で真となっておりトートロジーである。
+
+\subsection{推論}
+いよいよ推論について議論しよう.繰り返しになるが推論とは前提から結論を導くことであり,論理学はこの推論を扱う学問に他ならない.\\
+次の二つの推論において,\textcircled{\scriptsize ア}は正しい推論の形式であり,\textcircled{\scriptsize イ}は誤った推論の形式である。\\
+\begin{table}[H]
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{lll}
+\textcircled{\scriptsize ア}&前提&A$\to$B \\
+&&A \\ \hline
+&結論&B \\
+\end{tabular}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{center}
+\begin{tabular}{lll}
+\textcircled{\scriptsize イ}&前提&A$\to$B \\
+&&$\lnot$A \\ \hline
+&結論&$\lnot$B \\
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+では,正しい推論とはどういったものを言うのだろうか。推論とは,前提が全て正しいならばこれこれが言えるということである。つまり正しい推論とは前提が全て真ならば結論も必ず真となるような推論である。逆に言えば,前提が全て真であるにもかかわらず,結論が偽になることはないということであり,これは前提を$\varphi_1,\varphi_2,\dots,\varphi_n$結論を$\psi$としたとき,命題$\varphi_1\land\varphi_2\land,\dots,\land\varphi_n\to\psi$がトートロジーになることに他ならない。\\
+実際に推論\textcircled{\scriptsize ア},\textcircled{\scriptsize イ}が正しいかどうかを真理表をかいて確かめると以下のようになる。
+\begin{table}[H]
+\begin{center}
+\caption{\textcircled{\scriptsize ア}}
+\begin{tabular}{|c|c||c|c|c|}\hline
+A&B&A$\to$B&(A$\to$B)$\land$A&((A$\to$B)$\land$A)$\to$B \\ \hline \hline
+T&T&T&T&T \\ \hline
+T&F&F&F&T \\ \hline
+F&T&T&F&T \\ \hline
+F&F&T&F&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\caption{\textcircled{\scriptsize イ}}
+\begin{tabular}{|c|c||c|c|c|c|c|}\hline
+A&B&A$\to$B&$\lnot$A&(A$\to$B)$\land\lnot$A&$\lnot$B&((A$\to$B)$\land\lnot$A)$\to\lnot$B \\ \hline \hline
+T&T&T&F&F&F&T \\ \hline
+T&F&F&F&F&T&T \\ \hline
+F&T&T&T&T&F&F \\ \hline
+F&F&T&T&T&T&T \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+したがってやはり\textcircled{\scriptsize ア}は正しい推論であり,\textcircled{\scriptsize イ}は誤った推論であることがわかる。
+
+\section{述語論理}
+\subsection{数学における推論}
+前章で正しい推論がいかなるものであるか,またその判定方法がわかった.さっそく数学に応用してみよう.\\
+前章の推論\textcircled{\scriptsize ア}は正しい推論であった.\\
+A$\cdots$三角形の２角が等しい.\\
+B$\cdots$二等辺三角形である.\\
+とすると,正しい二つの前提から,正しい結論を導くことに成功している.なかなかいい感じである.
+では,次の推論についてその正しさを判定してみよう.\\
+\begin{table}[H]
+\begin{tabular}{ll}
+前提&任意の$x$,$y$について,$x\cdot y>0$ \\ \hline
+結論&$2\cdot 3>0$\\
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\begin{tabular}{ll}
+前提&$1=1$ \\ \hline
+結論&$n$が存在して,$n=n$\\
+\end{tabular}
+\end{table}
+命題論理では命題単位でしか記号化できないため,これらの推論を記号化すると前提A,結論Bとなる.はたしてこの推論の形式は正しいだろうか.これを判定するにはA$\to$Bの真理値表をかいてこれがトートロジーになるかをみればよかった.これは明らかにトートロジーにならない.この推論は正しいはずなのだが,命題論理ではうまく扱えない.
+
+\subsection{記号化}
+次のように記号化する. \\
+項$\cdots$ \\
+ある決まった対象を$a$,$b$などと記号化し,これを定項という.また,不定の対象を$x$,$y$などと記号化し,これを変項という. \\
+\\
+関数$\cdots$ \\
+足し算や累乗などの関数を$f$,$g$などと記号化し,$x+y$,$3^x$などを$f(x,y)$,$g(x)$と表す. \\
+\\
+述語$\cdots$　\\
+$\circ\circ$は整数である,$\circ\circ$は$\times\times$より大きい,など対象の性質や対象同士の関係を述語といい$F$,$G$などと記号化する.さらに$x$は整数である,$x$は$y$より大きい,を$F(x)$,$G(x,y)$と記号化する.これらは$x$,$y$に具体的な対象（定項）を代入することで命題となり真偽が確定する. \\
+\\
+量化$\cdots$ \\
+任意の$x$に対して$F(x)$を$\forall xF(x)$,$x$が存在して$F(x)$を$\exists xF(x)$と記号化する.ここで$\forall xF(x)$,$\exists xF(x)$は真偽が確定するので,命題である.また,任意の$x$に対して$y$が存在して$G(x,y)$は$\forall x\exists yG(x,y)$と記号化できる.これを多重量化という.これも真偽が決まるので命題であるが,$\exists yG(x,y)$は命題ではない.ここで,$y$を束縛変項といい,$x$を自由変項という.束縛変項は実質的には変項ではない.$\exists \times G(x,\times)$の$\times$にどんな変項記号（$x$を除く）が入っても意味は変わらないからである.\\
+\\
+それでは前述の推論に現れた命題,任意の$x$,$y$について,$x\cdot y>0$を記号化してみよう.まず定数は$0$であり,これを定項記号$a$で記号化する.このなかで関数は$\cdot$であり,これを$f$と記号化する.また述語は$>$であり,これを$G$と記号化すると,以下のようになる.\\
+\\
+$\forall x\forall yG(f(x,y),a)$ \\
+
+\subsection{命題の真理値}
+前章で一つの命題を記号化したわけであるが,我々は記号化によって命題一般について成り立つ形式を探りたいのだ.したがってこのように記号化される命題一般について議論を進めることになる.そこでまず,前章で記号化した命題の真理値がどのようになるか見ていこう. \\
+\\
+$\forall x\forall yG(f(x,y),a)$ \\
+\\
+この命題の真理値を決定するには次の二つを定めなければならない.
+\begin{itemize}
+\item 対象領域
+\item 定項,関数,述語の解釈
+\end{itemize}
+この二つを命題の解釈という.例えば$2$以上の自然数を対象領域とし,定項$a$を$4$,関数$f$を$+$,述語$G$を$>$と解釈すると,この命題は真になる.また,整数を対象領域とし,定項$a$を$0$,関数$f$を$\cdot$,述語$G$を$>$と解釈すると,この命題は偽になる. \\
+命題論理における真理値割り当てについてもう一度考えてみよう.真理値割り当てとは複合命題を構成する原子命題に真理値を割り当てることであった.これは次のように考えることができるのではないだろうか.各原子命題記号に具体的な命題として解釈を与えた結果,原子命題の真偽が決まり（これが真理値割り当て）,よって複合命題の真偽が決まった.このように考えると真理値割り当ては,命題論理における解釈である.
+
+\subsection{恒真命題}
+命題論理において,いかなる真理値割り当て（解釈）においても真となる命題をトートロジーといった.述語論理においても任意の解釈のもとで真となる命題が存在し,これを恒真命題という.ではこれをどう判定すればよいだろう.命題論理のときは真理値表をかいて,全ての行で真となるかを見ればよかった.しかし,述語論理においてはこのように機械的に判定する方法（決定手続きという）が存在しないことが,証明されている.
+
+\subsection{意味論と構文論}
+命題論理では推論の正しさをトートロジーによって判定した,しかし述語論理においては恒真命題の決定手続きが存在しない.よって今までの方法では,述語論理の推論の正しさを判定できない.そこでこれから先に議論を進めるには命題の真偽によって推論の正しさを判定する意味論から脱却し,前提となる論理式（後述）から\underline{正しい}論理式を導く規則について考える構文論の方へと進まなければならない.\\
+\\
+※注意 \\
+説明の都合上正しいという言葉を使ったが,構文論では意味抜きされた体系を扱うため,そこに真偽は考えない.
+
+
+\section{構文論}
+\subsection{これからの議論展開}
+これからどのように議論を展開するか,あらかじめざっと説明しておこう.まず,目的をはっきりさせておこう.我々の目的は推論を形式化することである.まず,命題から意味を抜き去り,ただの記号列（これを論理式という）として扱う.そして前提となる論理式に推論規則と呼ばれるルールを適用することで新しい論理式を導き,さらにこれまでに導かれた論理式に対して推論規則を適用することで新しい論理式を導く,といったように前提となる論理式から推論規則によって次々に論理式を導く.そうして最終的に得られた論理式（結論）を解釈によって再び意味をもった命題としたとき,前提が全て真ならば結論も真となっていればこの推論の形式化は成功したことになる.このような体系を形式的体系という.すなわちこれからの議論は以下のように進める. \par
+\par
+\textcircled{\scriptsize 1}まず,形式的体系をつくる.（ここでは一つの体系を提示するのみ）. \par
+\textcircled{\scriptsize 2}その形式的体系がうまくいっているか確かめる. \par
+\par
+
+\subsection{形式的体系}
+これから形式的体系$S$を定義する.形式的体系は（記号,論理式,公理,推論規則）からなる.このうち記号と論理式についてはすでに前章での命題の記号化を用いればよいのだが,ここでは意味を全く考えない形式を扱うのである.したがって使用する記号,また記号列のうち何が論理式で何が論理式でないかを厳格に定めなければならない. 
+\subsubsection{記号,項,論理式}
+使用する記号を定め,論理式を次のように定義する.（論理式の定義に先立って項を定義しておく.）
+\begin{itemize}
+\item 記号
+\begin{itemize}
+\item 定項記号 $a,b,c,a_1,a_2,\dots$
+\item 変項記号 $x,y,z,x_1,x_2,\dots$
+\item 関数記号 $f,g,\dots$ (各関数記号には引数の数が決まっている.)
+\item 述語記号 $F,G,\dots$ (各述語記号には引数の数が決まっている.)
+\item 論理記号 $\lnot,\land,\lor,\to,\forall,\exists,\bot$
+\end{itemize}
+\item 項
+\begin{itemize}
+\item 定項記号は項である.
+\item 変項記号は項である.
+\item $t_1,t_2,\dots,t_n$が項で,$f$が$n$項関数記号ならば,$f(t_1,t_2,\dots,t_n)$は項である.
+\item このようにして項だとわかったものだけが項である.
+\end{itemize}
+\item 論理式
+\begin{itemize}
+\item $t_1,t_2,\dots,t_n$が項で,$F$が$n$項述語記号ならば,$F(t_1,t_2,\dots,t_n)$は論理式である.
+\item $\varphi$が論理式ならば$\lnot (\varphi)$は論理式である.
+\item $\varphi,\psi$が論理式ならば$(\varphi) \land (\psi)$,$(\varphi) \lor (\psi)$,$(\varphi) \to (\psi)$は論理式である.
+\item $x$が変項記号,$\varphi$が論理式ならば$\forall x (\varphi)$,$\exists x (\varphi)$は論理式である.
+\item $\bot$は論理式である.
+\item このようにして論理式だとわかったものだけが論理式である.
+\item １章の定義のように煩雑な括弧は省略する.
+\end{itemize}
+\end{itemize}
+ここで新しく$\bot$という記号を導入したが,これは矛盾を意図した記号であり,いかなる解釈のもとでも偽となる.項と論理式について一つ例を挙げておこう.定項記号$a$,変数記号$x$は項であり,$f$を２項関数記号とすると$f(a,x)$は項であり,次に変項記号$y$,２項述語記号$G$を用いると,$G(y,f(a,x))$は論理式である.さらに論理記号$\forall,\bot,\to$を用いると,$\forall xG(y,f(a,x))$は論理式であり,$\bot$はそれ自体が論理式であるから,$\bot \to \forall xG(y,f(a,x))$は論理式である.また,このとき前章での定義と同様に$x$を束縛変項といい,$y$を自由変項という.この論理式の$y$を束縛して,$\forall y(\bot \to \forall xG(y,f(a,x)))$とすると,この論理式には自由変項がない.このような論理式を閉論理式という.
+\subsubsection{推論規則,証明}
+次に形式的体系$S$の推論規則を定義し,続いて$S$における証明を定義したいのだが説明の都合上,先に形式的体系$S$における証明の一例を挙げることにする.ここで証明と推論規則について軽く説明し,感覚的に理解してもらった後で厳密な定義を与える.
+\begin{table}[H]
+\begin{tabular}{rlrl}
+1&$\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x))$&&前提 \\
+2&$\forall x(F(x)\to H(x))$&&$1,\land_-$ \\
+3&$\forall x(G(x)\to H(x))$&&$1,\land_-$ \\
+4&$F(a)\to H(a)$&&$1,\forall_-$ \\
+5&$G(a)\to H(a)$&&$1,\forall_-$ \\
+6&$F(a)\lor G(a)$&$[6(a)]$&仮定 \\
+7&$F(a)$&$[7(a)]$&仮定 \\
+8&$H(a)$&$[7(a)]$&$4,7\to_-$ \\
+9&$G(a)$&$[9(a)]$&仮定 \\
+10&$H(a)$&$[9(a)]$&$5,9\to_-$ \\
+11&$H(a)$&$[6(a)]$&$6,8,10\lor_-$ \\
+12&$(F(a)\lor G(a))\to H(a)$&&$6,11\to_+$ \\
+13&$\forall x((F(x)\lor G(x))\to H(x))$&&$12,\forall_+$
+\end{tabular}
+\end{table}
+これは$\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x))$を前提とする$\forall x((F(x)\lor G(x))\to H(x))$の証明である.この証明の見かたについて説明する.まず左の列から行番号,導かれた論理式,その論理式が依存する仮定（が書かれた行番号）を示しており,最後にどの行とどの行にどんな推論規則を用いたかを書いている.例えば,8行目は4行目と7行目に$\to_-$という推論規則を用いて導かれ,依存する仮定は7行目といった具合である.ここで依存する論理式の行番号7のとなりに$(a)$と書いてあるが,これは$F$が成り立つ限りの$a$ということであり$a$を限定つきの項という. \par
+さて,形式的体系$S$における推論規則を定義しよう.
+\begin{itemize}
+\item 推論規則
+\begin{itemize}
+\item $\land_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi$&$[\Gamma]$ \\
+$(m)$&$\psi$&$[\Delta]$ \\
+$(n)$&$\varphi \land \psi$&$[\Gamma,\Delta]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l,m<n$
+\item $\land_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi \land \psi$&$[\Gamma]$ \\
+$(n)$&$\varphi (\psi)$&$[\Gamma]$ \\
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\lor_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi$&$[\Gamma]$ \\
+$(n)$&$\varphi \lor \psi (\psi \lor \varphi)$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\lor_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi \lor \psi$&$[\Gamma]$ \\
+$(m_1)$&$\rho$&$[\Delta_1,\varphi]$ \\
+$(m_2)$&$\rho$&$[\Delta_2,\psi]$ \\
+$(n)$&$\rho$&$[\Gamma,\Delta_1,\Delta_2]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l,m_1,m_2<n$
+\item $\to_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi$&$[\Gamma,\psi]$ \\
+$(n)$&$\psi \to \varphi$&$[\Gamma]$ \\
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\to_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi$&$[\Gamma]$ \\
+$(m)$&$\varphi \to \psi$&$[\Delta]$ \\
+$(n)$&$\psi$&$[\Gamma,\Delta]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l,m<n$
+\item $\lnot_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\bot$&$[\Gamma,\varphi]$ \\
+$(n)$&$\lnot \varphi$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\lnot_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi$&$[\Gamma]$ \\
+$(m)$&$\lnot \varphi$&$[\Delta]$ \\
+$(n)$&$\bot$&$[\Gamma,\Delta]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l,m<n$
+\item 背理法
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\bot$&$[\Gamma,\lnot \varphi]$ \\
+$(n)$&$\varphi$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item 矛盾
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\bot$&$[\Gamma]$ \\
+$(n)$&$\varphi$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\forall_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi(\dots t \dots)$&$[\Gamma]$ \\
+$(n)$&$\forall x \varphi(\dots x \dots)$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$t$は限定なしの項（すなわち$\Gamma$中に自由変項として現れない）とし,$x$は$\varphi(\dots t \dots)$中に含まれていない変項とする. \par
+ただし$l<n$
+\item $\forall_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\forall x\varphi(\dots x \dots)$&$[\Gamma]$ \\
+$(n)$&$\varphi(\dots t \dots)$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$t$中の自由変項は束縛されないとする.
+ただし$l<n$
+\item $\exists_+$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\varphi(\dots t \dots)$&$[\Gamma]$ \\
+$(n)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$l<n$
+\item $\exists_-$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rlr}
+$(l)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$ \\
+$(m)$&$\rho$&$[\Delta,\varphi(\dots t \dots)]$ \\
+$(n)$&$\rho$&$[\Gamma,\Delta]$
+\end{tabular}
+\end{center}
+\end{table}
+ただし$t$は$\Delta,\rho,\exists x\varphi(\dots x \dots)$に自由変項として含まれないとする. \par
+ただし$l,m<n$
+\end{itemize}
+\end{itemize}
+以上が形式的体系$S$の推論規則である.仮定は基本的に導かれる論理式に引き継がれるが規則によっては解消される仮定もある.また,推論規則によって解消可能な仮定は別に解消しなくてもよい.これらの規則のうち$\land_+,\land_-,\lor_+,\to_-,\lnot_-,\forall_-,\exists_+$は感覚的に明らかだろう.よって他の推論規則について説明する.
+\begin{itemize}
+\item $\lor_-$ \par
+$\varphi \lor \psi$がわかっていて,$\varphi$を仮定しても$\psi$を仮定しても$\rho$が導かれるならば結局はそれらの仮定なしに$\rho$が導けるということである.
+\item $\to_+$ \par
+$\psi$を仮定して$\varphi$が導かれるならば$\psi$の仮定なしに$\psi \to \varphi$を導いてよいということである.
+\item $\lnot_+$,背理法 \par
+$\varphi$を仮定して矛盾が導かれるならば$\lnot \varphi$を結論してよく,$\lnot \varphi$を仮定して矛盾が導かれるならば$\varphi$を結論してよいということである.
+\item 矛盾 \par
+$\bot \to \varphi$は任意の解釈のもとで真であるから,仮定$\Gamma$のもとで矛盾がでるなら,この仮定のもとではいかなる論理式でも導いてよいということである.
+\item $\forall_+$ \par
+一見ひとつの項で成り立つことがらを勝手に拡大しているように見えるが,$t$は限定なしの項であり,すなわち$t$は全くの任意の項であるからこのようなことが許されるのである.前に挙げた証明においてこの推論規則を用いている.この証明では$F(a)\lor G(a)$を仮定し,この時点では$a$は制限ありの項であるが,後に推論規則$\to_+$によって仮定が解消され,$a$の制限がなくなり,よってこの推論規則$\forall_+$が適用できたのである.
+\item $\exists_-$ \par
+この推論規則は次のように考えるとよい.まず,$\varphi(\dots x \dots)$を満たすような項の存在が保証されている.そしてその項を$t$とし推論を進めた結果,$t$を含まない結論$\rho$が導けたとする.よって$t$が何だったかに関係なく$\rho$が導けるということである.
+\end{itemize}
+ここまでを踏まえて,もう一度前に挙げた証明を見るとよく理解できるだろう.最後に流れ的には逆になるが形式的体系一般についてその証明を定義する.前に挙げた$S$における証明がこの定義に沿っていることを確認してほしい.
+\begin{itemize}
+\item[定義] 形式的体系（記号,論理式,公理,推論規則）における$\Gamma$を仮定とする$\varphi$の証明とは次を満たす論理式の列である.
+\begin{itemize}
+\item 論理式列の最後は$\varphi$である.
+\item 各論理式は公理であるか,仮定であるか,それ以前の論理式から推論規則によって導かれたものである.
+\item 解消されずに残った仮定の集合を$\Gamma'$とすると$\Gamma'\subset \Gamma$である.
+\end{itemize}
+\end{itemize}
+$\Gamma$が空集合であるとき,$\varphi$をその形式的体系の定理という.
+形式的体系$S$には公理はないが,公理を設ける形式的体系も存在する.$S$には公理がないため,$S$における証明の第１行目は必ず仮定になる.
+
+\subsubsection{前提,仮定}
+形式的体系$S$における証明の第１行目は必ず仮定になると述べた.しかし,証明のサンプルでは第１行目は前提となっている.これはどういうことか.言ってしまえば前提とは仮定である.実は前提と仮定には本質的な違いはないのである.証明のサンプルで1行目を前提として,仮定[1]と書かなかったのは,この仮定は初めから解消するつもりがなく,[1]とかくと証明が見づらくなるからである.この辺りは好みの問題であって,もちろん全てを仮定としてかいてもよい.いずれにせよ証明の仮定$\Gamma$は前提としておいたものと最後まで仮定として残ったものの両方となる（普通はどちらかに統一するが）.
+
+\subsubsection{公理}
+まだ公理の説明をしていなかった.形式的体系における公理とは論理式のうちいかなる解釈のもとで真となるものをいくつか集めてきたものである.公理を設ける形式的体系では推論規則が少なく($\to_-$のみとか),仮定を途中で解消できない体系が多い.それに対し形式的体系$S$では公理を設けず,多くの推論規則によって証明を行う.ここで述べたような公理は論理的公理である.公理と呼ばれるものにはほかに数学的公理がある.群の公理はその一例である.数学における公理は前提（つまり仮定）のことをさす.どういうことかというと数学では,ある性質を満たすような数学的対象について議論をする.その際議論において,群の公理（結合則,単位元の存在,逆元の存在）を満たすならば$\circ \circ$,群の公理を満たすならば$\times \times$と一々言うのはめんどうだし,今,群について議論しているのだから群の公理を満たしているのは言うまでもないのだ.そこで今議論している数学的対象で前提としている性質を公理として形式的体系のなかに含めてしまうと便利である.または逆に仮定$\Gamma$で$\varphi$が証明できたなら,公理系$\Gamma$のもとで$\varphi$は定理であるということもできる.すなわち前節で述べた前提,仮定と数学的公理には本質的な違いはない.これらを呼び分けるのはそれぞれの人の気持ちの違いである.
+
+\subsubsection{諸注意}
+これまでに,形式的体系の説明をし,形式的体系$S$を作った.形式的体系とは形式のみを考え,その真偽は考えないのだった.しかし$形式的体系S$の推論規則の説明や公理の説明において真や偽という言葉を使った.これは次に議論する内容,これからの議論展開の\textcircled{\scriptsize 2}番,"作った形式的体系がうまくいっているか確かめる"の内容に立ち入ったものである.我々の目的は推論を形式化することで,そのために形式的体系を作った.そしてその形式的体系がうまくいっているか,すなわち形式的体系によって得られた,仮定（前提）$\Gamma$における$\varphi$の証明をどのように解釈しても,前提が全て真ならば結論も真であるかを確認しようというわけである.
+
+%% 参考文献
+\begin{sanko}
+  \begin{enumerate}
+    \item 著者, 本やページの名前, (URL), 出版社, 出版年.
+    \item (複数ある場合は追加)
+    \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+  \end{enumerate}
+\end{sanko}
+
 
 \end{document}
+

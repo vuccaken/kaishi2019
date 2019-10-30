@@ -17,8 +17,10 @@
 \usepackage[expert,deluxe]{otf} % font
 
 \usepackage{amsmath,amssymb} % 数式関係
+\usepackage{amsthm} % theorem, proof env
 \usepackage{mathtools} % dcases environment
 \usepackage{physics} % 便利パッケージ
+\usepackage{cases} % numcases
 
 \usepackage[dvipdfmx]{graphicx} % 図の挿入
 \usepackage{wrapfig} % 文章中に図
@@ -26,7 +28,7 @@
 
 \usepackage{url} % URLをそのまま表示してくれる
 
-% \usepackage{plistings} % ソースコード表示
+% \usepackage{listings,jlisting} % ソースコード表示
 \usepackage{ascmac} % 枠を作るやつ
 \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
 \usepackage{tikz} % おえかきできるツール
@@ -59,19 +61,19 @@
 
 % windows がうんこなのでエラーが出る。otfパッケージに起因。
 \DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*mc/m/n}{} %
-\DeclareFontShape{JY1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
-\DeclareFontShape{JY1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
-\DeclareFontShape{JY1}{gt}{m}{it}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JY1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JY1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JY1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JY1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+% \DeclareFontShape{JY1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+% \DeclareFontShape{JY1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JY1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JY1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JY1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
 \DeclareFontShape{JT1}{hmc}{m}{it}{<->ssub*mc/m/n}{} %
-\DeclareFontShape{JT1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
-\DeclareFontShape{JT1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
-\DeclareFontShape{JT1}{gt}{m}{it}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
-\DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JT1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+% \DeclareFontShape{JT1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+% \DeclareFontShape{JT1}{gt}{m}{it}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+% \DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -110,7 +112,7 @@
 \newcommand\stani[1]{\,\mathrm{[#1]}}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
-% 12nkym.tex
+% nkym.tex
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 
 % in math environment

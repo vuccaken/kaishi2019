@@ -1,86 +1,370 @@
-% use platex
-\documentclass[11pt,b5paper,papersize,dvipdfmx]{jsarticle}
+%
+%    F U K U D A
+%
+
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
 % 会誌は B5 サイズです
 
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
+
+\newcommand\shiki[1]{\siki{#1}式}
+
+\begin{document} % 以下本文
+
 % - - - - - - - - - - - - - - - - - - - - - - - - %
-\title{電磁気についていろいろ(詳細が思いつかないだけ)} % タイトル
-\author{理工学部物理科学科　福田大和} % 所属・名前
-\date{\today} % 日付
+\kaishititle%
+  {マクスウェル方程式から始める電磁気学}% title
+  {理工学部物理科学科1回生}% 所属
+  {福田大和}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 
-% パッケージを使う
-\usepackage[expert,deluxe]{otf} % font
-\usepackage{amsmath,amssymb,cases} % 数式関係
-\usepackage[dvipdfmx]{graphicx} % 図の挿入
-\usepackage{here} % option H で図を強制出力
-\usepackage{url} % URLをそのまま表示してくれる
-\usepackage{ascmac} % 枠を作るやつ
-\usepackage{physics} % 便利パッケージ
-\usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-\usepackage{tikz} % おえかきできるお
-% 必要ならば適宜追加してください
-\usepackage{plistings} % ソースコード表示
-% \usepackage{nakayamacro} % nkymが使ってるマクロ集
-
-% 自作マクロを使っても構いません
-% この辺（プリアンブル）に書いてください
-
-
-% 以下本文 - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\begin{document}
-
-\maketitle % タイトル出力
-\setcounter{tocdepth}{2} % 目次にどこまで表示するか
-\tableofcontents % 目次出力
-
-\clearpage % 改ページ
+% \setcounter{tocdepth}{2} % 目次にどこまで表示するか
+% \tableofcontents % 目次出力
+% \clearpage % 改ページ
 
 \section*{はじめに}
-前半で電磁気学の概要をかなーーーーーーーーーーーり駆け足で説明し、後半では私個人の考えを展開していきます。あらかじめ注意して頂きたいのですが、この説明は私の説明しやすい順番で、私の理解が及ぶ範囲で説明しているので、一般的な説明とは異なっています。また、間違っている可能性も十二分にあり得ますのでそのことに留意してお読みいただければ幸いです。
+電磁気学の概要をかなーーーーーーーーーーーり駆け足で説明いたします。説明は私が学んだ中で最もしっくりきた本を基にしています。具体的には、多くの電磁気学の教科書はクーロンの法則などの、あまり電磁気学に触れたことのない方にも直感的に分かりやすい関係から初めて、マクスウェル方程式を導き、云々、という展開が一般的かと思います。しかし、今回は初めに電磁気学全てを支配するマクスウェル方程式を提示し、種々の関係を導くという順序です。間違っている可能性も十二分にあり得ますのでそのことに留意してお読みいただければ幸いです。
 
-\section{電磁気学}
+\section{前提知識}
+\subsection{注意事項}
+\begin{itemize}
+\item ここではベクトルは太字で書きます。例えば、Aというベクトルは$\mathbf{A}$と書き、$\vec{A}$とは書きません。
+\item ベクトル解析の説明は一切ありません。
+\item 各語句については『マクスウェル方程式から始める電磁気学』に則るものとします。
+\end{itemize}
+
+\section{電磁気学概説}
 \subsection{マクスウェル方程式}
-\subsubsection{積分形}
-マクスウェル方程式だお。
-\section{オリジナル理論展開したい(願望)}
-\subsection{なるようになーれー}
+まずは、電磁気学です。兎にも角にも、まずはマクスウェル方程式を見て頂きましょう。
+\subsubsection{〈積分形〉}
+\begin{numcases}
+{}
+\label{eq:Gauss}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
+\label{eq:Faraday}
+\oint_C \mathbf{E}\cdot d\mathbf{r} = -\frac{d}{dt}\int_S \mathbf{B}\cdot\mathbf{n} dS \\
+\label{eq:Gauss2}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
+\label{eq:Ampere}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{numcases}
+以上の四つがマクスウェル方程式と呼ばれる、電磁気学全てを支配する方程達です。尚、文字の意味は$\mathbf{E}$:電場、$\mathbf{B}$:磁場、$\mathbf{j}$:流束、$\mathbf{n}$:法線ベクトル、$C$:任意の閉曲線、$S$:任意の閉曲面、$V$:任意の閉曲面Sに囲まれた体積、$\rho$ :電荷密度です。\par
+また、ここでは定数$c$:光速と$\epsilon_0$:真空の誘電率を用いていますが、これらと真空の透磁率$\mu$の間には
+\begin{align}
+c\epsilon_0 \mu=1
+\end{align}
+の関係があるため、読む本によっては別の表記になっているかもしれません。
+各方程式にはそれぞれ名前があり、\shiki{Gauss}はガウスの法則、\shiki{Faraday}はファラデーの法則、\shiki{Gauss2}は磁場に関するガウスの法則、\shiki{Anpere}はアンペール－マクスウェルの法則と呼ばれています。\shiki{Gauss})と\shiki{Faraday}が電場、\shiki{Gauss2}と\shiki{Ampere}が磁場に関する法則となんとなく考えて頂ければ結構です。
+\subsubsection{〈微分形〉}
+次に、積分形で書かれた上のマクスウェル方程式を微分形に変形したいと思います。 \par
+まずはガウスの法則から。\shiki{Gauss}の左辺をガウスの定理で変形してやって、
+\begin{align}
+\int_V \nabla\cdot\mathbf{E} dV = \frac{1}{\epsilon_0} \int_V \rho dV
+\end{align}
+$V$は任意の体積としているので、
+\begin{align}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}
+\end{align}
+これがガウスの法則の微分形になります。\par
+続いて、ファラデーの法則。\shiki{Faraday}の左辺にストークスの定理で変形してやって、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n} dS = -\frac{d}{dt}\int_S \mathbf{B}\cdot \mathbf{n} dS
+\end{align}
+閉曲面$S$は時間変化しないとして、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n} dS = -\int_S \frac{\partial\mathbf{B}}{\partial t}\cdot \mathbf{n} dS
+\end{align}
+$S$は任意の閉曲面としているので、
+\begin{align}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}
+\end{align}
+これがファラデーの法則の微分形となります。
+続いて、と行きたいところですが、磁場に関するガウスの法則とアンペール－マクスウェルの法則については、それぞれガウスの法則とファラデーの法則の変形と全く同じなので導出は割愛させていただきます\footnote{最後のおまけに一応掲載。}。結果だけ示すと、
+\begin{align}
+\nabla\cdot \mathbf{B} = 0\\
+c^2 \nabla\cdot\mathbf{B} = \frac{\mathbf{j}}{\epsilon_o} + \frac{\partial\mathbf{E}}{\partial t}
+\end{align}
+以上より、マクスウェル方程式の微分形をまとめると、
+\begin{numcases}
+{}
+\label{eq:Gaussdif}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\label{eq:Faradaydif}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}\\
+\label{eq:Gauss2dif}
+\nabla\cdot \mathbf{B} = 0\\
+\label{eq:Amperedif}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+\end{numcases}
+となります。
+\subsection{静電場}
+さて、ここからは前章で提示したマクスウェル方程式をガチャガチャいじって楽しんでいこうと思います。まずは静電場。ここで使うのは以下の2式です。
+\begin{numcases}
+{}
+\label{eq:Gauss1.2.2}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
+\label{eq:Faraday1.2.2}
+\oint_C \mathbf{E}\cdot d\mathbf{r} = 0
+\end{numcases}
+微分形だとこうなります。
+\begin{numcases}
+{}
+\label{eq:Gaussdif1.2.2}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\label{eq:Faradaydif1.2.2}
+\nabla\times\mathbf{E} = 0
+\end{numcases}
+はい、先程提示したガウスの法則とファラデーの法則です。が、少し違いますよね？ファラデーの法則と\shiki{Faraday1.2.2}、\shiki{Faradaydif1.2.2}を見比べてみてください。右辺がどちらも0になっているのが分かるかと思います。これは静電場は時間変化しないから時間tで微分している項を0にしただけなのですが、この関係を{\bf 渦なしの法則}と呼びます。電場を閉曲線で線積分すると0になる、もしくは、電場の回転は0であると表現することもできます。これの何が重要なのか。それは保存力というものを考えると分かるかと思います。保存力という言葉は高校で既に聞き及んでいることと思いますが、改めて確認したいと思います。
+\subsubsection{〈静電ポテンシャル〉}
+力$\mathbf{F}=(F_x,F_y,F_z)$を考えます。（電磁気学では普通、3次元の問題を取り扱うためこう置きましたが、何次元でも構いません\footnote{相対性理論を考慮すると3次元以外も考える必要があるようですが、勉強不足で分かりません！$\cdots$来年の今頃には分かるようになれるといいなぁ(遠い目)})この時、力$\mathbf{F}$の成分が
+\begin{align}
+\label{eq:consevativeP}
+F_x=-\frac{\partial U}{\partial x} , \quad
+F_y=-\frac{\partial U}{\partial y} , \quad
+F_z=-\frac{\partial U}{\partial z}
+\end{align}
+によって一つの関数$U(x,y,z)$から導かれるとき、この力は保存力である。\cite{mechanics}とのことです。\par
+詳しく見ていきましょう。\shiki{consevativeP}を見てください。成分ごとに分けて書いているので分かりにくいかもしれないので、こう書いてみましょう。
+\begin{align}
+\mathbf{F}=\left(-\frac{\partial }{\partial x}U,-\frac{\partial }{\partial y}U , -\frac{\partial }{\partial z}U\right)
+\end{align}
+お分かりいただけましたか?つまり、
+\begin{align}
+\label{eq:conservative}
+\mathbf{F}=-\nabla U
+\end{align}
+こう書けます。このUを力学ではポテンシャル(位置エネルギー)と呼びます。\par
+次に\shiki{conservative}の両辺を、任意の2点A,Bの間を、任意の経路ｒでA→Bに線積分してみます。
+\begin{align}
+\int_A^B \mathbf{F}\cdot d\mathbf{r}=-\int_A^B \nabla U\cdot d\mathbf{r}\\
+\label{potential}
+\int_A^B \mathbf{F}\cdot d\mathbf{r}=U_B-U_A
+\end{align}
+\ref{potential}は、保存力のする仕事は経路によらず、始点と終点のみで決まる、ということを表しています。ということは、当然、閉曲線で線積分すれば仕事は$0$になるのは自明です。\par
+さて、保存力について認識したところで、改めてマクスウェル方程式を見てみましょう。
+\begin{numcases}
+{}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
+\oint_C \mathbf{E}\cdot d\mathbf{r} = 0
+\end{numcases}
+\begin{numcases}
+{}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\nabla\times\mathbf{E} = 0
+\end{numcases}
+電場$\mathbf{E}$が保存力であるとわかると思います。つまり、渦なしの法則=電場は保存力、というわけです。そして、電場$\mathbf{E}$は保存力なので、
+\begin{align}
+\label{eq:Epotential}
+\mathbf{E}=-\nabla\Phi
+\end{align}
+と書くことができ、$\Phi$ を静電ポテンシャルと呼びます。$-$がついているのは、静電ポテンシャルは一般的に無限遠を基準点にとるためです。
+\subsubsection{〈クーロンの法則〉}
+次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。が、式変形だけではい、終わり、だとなにをしているのかわからなくなしそうなので、場面設定していきます。
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=10cm]{img/fig-sin.pdf}
+%  \caption{}　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　後でお絵かき。お絵かきしてから書く！忘れるなかれ
+%  \label{fig:sin}
+%\end{figure}
 
-\section*{参考文献}
-\renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
-\begin{enumerate}
-\item 著者, 本やページの名前, (URL), 出版社, 出版年.
-\item (複数ある場合は追加)
-\item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
-\end{enumerate}
-\renewcommand{\labelenumi}{\arabic{enumi}.} % default
+\subsubsection{〈ポアソン方程式〉}
+次で静電場は最後になります。…最後に、してしまいます。\par
+ここではポアソン方程式と呼ばれる関係式を紹介したいと思います。使うのは微分形の\shiki{Gaussdif1.2.2}です。まず、\shiki{Gaussdif1.2.2}の$\mathbf{E}$に\shiki{Epotential}を代入すると、
+\begin{align}
+\nabla\cdot(-\nabla\Phi ) =  \frac{\rho}{\epsilon_0}
+\end{align}
+これをラプラシアン$\nabla^2$を用いて書き直して、
+\begin{align}
+\nabla^2 \Phi = - \frac{\rho}{\epsilon_0}
+\end{align}
+この式をポアソン方程式といいます。本当はこの方程式の一般解を求めなければならないのですが、本題には関係ないこと、そして私の頭の都合上省略させていただきます。
+
+%きちんと書く予定。予定。
+
+\subsection{静磁場}
+話は変わって、電場ではなく磁場について考えていきます。使うのは先程使わなかったマクスウェル方程式
+\begin{numcases}
+{}
+\label{eq:Gauss2.1.2.3}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
+\label{eq:Ampere1.2.3}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS
+\end{numcases}
+\shiki{Gauss2.1.2.3}と\shiki{Ampere1.2.3}です。微分形だとこうです。
+\begin{numcases}
+{}
+\label{eq:Gauss2dif1.2.3}
+\nabla\cdot \mathbf{B} = 0 \\
+\label{eq:Amperedif1.2.3}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0}
+\end{numcases}
+静磁場を考えるので、時間微分の項は全て消してあります。
+\subsubsection{〈ベクトルポテンシャル〉}
+最初に考えるのは、ベクトルポテンシャルというものです。\shiki{Gauss2dif1.2.3}をご覧ください。左辺に$\mathbf{B}=\nabla\times\mathbf{A}$というものを代入してみます。
+\begin{align}
+\nabla\cdot(\nabla\times\mathbf{A})
+\end{align}
+ベクトル解析における公式で、任意のベクトル$\mathbf{r}$について、$\nabla\cdot(\nabla\mathbf{r})=0$が成り立つので、
+\begin{align}
+\nabla\cdot(\nabla\times\mathbf{A})=0
+\end{align}
+が成立します。つまり、磁場$\mathbf{B}$を$\nabla\times\mathbf{A}$というもので置き換えても問題ないわけです。このベクトル$\mathbf{A}$をベクトルポテンシャルといいます。\par
+では、\shiki{Amperedif1.2.3}にも代入してみましょう。
+\begin{align}
+c^2 \nabla\times(\nabla\times\mathbf{A}) = \frac{\mathbf{j}}{\epsilon_0}
+\end{align}
+これもベクトル解析の公式$\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}$を用いて、
+\begin{align}
+\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}=\frac{\mathbf{j}}{\epsilon_0 c^2}
+\end{align}
+ここにクーロンゲージと呼ばれる制限を設けます。$\nabla\cdot\mathbf{A}=0$\par
+これを用いて、
+\begin{align}
+\nabla^2\mathbf{A}=-\frac{\mathbf{j}}{\epsilon_0 c^2}
+\end{align}
+ここから、この方程式を解いて、ベクトルポテンシャル$\mathbf{A}$の解を求めなければならないのですが、お気づきでしょうか？この方程式、ポアソン方程式と全く同じ形をしています。つまり、ポアソン方程式の一般解を考えればよいのです。よって、
+\begin{align}
+\label{eq:vecP}
+\mathbf{A}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'
+\end{align}
+これがベクトルポテンシャルとなります。
+
+\subsubsection{〈ビオ-サバールの法則〉}
+続いて、先程求めたベクトルポテンシャルの式\shiki{vecP}を変形していきます。まず、両辺の回転をとると、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\nabla\left(\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'\right)
+\end{align}
+微分と積分の順序を入れ替えて、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \nabla\times\frac{\mathbf{j(\mathbf{r'})}}{|\mathbf{r}-\mathbf{r'}|}dV'
+\end{align}
+この式の右辺を$\mathbf{r}=(x,y,z)$の各成分で書き下すと、
+\begin{numcases}
+{}
+\mathbf{B_x}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_y (z-z')-j_z (y-y')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\mathbf{B_y}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_z (x-x')-j_x (z-z')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\mathbf{B_z}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{j_x (y-y')-j_y (x-x')}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\end{numcases}
+よって、回転の定義を考えれば、
+\begin{align}
+\mathbf{B}(\mathbf{r})=\frac{1}{4\pi\epsilon_0 c^2}\int_V \frac{\mathbf{j}(\mathbf{r'})\times(\mathbf{r}-\mathbf{r'})}{|\mathbf{r}-\mathbf{r'}|^3}dV'
+\end{align}
+これをビオ－サバールの法則といいます。
+
+\subsection{時間変化}                                                            
+電磁気学概説の最後は時間変化を考えていきます。使うのは当然、マクスウェル方程式4つ全てです。
+\begin{numcases}
+{}
+\label{eq:Gauss1.2.4}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV \\
+\label{eq:Faraday1.2.4}
+\oint_C \mathbf{E}\cdot d\mathbf{r} = -\frac{d}{dt}\int_S \mathbf{B}\cdot\mathbf{n} dS \\
+\label{eq:Gauss21.2.4}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0 \\
+\label{eq:Ampere1.2.4}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{numcases}
+\begin{numcases}
+{}
+\label{eq:Gaussdif1.2.4}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}\\
+\label{eq:Faradaydif1.2.4}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}\\
+\label{eq:Gauss2dif1.2.4}
+\nabla\cdot \mathbf{B} = 0\\
+\label{eq:Amperedif1.2.4}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+\end{numcases}
+\subsubsection{〈インダクタンス〉}
+
+
+\subsubsection{〈電磁波〉}
+
+
+\section{おまけ}
+\subsection{積分形→微分形}
+\subsubsection{〈磁場に関するガウスの法則〉}
+\begin{align}
+\int_S \mathbf{B}\cdot \mathbf{n}dS = 0
+\end{align}
+左辺にガウスの定理を適用して、
+\begin{align}
+\int_V \nabla\cdot\mathbf{B}dV = 0
+\end{align}
+$V$は任意の体積としているので、
+\begin{align}
+\nabla\cdot\mathbf{B}=0
+\end{align}
+
+\subsubsection{〈アンペール－マクスウェルの法則〉}
+\begin{align}
+c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{align}
+左辺にストークスの定理を適用して、
+\begin{align}
+c^2 \int_S (\nabla\times\mathbf{B})\cdot\mathbf{n}dS = \frac{1}{\epsilon_0}\int_S \mathbf{j}\cdot \mathbf{n}dS + \frac{d}{dt}\int_S \mathbf{E}\cdot \mathbf{n}dS
+\end{align}
+$S$は任意の閉曲面としているので、
+\begin{align}
+c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
+\end{align}
+
+\subsection{微分形→積分形}
+\subsubsection{〈ガウスの法則〉}
+\begin{align}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}
+\end{align}
+両辺を任意の体積$V$で積分して、
+\begin{align}
+\int_V (\nabla\cdot\mathbf{E})\cdot\mathbf{n}dV=\int_V \frac{\rho}{\epsilon_0}dV
+\end{align}
+左辺にガウスの定理を適用して、
+\begin{align}
+\int_S \mathbf{E}\cdot \mathbf{n} dS = \frac{1}{\epsilon_0} \int_V \rho dV
+\end{align}
+
+\subsubsection{〈ファラデーの法則〉}
+\begin{align}
+\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}
+\end{align}
+両辺を閉曲面$S$で積分して、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n}dS = -\int_S \frac{\partial\mathbf{B}}{\partial t}\cdot\mathbf{n}dS
+\end{align}
+左辺にストークスの定理を適用して、
+\begin{align}
+\int_S (\nabla\times\mathbf{E})\cdot\mathbf{n} dS = -\frac{d}{dt}\int_S \mathbf{B}\cdot \mathbf{n} dS
+\end{align}
+他二つは省略。
+\subsection{ガウスの定理}
+
+\subsection{ストークスの定理}
+
+
+\begin{thebibliography}{9}
+\bibitem{mechanics} 戸田 盛和,『物理入門コース 力学』,岩波書店,2017/12/5
+\bibitem{Maxwel} 小宮山 進・竹川 敦,『マクスウェル方程式から始める電磁気学』,裳華房,2016/9/15 第二版
+
+\end{thebibliography}
+
+%\section{参考文献}
+%\renewcommand{\labelenumi}{[\arabic{enumi}]} % [1],[2],...
+%\begin{enumerate}
+%\item 小宮山 進・竹川 敦,『マクスウェル方程式から始める電磁気学』,裳華房,2016/9/15 第二版
+%\item (複数ある場合は追加)
+%\item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+%\end{enumerate}
+%\renewcommand{\labelenumi}{\arabic{enumi}.} % default
 
 \end{document}
 
 
-%\subsubsection{テイラー展開}
-%三角関数および指数関数のテーラー展開は次の通りである：
-%\begin{align}
-%    \cos x &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}, \label{eq:cos}\\
-%    \sin x &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1}, \label{eq:sin}\\
-%    e^x &= \sum_{n=0}^\infty \frac{1}{n!} x^n. \label{eq:exp}
-%\end{align}
-%
-%
-%\subsubsection{オイラーの公式}
-%(\ref{eq:cos}),(\ref{eq:sin}),(\ref{eq:exp})式より
-%\begin{align*}
-%    e^{ix} = \sum_{n=0}^\infty \frac{1}{n!} (ix)^n
-%    &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n} + i\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1} \\
-%    &= \cos x + i\sin x
-%\end{align*}
-%よってオイラーの公式 $ e^{ix} = \cos x + i\sin x $ が示された。
-%
-%
-%\subsubsection{ギリシャ文字、数学記号}
-%ギリシャ文字とか記号は$\Gamma^\alpha_{\ \beta\gamma}, \Psi(x), \cos\theta, \sin^2\phi$や$\infty, \equiv, \approx, \to, \iff, \times, %\cdots, \le$のように書きます。
-%変換でα, β, ∞, ×みたいにしないこと！
-%
-%
 %\subsection{グラフや画像の挿入}
 %\TeX はこれがめんどい。figure環境ごとコピペして使おう。
 %

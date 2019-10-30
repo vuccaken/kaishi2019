@@ -1,8 +1,8 @@
 # kaishi2019
 2019年度会誌
-- [vuccaken HP](http://rp2017xy.starfree.jp)
+- [vuccaken new HP](https://vuccaken.github.io)
 
-詳細は[wiki](https://github.com/vuccaken/kaishi2019/wiki/)を見てください。
+設定の詳細は[wiki](https://github.com/vuccaken/kaishi2019/wiki/)を見てください。
 
 
 ## まずはじめにすること
@@ -21,11 +21,11 @@
 
 ### tex編
 
-1. `/tex/` の中に自分の名前やそれに準ずる名前でtexファイルを作成。
+1. `/tex/` の中に、自分の名前やそれに準ずる名前でtexファイルを作成。
   
 - 例： `/tex/nkym.tex`
   
-2. `/src/` の中にはディレクトリを作成。
+2. `/src/` の中には、画像とかを置くためのディレクトリを作成。
   - 例： `/src/nkym/`
   - それ以下のサブディレクトリは自由に構成して良い。
     - 例：
@@ -40,14 +40,16 @@
 3. 作成したtexファイルに、`/tex/50template.tex` の内容をそのままコピペして、適宜編集する。
 
 4. あとはいつも通りtexを書いていくだけ。
-  - ただし、画像などのソースのパスは `/[name]/[filename]` とすること。
-  - 例： `\includegraphics{/nkym/hensuki.png}`
+  - ただし、画像などのソースのパスは `[directory name]/[file name]` とすること。
+  - 例： `\includegraphics{nkym/hensuki.png}`
 
 5. 作業が終われば、忘れずに commit & push する。次に作業を再開する時は、リモートのリポジトリに変更がないか、ちゃんと fetch & pull する！　
 
 ## タイプセット手順
 
 ### 方法1 vscode （おすすめ）
+
+特に理由がない場合は、この方法でtexタイプセット環境を作ってください。
 
 #### 1. vscodeをインストール
 
@@ -58,7 +60,12 @@
 vscodeを開いて、左の四角いアイコンをクリックして、`latex workshop` と検索してインストール。
 
 #### 3. タイプセット
-設定ファイルはこちらで用意済みなので、あとは `kaishi2019/` をvscodeで開いて、キーバインド `cmd + alt` (winだと `ctrl + alt` )でタイプセット！
+
+設定ファイルはこちらで用意済みなので、あとは `kaishi2019/` をvscodeで開いて、キーバインド `cmd + alt + B` (winだと `ctrl + alt + B` )でタイプセット！
+
+また、`cmd + alt + V` ( `ctrl + alt + V` )でPDFをプレビューできます。
+
+synctexは、プレビューしたPDFを `cmd` ( `ctrl` )を押しながらクリックするか、 `cmd + alt + J` ( `ctrl + alt + J` )で使用することができます。
 
 
 ### 方法2 latexmk
@@ -75,6 +82,11 @@ cd (略)/github/kaishi2019
 
 ```
 latexmk tex/nkym.tex
+```
+
+or
+
+```
 latexmk 00main.tex
 ```
 
@@ -86,10 +98,16 @@ latexmkには以下のようなオプションがある。
 | -C | `.pdf` も消す |
 | -pvc | texファイルに変更があるたび自動でタイプセットする |
 
+optionは次のようにして使う。
+
+```
+latexmk -pvc 00main.tex
+```
+
 
 ### 方法3 platex -> dvipdfmx
 
-ターミナルで `kaishi2019/` へ移動。
+ターミナルで自分のPCにクローンした `kaishi2019/` へ移動。
 
 defaultだと、styファイルなどはカレントディレクトリにおいておけば参照してくれるが、サブディレクトリ以下は探索してくれない。
 ということで、サブディレクトリにパスを通す。
@@ -107,18 +125,19 @@ set TEXINPUTS='.//;'
 ```
 
 この手順は、ターミナルを起動するたびに行わなければならない。
-それが面倒なら、ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。または、 `texmf.cnf` とかでググってください。
+それが面倒なら、ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。
+または、 `texmf.cnf` とかでググってください。
 
-パスが通ればあとは普通に platex -> dvipdfmf を実行すればよい。
+パスが通ればあとは普通に `platex` -> `dvipdfmx` を実行すればよい。
 
 ```
 platex tex/nkym.tex
-dvipdf nkym.dvi
+dvipdfmx tex/nkym.dvi
 ```
 
 ```
 platex 00main.tex
-dvipdf 00main.dvi
+dvipdfmx 00main.dvi
 ```
 
 

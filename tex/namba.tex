@@ -1,0 +1,103 @@
+%
+%   N A M B A   N A M B A   N A M B A
+%    N A M B A   N A M B A   N A M B A
+%     N A M B A   N A M B A   N A M B A
+%
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
+
+
+\begin{document} % 以下本文
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {流体中の物体に働く揚力}% title
+  {物理科学科1回生}% 所属
+  {難波潤}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+% \setcounter{tocdepth}{2} % 目次にどこまで表示するか
+% \tableofcontents % 目次出力
+% \clearpage % 改ページ
+
+%
+\section*{はじめに}
+流体は我々の身の周りに存在していながら、我々の目にはみえない不思議な運動をする。
+ここでは様々な流体の運動のうち、揚力に着目し簡潔に解説したいと思う。
+\par
+\section{そもそも流体とは？}
+流体は、簡単に言えば自由に変形できる物質である。液体と気体がそれにあたり、特定の形を持たず容易に変形し、接する固体の形状によって運動が支配される。
+流体の特徴として粘性と呼ばれるものがある。これは流体中を運動する物体に対して、流体が変形を妨げようとして抵抗を示す性質である。例として、管の中に流体を通すと流体が管の壁と接する部分は管の中心部に比べて速度が遅くなる。これは粘性の働きによるものである。実在する流体はごく一部の例外を除きこの粘性を考慮する必要がある。
+流体は圧力によって圧縮され体積を変化させる性質（圧縮性）をもつが、圧縮性及び粘性を無視した流体を理想流体という。仮に理想流体を管に流した場合、管の壁付近と中心部での速度は等しくなる。ただし、理想流体は粘性がないためエネルギー損失や抵抗力が存在せず、実在する気体と矛盾する。
+一方、実在流体を壁付近で粘性の影響を大きく受けて速度が遅い領域（境界層）と壁から離れた境界層より外側の領域（主流）に分けると、主流領域では粘性の影響が小さく、理想流体とみなすことができる。
+\par
+\subsection{揚力}
+揚力と聞くと物体を下から上に持ち上げる力を連想するかもしれないが、実は少し違う。揚力とは、物体に働く力のうち、流れの方向に垂直な成分のことである。（重力は例外）つまり流れの方向及び物体の運動の方向に垂直に働く力であればそれは揚力であり、球技において変化球が曲がるのは揚力が働いているためである。なお、揚力に対して流れの方向に平行な成分を抗力という。
+\par
+\section{ベルヌーイの定理}
+ここでは理想流体の定常流れ\footnote{時間によって変化しない流れ。}についてエネルギーを考える。
+密度$\rho$の流体の一次元流れ\footnote{一つの流線に沿った流れ。}において、断面積$A$の断面における流速$v$、圧力$p$、高さ$z$、流量$Q$であるとすると$A$を単位時間当たりに通過する流体の質量は$\rho$$Q$であるから、運動エネルギー、位置エネルギー、圧力によって伝達される仕事はそれぞれ$\rho$$Qv^2/2$,$\rho Qgz$,$pAv$と表される。
+エネルギー損失がなければ（理想流体であれば）、流体の力学的エネルギーは保存されるので、
+\begin{equation}
+pAv+\frac{\rho Qv^2}{2}+\rho Qgz=const
+\end{equation}
+両辺を$\rho Qg$で割ると、
+\begin{equation}
+\frac{p}{\rho g}+\frac{v^2}{2g}+z=const
+\end{equation}
+上の式をベルヌーイの定理という。
+\par
+\section{複素ポテンシャル}
+後々一定の条件下での揚力を式で表していくが、その時に使う関数をここで示しておく。ここで、$u$、$v$はそれぞれ$x$、$y$方向の速度成分である。次の関係式を満足する関数$\phi$($x$,$y$,$t$)を速度ポテンシャルという。
+\begin{equation}
+u=\frac{\partial\phi}{\partial x}, v=\frac{\partial\phi}{\partial y}
+\end{equation}
+また、次の関係式を満足する関数$\psi$($x$,$y$,$t$)を流れ関数という。
+\begin{equation}
+u=\frac{\partial\psi}{\partial y}, v=-\frac{\partial\psi}{\partial x}
+\end{equation}
+虚数単位$i$を用いて次のように$W$を定義する。
+\begin{equation}
+W=\phi+i\psi
+\end{equation}
+この$W$を複素ポテンシャルといい、複素座標を$z=x+iy$と定義すれば$W$を$z$の関数として表すことができ、次の式が成り立つ。
+\begin{equation}
+\frac{dW}{dz}=\frac{dW}{dz}\frac{\partial z}{\partial x}=\frac{\partial W}{\partial z}=\frac{\partial\phi}{\partial x}+i\frac{\partial\psi}{\partial x}=u-iv
+\end{equation}
+複素ポテンシャルを用いれば二次元ポテンシャルを関数で表すことができる。
+\section{円柱周りの複素ポテンシャル}
+それでは、これまで求めた式を用いて一様な流体中に置かれた円柱に働く揚力を求めてみる。揚力$L$は、円柱上の圧力$p$、円柱から十分に離れた場所での圧力$p_\infty$とすると、
+\begin{equation}
+L=-int\_0^2\pi(p-p_\infty)\cos\theta Rd\theta
+\end{equation}
+ここで流速$U$、円柱上の速度$V$とすると、ベルヌーイの定理を用いて次のように表される。
+\begin{equation}
+\frac{p_\infty}{\rho}+\frac{U^2}{2}=\frac{p}{\rho}+\frac{V^2}{2}
+\end{equation}
+これを変形すると
+\begin{equation}
+p-p_\infty=\frac{\rho(U^2-V^2)}{2}
+\end{equation}
+
+
+%% 参考文献
+\begin{sanko}
+  \begin{enumerate}
+    \item 藤田勝久,基本を学ぶ流体力学,森北出版株式会社,2009.
+    \item 石綿良三,流体力学入門,森北出版株式会社,2000.
+    \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+  \end{enumerate}
+\end{sanko}
+
+
+\end{document}
+%
+% ファイトだよ！
+%
