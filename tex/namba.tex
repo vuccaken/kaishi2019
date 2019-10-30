@@ -73,9 +73,9 @@ W=\phi+i\psi
 \end{equation}
 複素ポテンシャルを用いれば二次元ポテンシャルを関数で表すことができる。
 \section{円柱周りの複素ポテンシャル}
-それでは、これまで求めた式を用いて一様な流体中に置かれた円柱に働く揚力を求めてみる。揚力$L$は、円柱上の圧力$p$、円柱から十分に離れた場所での圧力$p_\infty$とすると、
+それでは、これまで求めた式を用いて一様な流体中に置かれた円柱に働く揚力を求めてみる。揚力$L$は、円柱上の圧力$p$、円柱から十分に離れた場所での圧力$p_\infty$、円柱の半径$R$とすると、
 \begin{equation}
-L=-int\_0^2\pi(p-p_\infty)\cos\theta Rd\theta
+L=-\int_0^{2\pi}(p-p_\infty)\cos\theta Rd\theta
 \end{equation}
 ここで流速$U$、円柱上の速度$V$とすると、ベルヌーイの定理を用いて次のように表される。
 \begin{equation}
@@ -85,8 +85,29 @@ L=-int\_0^2\pi(p-p_\infty)\cos\theta Rd\theta
 \begin{equation}
 p-p_\infty=\frac{\rho(U^2-V^2)}{2}
 \end{equation}
-
-
+この$V$を複素ポテンシャルから求めていく。
+\par
+\subsection{一様流と二重吹き出しの複素ポテンシャル}
+円柱周りの複素ポテンシャルは、一様流と二重吹き出しの複素ポテンシャルの重ね合わせで表される。二次元流れにおいて$x$軸と角度$\alpha$をなす一様流の複素ポテンシャルは以下の形で表される。
+\begin{equation}
+  W(z)=Ue^{-i\alpha}z
+\end{equation}
+原点を円柱の中心とする二次元ポテンシャルにおいて$x$軸と平行な方向に流れる流体を考えた場合、$W(z)=Uz$である。二重吹き出しは、流線が$y$軸上に中心を持ち、原点を通る円群で表される流れであり、今回の場合では$W(z)=\frac{R^2U}{z}$と表すことができる。
+これらを重ね合わせ、
+\begin{equation}
+  W(z)=Uz+\frac{R^2U}{z}
+\end{equation}
+で表される。ここで、$z=re^(i\theta)$を用いると
+\begin{equation}
+  \frac{dW(z)}{dz}=U-\frac{R^2U}{z^2}=U-\frac{R^2U}{r^2}e^{-2i\theta}=U-\frac{R^2u}{r^2}(\cos2\theta-i\sin2\theta)=u-iv
+\end{equation}
+\begin{equation}
+　u=U-\frac{R^2U}{r^2}\cos2\theta, v=-\frac{R^2U}{r^2}\sin2\theta
+\end{equation}
+円柱上では$r=R$であるから
+\begin{equation}
+  V=\sqrt{u^2+v^2}=2U|\sin\theta|
+\end{equation}
 %% 参考文献
 \begin{sanko}
   \begin{enumerate}
