@@ -25,8 +25,10 @@
   ],
   "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.latex.clean.fileTypes": [
-    "*.aux", "*.toc",
+    "*.aux",
+    "*.toc",
     "*.log",
+    "*.out",
     "*.dvi",
     // "*.synctex.gz",
     "*.fdb_latexmk", "*.fls", // latexmk
@@ -34,7 +36,9 @@
   ],
   // syntax coloring
   "files.associations": {
-    "*.sty": "latex",
+    "*.sty": "latex", "*.ltx": "latex", "*.def": "latex",
+    "*.toc": "latex",
+    "*.log": "log",
     ".latexmkrc": "perl"
   },
   //
