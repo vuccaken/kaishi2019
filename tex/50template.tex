@@ -13,12 +13,16 @@
 % とりあえずはここに書いてもらって構いません。
 
 
-\begin{document} % 以下本文
+\toctrue % コメントアウトで目次非表示
 
-% \setcounter{tocdepth}{2} % 目次にどこまで表示するか
-% \tableofcontents % 目次出力
-% \setcounter{page}{0}
-% \clearpage % 改ページ
+\begin{document} % - - - - - - - 以下本文 - - - - - - - - - -
+
+\iftoc
+  \setcounter{tocdepth}{2} % 目次に表示する深さ
+  \tableofcontents % 目次出力
+  \setcounter{page}{0} % page番号を0にセット
+  \clearpage % 改ページ
+\fi
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
@@ -80,7 +84,7 @@ figureのパスには注意してください。
 \end{sanko}
 
 
-\end{document}
+\end{document} % - - - - - - - - - - - - - - - - - - - - -
 %
 % ファイトだよ！
 %
