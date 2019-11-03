@@ -1,63 +1,74 @@
-%
-%    THIS FILE IS "00main.tex"
-%    ## MAIN TEX FILE ##
-%
+%%
+%%    This file is "00main.tex"
+%%      ## MAIN TEX FILE ##
+%%
 
-%    † 2019年度　物理科学研究会　会誌 †
-%          『白夜』 第4号
+%%    † 2019年度　物理科学研究会　会誌 †
+%%          『白夜』 第4号
 
-% 10 members:
-% nsmr, nkym, kadono, sj, abe,
-% hukuda, yoshida, namba, fujiki, fujiwara
+%% 10 members:
+%%    nsmr, nkym, kadono, sj, abe,
+%%    hukuda, yoshida, namba, fujiki, fujiwara
 
-% use platex
+%% use platex
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
-% papersize: pdfの用紙サイズを変更
-% dvipdfmx: ドライバの指定
-% openary: 空白ページ削除（bookクラス）
 
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
 
-% --------------------------------------
-\begin{document}
+\newif\iffront
+\newif\ifmain
+\newif\ifback
 
-\newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
+\fronttrue
+\maintrue
+% \backtrue
 
-\frontmatter
-\vReadTeXFile{01hyoshi-omote}
-\cleardoublepage
-% \vReadTeXFile{02hyoshi-naka}
-% \cleardoublepage
-\vReadTeXFile{03kantogon}
-\tableofcontents % 目次出力
+% \newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
+\newcommand\vReadTeXFile[1]{\input{tex/#1}}
 
+\tocfalse % 各ファイルのtocを非表示に
 
-\mainmatter
-% \vReadTeXFile{yoshida}
-% \vReadTeXFile{fukuda}
-% \vReadTeXFile{fukuda2}
-% \vReadTeXFile{namba}
-% \vReadTeXFile{kfuji}
-% \vReadTeXFile{fjk}
-% \vReadTeXFile{sj}
-% \vReadTeXFile{nkym}
-% \vReadTeXFile{robocon}
-% \vReadTeXFile{kadono}
-\vReadTeXFile{20temp}
-\vReadTeXFile{50template}
+\begin{document} % - - - - - - - - - - - - - - - - - - - - - -
 
+\iffront
+  \frontmatter
+  \vReadTeXFile{01hyoshi-omote}
+  \cleardoublepage
+  % \vReadTeXFile{02hyoshi-naka}
+  % \cleardoublepage
+  \vReadTeXFile{03kantogon}
+  \tableofcontents % 目次出力
+\fi
 
-\backmatter
-\markboth{}{} % headerのchaper nameとsection nameを消す
-\vReadTeXFile{04hensyukoki} % odd
-\clearpage
-\vReadTeXFile{05okuduke} % even
-\clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
-\ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整
-\vReadTeXFile{06hyoshi-ura} % even
+\ifmain
+  \mainmatter
+  % \vReadTeXFile{yoshida}
+  % \vReadTeXFile{fukuda}
+  % \vReadTeXFile{fukuda2}
+  % \vReadTeXFile{namba}
+  % \vReadTeXFile{kfuji}
+  % \vReadTeXFile{fjk}
+  % \vReadTeXFile{sj}
+  \vReadTeXFile{nkym}
+  % \vReadTeXFile{robocon}
+  % \vReadTeXFile{kadono}
+  % \vReadTeXFile{20temp}
+  \vReadTeXFile{50template}
+\fi
 
-\end{document}
+\ifback
+  \backmatter
+  \markboth{}{} % headerのchaper nameとsection nameを消す
+  \vReadTeXFile{04hensyukoki} % odd
+  \clearpage
+  \vReadTeXFile{05okuduke} % even
+  \clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
+  \ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整
+  \vReadTeXFile{06hyoshi-ura} % even
+\fi
+
+\end{document} % - - - - - - - - - - - - - - - - - - - - - -
 %
 % お疲れさまです
 %

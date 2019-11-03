@@ -4,20 +4,21 @@
 %     2018-03-08 15:30 created
 %     2018-11-25 調整 \vaddcontentsline
 %     2019-08-06 微調整
+%     2019-11-03 微調整 & v-hyperref
 
 %  require "jsbook class"
 
 
-%\kaishititle{title}{na}{me}
+%% \kaishititle{title}{na}{me}
 \newcommand{\kaishititle}[3]{%
   \vchapter{#2 #3}{#1}
   \vspace{-45pt}
   \begin{flushright}
-    {\bf \large #2} \\ \vspace{3pt} %所属
-    {\bf \large #3} \\ \vspace{30pt} %名前
+    {\bfseries \large #2} \\ \vspace{3pt} %所属
+    {\bfseries \large #3} \\ \vspace{30pt} %名前
   \end{flushright}}
 
-%\vchapter{name}{title}
+%% \vchapter{name}{title}
 \newcommand{\vchapter}[2]{%
   \if@openleft\cleardoublepage\else
   \if@openright\cleardoublepage\else\clearpage\fi\fi
@@ -27,7 +28,7 @@
   \@omit@numberfalse
   \@vchapter{#1}{#2}}
 
-%\@vchapter{name}{title}
+%% \@vchapter{name}{title}
 \def\@vchapter#1#2{%
   \ifnum \c@secnumdepth >\m@ne
     \if@mainmatter
@@ -51,23 +52,26 @@
     \@afterheading
   \fi}
 
-%\vaddcontentsline{toc}{chapter}{title}{name}
+% %% 弄ってない
+% %% \addcontents{toc}{\vcontentsline{chapter}{title}{name}{page}}
+% \long\def\addtocontents#1#2{%
+%   \protected@write\@auxout
+%       {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+%       {\string\@writefile{#1}{#2}}}
+
+%%% - - - - v-hyperref.sty で上書きされる - - - - %%%
+
+%% \vaddcontentsline{toc}{chapter}{title}{name}
 \def\vaddcontentsline#1#2#3#4{%
-  \addtocontents{#1}{\protect\contentsline{v#2}{#3}{#4}{\thepage}}} % 元
-  % \addtocontents{#1}{\protect\contentsline{v#2}{\vspace{0.5zw}\\\hspace{-3.8zw}#3}{#4}{\thepage}}} % 調整 2018/11/25
+  \addtocontents{#1}{\protect\vcontentsline{v#2}{#3}{#4}{\thepage}}\protected@file@percent
+}
 
-% 弄ってない
-%\addcontents{toc}{\vcontentsline{chapter}{title}{name}{page}}
-\long\def\addtocontents#1#2{%
-  \protected@write\@auxout
-      {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
-      {\string\@writefile{#1}{#2}}}
+%% \contentsline{chapter}
+\def\vcontentsline#1{\csname l@#1\endcsname}
 
-% 弄ってない
-%\contentsline{chapter}
-\def\contentsline#1{\csname l@#1\endcsname}
+%%% - - - - - - - - - - - - - - - - - - - - - - %%%
 
-%\l@vchapter{title}{name}{page}
+%% \l@vchapter{title}{name}{page}
 \newcommand*{\l@vchapter}[3]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -85,7 +89,7 @@
     \endgroup
   \fi}
 
-%本物の方も弄る（フォントサイズ -> \large）
+%% 本物の方も弄る（#1のフォントサイズ -> \large）
 \renewcommand*{\l@chapter}[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -104,8 +108,8 @@
   \fi}
 
 
-%目次chapterで、英語、数字も太字にする。
-%\l@chapter、\l@vchapterの定義内にある。
+%% 目次chapterで、英語、数字も太字にする。
+%% \l@chapter、\l@vchapterの定義内にある。
 \renewcommand{\headfont}{\bfseries}
 
 
