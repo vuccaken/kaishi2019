@@ -12,13 +12,16 @@
 % 最終的には vuccaken2019.sty の中に書いてください。
 % とりあえずはここに書いてもらって構いません。
 
+\toctrue % コメントアウトで目次非表示
 
 \begin{document} % 以下本文
 
-\setcounter{tocdepth}{2} % 目次にどこまで表示するか
-\tableofcontents % 目次出力
-\setcounter{page}{0}
-\clearpage % 改ページ
+\iftoc
+  \setcounter{tocdepth}{2} % 目次にどこまで表示するか
+  \tableofcontents % 目次出力
+  \setcounter{page}{0}
+  \clearpage % 改ページ
+\fi
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
