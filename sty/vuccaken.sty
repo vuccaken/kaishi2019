@@ -119,8 +119,10 @@
 \renewenvironment{thebibliography}[1]{%
   \global\let\presectionname\relax
   \global\let\postsectionname\relax
-  \section*{\bibname}\@mkboth{\bibname}{}%  chapter -> section
-  \addcontentsline{toc}{section}{\bibname}%  chapter -> section
+  % \chapter*{\bibname}\@mkboth{\bibname}{}% 元
+  % \addcontentsline{toc}{chapter}{\bibname}% 元
+  \section*{\bibname}\markright{\bibname}% 変更
+  \addcontentsline{toc}{section}{\bibname}% 変更
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\settowidth\labelwidth{\@biblabel{#1}}%
          \leftmargin\labelwidth
