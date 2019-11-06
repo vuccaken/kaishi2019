@@ -22,7 +22,7 @@
 
 \fronttrue
 \maintrue
-% \backtrue
+\backtrue
 
 % \newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
 \newcommand\vReadTeXFile[1]{\input{tex/#1}}
@@ -44,14 +44,13 @@
 \ifmain
   \mainmatter
   \vReadTeXFile{yoshida}
-  % \vReadTeXFile{fukuda}
-  % \vReadTeXFile{fukuda2}
-  % \vReadTeXFile{namba}
-  % \vReadTeXFile{kfuji}
+  \vReadTeXFile{fukuda}
+  \vReadTeXFile{namba}
+  \vReadTeXFile{kfuji}
   % \vReadTeXFile{fjk}
   % \vReadTeXFile{sj}
-  % \vReadTeXFile{nkym}
-  % \vReadTeXFile{robocon}
+  \vReadTeXFile{nkym}
+  \vReadTeXFile{robocon}
   % \vReadTeXFile{kadono}
   % \vReadTeXFile{20temp}
   % \vReadTeXFile{50template}

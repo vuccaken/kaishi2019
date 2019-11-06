@@ -12,24 +12,15 @@
 % 共通
 % - - - - - - - - - - - - - - - - - - - - - - - - -
 
+%%
+%% 全体の設定
+%%
 \usepackage{xparse} % LaTeX3; \DeclareDocumentCommand
 
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
 
-\usepackage{amsmath,amssymb} % 数式関係
-\usepackage{amsthm} % theorem, proof env
-\usepackage{mathtools} % dcases environment
-\usepackage{physics} % 便利パッケージ
-\usepackage{cases} % numcases
-
-\usepackage[dvipdfmx]{graphicx} % 図の挿入
-\usepackage{wrapfig} % 文章中に図
-\usepackage{here} % option H で図を強制出力
-
-\usepackage{enumitem} % enumerate
-\usepackage{url} % URLをそのまま表示してくれる
 \usepackage{v-hyperref} % 自作。内部でhyperrefを読み込んでる
 \hypersetup{%
   bookmarksnumbered=true,%
@@ -48,11 +39,6 @@
   urlcolor=cyan
 }
 
-% \usepackage{listings,jlisting} % ソースコード表示
-\usepackage{ascmac} % 枠を作るやつ
-\usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-\usepackage{tikz} % おえかきできるツール
-
 %% hyperrefと競合するので、emathを使うのをやめます。
 %% 代わりに docmute を使います。
     % \usepackage{emath,emathR} % \ReadTeXFile
@@ -60,29 +46,9 @@
     % \resettagform % emathによる数式番号改悪をリセット
 \usepackage{docmute} % \inputを改良
 
-% ソース探索のパス
-\graphicspath{{./src/}{../src/}}
-
 % inner margin settings
 \addtolength{\oddsidemargin}{10truemm}   % odd(right) page
 \addtolength{\evensidemargin}{-10truemm} % even(left) page
-
-% toc
-\setcounter{tocdepth}{2} % 目次にどこまで表示するか
-\newif\iftoc % 目次の出力制御
-
-% 参考文献は enumerate 環境で出す。
-\newenvironment{sanko}{%
-  \newcommand\sankoname{参考文献}
-  \addcontentsline{toc}{section}{\sankoname}
-  \section*{\sankoname}
-  \renewcommand{\labelenumi}{[\arabic{enumi}]} % [1], [2], ...
-}{%
-  \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
-}
-
-% 数式番号付加
-\def\atag{\refstepcounter{equation}\tag{\theequation}}
 
 % windows がうんこなのでエラーが出る。otfパッケージに起因。
 \DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*mc/m/n}{} %
@@ -99,6 +65,59 @@
 % \DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+
+%%
+%% each kaishi で使う用、プチマクロ
+%%
+
+\usepackage{amsmath,amssymb} % 数式関係
+\usepackage{amsthm} % theorem, proof env
+\usepackage{mathtools} % dcases environment
+\usepackage{physics} % 便利パッケージ
+\usepackage{cases} % numcases
+
+\usepackage[dvipdfmx]{graphicx} % 図の挿入
+\graphicspath{{./src/}{../src/}}% グラフのソース探索パス
+
+\usepackage{wrapfig} % 文章中に図
+\usepackage{here} % option H で図を強制出力
+
+\usepackage{enumitem} % enumerate
+\usepackage{url} % URLをそのまま表示してくれる
+
+% \usepackage{listings,jlisting} % ソースコード表示
+\usepackage{ascmac} % 枠を作るやつ
+\usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
+\usepackage{tikz} % おえかきできるツール
+
+%% toc
+\setcounter{tocdepth}{2} % 目次にどこまで表示するか
+\newif\iftoc % 目次の出力制御
+\toctrue % default で true
+\newcommand\mokuji[1]{%
+  \iftoc
+    \frontmatter
+    \setcounter{tocdepth}{#1} % 目次に表示する深さ
+    \tableofcontents % 目次出力
+    \mainmatter
+  \fi
+}
+
+%% 参考文献、やっぱり thebibliography 環境で出すことにします。
+%% あとで消します。
+    % 参考文献は enumerate 環境で出す。
+    \newenvironment{sanko}{%
+      \newcommand\sankoname{参考文献}
+      \addcontentsline{toc}{section}{\sankoname}
+      \section*{\sankoname}
+      \renewcommand{\labelenumi}{[\arabic{enumi}]} % [1], [2], ...
+    }{%
+      \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
+    }
+
+
+% 数式番号付加
+\def\atag{\refstepcounter{equation}\tag{\theequation}}
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,23 +182,19 @@
   \renewcommand\bar{\accentset{{\cc@style\underline{\mskip10mu}}}}
 \makeatother
 
-
 % - - - - - - - - - - - - - - - - - - - - - - - - -
-% kadono
+% Yoshida
 % - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-% kfuji
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
 % \usepackage{amsmath}
 \usepackage{multicol}
 \usepackage{bm}
 \usepackage{subfigure}
 % \usepackage{here}
 
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+% Fukuda
+% - - - - - - - - - - - - - - - - - - - - - - - - -
+\newcommand\shiki[1]{\siki{#1}式}
 
 
 

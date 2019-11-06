@@ -12,16 +12,9 @@
 % 最終的には vuccaken2019.sty の中に書いてください。
 % とりあえずはここに書いてもらって構いません。
 
-\toctrue % コメントアウトで目次非表示
-
 \begin{document} % 以下本文
 
-\iftoc
-  \setcounter{tocdepth}{2} % 目次にどこまで表示するか
-  \tableofcontents % 目次出力
-  \setcounter{page}{0}
-  \clearpage % 改ページ
-\fi
+\mokuji{2} % 目次出力
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
@@ -375,13 +368,11 @@
 
 % \clearpage
 %% 参考文献
-\begin{sanko}
-  \begin{enumerate}
-    \item 著者, 本やページの名前, (URL), 出版社, 出版年.
-    \item (複数ある場合は追加)
-    \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
-  \end{enumerate}
-\end{sanko}
+\begin{thebibliography}{99}
+  \item 著者, 本やページの名前, (URL), 出版社, 出版年.
+  \item (複数ある場合は追加)
+  \item @vuccaken, 物科研HP, \url{rp2017xy.starfree.jp}, 2019.
+\end{thebibliography}
 
 
 \end{document}
