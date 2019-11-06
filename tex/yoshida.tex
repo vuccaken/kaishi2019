@@ -17,7 +17,25 @@
 \usepackage{subfigure}
 \usepackage{here}
 
+\toctrue % コメントアウトで目次非表示
+
 \begin{document}
+
+\iftoc
+  \setcounter{tocdepth}{2} % 目次に表示する深さ
+  \tableofcontents % 目次出力
+  \setcounter{page}{0} % page番号を0にセット
+  \clearpage % 改ページ
+\fi
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {\LaTeX テンプレート（会誌原稿用）}% title
+  {テンプレ科学科4回生}% 所属
+  {テンプレくん}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+
 \section{はじめに}
 %\subsection{厳密}
 %数学はいくつかの前提となる命題（公理と呼ばれる）から出発して推論によって新たな命題（いくつかの重要な命題は定理と呼ばれる）を次々に導く,といったような議論の展開をする.推論とは前提から結論を導くことである.したがって,
