@@ -13,16 +13,9 @@
 % とりあえずはここに書いてもらって構いません。
 
 
-\toctrue % コメントアウトで目次非表示
-
 \begin{document} % - - - - - - - 以下本文 - - - - - - - - - -
 
-\iftoc
-  \setcounter{tocdepth}{2} % 目次に表示する深さ
-  \tableofcontents % 目次出力
-  \setcounter{page}{0} % page番号を0にセット
-  \clearpage % 改ページ
-\fi
+\mokuji{2} % 目次出力
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
