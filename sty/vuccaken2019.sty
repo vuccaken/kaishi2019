@@ -129,17 +129,18 @@
 % 巻頭言・編集後記
 % usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
 \newenvironment{preface}[4]{%
-  \newcommand\whatpreface{#1}%
-  \addcontentsline{toc}{chapter}{\whatpreface}%
+  \newcommand\pf@name{#1}%
+  \newcommand\pf@belong{#2}%
+  \newcommand\pf@author{#3}%
+  \newcommand\pf@date{#4}%
   \cleardoublepage%
-  \section*{\whatpreface}%
-  \def\prefacesyozoku{#2}%
-  \def\prefacename{#3}%
-  \def\prefacedate{#4}%
+  % \section*{\pf@name}\@mkboth{}{\pf@name}% 本文では section
+  \chapter*{\pf@name}\@mkboth{\pf@name}{}% 本文では chapter
+  \addcontentsline{toc}{chapter}{\pf@name}% 目次では chapter
 }{%
   \begin{flushright}%
-    \prefacedate\\
-    \prefacesyozoku\hspace{0.5zw}\prefacename%
+    {\bfseries \pf@date}\\
+    {\bfseries \pf@belong\hspace{1zw}\pf@author}%
   \end{flushright}\par%
 }
 

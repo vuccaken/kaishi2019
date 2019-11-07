@@ -34,9 +34,7 @@
 \iffront
   \frontmatter
   \vReadTeXFile{01hyoshi-omote}
-  \cleardoublepage
-  % \vReadTeXFile{02hyoshi-naka}
-  % \cleardoublepage
+  \vReadTeXFile{02hyoshi-naka}
   \vReadTeXFile{03kantogon}
   \tableofcontents % 目次出力
 \fi
@@ -58,9 +56,7 @@
 
 \ifback
   \backmatter
-  \markboth{}{} % headerのchaper nameとsection nameを消す
   \vReadTeXFile{04hensyukoki} % odd
-  \clearpage
   \vReadTeXFile{05okuduke} % even
   \clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
   \ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整
