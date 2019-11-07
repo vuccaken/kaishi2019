@@ -10,6 +10,7 @@
 ### まだの人は
 
 1. texのインストール（texlive 2019）
+  - 参考：https://tm23forest.com/contents/latex-texlive2019-install
 2. githubのアカウントを作成
 3. githubのorganizationのvuccakenに参加する（招待してもらう）
 
@@ -22,8 +23,7 @@
 ### tex編
 
 1. `/tex/` の中に、自分の名前やそれに準ずる名前でtexファイルを作成。
-  
-- 例： `/tex/nkym.tex`
+  - 例： `/tex/nkym.tex`
   
 2. `/src/` の中には、画像とかを置くためのディレクトリを作成。
   - 例： `/src/nkym/`
