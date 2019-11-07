@@ -10,7 +10,7 @@
 ### まだの人は
 
 1. texのインストール（texlive 2019）
-    - 参考：https://tm23forest.com/contents/latex-texlive2019-install
+    - ここからインストール： http://www.tug.org/texlive/acquire-netinstall.html
 2. githubのアカウントを作成
 3. githubのorganizationのvuccakenに参加する（招待してもらう）
 
@@ -70,6 +70,8 @@ synctexは、プレビューしたPDFを `cmd` ( `ctrl` )を押しながらク�
 
 ### 方法2 latexmk
 
+`.latexmkrc` というのが設定ファイルです。ここで、 `./sty` と `../sty` にパスを通しています。
+
 #### macの場合（多分）
 
 上のvscodeの方法でも結局latexmkを使っているのだが、ここではそれをターミナルから直接実行する。
@@ -98,7 +100,7 @@ latexmkには以下のようなオプションがある。
 |-|-|
 | -c | `.log` とか補助ファイルを消す |
 | -C | `.pdf` も消す |
-| -pvc | texファイルに変0更があるたび自動でタイプセットする |
+| -pvc | texファイルに変更があるたび自動でタイプセットする |
 
 optionは次のようにして使う。
 
