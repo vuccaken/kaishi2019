@@ -8,6 +8,8 @@
 \usepackage{listings,jlisting} % ソースコード表示
 \usepackage{xparse} % \DeclareDocumentCommand
 \usepackage{realboxes} % \Colorbox
+\usepackage{cprotect} % 引数で verb が使える
+    %% Usage: \cprotect\caption{なんちゃら \verb|\hoge| なんちょら。}
 
 \newcommand\ex{\par\noindent{\bfseries 例：}}
 
