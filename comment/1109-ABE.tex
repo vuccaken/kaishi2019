@@ -1,0 +1,250 @@
+%
+%    comment for 'robocon.tex'
+%
+
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+\usepackage{v-cmt}
+
+% \usepackage{array}     %% vuccaken2019.sty に追加しておきました。
+% \usepackage{tabularx}  %% vuccaken2019.sty に追加しておきました。
+
+\begin{document}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {robocon.tex のかうせい}% title
+  {校正科学科}% 所属
+  {nkym}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+2019.11.09 早朝
+
+\section*{はじめに}
+tableが気持ち悪い上に、幅がはみ出ちゃってるので、なんとかしたい。
+
+\section{修正案}
+この文が折り返されるところまでがcontentsの幅ですううううううううううううううううううううううううううううううううううううう。
+
+insideにはみ出てると、最悪tableの上からホチキス留めされます。
+
+outsideの余白は欄外脚注のためのスペースです。
+でもここの幅はかなり小さいので、脚注はfootnoteに出してください。
+
+tableの修正案をいくつか挙げるので、なんとかしてください。
+
+\marginpar{ここは余白じゃなくて欄外脚注のスペース。}
+
+\begin{table}[H]
+  \centering
+  \caption{オリジナル。さすがにはみ出すぎ。（奇数ページ）}
+  \begin{tabular}{|c|c|c|c|c|c|} \hline
+    \begin{tabular}{c}質量\\$M\tani*{kg}$\end{tabular} 
+      & \begin{tabular}{c}角加速度\\$\ddot{q}$$\tani*{rad/s^2}$\end{tabular}
+      & \begin{tabular}{c}加速度\\$\dot{q}$$\tani*{m/s}$\end{tabular} 
+      & \begin{tabular}{c}最大応力\\$\sigma\tani*{Pa}$\end{tabular} 
+      & \begin{tabular}{c}変位\\$\delta_z\tani*{m}$\end{tabular} 
+      & \begin{tabular}{c}重心の鉛直方向回り\\慣性モーメント\\$I_{S_0}\tani*{g mm^2}$\end{tabular} \\ \hline
+    $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 10^{-3}$&$1.02\times10^8$\\ \hline
+  \end{tabular}
+\end{table}
+
+\clearpage
+この幅に抑えてください。この幅に抑えてください。この幅に抑えてください。この幅に抑えてください。この幅に抑えてください。この幅に抑えてください。
+
+\noindent ← leftest \hfill rightest →
+
+\marginpar{ここは余白じゃなくて欄外脚注のスペース。}
+
+\begin{table}[H]
+  \centering
+  \caption{オリジナル。さすがにはみ出すぎ。（偶数ページ）}
+  \begin{tabular}{|c|c|c|c|c|c|} \hline
+    \begin{tabular}{c}質量\\$M\tani*{kg}$\end{tabular} 
+      & \begin{tabular}{c}角加速度\\$\ddot{q}$$\tani*{rad/s^2}$\end{tabular}
+      & \begin{tabular}{c}加速度\\$\dot{q}$$\tani*{m/s}$\end{tabular} 
+      & \begin{tabular}{c}最大応力\\$\sigma\tani*{Pa}$\end{tabular} 
+      & \begin{tabular}{c}変位\\$\delta_z\tani*{m}$\end{tabular} 
+      & \begin{tabular}{c}重心の鉛直方向回り\\慣性モーメント\\$I_{S_0}\tani*{g mm^2}$\end{tabular} \\ \hline
+    $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 10^{-3}$&$1.02\times10^8$\\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+  \cprotect\caption{\code{\small} で表内のtext sizeを小さくした。これでもまだ少しはみ出てる。}
+  \centering
+  \small
+  \begin{tabular}{cccccc} \hline
+    \begin{tabular}{c}質量\\$M\tani*{kg}$\end{tabular} 
+    & \begin{tabular}{c}角加速度\\$\ddot{q}$$\tani*{rad/s^2}$\end{tabular}
+    & \begin{tabular}{c}加速度\\$\dot{q}$$\tani*{m/s}$\end{tabular} 
+    & \begin{tabular}{c}最大応力\\$\sigma\tani*{Pa}$\end{tabular} 
+    & \begin{tabular}{c}変位\\$\delta_z\tani*{m}$\end{tabular} 
+    & \begin{tabular}{c}重心の鉛直方向回り\\慣性モーメント\\$I_{S_0}\tani*{g mm^2}$\end{tabular} \\ \hline
+    $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 10^{-3}$&$1.02\times10^8$\\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+  \caption{\texttt{array.sty}を使用して、ソースをきれいにした。}
+  %
+  \newcolumntype{C}{>{\centering}m{5em}}% require array.sty
+  \newcolumntype{D}{>{\centering}m{9zw}}
+  \small
+  \begin{tabular}{*5C D}
+    \hline
+    質量 \\ $M\tani*{kg}$ 
+      & 角加速度 \\ $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度 \\ $\dot{q}$$\tani*{m/s}$
+      & 最大応力 \\ $\sigma\tani*{Pa}$
+      & 変位 \\ $\delta_z\tani*{m}$
+      & 重心の鉛直方向回り\\慣性モーメント\\ $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+  \cprotect\caption{tabularの横幅を最大（\code{\linewidth}）にして、最後の列以外の幅指定を自動にした。\texttt{tabularx.sty}を使用。}
+  %
+  \renewcommand{\tabularxcolumn}[1]{m{#1}} % default の base line を middle に
+  \newcolumntype{Y}{>{\centering}X}
+  \newcolumntype{Z}{>{\centering}m{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量\par $M\tani*{kg}$ 
+      & 角加速度\par $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度\par $\dot{q}$$\tani*{m/s}$
+      & 最大応力\par $\sigma\tani*{Pa}$
+      & 変位\par $\delta_z\tani*{m}$
+      & 重心の鉛直方向回り\par 慣性モーメント\par $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+  \caption{line skipを微調整。というかゼロにした。}
+  \label{おすすめ1}
+  %
+  \newcommand*{\narrowLS}{\setlength{\baselineskip}{1zw}} % 行間をゼロにするコマンド
+  \renewcommand{\tabularxcolumn}[1]{m{#1}} % default の base line を middle に
+  \newcolumntype{Y}{>{\centering\narrowLS}X}
+  \newcolumntype{Z}{>{\centering\narrowLS}m{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量\par $M\tani*{kg}$ 
+      & 角加速度\par $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度\par $\dot{q}$$\tani*{m/s}$
+      & 最大応力\par $\sigma\tani*{Pa}$
+      & 変位\par $\delta_z\tani*{m}$
+      & 重心の鉛直方向回り\par 慣性モーメント\par $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+  \caption{bottomのlineで揃える。}
+  %
+  \newcommand*{\narrowLS}{\setlength{\baselineskip}{1zw}} % 行間をゼロにするコマンド
+  \renewcommand{\tabularxcolumn}[1]{b{#1}} % default の base line を bottom に
+  \newcolumntype{Y}{>{\centering\narrowLS}X}
+  \newcolumntype{Z}{>{\centering\narrowLS}b{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量\par $M\tani*{kg}$ 
+      & 角加速度\par $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度\par $\dot{q}$$\tani*{m/s}$
+      & 最大応力\par $\sigma\tani*{Pa}$
+      & 変位\par $\delta_z\tani*{m}$
+      & 重心の鉛直方向回り\par 慣性モーメント\par $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+
+\newcommand*{\narrowLS}{\setlength{\baselineskip}{1zw}} % 行送りをゼロに
+
+\begin{table}[H]
+  \caption{慣性モーメントのところのline skipだけをゼロに。}
+  \label{おすすめ2}
+  %
+  \renewcommand{\tabularxcolumn}[1]{m{#1}} % default の base line を middle に
+  \newcolumntype{Y}{>{\centering}X}
+  \newcolumntype{Z}{>{\centering}m{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量\par $M\tani*{kg}$ 
+      & 角加速度\par $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度\par $\dot{q}$$\tani*{m/s}$
+      & 最大応力\par $\sigma\tani*{Pa}$
+      & 変位\par $\delta_z\tani*{m}$
+      & {\narrowLS 重心の鉛直方向回り\par 慣性モーメント\par} $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+  \caption{bottomのlineで揃える。}
+  %
+  \renewcommand{\tabularxcolumn}[1]{b{#1}} % default の base line を bottom に
+  \newcolumntype{Y}{>{\centering}X}
+  \newcolumntype{Z}{>{\centering}b{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量\par $M\tani*{kg}$ 
+      & 角加速度\par $\ddot{q}$$\tani*{rad/s^2}$ 
+      & 加速度\par $\dot{q}$$\tani*{m/s}$
+      & 最大応力\par $\sigma\tani*{Pa}$
+      & 変位\par $\delta_z\tani*{m}$
+      & {\narrowLS 重心の鉛直方向回り\par 慣性モーメント\par} $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+  \caption{単位のcolumnを揃えた。}
+  %
+  \renewcommand{\tabularxcolumn}[1]{m{#1}} % default の base line を middle に
+  \newcolumntype{Y}{>{\centering}X}
+  \newcolumntype{Z}{>{\centering}m{9zw}}
+  \small
+  \begin{tabularx}{\linewidth}{*5Y Z}
+    \hline
+    質量 & 角加速度 & 加速度 & 最大応力 & 変位 & \narrowLS 重心の鉛直方向回り\par 慣性モーメント \tabularnewline
+    $M\tani*{kg}$ & $\ddot{q}$$\tani*{rad/s^2}$ & $\dot{q}$$\tani*{m/s}$ & $\sigma\tani*{Pa}$ & $\delta_z\tani*{m}$ & $I_{S_0}\tani*{g mm^2}$ \tabularnewline
+    \hline
+    $1.07$ & $4.25\times 10^{-1}$ & $4.25\times 10^{-1}$ & $9.28\times 10^6$ & $2.19\times 10^{-3}$ & $1.02\times10^8$ \tabularnewline
+    \hline
+  \end{tabularx}
+\end{table}
+
+個人的には、表\ref{おすすめ1}か\ref{おすすめ2}がおすすめです。
+
+
+
+
+\end{document}
