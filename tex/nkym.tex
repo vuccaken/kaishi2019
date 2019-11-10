@@ -9,8 +9,14 @@
 
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
+\usepackage{newtxtext,newtxmath}
 
-\toctrue
+%% font -> gt & sf
+\renewcommand\kanjifamilydefault{\gtdefault}
+\renewcommand\familydefault{\sfdefault}
+
+\renewcommand\qed{\hfill □\par} % put QED
+\newcommand\hyo[1]{表\ref{tab:#1}}
 
 \begin{document} % - - - - - - - - - - - - - - - - - - - - - -
 
@@ -26,7 +32,7 @@
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
-  {私、実在の記述に関しては完全でって言ったよね！}% title
+  {私、実在の記述は完全でって言ったよね！}% title
   {物理科学科4回生}% 所属
   {中山~敦貴}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
@@ -65,7 +71,7 @@
   すなわち、ある2つの事象（event）について、どの慣性系で見てもどちらが先に起きてどちらが後に起きたかは一意的に決まるということ。
 }ための条件として、物理の理論には必要とされるものである。
 \par
-以上のことから、我々はひとまず、素朴実在論に局所性を加えた「\ftj{局所実在論}」という立場をとるものとしよう。
+以上のことから、我々は素朴実在論に局所性を加えた「\ftj{局所実在論}」という立場をとるものとしよう。
 局所実在論とはすなわち、因果律を守るような古典論ということである。
 そして、アインシュタインもこの立場であった。
 
@@ -161,7 +167,7 @@ EPR論文が発表された当時は、このような議論は形而上学の�
 このセクションでは、局所的な隠れた変数理論あれば必ずベルの不等式を満たすことを証明する。
 さらに、量子力学の理論で考えると、ベルの不等式を破る場合があることを示す。
 のちに、アスペによる検証で、実験的にベルの不等式が破れる場合があることを認めざるを得なくなる。
-もちろん、物理学は実験科学であるから、経験を否定することはナンセンスである\footnote{
+もちろん、物理学は実験科学であるから、経験を否定することはできない\footnote{
   量子力学が正しくないという主張は別に構わないが（とはいえ反証可能性は必要だが）、経験（実験事実）は正しいと認めなければならない。
 }。\par
 まずは、局所的な隠れた変数理論において、ベルの不等式が成り立つことを示そう。
@@ -169,29 +175,40 @@ EPR論文が発表された当時は、このような議論は形而上学の�
 %
 \subsection{ベルの不等式} % - - - - - - - - - - -
 
-初めに断っておくが、ここで示すベルの不等式と呼んでいるものは、ベルのオリジナルのものではない。
-実際、ベルの不等式（ベル型の不等式）にはいくつか種類がある。
-しかし、どれも本質的には同じものなので、ここでは
+ベルの不等式（ベル型の不等式）にはいくつか種類があるが、ここではベルのオリジナルのものではなく、CHSH\footnote{
+  John Clauser, Michael Horne, Abner Shimony, and Richard Holt (1969).
+}不等式と呼ばれるものを示すことにする。
 
-表のように$x, \theta, \phi$の3列に$+, -$を割り振るゲームを考える。
+
+%
+\subsubsection{不等式の証明}
+\hyo{pm}のように$x, \theta, \phi$の3列に$+, -$を好きに割り振るゲームを考える。
 この表の中で$x$と$\phi$にそれぞれ$+$があるものの個数を$n(x=+,\phi=+)$のように書くと、次の不等式が必ず成り立つ：
-\begin{align*}
+\begin{align}
   n(x=+,\phi=+) + n(\phi=-,\theta=+) \ge n(x=+,\theta=+).
-\end{align*}
+  \label{eq:bell's ineq}
+\end{align}
 
 \begin{table}[htbp]
   \centering
   \caption{$+, -$の割り振り}
+  \label{tab:pm}
   \begin{tabular}{ccc} \hline
     $x$ & $\theta$ & $\phi$ \\ \hline
     $+$ & $+$ & $-$ \\
     $-$ & $+$ & $+$ \\
+    $-$ & $-$ & $-$ \\
+    $+$ & $+$ & $-$ \\
+    $+$ & $-$ & $+$ \\
     $\vdots$ & $\vdots$ & $\vdots$ \\ \hline
   \end{tabular}
 \end{table}
 
 \noindent 証明：\par
-前の表において$n(x=+,\phi=+)$は$\theta = +$と$\theta = -$の和である。
+\hyo{pm}において$n(x=+,\phi=+)$は、$\theta = +$の場合と$\theta = -$の場合の和で書けるはずである\footnote{
+  $n(x=+,\phi=+)$と書いたとき、隠れた変数である$\theta$の値については何も言及されていない。
+  実在論の立場では、たとえ隠れていようが、$\theta$は必ずある値（$+$か$-$のどちらか一方）を持っているものとする。
+}。すなわち
 \begin{align}
   \label{eq:bell-1}
   n(x=+,\phi=+) = \textcolor{red}{n(x=+,\phi=+, \theta=+)} + n(x=+,\phi=+, \theta=-).
@@ -204,21 +221,25 @@ EPR論文が発表された当時は、このような議論は形而上学の�
   \label{eq:bell-3}
   n(x=+,\theta=+) &= \textcolor{red}{n(x=+, \phi=+, \theta=+)} + \textcolor{blue}{n(x=+, \phi=-, \theta=+)}.
 \end{align}
-\siki{bell-1}と\siki{bell-2}の和と\siki{bell-3}を比較すると、\siki{bell-1}と\siki{bell-2}の第2項の分だけ\siki{bell-3}の方が小さい。よって、ベルの不等式
-\begin{align*}
-  n(x=+,\phi=+) + n(\phi=-,\theta=+) \ge n(x=+,\theta=+)
-\end{align*}
-が成り立つ。
+\siki{bell-1}と\siki{bell-2}の和と\siki{bell-3}を比較すると、\siki{bell-1}と\siki{bell-2}の第2項の分だけ\siki{bell-3}の方が小さい。よって、ベルの不等式\siki{bell's ineq}が成り立つ。
 \qed
 
 %
 \subsection{アスペの実験} % - - - - - - - - - - -
+Ca原子から放出される2つの光子を検出する実験を考える。
+すると、量子論から予想される値を用いたのでは、ベルの不等式が破れてしまう場合があることが導かれてしまう。
+自然をより正しく記述するのは局所実在論か量子論か、それらは実験によって判断される。
+そして、アスペによる検証で、後者が正しいことが示された。\par
+このことについて詳しく見ていく。
+まずは、光子の性質から確認していこう。
 
 %
 \subsubsection{光子の偏光} % - - - - - - - - - - -
 
-定義：
-（光子の）電場の振動の方向を偏光と呼ぶ。
+光子の電場の振動の方向を、光子の偏光と呼ぶ\footnote{
+  光子は粒子だが、波動としての性質（偏光）も同時に持っている。
+}。
+光子の進行方向、電場（偏光）および磁場の方向は、それぞれ互いに直交している。
 
 \begin{figure}[ht]
   \centering
@@ -227,25 +248,33 @@ EPR論文が発表された当時は、このような議論は形而上学の�
   % \label{}
 \end{figure}
 
-偏光子を通過した後の光子の偏光は、偏光子の偏光軸と一致する。
-
-光子が偏光子を通過する確率は、光子と偏光子の偏光軸のなす角を$\theta$として
-\begin{align*}
-  P(\theta) = \frac12 \cos^2\theta
-\end{align*}
+\par
+ここで、偏光子というものが存在し、次のような性質を持つ\footnote{
+  理論的な証明は面倒なので、実験事実（経験）としてこれらの性質を認めていただきたい。
+  何度も言うが、物理学は実験科学なので、実験事実（経験）こそが正しさの絶対的基準である。
+}：
+\begin{itemize}
+  \item 偏光子を通過した後の光子の偏光は、偏光子の偏光軸と一致する。
+  \item 光子が偏光子を通過する確率は、光子と偏光子の偏光軸のなす角を$\theta$として
+    \begin{align}
+      P(\theta) = \frac12 \cos^2\theta
+    \end{align}
+    である。
+\end{itemize}
 
 %
 \subsubsection{Ca原子の放射光の検出} % - - - - - - - - - - -
 
-Ca原子にレーザー光を照射して、特定のエネルギーレベルに励起させると、基底状態に戻る際に2個の互いに直交した偏光を持つ光子（緑色と紫色）が放出される。
+Ca原子にレーザー光を照射して、特定のエネルギーレベルに励起させると、基底状態に戻る際に2個の互いに直交した偏光を持つ光子（緑色と紫色）が放出される\footnote{
+  これについても、ここでは実験事実として認めていただきたい。
+}。\par
+以上を踏まえ、\zu{Ca-machine}のような装置で2つの光子を検出することを考える。
 
-図のような装置で2つの光子を検出する。
-
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[height=40mm]{nkym/fig/souchi.jpeg}
-  \caption{Ca原子から出た2つの光子の偏光を検出する装置。（参考文献[1], P.21）}
-  % \label{}
+  \caption{Ca原子から出た2つの光子の偏光を検出する装置。} %（参考文献[1], P.21）
+  \label{fig:Ca-machine}
 \end{figure}
 
 %
@@ -254,57 +283,69 @@ Ca原子にレーザー光を照射して、特定のエネルギーレベルに
 \begin{figure}[ht]
   \centering
   \includegraphics[width=40mm]{nkym/fig/zahyou-kei.jpeg}
-  % \caption{軸の設定。（参考文献[1], P.26）}
-  % \label{}
+  \caption{偏光を表すための座標軸の設定。} %（参考文献[1], P.26）
+  \label{fig:zahyou-jiku}
 \end{figure}
 
-光子の進行方向を$z$軸正の向きとし、水平方向に$x$軸、鉛直方向に$y$軸をとる。
-
-p検出器とg検出器に付いている偏光子の偏光軸は、図のように、それぞれ2種類の設定を使う。
+光子の進行方向を$z$軸正の向きとし、水平方向に$x$軸、鉛直方向に$y$軸をとる\footnote{
+  実験系に固定した座標系を取るのではなく、光子それぞれに対して座標系を取ることに注意。
+  % 例えば、一方の光子の偏光が$x$軸であれば、
+}。
+p検出器とg検出器に付いている偏光子の偏光軸は、\zu{henkou-jiku}のように、それぞれ2種類の設定を使う。
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=45mm]{nkym/fig/henkou-jiku.jpeg}
-  \caption{偏光軸の方向。（参考文献[1], P.26）}
-  % \label{}
+  \caption{偏光子の偏光軸の方向。} %（参考文献[1], P.26）
+  \label{fig:henkou-jiku}
 \end{figure}
 
 %
 \subsubsection{光子の測定} % - - - - - - - - - - -
 
-p検出器の偏光子の偏光軸を$y$軸方向に、g検出器の偏光軸を$x$軸から$\phi$だけ回してセットし、単位時間あたりに両検出器が同時に光子を検出する回数$n(x=+,\phi=+)$を観測する。\par
-同様にして、$n(x=+,\theta=+)$と$n(\phi=-,\theta=+)$を観測する。
-
-単位時間当たりにp検出器が検出する光子の数を$N \,(\gg 1)$個として、
-同時にg検出器が光子を検出する数を予想すると
-\begin{align*}
-  n(x=+,\phi=+) &= N \cos^2\phi, \\
-  n(x=+,\theta=+) &= N \cos^2\theta, \\
-  n(\phi=-,\theta=+) &= N \cos^2(\phi + \pi/2 - \theta) = N \sin^2(\phi - \theta).
-\end{align*}
+p検出器の偏光子の偏光軸を$y$軸方向に、g検出器の偏光軸を$x$軸から$\phi$だけ回してセットし、単位時間あたりに両検出器が同時に光子を検出する回数$n(x=+,\phi=+)$を観測する。
+同様にして、$n(x=+,\theta=+)$と$n(\phi=-,\theta=+)$を観測する。\par
+単位時間当たりにp検出器が検出する光子の数を$N \,(\gg 1)$個として、同時にg検出器が光子を検出する数を予想すると、次のようになる：
+\begin{align}
+  \label{eq:photon-1} n(x=+,\phi=+)      &= N \cos^2\phi, \\
+  \label{eq:photon-2} n(x=+,\theta=+)    &= N \cos^2\theta, \\
+  \label{eq:photon-3} n(\phi=-,\theta=+) &= N \cos^2(\phi + \pi/2 - \theta) = N \sin^2(\phi - \theta).
+\end{align}
 
 %
 \subsubsection{ベルの不等式の破れ} % - - - - - - - - - - -
 
+上で示した\siki{photon-1}から\siki{photon-3}を、ベルの不等式\siki{bell's ineq}に代入すると、次のようになる：
 \begin{align*}
   \cos^2\phi + \sin^2(\phi - \theta) \ge \cos^2\theta.
 \end{align*}
-$\phi = 3\theta$とすると
-\begin{align*}
-  \cos^2 3\theta + \sin^2 2\theta - \cos^2\theta \ge 0.
-\end{align*}
-左辺を図示すると、$0 < \theta < 30^\circ$の範囲で不等式を満足していない。
 
-実験してみると、この予想通りベルの不等式を満たさない場合がある。
+ここで、$\phi = 3\theta$とし、右辺を左辺へ移項すると
+\begin{align}
+  \cos^2 3\theta + \sin^2 2\theta - \cos^2\theta \ge 0
+\end{align}
+となる。
+しかし、左辺を$\theta$の関数として図示すると（\zu{left-hen}）、$0 < \theta < 30^\circ$の範囲で不等式を満足しないことがわかる。
 
 \begin{figure}[htp]
   \centering
   \includegraphics{nkym/fig/Aspect.pdf}
   \caption{不等式の左辺。}
-  % \label{}
+  \label{fig:left-hen}
 \end{figure}
 
-\subsubsection{解釈}
+ここで、局所実在論と量子論との間で矛盾が生じている。
+果たして、どちらの理論が正しいのであろうか？
+
+初めにも述べたとおり、結局、アスペらによる検証実験によって、量子論の予想通りベルの不等式を満たさない場合があることが示された。
+さらに、実験によって得られた値は、量子論で予想された値とピタリと一致した\footnote{
+  もちろん、エラーバーはあるが、標準偏差は不等式の破れに比べて何倍も小さいものであったらしい[要出典]。
+}。
+この実験結果は、自然を正しく記述できる局所実在論（隠れた変数理論）の存在を否定するだけでなく、量子論の正しさを保証する積極的な根拠であるとも言える。
+
+\subsection{解釈}
+
+最後に、以上の結果はどのように解釈されるのかを述べる。
 
 \begin{itemize}
   \item 例えば$n(x=+,\phi=+)$を測定したとき、$\theta$が何であったかには言及していない（測定していない）。
@@ -345,7 +386,7 @@ $\phi = 3\theta$とすると
 %   \label{fig:sin}
 % \end{figure}
 
-\clearpage
+
 
 %% 参考文献
 \begin{thebibliography}{99}
