@@ -32,7 +32,8 @@
     "*.dvi",
     // "*.synctex.gz",
     "*.fdb_latexmk", "*.fls", // latexmk
-    "*.nav", "*.snm" // beamer
+    "*.nav", "*.snm", // beamer
+    "*.cpt" // cprotect.sty
   ],
   // syntax coloring
   "files.associations": {

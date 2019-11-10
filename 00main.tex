@@ -22,7 +22,7 @@
 
 \fronttrue
 \maintrue
-% \backtrue
+\backtrue
 
 % \newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
 \newcommand\vReadTeXFile[1]{\input{tex/#1}}
@@ -34,9 +34,7 @@
 \iffront
   \frontmatter
   \vReadTeXFile{01hyoshi-omote}
-  \cleardoublepage
-  % \vReadTeXFile{02hyoshi-naka}
-  % \cleardoublepage
+  \vReadTeXFile{02hyoshi-naka}
   \vReadTeXFile{03kantogon}
   \tableofcontents % 目次出力
 \fi
@@ -44,14 +42,13 @@
 \ifmain
   \mainmatter
   \vReadTeXFile{yoshida}
-  % \vReadTeXFile{fukuda}
-  % \vReadTeXFile{fukuda2}
-  % \vReadTeXFile{namba}
-  % \vReadTeXFile{kfuji}
+  \vReadTeXFile{fukuda}
+  \vReadTeXFile{namba}
+  \vReadTeXFile{kfuji}
   % \vReadTeXFile{fjk}
   % \vReadTeXFile{sj}
-  % \vReadTeXFile{nkym}
-  % \vReadTeXFile{robocon}
+  \vReadTeXFile{nkym}
+  \vReadTeXFile{robocon}
   % \vReadTeXFile{kadono}
   % \vReadTeXFile{20temp}
   % \vReadTeXFile{50template}
@@ -59,9 +56,7 @@
 
 \ifback
   \backmatter
-  \markboth{}{} % headerのchaper nameとsection nameを消す
   \vReadTeXFile{04hensyukoki} % odd
-  \clearpage
   \vReadTeXFile{05okuduke} % even
   \clearpage\thispagestyle{empty}\mbox{}\newpage % 空白ページ挿入
   \ifodd\thepage\thispagestyle{empty}\mbox{}\newpage\fi % 裏表紙がeven pageになるよう調整

@@ -10,6 +10,7 @@
 ### まだの人は
 
 1. texのインストール（texlive 2019）
+    - ここからインストール： http://www.tug.org/texlive/acquire-netinstall.html
 2. githubのアカウントを作成
 3. githubのorganizationのvuccakenに参加する（招待してもらう）
 
@@ -22,26 +23,25 @@
 ### tex編
 
 1. `/tex/` の中に、自分の名前やそれに準ずる名前でtexファイルを作成。
-  
-- 例： `/tex/nkym.tex`
+    - 例： `/tex/nkym.tex`
   
 2. `/src/` の中には、画像とかを置くためのディレクトリを作成。
-  - 例： `/src/nkym/`
-  - それ以下のサブディレクトリは自由に構成して良い。
-    - 例：
-    ```
-    /src/
-      `- nkym/
-          |- img/
-          |- fig/
-          `- program/
-    ```
+    - 例： `/src/nkym/`
+    - それ以下のサブディレクトリは自由に構成して良い。
+      - 例：
+      ```
+      /src/
+        `- nkym/
+            |- img/
+            |- fig/
+            `- program/
+      ```
 
 3. 作成したtexファイルに、`/tex/50template.tex` の内容をそのままコピペして、適宜編集する。
 
 4. あとはいつも通りtexを書いていくだけ。
-  - ただし、画像などのソースのパスは `[directory name]/[file name]` とすること。
-  - 例： `\includegraphics{nkym/hensuki.png}`
+    - ただし、画像などのソースのパスは `[directory name]/[file name]` とすること。
+    - 例： `\includegraphics{nkym/hensuki.png}`
 
 5. 作業が終われば、忘れずに commit & push する。次に作業を再開する時は、リモートのリポジトリに変更がないか、ちゃんと fetch & pull する！　
 
@@ -69,6 +69,8 @@ synctexは、プレビューしたPDFを `cmd` ( `ctrl` )を押しながらク�
 
 
 ### 方法2 latexmk
+
+`.latexmkrc` というのが設定ファイルです。ここで、 `./sty` と `../sty` にパスを通しています。
 
 #### macの場合（多分）
 
@@ -98,7 +100,7 @@ latexmkには以下のようなオプションがある。
 |-|-|
 | -c | `.log` とか補助ファイルを消す |
 | -C | `.pdf` も消す |
-| -pvc | texファイルに変0更があるたび自動でタイプセットする |
+| -pvc | texファイルに変更があるたび自動でタイプセットする |
 
 optionは次のようにして使う。
 

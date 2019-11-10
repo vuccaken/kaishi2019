@@ -11,30 +11,22 @@
 % 最終的には vuccaken2019.sty の中に書いてください。
 % とりあえずはここに書いてもらって構いません。
 
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage{bm}
-\usepackage{subfigure}
-\usepackage{here}
-
-\toctrue % コメントアウトで目次非表示
+% \usepackage{amsmath}
+% \usepackage{multicol}
+% \usepackage{bm}
+% \usepackage{subfigure}
+% \usepackage{here}
 
 \begin{document}
 
-\iftoc
-  \setcounter{tocdepth}{2} % 目次に表示する深さ
-  \tableofcontents % 目次出力
-  \setcounter{page}{0} % page番号を0にセット
-  \clearpage % 改ページ
-\fi
+\mokuji{2} %目次出力
 
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
-  {\LaTeX テンプレート（会誌原稿用）}% title
-  {テンプレ科学科4回生}% 所属
-  {テンプレくん}% name
+  {論理学概説}% title
+  {物理科学科1回生}% 所属
+  {吉田伊吹}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
-
 
 \section{はじめに}
 %\subsection{厳密}
@@ -659,7 +651,8 @@ I(\forall x(G(x)\to H(x))=T
 この解釈は,全体集合を$X=\{1,2,3,4,5\}$とし,集合$A,B,C$を$A=\{1,2\},B=\{1,2,3\},C=\{1,2,3,4\}$としたとき,$F(x),G(x),H(x)$をそれぞれ$x\in A,x\in B,x\in C$と解釈したのに相当する.この解釈において証明のサンプルは$A$が$C$の部分集合でかつ$B$が$C$の部分集合であることを前提として,$A$と$B$の合併が$C$の部分集合であることを結論する推論を表す.\par
 論理式の集合$\Gamma$と論理式$\varphi$において,いかなる解釈のもとでも$\Gamma$に含まれる論理式がすべて真ならば,$\varphi$も真となる（すなわち任意の解釈$I$に対して,$I(\gamma)=T(\gamma \in \Gamma)\Rightarrow I(\varphi)=T$）とき,$\varphi$は$\Gamma$の意味論的帰結といって,$\Gamma \models \varphi$とかく.
 
-\section{形式的体系$\mathcal K$の健全性と完全性}
+% \section{形式的体系$\mathcal K$の健全性と完全性}
+\section{形式的体系\texorpdfstring{$\mathcal K$}{K}の健全性と完全性}
 前章をスキップした人のためにこの章で必要になる知識を再掲する.
 \begin{itemize}
 \item 形式的体系$\mathcal K$において,仮定$\Gamma$から$\varphi$が証明できることを$\Gamma \vdash \varphi$とかく.
@@ -677,7 +670,8 @@ $\Rightarrow$の方を形式的体系の健全性と言い,$\Leftarrow$の方を
 これから行うのはメタ論理における証明であり,形式的体系による証明ではない.実は前章でもこっそり使っていたが,$\Rightarrow$や$\Leftrightarrow$はメタレベルでのならばと同値を表す.すでにメタ論理はオブジェクトの論理における推論や真理値といった概念を定義するのに多く使っている.たとえば真理値表なんかもそうで例えば$\varphi \land \psi$の真理値は$\varphi$が真でかつ$\psi$が真ならば真でそれ以外は偽であると定義した.また,これまでには集合の概念を何の断りもなく使い,前章での解釈の定義には写像の概念を用いている.数学も論理によって議論されるはずなのに前段階ですでに数学の概念を用いている.これらの数学もメタレベルの道具立てとして認めたのである.\par
 しかし我々がメタレベルの道具立てとして認められるものは何であろうか.そのことに関してはいろいろな立場があり,$\circ \circ$主義の論理と呼ばれる.\par
 
-\subsection{形式的体系$\mathcal K$の健全性}
+% \subsection{形式的体系$\mathcal K$の健全性}
+\subsection{形式的体系\texorpdfstring{$\mathcal K$}{K}の健全性}
 \begin{align}
 \Gamma \vdash \varphi \Rightarrow \Gamma \models \varphi
 \end{align}
@@ -711,5 +705,18 @@ $I(\gamma)=T(\gamma \in \Gamma)$であることを仮定して$I(\psi \to \varph
 
 \section{おわりに～数学の形式化は可能か～}
 我々はこれまでの議論において,簡単な論理と数学的帰納法や集合の概念をメタレベルの道具立てとして,論理を形式化することに成功した.これによって得られる恩恵は第一に厳密な論理を安心して扱えるようになったことである.そして第二に形式化された推論を自由な解釈によってさまざまに応用できることである.この恩恵を最も受けるのは数学であるが,はたして数学は完全に形式化できるのだろうか.実はそう簡単な話ではない.述語論理は述語$F(x)$を$F$を満たす$x$を集めた集合と考えることで集合の概念と同一視できる.数学では集合の集合を扱うことが多いがこれは述語の述語を扱うのと同じである.しかしそれを無制限に許すとラッセルのパラドックスと呼ばれる矛盾を導いてしまう.これを回避するために,矛盾が生じないように公理系を設けた公理的集合論が考案された.しかし算術を含む体系においては有限回の操作と数学的帰納法というメタレベルの道具立てにおいてその体系が無矛盾ならその無矛盾性をその体系内では証明できないことが示された（これをゲーデルの不完全性定理という）.よって数学を完全に形式化し論理学に基礎づけることは不可能である.
+
+%% 参考文献
+\begin{thebibliography}{99}
+  \item 飯田賢一・中才敏郎・中谷隆雄, 論理学の基礎, 昭和堂, 1994.
+  \item 鹿島亮, 数理論理学, 朝倉書店, 2009.
+  \item 斎藤毅, 集合と位相, 東京大学出版会, 2009.
+  \item 齋藤正彦, 数学の基礎 集合・数・位相, 東京大学出版会, 2002.
+  \item 野矢茂樹, 論理学, 東京大学出版会, 1994.
+  \item 戸次大介, 数理論理学, 東京大学出版会, 2012.
+  \item 松本和夫, 復刊 数理論理学, 共立出版, 1970(初版), 2001(復刊).
+  \item @vuccaken, 物科研HP, \url{https://vuccaken.github.io}, 2019.
+\end{thebibliography}
+
 
 \end{document}

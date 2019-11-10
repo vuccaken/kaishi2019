@@ -1,17 +1,18 @@
-%
-%     This file is "vuccaken.sty"
-%
-%     2018-03-08 15:30 created
-%     2018-11-25 調整 \vaddcontentsline
-%     2019-08-06 微調整
-%     2019-11-03 微調整 & v-hyperref
+%%
+%%     This file is "vuccaken.sty"
+%%
+%%     2018-03-08 15:30 created
+%%     2018-11-25 調整 \vaddcontentsline
+%%     2019-08-06 微調整
+%%     2019-11-03 微調整 & v-hyperref
+%%     2019-11-06 thebibliography を追加
 
-%  require "jsbook class"
+%%  require "jsbook class"
 
 
 %% \kaishititle{title}{na}{me}
 \newcommand{\kaishititle}[3]{%
-  \vchapter{#2 #3}{#1}
+  \vchapter{#2\hspace{1zw}#3}{#1}
   \vspace{-45pt}
   \begin{flushright}
     {\bfseries \large #2} \\ \vspace{3pt} %所属
@@ -112,6 +113,32 @@
 %% \l@chapter、\l@vchapterの定義内にある。
 \renewcommand{\headfont}{\bfseries}
 
+%%
+%% 参考文献の thebibliography は、デフォだとchapterなので、sectionに変更
+%% from jsbook.cls
+\renewenvironment{thebibliography}[1]{%
+  \global\let\presectionname\relax
+  \global\let\postsectionname\relax
+  % \chapter*{\bibname}\@mkboth{\bibname}{}% 元
+  % \addcontentsline{toc}{chapter}{\bibname}% 元
+  \section*{\bibname}\markright{\bibname}% 変更
+  \addcontentsline{toc}{section}{\bibname}% 変更
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+         \leftmargin\labelwidth
+         \advance\leftmargin\labelsep
+         \@openbib@code
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+   \endlist}
 
 %
 %
