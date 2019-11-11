@@ -76,7 +76,7 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[height=5cm]{robocon/robot05.png}
+  \includegraphics[height=4cm]{robocon/robot05.png}
   \caption{ロボットハンド}
   \label{fig:ロボットハンド}
 \end{figure}
@@ -89,14 +89,14 @@
   \caption{Basic Arm 解析結果}
   \label{tbl:Basic Arm 解析結果}
   \begin{tabular}{|c|c|c|c|c|} \hline
-    質量$M\tani*{kg}$& 角加速度$\ddot{q}$$\tani*{rad/s^2}$& 加速度$\dot{q}$$\tani*{m/s}$& 最大主応力$\sigma\tani*{Pa}$& 変位$\delta_z\tani*{m}$\\ \hline
+  質量$M\tani*{kg}$& \begin{tabular}{c}角加速度\\$\ddot{q}$$\tani*{rad/s^2}$\end{tabular}& 加速度$\dot{q}$$\tani*{m/s}$& 最大主応力$\sigma\tani*{Pa}$& 変位$\delta_z\tani*{m}$\\ \hline
 $1.82$&$4.29\times 10^{-1}$&$4.29\times 10^{-1}$&$7.71\times 10^6$&$1.25\times 10^{-2}$\\ \hline
   \end{tabular}
 \end{table}
 
 \begin{figure}[htbp]]
   \centering
-  \includegraphics[width=12cm]{robocon/robot06.png}
+  \includegraphics[width=12.6cm]{robocon/robot06.png}
   \caption{Basic Arm 手先角加速度}
   \label{Basic Arm 手先角加速度}
 \end{figure}
@@ -183,7 +183,7 @@ $1.00$&$1.05\times 10^{-1}$&$0.98\times 10^{-1}$\\ \hline
   \caption{各理論値}
   \label{tbl:各理論値}
   \begin{tabular}{|c|c|c|c|c|} \hline
-    質量$M\tani*{kg}$& 角加速度$\ddot{q}$$\tani*{rad/s^2}$& 加速度$\dot{q}$$\tani*{m/s}$& 最大応力$\sigma\tani*{Pa}$& \begin{tabular}{c}慣性モーメント\\$I_z\tani*{kgm^2}$\end{tabular}\\ \hline
+    質量$M\tani*{kg}$& \begin{tabular}{c}角加速度\\$\ddot{q}$$\tani*{rad/s^2}$\end{tabular}& 加速度$\dot{q}$$\tani*{m/s}$& \begin{tabular}{c}最大応力\\$\sigma\tani*{Pa}$\end{tabular}& \begin{tabular}{c}慣性モーメント\\$I_z\tani*{kgm^2}$\end{tabular}\\ \hline
 $2.87$&$3.01\times 10^{-13}$&$3.01\times 10^{-13}$&$1.92\times 10$&$3.32\times 10^{15}$\\ \hline
   \end{tabular}
 \end{table}
@@ -202,7 +202,7 @@ $2.87$&$3.01\times 10^{-13}$&$3.01\times 10^{-13}$&$1.92\times 10$&$3.32\times 1
   \label{tbl:Harder Arm 解析結果}
   \begin{tabular}{|c|c|c|c|c|} \hline
     質量$M\tani*{kg}$& 角加速度$\ddot{q}$$\tani*{rad/s^2}$& 加速度$\dot{q}$$\tani*{m/s}$& 最大応力$\sigma\tani*{Pa}$& 変位$\delta_z\tani*{m}$\\ \hline
-$3.40$&$4.09\times 10^{-1}$&$4.09\times 10^{-1}$&$3.62\times 10^6$&$9.23\times 10^{-4}$\\ \hline
+    $3.40$&$4.09\times 10^{-1}$&$4.09\times 10^{-1}$&$3.62\times 10^6$&$9.23\times 10^{-4}$\\ \hline
   \end{tabular}
 \end{table}
 
@@ -251,16 +251,10 @@ $3.40$&$4.09\times 10^{-1}$&$4.09\times 10^{-1}$&$3.62\times 10^6$&$9.23\times 1
 基準としたアームと重力方向の変位を抑えたアームの2つからパラメータを作成する. 左縦軸に高さ$h$を, 右縦軸に幅$b$をとり, 横軸に加速度$\alpha$をとってグラフを書くと, 図\ref{fig:alpha-h, alpha-b グラフ}のようになる. グラフの右下に交点を寄せつつ, 強度が要求を満たすように設計していく.
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=15cm]{robocon/robot21.png}
+  \includegraphics[width=13cm]{robocon/robot21.png}
   \caption{$\alpha-h, \alpha-b$グラフ}
   \label{fig:alpha-h, alpha-b グラフ}
 \end{figure}
-
-
-
-
-
-
 
 \clearpage
 \subsection{最終形状}
@@ -281,55 +275,55 @@ $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 1
 \end{table}
 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot22.png}
   \caption{Speedy Arm 形状と寸法}
   \label{fig:Speedy Arm 形状と寸法}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=10cm]{robocon/robot23.png}
+  \includegraphics[width=8cm]{robocon/robot23.png}
   \caption{Speedy Arm アセンブリ図}
   \label{fig:Speedy Arm アセンブリ図}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot24.png}
   \caption{Speedy Arm 手先角加速度}
   \label{fig:Speedy Arm 手先角加速度}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot25.png}
   \caption{Speedy Arm 手先角速度}
   \label{fig:Speedy Arm 手先角速度}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot26.png}
   \caption{Speedy Arm 手先角度変化}
   \label{fig:Speedy Arm 手先角度変化}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot27.png}
   \caption{Harder Arm 手先加速度}
   \label{fig:Harder Arm 手先加速度2}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot28.png}
   \caption{Speedy Arm最大主応力}
   \label{fig:Speedy Arm最大主応力}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot29.png}
   \caption{Speedy Arm最大フォンミーゼス応力}
   \label{fig:Speedy Arm最大フォンミーゼス応力}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{robocon/robot30.png}
   \caption{Speedy Arm変位}
@@ -350,15 +344,15 @@ $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 1
 ただし,$x$の値は$1.49\times10^2 \tani*{mm}$であり, 数値解による重心から回転軸までの距離である. 両数値はほぼ一致しており, 各数値解の値は正しいと言える.\par
 最大応力については, 形状が複雑である為に応力の理論解を求めることは難しいので数値解を信用して評価する場合, 設計したすべての構造は応力については十分に要件を満たしていることは図\ref{fig:alpha-sigma_xグラフ}に示す通り, 明らかである. また, Speedy ArmはBasic Arm で達成できなかった変位の制限について,$2.19\times10^{-3} \tani*{m}$と十分に満たしており, 更にHarder Armより手先角加速度が大きいので, ロボットアームは十分に高速化され, 設計目標に達したと言える.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=10cm]{robocon/robot31.png}
+  \includegraphics[width=13cm]{robocon/robot31.png}
   \caption{$\alpha-\sigma_x$グラフ}
   \label{fig:alpha-sigma_xグラフ}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=10cm]{robocon/robot32.png}
+  \includegraphics[width=13cm]{robocon/robot32.png}
   \caption{$\alpha-\delta_z$グラフ}
   \label{fig:alpha-delta_zグラフ}
 \end{figure}
@@ -368,7 +362,7 @@ $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 1
 \item リンクの高速化と剛性を求める場合は降伏応力のほかにも閾値を設けて設計する必要がある. 設計パラメータは何を目的に設計するかによって正確に選択する必要がある. 
 \item ロボットアームを設計する際には重量がかさむものはロボットベースに近くなるように設計するか, 制御や機械要素による補償を施す必要がある
 \item ある方向への変形による変位は, その方向に寸法を取る材料または構造の厚みが関係するので, アームの伸びに対していくらの変形を許容するかというパラメータは重要なパラメータの一つである.
-\item CADソフトのファイル形式変換についての理解はシミュレーションソフトなどと連携した高度な設計に欠かせない知識である. まったく無料で使えるソフトウェアでもサポートが厚いものもあるので積極的に使っていきたい. 今回は学生版のAutodesk Inventor 2018を用いて設計・構造解析などを行ったが, simXpertとのファイルの互換性についてある程度の理解を得た. また, 今年より本学で生徒のパソコンで利用できる包括ライセンスを導入したMATLABの拡張機能に含まれるシミュレーションアプリケーションと連携が可能であることが分かったので, 以後挑戦したいと思う. 
+\item CADソフトのファイル形式変換についての理解はシミュレーションソフトなどと連携した設計に欠かせない知識である. 無料のソフトウェアでも本格的な設計が可能なので積極的に使っていきたい. 今回は学生版のAutodesk Inventor 2018を用いて設計・構造解析などを行い, simXpertとのファイルの互換性についてある程度の理解を得た. また, 2018年度より本学で生徒のパソコンで利用できる包括ライセンスを導入したMATLABの拡張機能に含まれるシミュレーションアプリケーションと連携が可能であることが分かったので, 以後挑戦したいと思う. 
 \end{itemize}
 
 \section{付録}
