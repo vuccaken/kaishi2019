@@ -10,6 +10,25 @@
 %%  require "jsbook class"
 
 
+
+%% パッケージの option
+\DeclareOption{analog}{% 紙に印刷して製本するとき用
+  %% inner margin settings
+  \addtolength{\oddsidemargin}{10truemm}   % odd(right) page
+  \addtolength{\evensidemargin}{-10truemm} % even(left) page
+}
+\ProcessOptions\relax
+
+%% hyperref.styを読み込んでいなくてもOK
+\ifdefined\texorpdfstring\else
+  \newcommand{\texorpdfstring}[2]{#1}
+\fi
+
+
+%%                        %%
+%%      kaishi title      %%
+%%                        %%
+
 %% \kaishititle{title}{na}{me}
 \newcommand{\kaishititle}[3]{%
   \vchapter{#2\hspace{1zw}#3}{#1}
@@ -108,14 +127,13 @@
     \endgroup
   \fi}
 
-
 %% 目次chapterで、英語、数字も太字にする。
-%% \l@chapter、\l@vchapterの定義内にある。
 \renewcommand{\headfont}{\bfseries}
+
 
 %%
 %% 参考文献の thebibliography は、デフォだとchapterなので、sectionに変更
-%% from jsbook.cls
+%%
 \renewenvironment{thebibliography}[1]{%
   \global\let\presectionname\relax
   \global\let\postsectionname\relax
@@ -123,22 +141,26 @@
   % \addcontentsline{toc}{chapter}{\bibname}% 元
   \section*{\bibname}\markright{\bibname}% 変更
   \addcontentsline{toc}{section}{\bibname}% 変更
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\settowidth\labelwidth{\@biblabel{#1}}%
-         \leftmargin\labelwidth
-         \advance\leftmargin\labelsep
-         \@openbib@code
-         \usecounter{enumiv}%
-         \let\p@enumiv\@empty
-         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-   \sloppy
-   \clubpenalty4000
-   \@clubpenalty\clubpenalty
-   \widowpenalty4000%
-   \sfcode`\.\@m}
-  {\def\@noitemerr
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+      {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+        \advance\leftmargin\labelsep
+        \@openbib@code
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty\clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m
+}{%
+  \def\@noitemerr
     {\@latex@warning{Empty `thebibliography' environment}}%
-   \endlist}
+    \endlist
+}
 
-%
-%
+
+%%
+%%  End of vuccaken.sty
+%%

@@ -15,41 +15,11 @@
 %%
 %% 全体の設定
 %%
-\usepackage{xparse} % LaTeX3; \DeclareDocumentCommand
-
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
 
-\usepackage{v-hyperref} % 自作。内部でhyperrefを読み込んでる
-\hypersetup{%
-  bookmarksnumbered=true,%
-  setpagesize=false,%
-  pdftitle={白夜 第四号},%
-  pdfauthor={物理科学研究会},%
-  % pdfsubject={2019年度会誌},%
-  pdfcreator={vuccaken},
-  % pdfkeywords={TeX; dvipdfmx; hyperref; color;},
-  colorlinks=true,%
-  anchorcolor=black,
-  linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
-  citecolor=green,        % color of links to bibliography
-  filecolor=magenta,      % color of file links
-  urlcolor=cyan
-}
-
-%% hyperrefと競合するので、emathを使うのをやめます。
-%% 代わりに docmute を使います。
-    % \usepackage{emath,emathR} % \ReadTeXFile
-    % \usepackage{emathR}
-    % \resettagform % emathによる数式番号改悪をリセット
-\usepackage{docmute} % \inputを改良
-
-% inner margin settings
-\addtolength{\oddsidemargin}{10truemm}   % odd(right) page
-\addtolength{\evensidemargin}{-10truemm} % even(left) page
-
-% windows がうんこなのでエラーが出る。otfパッケージに起因。
+%% windows がうんこなのでエラーが出る。otfパッケージに起因。
 \DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*mc/m/it}{} %
 % \DeclareFontShape{JY1}{mc}{m}{sl}{<->ssub*mc/m/n}{}
 % \DeclareFontShape{JY1}{mc}{m}{sc}{<->ssub*mc/m/n}{}
@@ -65,21 +35,24 @@
 % \DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
 
+\usepackage{xparse}  % LaTeX3; \DeclareDocumentCommand
+\usepackage{docmute} % \inputを改良
+
 %%
 %% each kaishi で使う用、プチマクロ
 %%
 
 %% 数式
 \usepackage{amsmath,amssymb} % 数式関係
-\usepackage{amsthm} % theorem, proof env
-\usepackage{mathtools} % dcases environment
+% \usepackage{amsthm} % theorem, proof env
+% \usepackage{mathtools} % dcases environment
 \usepackage{physics} % 便利パッケージ
 \usepackage{cases} % numcases
 
 %% 図
 \usepackage[dvipdfmx]{graphicx} % 図の挿入
 \graphicspath{{./src/}{../src/}}% グラフのソース探索パス
-\usepackage{wrapfig} % 文章中に図
+% \usepackage{wrapfig} % 文章中に図
 \usepackage{here} % option H で図を強制出力
 
 %% 表
@@ -90,9 +63,9 @@
 \usepackage{enumitem} % enumerate
 \usepackage{url} % URLをそのまま表示してくれる
 % \usepackage{listings,jlisting} % ソースコード表示
-\usepackage{ascmac} % 枠を作るやつ
-\usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-\usepackage{tikz} % おえかきできるツール
+% \usepackage{ascmac} % 枠を作るやつ
+% \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
+% \usepackage{tikz} % おえかきできるツール
 
 %% toc
 \setcounter{tocdepth}{2} % 目次にどこまで表示するか
@@ -118,7 +91,6 @@
     }{%
       \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
     }
-
 
 %% 数式番号付加
 \def\atag{\refstepcounter{equation}\tag{\theequation}}
@@ -173,19 +145,20 @@
 \newcommand\const{\mathrm{const.}}
 
 % in text line
-% \newcommand\qed{\hfill □\par} % put QED
+\newcommand\QED{\hfill □\par} % put QED
 \newcommand\siki[1]{(\ref{eq:#1})}
 \newcommand\sikii[2]{(\ref{eq:#1}),\,(\ref{eq:#2})}
 \newcommand\zu[1]{図\ref{fig:#1}}
+\newcommand\hyo[1]{表\ref{tab:#1}}
 \newcommand\zenkakko[1]{\!\!（\,#1\,）\!\!}
 \newcommand\ftj[1]{{\bfseries #1}}
-\newcommand\migi{→~}
+% \newcommand\migi{→~}
 
 % 上付きバー \widebar
-\usepackage{accents}
-\makeatletter
-  \renewcommand\bar{\accentset{{\cc@style\underline{\mskip10mu}}}}
-\makeatother
+% \usepackage{accents}
+% \makeatletter
+%   \renewcommand\bar{\accentset{{\cc@style\underline{\mskip10mu}}}}
+% \makeatother
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 %%   Yoshida
