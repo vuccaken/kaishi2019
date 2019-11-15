@@ -64,6 +64,7 @@
 \usepackage{url} % URLをそのまま表示してくれる
 % \usepackage{listings,jlisting} % ソースコード表示
 % \usepackage{ascmac} % 枠を作るやつ
+\usepackage{xcolor} % 色を付ける
 % \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
 % \usepackage{tikz} % おえかきできるツール
 
@@ -91,6 +92,11 @@
     }{%
       \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
     }
+%
+
+%% 名前の間にスペースを入れる
+\newcommand\vmane@space{~}
+\newcommand\vname[2]{#1\vmane@space#2}
 
 %% 数式番号付加
 \def\atag{\refstepcounter{equation}\tag{\theequation}}
