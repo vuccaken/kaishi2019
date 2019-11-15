@@ -81,18 +81,29 @@
   \fi
 }
 
-%% 参考文献、やっぱり thebibliography 環境で出すことにします。
-%% あとで消します。
-    % 参考文献は enumerate 環境で出す。
-    \newenvironment{sanko}{%
-      \newcommand\sankoname{参考文献}
-      \addcontentsline{toc}{section}{\sankoname}
-      \section*{\sankoname}
-      \renewcommand{\labelenumi}{[\arabic{enumi}]} % [1], [2], ...
-    }{%
-      \renewcommand{\labelenumi}{\arabic{enumi}.} % reset to default
-    }
-%
+%% hyperref color settings
+\ifdefined\hypersetup
+  \hypersetup{% pdf設定
+    bookmarksnumbered = true,
+    setpagesize       = false,
+    pdftitle    = {白夜 第四号},
+    pdfauthor   = {物理科学研究会},
+    pdfsubject  = {令和元年度 物理科学研究会誌},
+    pdfkeywords = {立命館大学; 学友会学術部; 物理科学研究会; 会誌; 白夜;},
+  }
+  % \hypersetup{% color
+  %   colorlinks  = true,
+  %   anchorcolor = black,
+  %   linkcolor   = blue,
+  %   citecolor   = green,
+  %   filecolor   = magenta,
+  %   urlcolor    = cyan
+  % }
+  \hypersetup{% 白黒
+    pdfborder  = {0 0 0},
+    colorlinks = false
+  }
+\fi
 
 %% 名前の間にスペースを入れる
 \newcommand\vmane@space{~}
