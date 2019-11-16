@@ -15,14 +15,16 @@
 
 \begin{document} % 以下本文
 
-\mokuji{2} % 目次出力
-
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
   {固体中の熱}% title
-  {物理科学　M1}% 所属
-  {\vname{門野}{広大}}% name
+  {物理科学　M 1回生}% 所属
+  {門野 広大}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
+
+% \setcounter{tocdepth}{2} % 目次にどこまで表示するか
+% \tableofcontents % 目次出力
+% \clearpage % 改ページ
 
 \section*{はじめに}
 熱って何？温度ってなに？どうやって熱は伝わっているの？そんな疑問に一生に一度は出会ったことがあると思います。実際熱の伝わり方というものをちゃんと理解しようとすると莫大な時間がかかりますし、不可逆なものでもあるのでそもそも理解できないのかもしれません。でも、限定的な条件において理解することは容易にできます。今回の会誌ではそんな物理の世界では常識的なことを主に書いていきたいと思います。\par
@@ -37,27 +39,28 @@
 
 
 \section{フォノン君}
-固体の熱の伝わり方を考えていくため格子ということについて考えていく必要があります。
-
+固体中の熱物性を考えるに当たって固体がどういう構造になっているのかということをモデル化していく必要があります。まず簡単に一つの原子しかない単結晶の場合を考え、結晶中の原子同士がばねでつながっているモデルを考えます。図\ref{fig:bane}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=10cm]{temp/fig-sin.pdf}
+  \caption{一次元の結晶}
+  \label{fig:bane}
+\end{figure}
 
 \section{比熱とか熱伝導率とか}
 
 \section{ちょっと変わった話}
 
 \section{終わりに}
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[height=10cm]{temp/fig-sin.pdf}
-%   \caption{$y=\sin x$のグラフ。gnuplotで作成した。}
-%   \label{fig:sin}
-% \end{figure}
 
 %% 参考文献
-\begin{thebibliography}{99}
-  \item 横田伊佐秋　著　物理学テキストシリーズ　熱力学　岩波書店　(1987)
-  \item W.COCHRAN 著　小林正一、福地充　訳　固体物性シリーズ３格子振動　丸善出版 (昭和50年)
-  \item 田崎晴明　著　新物理学シリーズ37統計力学 培風館　(2008)
-\end{thebibliography}
+\begin{sanko}
+  \begin{enumerate}
+    \item 横田伊佐秋　著　物理学テキストシリーズ　熱力学　岩波書店　(1987)
+    \item W.COCHRAN 著　小林正一、福地充　訳　固体物性シリーズ３格子振動　丸善出版 (昭和50年)
+    \item 田崎晴明　著　新物理学シリーズ37統計力学 培風館　(2008)
+  \end{enumerate}
+\end{sanko}
 
 
 \end{document}
