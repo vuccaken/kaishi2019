@@ -1,0 +1,55 @@
+%
+%    comment
+%
+
+
+\documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
+
+\usepackage{vuccaken}
+\usepackage{vuccaken2019}
+\usepackage{v-cmt}
+
+\begin{document}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+\kaishititle%
+  {句読点の話}% title
+  {校正科学科}% 所属
+  {nkym}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
+
+\section*{はじめに}
+和文中の句読点は\textcolor{red}{全角}でお願いします。
+理由は以下を見て貰えばよいかと。
+
+反論があればしてください。
+
+\section{例}
+
+\subsubsection{理由1}
+そもそも、和文中に欧文の記号を使うのはおかしい。
+句読点以外に、半角の(括弧)とかも。
+
+\subsubsection{理由2}
+半角句読点（カンマ、ピリオド）の後は半角スペースが必須だが、忘れやすい。
+
+\subsubsection{理由3}
+和文中の半角句読点は、\LaTeX がうまく処理してくれない。
+
+\begin{table}[H]
+  \centering
+  % \caption{}
+  \begin{tabular}{l|ll}
+    \hline
+    & 句読点 & 例 \\
+    \hline
+    OK & 全角（、。） & 「あ、こんちわ。」、とか、『おやすみ』。（など。）。\\
+    OK & 全角（，．） & 「あ，こんちわ．」，とか，『おやすみ』．（など．）．\\
+    BAD & 半角（, . ） & 「あ, こんちわ. 」, とか, 『おやすみ』. （など. ）.\\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+
+\end{document}
