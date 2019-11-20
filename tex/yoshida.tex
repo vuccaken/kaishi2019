@@ -25,7 +25,7 @@
 \kaishititle%
   {論理学概説}% title
   {物理科学科1回生}% 所属
-  {吉田伊吹}% name
+  {\vname{吉田}{伊吹}}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 
 \section{はじめに}
@@ -79,7 +79,7 @@ A$\cdots$太郎は100点である。，B$\cdots$花子は100点である。，C$
 \end{itemize}
 
 \subsection{複合命題の真理値}
-命題$\varphi，\psi$の真理値に対して命題$\lnot\varphi，\varphi\land\psi，\varphi\lor\psi，\varphi\to\psi$の真理値を次のように定義する。\par
+命題$\varphi$，$\psi$の真理値に対して命題$\lnot\varphi$，$\varphi\land\psi$，$\varphi\lor\psi$，$\varphi\to\psi$の真理値を次のように定義する。\par
 \begin{table}[H]
 \begin{minipage}[t]{.45\textwidth}
 \begin{center}
@@ -148,7 +148,7 @@ F&F&T&T \\ \hline
 \end{center}
 \end{minipage}
 \end{table}
-では，正しい推論とはどういったものを言うのだろうか。推論とは，前提が全て正しいならばこれこれが言えるということである。つまり正しい推論とは前提が全て真ならば結論も必ず真となるような推論である。逆に言えば，前提が全て真であるにもかかわらず，結論が偽になることはないということであり，これは前提を$\varphi_1，\varphi_2，\dots，\varphi_n$結論を$\psi$としたとき，命題$\varphi_1\land\varphi_2\land，\dots，\land\varphi_n\to\psi$がトートロジーになることに他ならない。\par
+では，正しい推論とはどういったものを言うのだろうか。推論とは，前提が全て正しいならばこれこれが言えるということである。つまり正しい推論とは前提が全て真ならば結論も必ず真となるような推論である。逆に言えば，前提が全て真であるにもかかわらず，結論が偽になることはないということであり，これは前提を$\varphi_1$，$\varphi_2$，$\dots$，$\varphi_n$結論を$\psi$としたとき，命題$\varphi_1\land\varphi_2\land,\dots,\land\varphi_n\to\psi$がトートロジーになることに他ならない。\par
 実際に推論\textcircled{\scriptsize ア}， \textcircled{\scriptsize イ}が正しいかどうかを真理表をかいて確かめると以下のようになる。
 \begin{table}[H]
 \begin{center}
@@ -205,20 +205,20 @@ F&F&T&T&T&T&T \\ \hline
 \item[項]$\cdots$ \par
 ある決まった対象を$a$， $b$などと記号化し，これを定項という．また，不定の対象を$x$， $y$などと記号化し，これを変項という． 
 \item[関数]$\cdots$ \par
-足し算や累乗などの関数（数学的なものでなくとも一般に一つまたは複数の対象から一つの対象を定めるもの）を$f$， $g$などと記号化し，$x+y$， $3^x$などを$f(x，y)$， $g(x)$と表す．
+足し算や累乗などの関数（数学的なものでなくとも一般に一つまたは複数の対象から一つの対象を定めるもの）を$f$， $g$などと記号化し，$x+y$， $3^x$などを$f(x,y)$， $g(x)$と表す．
 \item[述語]$\cdots$ \par
-$\circ\circ$は整数である，$\circ\circ$は$\times\times$より大きい，など対象の性質や対象同士の関係を述語といい$F$， $G$などと記号化する．さらに$x$は整数である，$x$は$y$より大きい，を$F(x)$， $G(x，y)$と記号化する．これらは$x$， $y$に具体的な対象（定項）を代入することで命題となり真偽が確定する．
+$\circ\circ$は整数である，$\circ\circ$は$\times\times$より大きい，など対象の性質や対象同士の関係を述語といい$F$， $G$などと記号化する．さらに$x$は整数である，$x$は$y$より大きい，を$F(x)$， $G(x,y)$と記号化する．これらは$x$， $y$に具体的な対象（定項）を代入することで命題となり真偽が確定する．
 \item[量化]$\cdots$ \par
-任意の$x$に対して$F(x)$を$\forall xF(x)$， $x$が存在して$F(x)$を$\exists xF(x)$と記号化する．ここで$\forall xF(x)$， $\exists xF(x)$は真偽が確定するので，命題である．また，任意の$x$に対して$y$が存在して$G(x，y)$は$\forall x\exists yG(x，y)$と記号化できる．これを多重量化という．これも真偽が決まるので命題であるが，$\exists yG(x，y)$は命題ではない．このとき，$y$を束縛変項といい，$x$を自由変項という．束縛変項は実質的には変項ではない．$\exists \times G(x，\times)$の$\times$にどんな変項記号（$x$を除く）が入っても意味は変わらないからである．
+任意の$x$に対して$F(x)$を$\forall xF(x)$， $x$が存在して$F(x)$を$\exists xF(x)$と記号化する．ここで$\forall xF(x)$， $\exists xF(x)$は真偽が確定するので，命題である．また，任意の$x$に対して$y$が存在して$G(x,y)$は$\forall x\exists yG(x,y)$と記号化できる．これを多重量化という．これも真偽が決まるので命題であるが，$\exists yG(x,y)$は命題ではない．このとき，$y$を束縛変項といい，$x$を自由変項という．束縛変項は実質的には変項ではない．$\exists \times G(x,\times)$の$\times$にどんな変項記号（$x$を除く）が入っても意味は変わらないからである．
 \end{itemize}
 それでは前述の推論に現れた命題，任意の$x$， $y$について，$x\cdot y>0$を記号化してみよう．まず定数は$0$であり，これを定項記号$a$で記号化する．このなかで関数は$\cdot$であり，これを$f$と記号化する．また述語は$>$であり，これを$G$と記号化すると，以下のようになる．
 \begin{align*}
-\forall x\forall yG(f(x，y)，a)
+\forall x\forall yG(f(x,y),a)
 \end{align*}
 \subsection{命題の真理値}
 前章で一つの命題を記号化したわけであるが，我々は記号化によって命題一般について成り立つ形式を探りたいのだ．したがってこのように記号化される命題一般について議論を進めることになる．そこでまず，前章で記号化した命題の真理値がどのようになるか見ていこう．
 \begin{align*}
-\forall x\forall yG(f(x，y)，a)
+\forall x\forall yG(f(x,y),a)
 \end{align*}
 この命題の真理値を決定するには次の二つを定めなければならない．
 \begin{itemize}
@@ -256,49 +256,49 @@ $\circ\circ$は整数である，$\circ\circ$は$\times\times$より大きい，
 \begin{itemize}
 \item 記号
 \begin{itemize}
-\item 定項記号 $a，b，c，a_1，a_2，\dots$
-\item 変項記号 $x，y，z，x_1，x_2，\dots$
-\item 関数記号 $f，g，\dots$ (各関数記号には引数の数が決まっている．)
-\item 述語記号 $F，G，\dots$ (各述語記号には引数の数が決まっている．)
-\item 論理記号 $\lnot，\land，\lor，\to，\forall，\exists，\bot$
+\item 定項記号 $a$，$b$，$c$，$a_1$，$a_2$，$\dots$
+\item 変項記号 $x$，$y$，$z$，$x_1$，$x_2$，$\dots$
+\item 関数記号 $f$，$g$，$\dots$ (各関数記号には引数の数が決まっている．)
+\item 述語記号 $F$，$G$，$\dots$ (各述語記号には引数の数が決まっている．)
+\item 論理記号 $\lnot$，$\land$，$\lor$，$\to$，$\forall$，$\exists$，$\bot$
 \end{itemize}
 \item 項
 \begin{itemize}
 \item 定項記号は項である．
 \item 変項記号は項である．
-\item $t_1，t_2，\dots，t_n$が項で，$f$が$n$項関数記号ならば，$f(t_1，t_2，\dots，t_n)$は項である．
+\item $t_1,t_2,\dots,t_n$が項で，$f$が$n$項関数記号ならば，$f(t_1,t_2,\dots,t_n)$は項である．
 \item このようにして項だとわかったものだけが項である．
 \end{itemize}
 \item 論理式
 \begin{itemize}
-\item $t_1，t_2，\dots，t_n$が項で，$F$が$n$項述語記号ならば，$F(t_1，t_2，\dots，t_n)$は論理式である．
+\item $t_1,t_2,\dots,t_n$が項で，$F$が$n$項述語記号ならば，$F(t_1,t_2,\dots,t_n)$は論理式である．
 \item $\varphi$が論理式ならば$\lnot (\varphi)$は論理式である．
-\item $\varphi，\psi$が論理式ならば$(\varphi) \land (\psi)$， $(\varphi) \lor (\psi)$， $(\varphi) \to (\psi)$は論理式である．
+\item $\varphi,\psi$が論理式ならば$(\varphi) \land (\psi)$， $(\varphi) \lor (\psi)$， $(\varphi) \to (\psi)$は論理式である．
 \item $x$が変項記号，$\varphi$が論理式ならば$\forall x (\varphi)$， $\exists x (\varphi)$は論理式である．
 \item $\bot$は論理式である．
 \item このようにして論理式だとわかったものだけが論理式である．
 \item １章の定義のように煩雑な括弧は省略する．
 \end{itemize}
 \end{itemize}
-ここで新しく$\bot$という記号を導入したが，これは矛盾を意図した記号であり，いかなる解釈のもとでも偽となる．項と論理式について一つ例を挙げておこう．定項記号$a$，変数記号$x$は項であり，$f$を２項関数記号とすると$f(a，x)$は項であり，次に変項記号$y$，２項述語記号$G$を用いると，$G(y，f(a，x))$は論理式である．さらに論理記号$\forall，\bot，\to$を用いると，$\forall xG(y，f(a，x))$は論理式であり，$\bot$はそれ自体が論理式であるから，$\bot \to \forall xG(y，f(a，x))$は論理式である．また，このとき前章での定義と同様に$x$を束縛変項といい，$y$を自由変項という．この論理式の$y$を束縛して，$\forall y(\bot \to \forall xG(y，f(a，x)))$とすると，この論理式には自由変項がない．このような論理式を閉論理式という．
+ここで新しく$\bot$という記号を導入したが，これは矛盾を意図した記号であり，いかなる解釈のもとでも偽となる．項と論理式について一つ例を挙げておこう．定項記号$a$，変数記号$x$は項であり，$f$を２項関数記号とすると$f(a,x)$は項であり，次に変項記号$y$，２項述語記号$G$を用いると，$G(y,f(a,x))$は論理式である．さらに論理記号$\forall$，$\bot$，$\to$を用いると，$\forall xG(y,f(a,x))$は論理式であり，$\bot$はそれ自体が論理式であるから，$\bot \to \forall xG(y,f(a,x))$は論理式である．また，このとき前章での定義と同様に$x$を束縛変項といい，$y$を自由変項という．この論理式の$y$を束縛して，$\forall y(\bot \to \forall xG(y,f(a,x)))$とすると，この論理式には自由変項がない．このような論理式を閉論理式という．
 \subsubsection{$\mathcal K$の推論規則，証明}
 次に形式的体系$\mathcal K$の推論規則を定義し，続いて$\mathcal K$における証明を定義したいのだが説明の都合上，先に形式的体系$\mathcal K$における証明の一例を挙げることにする．ここで証明と推論規則について軽く説明し，感覚的に理解してもらった後で厳密な定義を与える．
 \begin{table}[H]
 \caption{形式的体系$\mathcal K$による証明のサンプル}
 \begin{tabular}{rlrl}
 (1)&$\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x))$&&前提 \\
-(2)&$\forall x(F(x)\to H(x))$&&$1，\land_-$ \\
-(3)&$\forall x(G(x)\to H(x))$&&$1，\land_-$ \\
-(4)&$F(a)\to H(a)$&&$1，\forall_-$ \\
-(5)&$G(a)\to H(a)$&&$1，\forall_-$ \\
+(2)&$\forall x(F(x)\to H(x))$&&$1,\land_-$ \\
+(3)&$\forall x(G(x)\to H(x))$&&$1,\land_-$ \\
+(4)&$F(a)\to H(a)$&&$1,\forall_-$ \\
+(5)&$G(a)\to H(a)$&&$1,\forall_-$ \\
 (6)&$F(a)\lor G(a)$&$[6(a)]$&仮定 \\
 (7)&$F(a)$&$[7(a)]$&仮定 \\
-(8)&$H(a)$&$[7(a)]$&$4，7，\to_-$ \\
+(8)&$H(a)$&$[7(a)]$&$4,7,\to_-$ \\
 (9)&$G(a)$&$[9(a)]$&仮定 \\
-(10)&$H(a)$&$[9(a)]$&$5，9，\to_-$ \\
-(11)&$H(a)$&$[6(a)]$&$6，8，10，\lor_-$ \\
-(12)&$(F(a)\lor G(a))\to H(a)$&&$6，11，\to_+$ \\
-(13)&$\forall x((F(x)\lor G(x))\to H(x))$&&$12，\forall_+$
+(10)&$H(a)$&$[9(a)]$&$5,9,\to_-$ \\
+(11)&$H(a)$&$[6(a)]$&$6,8,10,\lor_-$ \\
+(12)&$(F(a)\lor G(a))\to H(a)$&&$6,11,\to_+$ \\
+(13)&$\forall x((F(x)\lor G(x))\to H(x))$&&$12,\forall_+$
 \end{tabular}
 \end{table}
 これは$\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x))$を前提とする$\forall x((F(x)\lor G(x))\to H(x))$の証明である．この証明の見かたについて説明する．まず左の列から行番号，導かれた論理式，その論理式が依存する仮定（が書かれた行番号）を示しており，最後にどの行とどの行にどんな推論規則を用いたかを書いている．例えば，8行目は4行目と7行目に$\to_-$という推論規則を用いて導かれ，依存する仮定は7行目といった具合である．ここで依存する論理式の行番号7のとなりに$(a)$と書いてあるが，これは$F$が成り立つ限りの$a$ということであり$a$を限定つきの項という． \par
@@ -312,17 +312,17 @@ $\circ\circ$は整数である，$\circ\circ$は$\times\times$より大きい，
 \begin{tabular}{rlrl}
 $(l)$&$\varphi$&$[\Gamma]$& \\
 $(m)$&$\psi$&$[\Delta]$& \\
-$(n)$&$\varphi \land \psi$&$[\Gamma，\Delta]$&$l，m，\land_+$
+$(n)$&$\varphi \land \psi$&$[\Gamma,\Delta]$&$l,m,\land_+$
 \end{tabular}
 \end{center}
 \end{table}
-ただし$l，m<n$
+ただし$l,m<n$
 \item $\land_-$
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\varphi \land \psi$&$[\Gamma]$& \\
-$(n)$&$\varphi (\psi)$&$[\Gamma]$&$l，\land_-$ \\
+$(n)$&$\varphi (\psi)$&$[\Gamma]$&$l,\land_-$ \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -332,7 +332,7 @@ $(n)$&$\varphi (\psi)$&$[\Gamma]$&$l，\land_-$ \\
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\varphi$&$[\Gamma]$& \\
-$(n)$&$\varphi \lor \psi (\psi \lor \varphi)$&$[\Gamma]$&$l，\lor_+$
+$(n)$&$\varphi \lor \psi (\psi \lor \varphi)$&$[\Gamma]$&$l,\lor_+$
 \end{tabular}
 \end{center}
 \end{table}
@@ -342,19 +342,19 @@ $(n)$&$\varphi \lor \psi (\psi \lor \varphi)$&$[\Gamma]$&$l，\lor_+$
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\varphi \lor \psi$&$[\Gamma]$& \\
-$(m_1)$&$\rho$&$[\Delta_1，\varphi]$& \\
-$(m_2)$&$\rho$&$[\Delta_2，\psi]$& \\
-$(n)$&$\rho$&$[\Gamma，\Delta_1，\Delta_2]$&$l，m_1，m_2，\lor_-$
+$(m_1)$&$\rho$&$[\Delta_1,\varphi]$& \\
+$(m_2)$&$\rho$&$[\Delta_2,\psi]$& \\
+$(n)$&$\rho$&$[\Gamma,\Delta_1,\Delta_2]$&$l,m_1,m_2,\lor_-$
 \end{tabular}
 \end{center}
 \end{table}
-ただし$l，m_1，m_2<n$
+ただし$l,m_1,m_2<n$
 \item $\to_+$
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{rlrl}
-$(l)$&$\varphi$&$[\Gamma，\psi]$& \\
-$(n)$&$\psi \to \varphi$&$[\Gamma]$&$l，\to_+$ \\
+$(l)$&$\varphi$&$[\Gamma,\psi]$& \\
+$(n)$&$\psi \to \varphi$&$[\Gamma]$&$l,\to_+$ \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -365,17 +365,17 @@ $(n)$&$\psi \to \varphi$&$[\Gamma]$&$l，\to_+$ \\
 \begin{tabular}{rlrl}
 $(l)$&$\varphi$&$[\Gamma]$& \\
 $(m)$&$\varphi \to \psi$&$[\Delta]$& \\
-$(n)$&$\psi$&$[\Gamma，\Delta]$&$l，m，\to_-$
+$(n)$&$\psi$&$[\Gamma,\Delta]$&$l,m,\to_-$
 \end{tabular}
 \end{center}
 \end{table}
-ただし$l，m<n$
+ただし$l,m<n$
 \item $\lnot_+$
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{rlrl}
-$(l)$&$\bot$&$[\Gamma，\varphi]$& \\
-$(n)$&$\lnot \varphi$&$[\Gamma]$&$l，\lnot_+$
+$(l)$&$\bot$&$[\Gamma,\varphi]$& \\
+$(n)$&$\lnot \varphi$&$[\Gamma]$&$l,\lnot_+$
 \end{tabular}
 \end{center}
 \end{table}
@@ -386,17 +386,17 @@ $(n)$&$\lnot \varphi$&$[\Gamma]$&$l，\lnot_+$
 \begin{tabular}{rlrl}
 $(l)$&$\varphi$&$[\Gamma]$& \\
 $(m)$&$\lnot \varphi$&$[\Delta]$& \\
-$(n)$&$\bot$&$[\Gamma，\Delta]$&$l，m，\lnot_-$
+$(n)$&$\bot$&$[\Gamma,\Delta]$&$l,m,\lnot_-$
 \end{tabular}
 \end{center}
 \end{table}
-ただし$l，m<n$
+ただし$l,m<n$
 \item 背理法
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{rlrl}
-$(l)$&$\bot$&$[\Gamma，\lnot \varphi]$& \\
-$(n)$&$\varphi$&$[\Gamma]$&$l，$背理法
+$(l)$&$\bot$&$[\Gamma,\lnot \varphi]$& \\
+$(n)$&$\varphi$&$[\Gamma]$&$l,$背理法
 \end{tabular}
 \end{center}
 \end{table}
@@ -406,7 +406,7 @@ $(n)$&$\varphi$&$[\Gamma]$&$l，$背理法
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\bot$&$[\Gamma]$& \\
-$(n)$&$\varphi$&$[\Gamma]$&$l，$矛盾
+$(n)$&$\varphi$&$[\Gamma]$&$l,$矛盾
 \end{tabular}
 \end{center}
 \end{table}
@@ -416,7 +416,7 @@ $(n)$&$\varphi$&$[\Gamma]$&$l，$矛盾
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\varphi(\dots t \dots)$&$[\Gamma]$& \\
-$(n)$&$\forall x \varphi(\dots x \dots)$&$[\Gamma]$&$l，\forall_+$
+$(n)$&$\forall x \varphi(\dots x \dots)$&$[\Gamma]$&$l,\forall_+$
 \end{tabular}
 \end{center}
 \end{table}
@@ -427,7 +427,7 @@ $(n)$&$\forall x \varphi(\dots x \dots)$&$[\Gamma]$&$l，\forall_+$
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\forall x\varphi(\dots x \dots)$&$[\Gamma]$& \\
-$(n)$&$\varphi(\dots t \dots)$&$[\Gamma]$&$l，\forall_-$
+$(n)$&$\varphi(\dots t \dots)$&$[\Gamma]$&$l,\forall_-$
 \end{tabular}
 \end{center}
 \end{table}
@@ -438,7 +438,7 @@ $(n)$&$\varphi(\dots t \dots)$&$[\Gamma]$&$l，\forall_-$
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\varphi(\dots t \dots)$&$[\Gamma]$& \\
-$(n)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$&$l，\exists_+$
+$(n)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$&$l,\exists_+$
 \end{tabular}
 \end{center}
 \end{table}
@@ -448,16 +448,16 @@ $(n)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$&$l，\exists_+$
 \begin{center}
 \begin{tabular}{rlrl}
 $(l)$&$\exists x\varphi(\dots x \dots)$&$[\Gamma]$& \\
-$(m)$&$\rho$&$[\Delta，\varphi(\dots t \dots)]$& \\
-$(n)$&$\rho$&$[\Gamma，\Delta]$&$l，m，\exists_-$
+$(m)$&$\rho$&$[\Delta,\varphi(\dots t \dots)]$& \\
+$(n)$&$\rho$&$[\Gamma,\Delta]$&$l,m,\exists_-$
 \end{tabular}
 \end{center}
 \end{table}
-ただし$t$は$\Delta，\rho，\exists x\varphi(\dots x \dots)$に自由変項として含まれないとする． \par
-ただし$l，m<n$
+ただし$t$は$\Delta$，$\rho$，$\exists x\varphi(\dots x \dots)$に自由変項として含まれないとする． \par
+ただし$l,m<n$
 \end{itemize}
 \end{itemize}
-以上が形式的体系$\mathcal K$の推論規則である．仮定は基本的に導かれる論理式に引き継がれるが規則によっては解消される仮定もある．また，推論規則によって解消可能な仮定は別に解消しなくてもよい．これらの規則のうち$\land_+， \land_-， \lor_+， \to_-， \lnot_-， \forall_-， \exists_+$は感覚的に明らかだろう．よって他の推論規則について説明する．
+以上が形式的体系$\mathcal K$の推論規則である．仮定は基本的に導かれる論理式に引き継がれるが規則によっては解消される仮定もある．また，推論規則によって解消可能な仮定は別に解消しなくてもよい．これらの規則のうち$\land_+$，$\land_-$，$\lor_+$，$\to_-$，$\lnot_-$，$\forall_-$，$\exists_+$は感覚的に明らかだろう．よって他の推論規則について説明する．
 \begin{itemize}
 \item $\lor_-$ \par
 $\varphi \lor \psi$がわかっていて，$\varphi$を仮定しても$\psi$を仮定しても$\rho$が導かれるならば結局はそれらの仮定なしに$\rho$が導けるということである．
@@ -524,7 +524,7 @@ $\Gamma$が空集合であるとき，$\varphi$をその形式的体系の定理
 \item 記号　定項記号，変項記号，関数記号，述語記号，論理記号，補助記号
 \item 論理式　定義は前章参照
 \item 公理　なし
-\item 推論規則　$\land_+， \land_-， \lor_+， \lor_-， \to_+， \to_-， \lnot_+， \lnot_-$，背理法，矛盾，$\forall_+， \forall_-， \exists_+， \exists_-$
+\item 推論規則　$\land_+$，$\land_-$，$\lor_+$，$\lor_-$，$\to_+$，$\to_-$，$\lnot_+$，$\lnot_-$，背理法，矛盾，$\forall_+$，$\forall_-$，$\exists_+$，$\exists_-$
 \end{itemize}
 \end{itemize}
 
@@ -539,7 +539,7 @@ $\Gamma$が空集合であるとき，$\varphi$をその形式的体系の定理
 \item $n$項関数記号の集合から$D^{(D^n)}$への写像$\sigma$
 \item $n$項述語記号の集合から$B^{(D^n)}$への写像$\tau$
 \end{itemize}
-ここで$D^n$は直積集合（$D$の元$n$組の集合）， $D^{(D^n)}$は$D^n$から$D$への写像全体の集合，$B^{(D^n)}$は$D^n$から真理値集合$B=\{T，F\}$への写像全体の集合である．
+ここで$D^n$は直積集合（$D$の元$n$組の集合）， $D^{(D^n)}$は$D^n$から$D$への写像全体の集合，$B^{(D^n)}$は$D^n$から真理値集合$B=\{T,F\}$への写像全体の集合である．
 \item 割り当て$g$
 \begin{itemize}
 \item 変数記号の集合から$D$への写像$g$
@@ -556,10 +556,10 @@ $\Gamma$が空集合であるとき，$\varphi$をその形式的体系の定理
 \item $n$項述語記号 $I(F)=\tau(F)$
 \item 論理記号
 \begin{itemize}
-\item $I(\lnot)=[T\mapsto F，F\mapsto T]\in B^B$
-\item $I(\land)=[(T，T)\mapsto T，(T，F)\mapsto F，(F，T)\mapsto F，(F，F)\mapsto F]\in B^{(B^2)}$
-\item $I(\lor)=[(T，T)\mapsto T，(T，F)\mapsto T，(F，T)\mapsto T，(F，F)\mapsto F]\in B^{(B^2)}$
-\item $I(\to)=[(T，T)\mapsto T，(T，F)\mapsto F，(F，T)\mapsto T，(F，F)\mapsto T]\in B^{(B^2)}$
+\item $I(\lnot)=[T\mapsto F,F\mapsto T]\in B^B$
+\item $I(\land)=[(T,T)\mapsto T,(T,F)\mapsto F,(F,T)\mapsto F,(F,F)\mapsto F]\in B^{(B^2)}$
+\item $I(\lor)=[(T,T)\mapsto T,(T,F)\mapsto T,(F,T)\mapsto T,(F,F)\mapsto F]\in B^{(B^2)}$
+\item $I(\to)=[(T,T)\mapsto T,(T,F)\mapsto F,(F,T)\mapsto T,(F,F)\mapsto T]\in B^{(B^2)}$
 \item $I(\bot)=F\in B$
 \item $I(\forall x(\varphi))=T\Leftrightarrow$すべての$\alpha \in D$に対して$I'(\varphi)=T$
 \item $I(\exists x(\varphi))=T\Leftrightarrow$$I'(\varphi)=T$となる$\alpha \in D$が存在する．
@@ -568,12 +568,12 @@ $\Gamma$が空集合であるとき，$\varphi$をその形式的体系の定理
 \end{itemize}
 \item 項，論理式の解釈
 \begin{itemize}
-\item $I(f(t_1，t_2，\dots，t_n))=I(f)(I(t_1)，I(t_2)， \dots，I(t_n))$
-\item $I(F(t_1，t_2，\dots，t_n))=I(F)(I(t_1)，I(t_2)， \dots，I(t_n))$
+\item $I(f(t_1,t_2,\dots,t_n))=I(f)(I(t_1),I(t_2),\dots,I(t_n))$
+\item $I(F(t_1,t_2,\dots,t_n))=I(F)(I(t_1),I(t_2),\dots,I(t_n))$
 \item $I(\lnot \varphi)=I(\lnot)(I(\varphi))$
-\item $I(\varphi \land(\lor，\to)\psi)=I(\land(\lor，\to))(I(\varphi)，I(\psi))$
+\item $I(\varphi \land(\lor,\to)\psi)=I(\land(\lor,\to))(I(\varphi),I(\psi))$
 \end{itemize}
-ただし，$t_1，t_2，\dots，t_n$は項，$f$は$n$項関数記号，$F$は$n$項述語記号，$\varphi，\psi$は論理式である．
+ただし，$t_1$，$t_2$，$\dots$，$t_n$は項，$f$は$n$項関数記号，$F$は$n$項述語記号，$\varphi$，$\psi$は論理式である．
 \end{itemize}
 ここで一例を挙げる．証明のサンプルの一行目を解釈してみよう．次のような解釈$I$を考える．
 \begin{itemize}
@@ -581,27 +581,27 @@ $\Gamma$が空集合であるとき，$\varphi$をその形式的体系の定理
 \begin{itemize}
 \item ストラクチャー$M$
 \begin{itemize}
-\item $D=\{1，2，3，4，5\}$
-\item $\rho=[a\mapsto1，b\mapsto 2，c\mapsto 3，d\mapsto 4，e\mapsto 5，\dots]$
+\item $D=\{1,2,3,4,5\}$
+\item $\rho=[a\mapsto1,b\mapsto 2,c\mapsto 3,d\mapsto 4,e\mapsto 5,\dots]$
 \item $\sigma=[\\
-f\mapsto[1\mapsto 2，2\mapsto 3，3\mapsto 4，4\mapsto 5，5\mapsto 1]， \\
-g\mapsto[(1，1)\mapsto 0，(1，2)\mapsto 1，\dots，(5，5)\mapsto0]， \\
+f\mapsto[1\mapsto 2,2\mapsto 3,3\mapsto 4,4\mapsto 5,5\mapsto 1], \\
+g\mapsto[(1,1)\mapsto 0,(1,2)\mapsto 1,\dots,(5,5)\mapsto0], \\
 \dots]$
 \item $\tau=[\\
-F\mapsto[1\mapsto T，2\mapsto T，3\mapsto F，4\mapsto F，5\mapsto F]， \\
-G\mapsto[1\mapsto T，2\mapsto T，3\mapsto T，4\mapsto F，5\mapsto F]， \\
-H\mapsto[1\mapsto T，2\mapsto T，3\mapsto T，4\mapsto T，5\mapsto F]\\]$
+F\mapsto[1\mapsto T,2\mapsto T,3\mapsto F,4\mapsto F,5\mapsto F], \\
+G\mapsto[1\mapsto T,2\mapsto T,3\mapsto T,4\mapsto F,5\mapsto F], \\
+H\mapsto[1\mapsto T,2\mapsto T,3\mapsto T,4\mapsto T,5\mapsto F]\\]$
 \end{itemize}
 \item 割り当て$g$
 \begin{itemize}
-\item $g=[x\mapsto 1，y\mapsto 2，z\mapsto 3，\dots]$
+\item $g=[x\mapsto 1,y\mapsto 2,z\mapsto 3,\dots]$
 \end{itemize}
 \end{itemize}
 \end{itemize}
 この解釈$I$において証明のサンプル一行目の論理式を解釈すると，
 \begin{align*}
 &I(\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x)))\\
-&=I(\land)(I(\forall x(F(x)\to H(x)))，I(\forall x(G(x)\to H(x))))
+&=I(\land)(I(\forall x(F(x)\to H(x))),I(\forall x(G(x)\to H(x))))
 \end{align*}
 であり，
 \begin{align*}
@@ -610,16 +610,16 @@ H\mapsto[1\mapsto T，2\mapsto T，3\mapsto T，4\mapsto T，5\mapsto F]\\]$
 \end{align*}
 であるから，$I'(F(x)\to H(x))$をすべての$\alpha \in D$に対して計算する．
 \begin{align*}
-I'(F(x)\to H(x))&=I'(\to)(I'(F(x))，I'(H(x)))\\
-&=I'(\to)(\tau(F)(\alpha)， \tau(H)(\alpha))
+I'(F(x)\to H(x))&=I'(\to)(I'(F(x)),I'(H(x)))\\
+&=I'(\to)(\tau(F)(\alpha),\tau(H)(\alpha))
 \end{align*}
 であり，$\alpha=1$のとき，
 \begin{align*}
 \begin{split}
-I'(F(x)\to H(x))&=[(T，T)\mapsto T，(T，F)\mapsto F，(F，T)\mapsto T，(F，F)\mapsto T]\\
-&\quad([1\mapsto T，2\mapsto T，3\mapsto F，4\mapsto F，5\mapsto F](1)， \\
-&\quad[1\mapsto T，2\mapsto T，3\mapsto T，4\mapsto T，5\mapsto F](1))\\
-&=[(T，T)\mapsto T，(T，F)\mapsto F，(F，T)\mapsto T，(F，F)\mapsto T](T，T)\\
+I'(F(x)\to H(x))&=[(T,T)\mapsto T,(T,F)\mapsto F,(F,T)\mapsto T,(F,F)\mapsto T]\\
+&\quad([1\mapsto T,2\mapsto T,3\mapsto F,4\mapsto F,5\mapsto F](1), \\
+&\quad[1\mapsto T,2\mapsto T,3\mapsto T,4\mapsto T,5\mapsto F](1))\\
+&=[(T,T)\mapsto T,(T,F)\mapsto F,(F,T)\mapsto T,(F,F)\mapsto T](T,T)\\
 &=T
 \end{split}
 \end{align*}
@@ -648,11 +648,11 @@ I(\forall x(G(x)\to H(x))=T
 がわかる．したがって目的の論理式の解釈$I$による真理値は，
 \begin{align*}
 &I(\forall x(F(x)\to H(x))\land \forall x(G(x)\to H(x)))\\
-&=I(\land)(I(\forall x(F(x)\to H(x)))，I(\forall x(G(x)\to H(x))))\\
-&=[(T，T)\mapsto T，(T，F)\mapsto F，(F，T)\mapsto F，(F，F)\mapsto F](T，T)\\
+&=I(\land)(I(\forall x(F(x)\to H(x))),I(\forall x(G(x)\to H(x))))\\
+&=[(T,T)\mapsto T,(T,F)\mapsto F,(F,T)\mapsto F,(F,F)\mapsto F](T,T)\\
 &=T
 \end{align*}
-この解釈は，全体集合を$X=\{1，2，3，4，5\}$とし，集合$A，B，C$を$A=\{1，2\}，B=\{1，2，3\}，C=\{1，2，3，4\}$としたとき，$F(x)，G(x)，H(x)$をそれぞれ$x\in A，x\in B，x\in C$と解釈したのに相当する．この解釈において証明のサンプルは$A$が$C$の部分集合でかつ$B$が$C$の部分集合であることを前提として，$A$と$B$の合併が$C$の部分集合であることを結論する推論を表す．\par
+この解釈は，全体集合を$X=\{1,2,3,4,5\}$とし，集合$A$，$B$，$C$を$A=\{1,2\}$，$B=\{1,2,3\}$，$C=\{1,2,3,4\}$としたとき，$F(x)$，$G(x)$，$H(x)$をそれぞれ$x\in A$，$x\in B$，$x\in C$と解釈したのに相当する．この解釈において証明のサンプルは$A$が$C$の部分集合でかつ$B$が$C$の部分集合であることを前提として，$A$と$B$の合併が$C$の部分集合であることを結論する推論を表す．\par
 論理式の集合$\Gamma$と論理式$\varphi$において，いかなる解釈のもとでも$\Gamma$に含まれる論理式がすべて真ならば，$\varphi$も真となる（すなわち任意の解釈$I$に対して，$I(\gamma)=T(\gamma \in \Gamma)\Rightarrow I(\varphi)=T$）とき，$\varphi$は$\Gamma$の意味論的帰結といって，$\Gamma \models \varphi$とかく．
 
 \section{形式的体系$\mathcal K$の健全性と完全性}
@@ -691,15 +691,15 @@ $\land_+$について，
 \begin{tabular}{rlrl}
 $(l)$&$\varphi$&$[\Gamma]$& \\
 $(m)$&$\psi$&$[\Delta]$& \\
-$(n+1)$&$\varphi \land \psi$&$[\Gamma，\Delta]$&$l，m，\land_+$
+$(n+1)$&$\varphi \land \psi$&$[\Gamma,\Delta]$&$l,m,\land_+$
 \end{tabular}
 \end{table}
 $I(\gamma)=T(\gamma \in \Gamma)$かつ$I(\delta)=T(\delta \in \Delta)$を仮定して，$I(\varphi \land \psi)=T$を示せばよい．帰納法の仮定から$I(\gamma)=T(\gamma \in \Gamma)\Rightarrow I(\varphi)=T$かつ$I(\delta)=T(\delta \in \Delta)\Rightarrow I(\psi)=T$．よって仮定$I(\gamma)=T(\gamma \in \Gamma)$かつ$I(\delta)=T(\delta \in \Delta)$と帰納法の仮定から$I(\varphi)=T$かつ$I(\psi)=T$これより真理値の定義から$I(\varphi \land \psi)=T$．よって$\Gamma，\Delta \models \varphi \land \psi$が示せた．\par
 $\to_+$について，
 \begin{table}[H]
 \begin{tabular}{rlrl}
-$(l)$&$\varphi$&$[\Gamma，\psi]$& \\
-$(n+1)$&$\psi \to \varphi$&$[\Gamma]$&$l，\to_+$ \\
+$(l)$&$\varphi$&$[\Gamma,\psi]$& \\
+$(n+1)$&$\psi \to \varphi$&$[\Gamma]$&$l,\to_+$ \\
 \end{tabular}
 \end{table}
 $I(\gamma)=T(\gamma \in \Gamma)$であることを仮定して$I(\psi \to \varphi)=T$を示せばよい．帰納法の仮定は，($I(\gamma)=T(\gamma \in \Gamma)$かつ$I(\psi)=T$)$\Rightarrow$$I(\varphi)=T$である．$I(\psi) = T$または$I(\psi) = F$であり$I(\psi) = F$のときは，真理値の定義から$I(\psi \to \varphi)=T$であり，$I(\psi) = T$のときは仮定$I(\gamma)=T(\gamma \in \Gamma)$と帰納法の仮定より$I(\varphi)=T$である．よってどちらにしろ$I(\psi \to \varphi)=T$である．よって$\Gamma \models \psi \to \varphi$が示せた．\par
@@ -710,15 +710,13 @@ $I(\gamma)=T(\gamma \in \Gamma)$であることを仮定して$I(\psi \to \varph
 
 %% 参考文献
 \begin{thebibliography}{99}
-  \item 飯田賢一・中才敏郎・中谷隆雄, 論理学の基礎, 昭和堂, 1994.
-  \item 鹿島亮, 数理論理学, 朝倉書店, 2009.
-  \item 斎藤毅, 集合と位相, 東京大学出版会, 2009.
-  \item 齋藤正彦, 数学の基礎 集合・数・位相, 東京大学出版会, 2002.
-  \item 野矢茂樹, 論理学, 東京大学出版会, 1994.
-  \item 戸次大介, 数理論理学, 東京大学出版会, 2012.
-  \item 松本和夫, 復刊 数理論理学, 共立出版, 1970(初版), 2001(復刊).
-  \item @vuccaken, 物科研HP, \url{https://vuccaken.github.io}, 2019.
+  \item 飯田賢一・中才敏郎・中谷隆雄, 『論理学の基礎』, 昭和堂, 1994.
+  \item 鹿島亮, 『数理論理学』, 朝倉書店, 2009.
+  \item 斎藤毅, 『集合と位相』, 東京大学出版会, 2009.
+  \item 齋藤正彦, 『数学の基礎 集合・数・位相』, 東京大学出版会, 2002.
+  \item 野矢茂樹, 『論理学』, 東京大学出版会, 1994.
+  \item 戸次大介, 『数理論理学』, 東京大学出版会, 2012.
+  \item 松本和夫, 『復刊 数理論理学』, 共立出版, 1970(初版), 2001(復刊).
 \end{thebibliography}
-
 
 \end{document}
