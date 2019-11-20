@@ -4,12 +4,22 @@
 %%
 %%  Date: 2019-11-03  created
 %%             11-12  set default \hypersetup
-%%             11-12  delete default \hypersetup
 %%
 %%
 
 \RequirePackage{hyperref}
 \RequirePackage{pxjahyper}
+
+\hypersetup{% とりあえず default ということで
+  bookmarksnumbered = true,
+  setpagesize       = false,
+  colorlinks        = true,
+  anchorcolor       = black,
+  linkcolor         = blue,
+  citecolor         = green,
+  filecolor         = magenta,
+  urlcolor          = cyan
+}
 
 \def\vaddcontentsline#1#2#3#4{% toc, chapter, title, name
   \begingroup

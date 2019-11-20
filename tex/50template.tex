@@ -1,33 +1,28 @@
-%%
-%%   TEMPLATE
-%%   コピペ用
-%%
+%
+%   TEMPLATE
+%   コピペ用
+%
 
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
 
-%% latexmkを使わない場合
-% \usepackage{../sty/vuccaken}
-% \usepackage{../sty/vuccaken2019}
-
-%% latexmkならこれでOK
 \usepackage{vuccaken}
 \usepackage{vuccaken2019}
 
-%% スタイルファイルの読み込みや自作マクロは、
-%% 最終的には vuccaken2019.sty の中に書いてください。
-%% とりあえずはここに書いてもらって構いません。
+% スタイルファイルの読み込みや自作マクロは、
+% 最終的には vuccaken2019.sty の中に書いてください。
+% とりあえずはここに書いてもらって構いません。
 
 
 \begin{document} % - - - - - - - 以下本文 - - - - - - - - - -
 
 \mokuji{2} % 目次出力
 
-%% - - - - - - - - - - - - - - - - - - - - - - - - %%
+% - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
   {\LaTeX テンプレート（会誌原稿用）}% title
   {テンプレ科学科4回生}% 所属
-  {\vname{テンプレ}{太郎}}% name
-%% - - - - - - - - - - - - - - - - - - - - - - - - %%
+  {テンプレくん}% name
+% - - - - - - - - - - - - - - - - - - - - - - - - %
 
 %
 \section*{はじめに}
@@ -46,7 +41,7 @@ figureのパスには注意してください。
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[height=6cm]{temp/fig-sin.pdf}
+  \includegraphics[width=10cm]{temp/fig-sin.pdf}
   \caption{$y=\sin x$のグラフ。gnuplotで作成した。}
   \label{fig:sin}
 \end{figure}
@@ -61,11 +56,11 @@ figureのパスには注意してください。
   \caption{やさいの表}
   \label{tbl:vegetable}
   \begin{tabular}{r|ccc} \hline
-    No. & やさい & いろ & 印象 \\ \hline
-    1 & トマト & あかいろ & くさい \\
-    2 & キャベツ & みどり & 無味乾燥 \\
-    3 & かぼちゃ & きいろ & かたい \\
-    4 & にんじん & おれんじ & ゴミ \\ \hline
+      No. & やさい & いろ & 印象 \\ \hline
+      1 & トマト & あかいろ & くさい \\
+      2 & キャベツ & みどり & 無味乾燥 \\
+      3 & かぼちゃ & きいろ & かたい \\
+      4 & にんじん & おれんじ & ゴミ \\ \hline
   \end{tabular}
 \end{table}
 
@@ -82,6 +77,6 @@ figureのパスには注意してください。
 
 
 \end{document} % - - - - - - - - - - - - - - - - - - - - -
-%%
-%% ファイトだよ！
-%%
+%
+% ファイトだよ！
+%
