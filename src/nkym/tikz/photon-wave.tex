@@ -1,0 +1,83 @@
+% Author: Izaak Neutelings (May 2018)
+% Inspiration: https://tex.stackexchange.com/questions/113900/draw-polarized-light
+
+\documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
+% \usepackage{amsmath} % for \text
+\usepackage{tikz}
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{xcolor}
+\colorlet{myblue}{black!40!blue}
+\colorlet{myred}{black!40!red}
+
+\begin{document}
+
+% Electromagnetic wave - colored
+\begin{tikzpicture}
+  [
+    x=(25:1.2), y=(90:1.0), z=(-45:1.0),
+    line cap=round, line join=round,
+    axis/.style={black, thick,->},
+    vector/.style={>=stealth,->}
+  ]
+  \small
+
+  \def\A{1.5}
+  \def\nNodes{5} % use even number
+  \def\nVectorsPerNode{5}
+  \def\N{\nNodes*40}
+  \def\zmax{\nNodes*pi/2*1.01}
+  \pgfmathsetmacro\nVectors{(\nVectorsPerNode+1)*\nNodes}
+  
+  \def\vE{{\color{myblue}\mathbf{E}}}
+  \def\vB{{\color{myred}\mathbf{B}}}
+  \def\vk{\mathbf{\hat{k}}}
+
+  \def\drawENode{ % draw E node and vectors with some offset
+    \draw[myred,very thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+      plot ({\A*sin(\t*360/pi)},0,\t);
+    \foreach \k [evaluate={
+      \t=\k*pi/2/(\nVectorsPerNode+1);
+      \angle=\k*90/(\nVectorsPerNode+1);
+    }] in {1,...,\nVectorsPerNode}{
+      \draw[vector,myred!50]  (0,0,\iOffset*pi/2+\t) -- ++({\A*sin(2*\angle+\iOffset*180)},0,0);
+    }
+  }
+  \def\drawBNode{ % draw B node and vectors with some offset
+    \draw[myblue,very thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+      plot (0,{\A*sin(\t*360/pi)},\t);
+    \foreach \k [evaluate={
+      \t=\k*pi/2/(\nVectorsPerNode+1);
+      \angle=\k*90/(\nVectorsPerNode+1);
+    }] in {1,...,\nVectorsPerNode}{
+      \draw[vector,myblue!50]  (0,0,\iOffset*pi/2+\t) -- ++(0,{\A*sin(2*\angle+\iOffset*180)},0);
+    }
+  }
+  
+  % main axes
+  \draw[axis] (-\A*1.4/2,0,0) -- (\A*1.4,0,0) node[above] {$x$};
+  \draw[axis] (0,-\A*1.4/2,0) -- (0,\A*1.4,0) node[right] {$y$};
+  \draw[axis] (0,0,0) -- ++(0,0,\zmax*1.1) node[below right] {$z$};
+  
+  % small axes
+  \def\xOffset{\A*1.2}
+  \def\yOffset{\A*1.2}
+  \def\zOffset{{(\nNodes-2)*pi/2}}
+
+  % E, B notes with line
+  \def\zENode{1*pi/4}
+  \draw ({\A*sin(\zENode*360/pi)},0,\zENode) -- ++(0.9,-0.2,0) node[right] {電場（$x$偏光）};
+  \def\zBNode{2.6*pi/4}
+  \draw (0,{\A*sin(\zBNode*360/pi)},\zBNode) -- ++(-0.9,-0.2,0) node[left] {磁場};
+  
+  % draw (anti-)nodes
+  \foreach \iNode [evaluate={\iOffset=\iNode-1;}] in {1,...,\nNodes}{
+    \ifodd\iNode \drawENode \drawBNode % B overlaps E
+    \else        \drawBNode \drawENode % E overlaps B
+    \fi
+  }
+
+\end{tikzpicture}
+
+
+
+\end{document}
