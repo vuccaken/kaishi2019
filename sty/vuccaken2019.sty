@@ -18,6 +18,8 @@
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
+% \renewcommand\kanjifamilydefault{\gtdefault}
+% \renewcommand\familydefault{\sfdefault}
 
 %% windows がうんこなのでエラーが出る。otfパッケージに起因。
 \DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*mc/m/it}{} %
@@ -37,6 +39,7 @@
 
 \usepackage{xparse}  % LaTeX3; \DeclareDocumentCommand
 \usepackage{docmute} % \inputを改良
+\def\input@path{{./tex/}{./src/}{../src/}}
 
 %%
 %% each kaishi で使う用、プチマクロ
@@ -51,7 +54,7 @@
 
 %% 図
 \usepackage[dvipdfmx]{graphicx} % 図の挿入
-\graphicspath{{./src/}{../src/}}% グラフのソース探索パス
+% \graphicspath{{./src/}{../src/}}% グラフのソース探索パス
 % \usepackage{wrapfig} % 文章中に図
 \usepackage{here} % option H で図を強制出力
 
@@ -65,8 +68,7 @@
 % \usepackage{listings,jlisting} % ソースコード表示
 % \usepackage{ascmac} % 枠を作るやつ
 \usepackage{xcolor} % 色を付ける
-% \usepackage[svgnames]{xcolor} % tikzより前に読み込む必要あり
-% \usepackage{tikz} % おえかきできるツール
+\usepackage{tikz} % おえかきできるツール
 
 %% toc
 \setcounter{tocdepth}{2} % 目次にどこまで表示するか
@@ -167,15 +169,24 @@
 \newcommand\sikii[2]{(\ref{eq:#1}),\,(\ref{eq:#2})}
 \newcommand\zu[1]{図\ref{fig:#1}}
 \newcommand\hyo[1]{表\ref{tab:#1}}
+\newcommand\setu[1]{\ref{sec:#1}節}
+\newcommand\subsetu[1]{\ref{subsec:#1}節}
 \newcommand\zenkakko[1]{\!\!（\,#1\,）\!\!}
 \newcommand\ftj[1]{{\bfseries #1}}
 % \newcommand\migi{→~}
 
-% 上付きバー \widebar
+%% 上付きバー \widebar
 % \usepackage{accents}
 % \makeatletter
 %   \renewcommand\bar{\accentset{{\cc@style\underline{\mskip10mu}}}}
 % \makeatother
+
+%% tikz
+% \usepackage{tikz}
+% \usepackage{xcolor}
+\usetikzlibrary{quotes,angles,arrows}
+
+\newcommand\karizu[1]{\begin{center}（図：#1）\end{center}}
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 %%   Yoshida
