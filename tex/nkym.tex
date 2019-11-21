@@ -18,6 +18,13 @@
 \renewcommand\kanjifamilydefault{\gtdefault}
 \renewcommand\familydefault{\sfdefault}
 
+% \usepackage{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{labelsep=quad}
+\captionsetup[sub]{labelsep=quad}
+% \setlength  \labelsep  {1zw}
+% \captionsetup{compatibility=false}
+% \fnum@figure
 %% メモ
 %% 証明の環境作る
 %% colorをオフにする、図のカラーは？
@@ -268,7 +275,7 @@ Ca原子から放出される2つの光子を検出する実験を考える。
   % \includegraphics{nkym/tikz/photon-wave}
   \colorlet{myblue}{black!40!blue}
   \colorlet{myred}{black!40!red}
-  \input{../src/nkym/tikz/photon-wave}
+  \input{nkym/tikz/photon-wave}
   %
   \caption{光子の偏光。進行方向を$z$軸とし、$x$-$y$平面内の偏角で偏光軸を表現する。}
   \label{fig:photon-henkou}
@@ -331,6 +338,64 @@ p検出器とg検出器に付いている偏光子の偏光軸は、\zu{henkou-j
   \label{fig:henkou-jiku}
 \end{figure}
 
+\input{nkym/tikz/detector-henkou}
+% \begin{figure}[h]
+%   \centering
+%   % \begin{tabular}{cc}
+%     \begin{subfigure}{0.3\textwidth}\centering
+%       \detectorHenkou{90}{$+\theta$} \caption{aaa}
+%     \end{subfigure}
+%     % & 
+%     \begin{subfigure}{0.3\textwidth}\centering
+%       \detectorHenkou{-60}{$-\phi$} \caption{aaa}
+%     \end{subfigure}
+%     \\
+%     \begin{subfigure}{0.3\textwidth}\centering
+%       \detectorHenkou{60}{$+\phi$} \caption{aaa}
+%     \end{subfigure}
+%     % &
+%     \begin{subfigure}{0.3\textwidth}\centering
+%       \detectorHenkou{45}{$+\theta$} \caption{aaa}
+%     \end{subfigure}
+%   % \end{tabular}
+%   \\
+%   \begin{minipage}[b]{0.3\linewidth}\centering
+%     アアア
+%   \end{minipage}
+%   \begin{minipage}[b]{0.3\linewidth}\centering
+%     アアア
+%   \end{minipage}
+%   \caption{}
+%   \label{}
+% \end{figure}
+
+\begin{figure}[htb] \centering
+  \begin{minipage}[c]{0.4\linewidth}\centering
+    % \setlength{\abovecaptionskip}{0pt}
+    % \setlength{\belowcaptionskip}{20pt}
+    \begin{subfigure}{\textwidth}\centering
+      \detectorHenkou{90}{$+\theta$} \caption{aaa}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}\centering
+      \detectorHenkou{-60}{$-\phi$} \caption{aaa}
+    \end{subfigure}
+    アアア
+  \end{minipage}
+  \begin{minipage}[c]{0.4\linewidth}\centering
+    \setlength{\abovecaptionskip}{0pt}
+    \begin{subfigure}{\textwidth}\centering
+      \detectorHenkou{60}{$+\phi$} \caption{aaa}
+    \end{subfigure}
+    % \\
+    \begin{subfigure}{\textwidth}\centering
+      \detectorHenkou{45}{$+\theta$} \caption{aaa}
+    \end{subfigure}
+    % \\ 
+    aアアア
+  \end{minipage}
+  \caption{a}
+  \label{a}
+\end{figure}
 %
 \subsubsection{光子の測定} % - - - - - - - - - - -
 
