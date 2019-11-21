@@ -1,0 +1,50 @@
+%%
+%% 検出器の偏光子の偏光軸
+
+\documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
+% \usepackage{tikz}
+
+\usetikzlibrary{quotes,angles,arrows}
+
+\begin{document}
+
+\newcommand\detectorHenkou[2]{
+  %% require: \usetikzlibrary{quotes,angles,arrows}
+  \begin{tikzpicture}
+    [
+      x=10mm, y=10mm,
+      line cap=round, line join=round,
+      axis/.style={black, >=latex, ->},
+      vector/.style={ultra thick, >=stealth, <->},
+      angle/.style={draw,>={angle 90}, angle radius=4mm, "\angleMoji", angle eccentricity=2}
+    ]
+    \small
+
+    \def\A{1.4}
+    \def\B{1}
+
+    % main axes
+    \coordinate (O) at (0,0);
+    \draw[axis] (-\A,0) -- (\A,0) coordinate (X) node[right] {$x$};
+    \draw[axis] (0,-\A) -- (0,\A) node[above] {$y$};
+
+    \def\angle{#1} % 角度
+    \def\angleMoji{#2} % 文字
+    \draw[vector] (\angle:-\B) -- (\angle:\B) coordinate (A); % 偏光軸
+    
+    \ifnum\angle=90\else
+      \ifnum\angle>0
+        \pic[angle,->] {angle=X--O--A}; % positive angle
+      \else
+        \pic[angle,<-] {angle=A--O--X}; % negative angle
+      \fi
+    \fi
+  \end{tikzpicture}
+}
+
+\detectorHenkou{90}{$+\theta$} % a
+\detectorHenkou{-60}{$-\phi$} % b
+\detectorHenkou{60}{$+\phi$} % c
+\detectorHenkou{45}{$+\theta$} % d
+
+\end{document}

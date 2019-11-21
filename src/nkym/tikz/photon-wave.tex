@@ -4,7 +4,7 @@
 \documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
 % \usepackage{amsmath} % for \text
 \usepackage{tikz}
-\tikzset{>=latex} % for LaTeX arrow head
+% \tikzset{>=latex} % for LaTeX arrow head
 \usepackage{xcolor}
 \colorlet{myblue}{black!40!blue}
 \colorlet{myred}{black!40!red}
@@ -16,7 +16,7 @@
   [
     x=(25:1.2), y=(90:1.0), z=(-45:1.0),
     line cap=round, line join=round,
-    axis/.style={black, thick,->},
+    axis/.style={black, >=latex, thick,->},
     vector/.style={>=stealth,->}
   ]
   \small
