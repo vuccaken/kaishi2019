@@ -1,0 +1,71 @@
+%%
+%% 光子の偏光軸
+
+\documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
+% \documentclass[dvipdfmx,10pt]{jsbook}
+
+\usepackage{tikz}
+% \usetikzlibrary{quotes,angles,arrows}
+\usetikzlibrary{decorations.pathmorphing}
+
+%
+\begin{document}
+%
+
+\begin{tikzpicture}
+  [
+    x=10mm, y=10mm,
+    line cap=round, line join=round,
+    axis/.style={black, >=latex, ->},
+    wave/.style={thick,
+      decorate, decoration={
+        snake, post length=0.5mm, amplitude=1mm, segment length=4.2mm
+      }
+    },
+  ]
+\small
+
+\def\A{1}
+\def\O{3.5*\A}
+\def\B{1.5*\A}
+\def\angle{20}
+
+% Ca atom
+\coordinate (Ca) at (0,0);
+\draw[fill] (Ca) circle (3pt) node[above=5pt] {Ca};
+
+% waves
+\draw[wave,->] (Ca)++(\angle:-.5) -- ++(\angle:-\B);
+\draw[wave,->] (Ca)++(\angle: .5) -- ++(\angle: \B);
+\coordinate (p) at (Ca)++(-\B,0) node {p光子};
+\coordinate (p) at (Ca)++(\B,0) node {g光子};
+
+% p axes
+\coordinate (Op) at (\angle:-\O);
+\draw[axis] (Op) -- ++(\A,0) node[right] {$x$};
+\draw[axis] (Op) -- ++(0,\A) node[above] {$y$};
+\draw[axis] (Op) -- ++(\angle:-\A) node[left] {$z$};
+% g axes
+\coordinate (Og) at (\angle:\O);
+\draw[axis] (Og) -- ++(-\A,0) node[left] {$x$};
+\draw[axis] (Og) -- ++(0,\A) node[above] {$y$};
+\draw[axis] (Og) -- ++(\angle:\A) node[right] {$z$};
+
+
+
+% \def\angle{#1} % 角度
+% \def\angleMoji{#2} % 文字
+% \draw[vector] (\angle:-\B) -- (\angle:\B) coordinate (A); % 偏光軸
+
+% \ifnum\angle=90\else
+%   \ifnum\angle>0
+%     \pic[angle,->] {angle=X--O--A}; % positive angle
+%   \else
+%     \pic[angle,<-] {angle=A--O--X}; % negative angle
+%   \fi
+% \fi
+\end{tikzpicture}
+
+%
+%
+\end{document}

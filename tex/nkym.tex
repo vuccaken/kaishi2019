@@ -18,13 +18,15 @@
 \renewcommand\kanjifamilydefault{\gtdefault}
 \renewcommand\familydefault{\sfdefault}
 
-% \usepackage{caption}
+%
 \usepackage[subrefformat=parens]{subcaption}
-\captionsetup{labelsep=quad}
+\captionsetup{labelsep=quad, margin=5zw}
 \captionsetup[sub]{labelsep=quad}
-% \setlength  \labelsep  {1zw}
-% \captionsetup{compatibility=false}
-% \fnum@figure
+
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{gnuplot-lua-tikz}
+
+
 %% メモ
 %% 証明の環境作る
 %% colorをオフにする、図のカラーは？
@@ -319,7 +321,8 @@ Ca原子にレーザー光を照射して、特定のエネルギーレベルに
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.5\textwidth]{nkym/fig/zahyou-kei.jpeg}
+  % \includegraphics[width=.5\textwidth]{nkym/fig/zahyou-kei.jpeg}
+  \input{nkym/tikz/photon-axis}
   \caption{偏光を表すための座標軸の設定。} %（参考文献[1], P.26）
   \label{fig:zahyou-jiku}
 \end{figure}
@@ -330,13 +333,13 @@ Ca原子にレーザー光を照射して、特定のエネルギーレベルに
 }。
 p検出器とg検出器に付いている偏光子の偏光軸は、\zu{henkou-jiku}のように、それぞれ2種類の設定を使う。
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=.5\textwidth]{nkym/fig/henkou-jiku.jpeg}
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=.5\textwidth]{nkym/fig/henkou-jiku.jpeg}
   % \includegraphics{nkym/tikz/detector-henkou}
-  \caption{偏光子の偏光軸の方向。} %（参考文献[1], P.26）
-  \label{fig:henkou-jiku}
-\end{figure}
+  % \caption{偏光子の偏光軸の方向。} %（参考文献[1], P.26）
+  % \label{fig:henkou-jiku}
+% \end{figure}
 
 \input{nkym/tikz/detector-henkou}
 % \begin{figure}[h]
@@ -369,39 +372,43 @@ p検出器とg検出器に付いている偏光子の偏光軸は、\zu{henkou-j
 %   \label{}
 % \end{figure}
 
-\begin{figure}[htb] \centering
-  \begin{minipage}[c]{0.4\linewidth}\centering
-    % \setlength{\abovecaptionskip}{0pt}
-    % \setlength{\belowcaptionskip}{20pt}
+\begin{figure}[htb] \centering \small
+  %%
+  \begin{minipage}[c]{0.3\linewidth}\centering
     \begin{subfigure}{\textwidth}\centering
-      \detectorHenkou{90}{$+\theta$} \caption{aaa}
+      \detectorHenkou{90}{$\pi/2$}
+      \caption{$x=+$} \label{subfig:a}
     \end{subfigure}
+    %
     \begin{subfigure}{\textwidth}\centering
-      \detectorHenkou{-60}{$-\phi$} \caption{aaa}
+      \detectorHenkou{-60}{$-\phi$}
+      \caption{$\phi=-$} \label{subfig:b}
     \end{subfigure}
-    アアア
+    p検出器
   \end{minipage}
-  \begin{minipage}[c]{0.4\linewidth}\centering
-    \setlength{\abovecaptionskip}{0pt}
+  %%
+  \begin{minipage}[c]{0.3\linewidth}\centering
     \begin{subfigure}{\textwidth}\centering
-      \detectorHenkou{60}{$+\phi$} \caption{aaa}
+      \detectorHenkou{60}{$+\phi$}
+      \caption{$\phi=+$} \label{subfig:c}
     \end{subfigure}
-    % \\
+    %
     \begin{subfigure}{\textwidth}\centering
-      \detectorHenkou{45}{$+\theta$} \caption{aaa}
+      \detectorHenkou{45}{$+\theta$}
+      \caption{$\theta=+$} \label{subfig:d}
     \end{subfigure}
-    % \\ 
-    aアアア
+    g検出器
   \end{minipage}
-  \caption{a}
-  \label{a}
+  %%
+  \caption{p検出器とg検出器の偏光子の偏光軸の方向。}
+  \label{fig:henkou-jiku}
 \end{figure}
 %
 \subsubsection{光子の測定} % - - - - - - - - - - -
 
-p検出器の偏光子の偏光軸を$y$軸方向に(a)、g検出器の偏光軸を$x$軸から$\phi$だけ回して(c)セットし、単位時間あたりに両検出器が\ftj{同時に}光子を検出する回数$n(x=+,\phi=+)$を観測する。
-同様にして、検出器の偏光子の偏光軸を(a)と(d)にセットしたときの$n(x=+,\theta=+)$と、(b)と(d)にセットしたときの$n(\phi=-,\theta=+)$を観測する\footnote{
-  (b)と(c)の組み合わせの場合は、それぞれの検出器の偏光子の偏光軸が平行なので$n(\phi=-, \phi=+) = 0$である。（引数の表記からも明らかであるが。）
+p検出器の偏光子の偏光軸を$y$軸方向に(\ref{subfig:b})、g検出器の偏光軸を$x$軸から$\phi$だけ回して(\ref{subfig:c})セットし、単位時間あたりに両検出器が\ftj{同時に}光子を検出する回数$n(x=+,\phi=+)$を観測する。
+同様にして、検出器の偏光子の偏光軸を(\ref{subfig:a})と(\ref{subfig:d})にセットしたときの$n(x=+,\theta=+)$と、(\ref{subfig:b})と(\ref{subfig:d})にセットしたときの$n(\phi=-,\theta=+)$を観測する\footnote{
+  (\ref{subfig:b})と(\ref{subfig:c})の組み合わせの場合は、それぞれの検出器の偏光子の偏光軸が平行なので$n(\phi=-, \phi=+) = 0$である。（引数の表記からも明らかであるが。）
 }。\par
 単位時間当たりにp検出器が検出する光子の数を$N \,(\gg 1)$個とすると、\ftj{同時に}g検出器が光子を検出する数\footnote{
   つまり、p光子が観測されたときに、同時にg光子も観測されるという確率に$N$をかければ良い。
@@ -412,9 +419,9 @@ p検出器の偏光子の偏光軸を$y$軸方向に(a)、g検出器の偏光軸
   \label{eq:photon-3} n(\phi=-,\theta=+) &= N \cos^2(\phi + \pi/2 - \theta) = N \sin^2(\phi - \theta)
 \end{align}
 であると予想される\footnote{
-  例えば、検出器の偏光軸を(a)と(c)にセットしたときでは、p光子が観測される確率が$1$であるなら、g光子の偏光は$x$軸であるので、g光子とg検出器の偏光子とのなす角は$\phi$である。
-  (a)と(d)にセットしたときも上と同様に考えればすぐにわかる。
-  (b)と(d)にセットしたときは、p光子が観測される確率が$1$であるということは、p光子の偏光は（p検出器の座標系で）$x$軸から$-\phi$だけ傾いているから、それと直交しているg光子の偏光は（g検出器の座標系で）$x$軸から$\phi + \pi/2$だけ傾いている。よって、g光子とg検出器の偏光子のなす角は$\phi + \pi/2 - \theta$である。
+  例えば、検出器の偏光軸を(\ref{subfig:a})と(\ref{subfig:c})にセットしたときでは、p光子が観測される確率が$1$であるなら、g光子の偏光は$x$軸であるので、g光子とg検出器の偏光子とのなす角は$\phi$である。
+  (\ref{subfig:a})と(\ref{subfig:d})にセットしたときも上と同様に考えればすぐにわかる。
+  (\ref{subfig:b})と(\ref{subfig:d})にセットしたときは、p光子が観測される確率が$1$であるということは、p光子の偏光は（p検出器の座標系で）$x$軸から$-\phi$だけ傾いているから、それと直交しているg光子の偏光は（g検出器の座標系で）$x$軸から$\phi + \pi/2$だけ傾いている。よって、g光子とg検出器の偏光子のなす角は$\phi + \pi/2 - \theta$である。
 }。
 
 %
@@ -430,12 +437,13 @@ p検出器の偏光子の偏光軸を$y$軸方向に(a)、g検出器の偏光軸
   \cos^2 3\theta + \sin^2 2\theta - \cos^2\theta \ge 0
 \end{align}
 となる。
-しかし、左辺を$\theta$の関数として図示すると（\zu{left-hen}）、$0 < \theta < 30^\circ$の範囲で不等式を満足しないことがわかる。
+しかし、左辺を$\theta$の関数として図示すると、$0 < \theta < 30^\circ$の範囲で不等式を満足しないことがわかる（\zu{left-hen}）。
 
-\begin{figure}[htp]
+\begin{figure}[htp] \small
   \centering
-  \includegraphics{nkym/fig/Aspect.pdf}
-  \caption{不等式の左辺。}
+  % \includegraphics{nkym/fig/Aspect.pdf}
+  \input{nkym/gnuplot/Aspect.tex}
+  \caption{不等式の左辺$f(\theta) = \cos^2 3\theta + \sin^2 2\theta - \cos^2\theta$のプロット。$0 < \theta < 30^\circ$のとき$f(\theta) < 0$である。}
   \label{fig:left-hen}
 \end{figure}
 
