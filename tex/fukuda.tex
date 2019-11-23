@@ -162,13 +162,23 @@ F_z=-\frac{\partial U}{\partial z}
 \end{align}
 と書くことができ、$\Phi$ を静電ポテンシャルと呼びます。$-$がついているのは、静電ポテンシャルは一般的に無限遠を基準点にとるためです。
 \subsubsection{〈クーロンの法則〉}
-次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。が、式変形だけではい、終わり、だとなにをしているのかわからなくなしそうなので、場面設定していきます。
-%\begin{figure}[htbp]
-%  \centering
-%  \includegraphics[width=10cm]{img/fig-sin.pdf}
-%  \caption{}　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　後でお絵かき。お絵かきしてから書く！忘れるなかれ
-%  \label{fig:sin}
-%\end{figure}
+次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。\shiki{Gauss}と\shiki{Faraday}を使います。\shiki{Gsuss}の$S$に半径$r$の球面(内側に点電荷$q$を持つ)をとると、\shiki{Gauss}は
+\begin{align}
+\mathbf{E}\cdot\mathbf{n}4\pi r^2 = \frac{\rho}{\epsilon_0}
+\end{align}
+右辺については、点電荷からの湧き出し全てを集めていると考えられるためこうなります。よって、
+\begin{align}
+\mathbf{E} = \frac{q}{4\pi\epsilon_0 r^2}\cdot\mathbf{n}
+\end{align}
+これで一応クーロンの法則ではあるのですが、一般的な書き方とは異なるので書き直しておきます。
+\begin{align}
+\mathbf{E} = \frac{q}{4\pi\epsilon_0}\frac{\mathbf{r}}{|r^3|}
+\end{align}
+または、点電荷の座標を$\mathbf{r_0}$として、
+\begin{align}
+\mathbf{E} = \frac{q}{4\pi\epsilo_0}\frac{\mathbf{r}-\mathbf{r_0}}{|\mathbf{r}-\mathbf{r_0}|^3}
+\end{align}
+というように書くこともあります。どれも言っていることは同じです。
 
 \subsubsection{〈ポアソン方程式〉}
 次で静電場は最後になります。…最後に、してしまいます。\par
@@ -180,9 +190,29 @@ F_z=-\frac{\partial U}{\partial z}
 \begin{align}
 \nabla^2 \Phi = - \frac{\rho}{\epsilon_0}
 \end{align}
-この式をポアソン方程式といいます。
-
-%きちんと書く予定。予定。
+この式をポアソン方程式といいます。この式は微分方程式なので一般解が求められます。しかしここではポアソン方程式を直接解くことはせず、別の方法で一般解の一つを求めてみたいと思います。\par
+クーロンの法則
+\begin{align}
+\mathbf{E} = \frac{q}{4\pi}\frac{\mathbf{r}-\mathbf{r_0}}{|\mathbf{r}-\mathbf{r_0}|^3}
+\end{align}
+から始めます。このクーロンの法則で表される電場について静電ポテンシャルを取ると
+\begin{align}
+\Phi(\mathbf{r}) = \frac{q}{4\pi\epsilon_0 r}-\frac{q}{4\pi\epsilon_0 r_0}
+\end{align}
+と書け、$r_0 = \infty$ととれば
+\begin{align}
+\Phi(\mathbf{r}) = \frac{q}{4\pi\epsilon_0 r}
+\end{align}
+ここで、$n$個の点電荷$q_1,q_2\cdots q_n$がそれぞれ$r_1,r_2\cdots r_n$にあるとすると、静電ポテンシャルは、
+\begin{align}
+\Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\sum_(i=1)^n \frac{q_i}{|\mathbf{r}-\mathbf{r_i}|} \\
+\Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\lim_(n \to \infty)}\sum_(i=1)^n \frac{\rho(\mathbf{r_i}) dV_i}{|\mathbf{r}-\mathbf{r_i}|}
+\end{align}
+よって、体積分で表すと、
+\begin{align}
+\Phi(\mathbf{r}) = \frac{1}{4\pi\epsikon_0}\int_V \frac{\rho(\mathbf{r`})}{|\mathbf{r}-\mathbf{r`}|}dV`
+\end{align}
+これがポアソン方程式の解の一つです。なぜこれがポアソン方程式の解といえるのかはクーロンの法則と重ね合わせの原理はポアソン方程式と静電ポテンシャルと同価であることに起因するのだが、今回は省略する。尚、注意点として、右辺の積分の変数は$\mathbf{r`}$であることに注意してください。
 
 \subsection{静磁場}
 話は変わって、電場ではなく磁場について考えていきます。使うのは先程使わなかったマクスウェル方程式
@@ -278,11 +308,9 @@ c^2 \oint_C \mathbf{B}\cdot d\mathbf{r} = \frac{1}{\epsilon_0}\int_S \mathbf{j}\
 \label{eq:Amperedif1.2.4}
 c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\mathbf{E}}{\partial t}
 \end{numcases}
-\subsubsection{〈インダクタンス〉}
 
-
-\subsubsection{〈電磁波〉}
-
+\section{最後に}
+あれ？時間変化は？と思うと思いますが、ページと時間(締切数時間前)と頭の関係上省略いたします。正直、後悔の残る出来なので、来年も電磁気の分野をテーマにリベンジしようと考えています。お読みいただきありがとうございます。おまけもあるので是非。
 
 \section{おまけ}
 \subsection{積分形→微分形}
@@ -341,30 +369,75 @@ c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\math
 他二つは省略。
 \par
 \par
-本編では何の前振りもなく使っていますが、一応ここでガウスの定理とストークスの定理を証明しておきます。
+本編では何の前振りもなく使っていますが、一応ここでガウスの定理を証明しておきます。ストークスの定理も手順はほぼ同じなので省略します。
 \subsubsection{〈ガウスの定理〉}
+\ref{fig:Gauss1}図をご覧ください。
 \begin{figure}[htbp]
   \begin{flushright}
   \includegraphics[width=5cm]{fukuda/Gauss}
+  \caption{}
+  \label{fig:Gauss1}
   \end{flushright}
 \end{figure}
-
+任意の閉曲面$S$を貫くベクトル場$\mathbf{h}$の流束
+\begin{align}
+\int_S \mathbf{h}\cdot\mathbf{n}dS
+\end{align}
+について考える。$S=S_1 +S_2 ,S_a =S_1 +S_3 ,S_b =S_2 +S_3$として、
+\begin{align}
+\int_(S_a) \mathbf{h}\cdot\mathbf{n_1}dS+\int_(S_b) \mathbf{h}\cdot\mathbf{n_2}dS = \int_(S_1) \mathbf{h}\cdot\mathbf{n}dS + \int_(S_3) \mathbf{h}\cdot\mathbf{n_1}dS + \int_(S_2) \mathbf{h}\cdot\mathbf{n_2} + \int_(S_3) \mathbf{h}\cdot\mathbf{n_2}dS 
+\end{align}
+$\mathbf{n_1} = \mathbf{n_2}$のため、
+\begin{align}
+\int_(S_a) \mathbf{h}\cdot\mathbf{n_1}dS+\int_(S_b) \mathbf{h}\cdot\mathbf{n_2}dS = \int_(S_1) \mathbf{h}\cdot\mathbf{n}dS + \int_(S_2) \mathbf{h}\cdot\mathbf{n_2}\par
+= \int_S \mathbf{h}\cdot\mathbf{n}dS
+\end{align}
+よって、
+\begin{align}
+\int_S \mathbf{h}\cdot\mathbf{n}dS = \lim_(N \to \infty)\sum_(i=1)^N \int_(S_i) \mathbf{h}\cdot\mathbf{n}dS
+\end{align}
+が得られる。
 \begin{figure}[htbp]
   \begin{flushright}
   \includegraphics[width=5cm]{fukuda/Gauss2}
+  \caption{}
+  \label{fig:Gauss2}
   \end{flushright}
 \end{figure}
-\subsubsection{〈ストークスの定理〉}
-\begin{figure}[htbp]
-  \begin{flushright}
-  \includegraphics[width=5cm]{fukuda/Stokus}
-  \end{flushright}
-\end{figure}
-\begin{figure}[htbp]
-  \begin{flushright}
-  \includegraphics[width=5cm]{fukuda/Stokus2}
-  \end{flushright}
-\end{figure}
+次に\ref{fig:Gauss2}図についても流束を考えると、
+\begin{align}
+\int_(S_i) \mathbf{h}\cdot\mathbf{n}dS = \int_(S_a) \mathbf{h}\cdot\mathbf{n_a}dS + \int_(S_b) \mathbf{h}\cdot\mathbf{n_b}dS\cdots
+\end{align}
+ここで$x$軸についてのみ流束を考えると、$\mathbf{n_a} = \mathbf{n_b}$より、
+\begin{align}
+h_x = h_x(B)dydz
+\end{align}
+ただし、$\mathbf{h} = (h_x,h_y,h_z),h_x(B)=h_x(x+dx,y,z)$である。ここで$h_x(B)$を偏微分を使って表して、
+\begin{align}
+h_x(B) = h_x(x,y,z) + \frac{\partial h_x}{\partial x}dx = h_x(A) + \frac{\partial h_x}{\partial x}dx
+\end{align}
+よって、
+\begin{align}
+\int_(S_a) \mathbf{h}\cdot\mathbf{n_a}dS + \int_(S_b) \mathbf{h}\cdot\mathbf{n_b}dS = \frac{\partial h_x}{\partial x}dxdydz
+\end{align}
+$y$軸、$z$軸についても同様に、
+\begin{numcases}
+{}
+\frac{\partial h_y}{\partial y}dxdydz\par
+\frac{\partial h_z}{\partial z}dxdydz
+\end{numcases}
+よって、
+\begin{align}
+\int_(S_i) \mathbf{h}\cdot\mathbf{n}dS = \nabla\cdot\mathbf{h}dxdydz
+\end{align}
+$dxdydz$は$dV`$として、
+\begin{align}
+\int_S \mathbf{h}\cdot\mathbf{n}dS = \lim_(N \to \infty) \sum_(i=1)^N \nabla\cdot\mathbf{h}dV_i
+\end{align}
+つまり、
+\begin{align}
+\int_S \mathbf{h}\cdot\mathbf{n}dS = \int_V \nabla\cdot\mathbf{h}dV
+\end{align}
 
 %% 参考文献。thebibliography でいいです！ nkymより
 \begin{thebibliography}{9}
