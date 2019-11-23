@@ -16,7 +16,7 @@
   [
     x=10mm, y=10mm,
     line cap=round, line join=round,
-    axis/.style={black, >=latex, ->},
+    axis/.style={black, >=latex, ->, thick},
     wave/.style={thick,
       decorate, decoration={
         snake, post length=0.5mm, amplitude=1mm, segment length=4.2mm
@@ -32,7 +32,8 @@
 
 % Ca atom
 \coordinate (Ca) at (0,0);
-\draw[fill] (Ca) circle (3pt) node[above=5pt] {Ca};
+\draw (Ca) circle (5pt);
+\draw[fill] (Ca) circle (2pt) node[above=7pt] {Ca原子};
 
 % waves
 \draw[wave,->] (Ca)++(\angle:-.5) -- ++(\angle:-\B);

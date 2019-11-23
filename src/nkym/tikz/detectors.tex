@@ -1,0 +1,94 @@
+%%
+%% 光子の偏光軸
+
+\documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
+% \documentclass[dvipdfmx,10pt]{jsbook}
+
+\usepackage{tikz}
+% \usetikzlibrary{quotes,angles,arrows}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usetikzlibrary{calc}
+
+%
+\begin{document}
+%
+
+\begin{tikzpicture}
+  [
+    x=8mm, y=8mm,
+    line cap=round, line join=round,
+    % axis/.style={black, >=latex, ->},
+    wave/.style={thick,
+      decorate, decoration={
+        snake, post length=0.5mm, amplitude=1mm, segment length=4.2mm
+      }
+    },
+    detector/.style={thick},
+  ]
+\small
+
+% Ca atom
+\coordinate (Ca) at (0,0);
+\draw (Ca) circle (5pt);
+\draw[fill] (Ca) circle (2pt) node[above=7pt] {Ca原子};
+
+\newcommand\oneDetector[1]{
+  \def\sgn{#1}
+  \def\A{1.6*\sgn}
+  \def\O{3.5*\A}
+  \def\B{.3*\A}
+  \def\angle{20}
+
+  % waves
+  \draw[wave,->] (Ca)++(\B,0) -- ++(\A,0) ++(\B,0) coordinate (R);
+
+  % 2 rectangles
+  \def\recX{.2*\sgn}
+  \def\recY{1*\sgn}
+  \def\recYa{\recY*\sgn}
+  %
+  \coordinate (RR) at ($(R)+(\recX+\B,0)$);
+  \draw[detector] ($(R)-(\recX,\recY)$) rectangle ($(R)+(\recX,\recY)$);
+  \draw[detector] ($(RR)-(\recX,\recY)$) rectangle ($(RR)+(\recX,\recY)$);
+  % node henkoushi
+  \draw[detector,<-] ($(RR)+(0,1.1*\recYa)$) -- +(0,.5*\recYa) node[above] {偏光子};
+  % node filter
+  \def\filter{\ifnum\sgn<0{紫}\else{緑}\fi}
+  \draw[detector,<-] ($(R)-(0,1.1*\recYa)$) -- +(0,-.5*\recYa) node[below] {\filter{}フィルター};
+
+  % detector arc
+  \def\detX{5*\recX}
+  \def\detY{.8*\recY}
+  \def\detYa{\detY*\sgn}
+  % 
+  \coordinate (R3) at ($(RR)+(\B,0)$);
+  \coordinate (R3+) at ($(R3)+(\detX,0)$);
+  \coordinate (Ry+) at ($(R3)+(0,\detY)$);
+  \coordinate (Ry-) at ($(R3)+(0,-\detY)$);
+  \draw[detector] (Ry-) -- (Ry+) 
+    .. controls +(0:\recX) and +(90:3*\recX) .. (R3+) 
+    .. controls +(-90:3*\recX) and +(0:\recX) .. (Ry-) -- cycle;
+  \draw[detector,->] (R3+) -- ++(.5*\detX,0) 
+    -- ++(0,-2*\detYa) node[below,draw,rectangle] {検出};
+
+  % node detector
+  \coordinate (down) at (0,-0.3);
+  \coordinate (up) at (0,0.3);
+  \draw (\A,-3.5*\detYa) -- ++(down) -- ++(2*\detX, 0) coordinate (detC) -- ++(2*\detX, 0) -- ++(up);
+
+  \def\detector{\ifnum\sgn<0{p}\else{g}\fi}
+  \node[below] at (detC) {{\detector}検出器};
+
+
+
+}
+
+\oneDetector{1}
+\oneDetector{-1}
+
+\end{tikzpicture}
+
+%
+%
+\end{document}
