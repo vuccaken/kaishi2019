@@ -162,7 +162,7 @@ F_z=-\frac{\partial U}{\partial z}
 \end{align}
 と書くことができ、$\Phi$ を静電ポテンシャルと呼びます。$-$がついているのは、静電ポテンシャルは一般的に無限遠を基準点にとるためです。
 \subsubsection{〈クーロンの法則〉}
-次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。\shiki{Gauss}と\shiki{Faraday}を使います。\shiki{Gsuss}の$S$に半径$r$の球面(内側に点電荷$q$を持つ)をとると、\shiki{Gauss}は
+次はクーロンの法則です。今回は積分形のマクスウェル方程式から求めていきます。\shiki{Gauss}と\shiki{Faraday}を使います。\shiki{Gauss}の$S$に半径$r$の球面(内側に点電荷$q$を持つ)をとると、\shiki{Gauss}は
 \begin{align}
 \mathbf{E}\cdot\mathbf{n}4\pi r^2 = \frac{\rho}{\epsilon_0}
 \end{align}
@@ -176,7 +176,7 @@ F_z=-\frac{\partial U}{\partial z}
 \end{align}
 または、点電荷の座標を$\mathbf{r_0}$として、
 \begin{align}
-\mathbf{E} = \frac{q}{4\pi\epsilo_0}\frac{\mathbf{r}-\mathbf{r_0}}{|\mathbf{r}-\mathbf{r_0}|^3}
+\mathbf{E} = \frac{q}{4\pi\epsilon_0}\frac{\mathbf{r}-\mathbf{r_0}}{|\mathbf{r}-\mathbf{r_0}|^3}
 \end{align}
 というように書くこともあります。どれも言っていることは同じです。
 
@@ -206,11 +206,11 @@ F_z=-\frac{\partial U}{\partial z}
 ここで、$n$個の点電荷$q_1,q_2\cdots q_n$がそれぞれ$r_1,r_2\cdots r_n$にあるとすると、静電ポテンシャルは、
 \begin{align}
 \Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\sum_(i=1)^n \frac{q_i}{|\mathbf{r}-\mathbf{r_i}|} \\
-\Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\lim_(n \to \infty)}\sum_(i=1)^n \frac{\rho(\mathbf{r_i}) dV_i}{|\mathbf{r}-\mathbf{r_i}|}
+\Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\lim_(n \to \infty)\sum_(i=1)^n \frac{\rho(\mathbf{r_i}) dV_i}{|\mathbf{r}-\mathbf{r_i}|}
 \end{align}
 よって、体積分で表すと、
 \begin{align}
-\Phi(\mathbf{r}) = \frac{1}{4\pi\epsikon_0}\int_V \frac{\rho(\mathbf{r`})}{|\mathbf{r}-\mathbf{r`}|}dV`
+\Phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int_V \frac{\rho(\mathbf{r`})}{|\mathbf{r}-\mathbf{r`}|}dV`
 \end{align}
 これがポアソン方程式の解の一つです。なぜこれがポアソン方程式の解といえるのかはクーロンの法則と重ね合わせの原理はポアソン方程式と静電ポテンシャルと同価であることに起因するのだが、今回は省略する。尚、注意点として、右辺の積分の変数は$\mathbf{r`}$であることに注意してください。
 
@@ -389,8 +389,9 @@ c^2 \nabla\times\mathbf{B} = \frac{\mathbf{j}}{\epsilon_0} + \frac{\partial\math
 \end{align}
 $\mathbf{n_1} = \mathbf{n_2}$のため、
 \begin{align}
-\int_(S_a) \mathbf{h}\cdot\mathbf{n_1}dS+\int_(S_b) \mathbf{h}\cdot\mathbf{n_2}dS = \int_(S_1) \mathbf{h}\cdot\mathbf{n}dS + \int_(S_2) \mathbf{h}\cdot\mathbf{n_2}\par
-= \int_S \mathbf{h}\cdot\mathbf{n}dS
+\int_(S_a) \mathbf{h}\cdot\mathbf{n_1}dS+\int_(S_b) \mathbf{h}\cdot\mathbf{n_2}dS 
+&= \int_(S_1) \mathbf{h}\cdot\mathbf{n}dS + \int_(S_2) \mathbf{h}\cdot\mathbf{n_2}\\
+&= \int_S \mathbf{h}\cdot\mathbf{n}dS
 \end{align}
 よって、
 \begin{align}
@@ -422,9 +423,9 @@ h_x(B) = h_x(x,y,z) + \frac{\partial h_x}{\partial x}dx = h_x(A) + \frac{\partia
 \end{align}
 $y$軸、$z$軸についても同様に、
 \begin{numcases}
-{}
-\frac{\partial h_y}{\partial y}dxdydz\par
-\frac{\partial h_z}{\partial z}dxdydz
+  {}
+  \frac{\partial h_y}{\partial y}dxdydz\\
+  \frac{\partial h_z}{\partial z}dxdydz
 \end{numcases}
 よって、
 \begin{align}
