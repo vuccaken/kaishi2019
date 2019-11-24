@@ -1,20 +1,18 @@
-%
-%    This file is "vuccaken2019.sty"
-%    2019-08-06 created
-%
-
-%    main.tex からもタイプセットできるように
-%    自分のtexファイルのプリアンプルをコピペしてください。
-%    マクロが競合しそうなときは相談してください。
-
-
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-% 共通
-% - - - - - - - - - - - - - - - - - - - - - - - - -
-
 %%
-%% 全体の設定
+%%    This file is "vuccaken2019.sty"
+%%    2019-08-06 created
 %%
+
+%%    00main.tex からもタイプセットできるように
+%%    自分のtexファイルのプリアンプルをコピペしてください。
+%%    マクロが競合しそうなときは相談してください。
+
+
+%% - - - - - - - - - - - - - - - - - - - -
+%%  全体の設定
+%% - - - - - - - - - - - - - - - - - - - -
+
+%% FONT
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
@@ -36,14 +34,6 @@
 % \DeclareFontShape{JT1}{gt}{m}{sl}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{it}{<->ssub*gt/m/n}{}
 % \DeclareFontShape{JT1}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
-
-\usepackage{xparse}  % LaTeX3; \DeclareDocumentCommand
-\usepackage{docmute} % \inputを改良
-\def\input@path{{./tex/}{./src/}{../src/}}
-
-%%
-%% each kaishi で使う用、プチマクロ
-%%
 
 %% 数式
 \usepackage{amsmath,amssymb} % 数式関係
@@ -114,15 +104,31 @@
 \newcommand\vmane@space{~}
 \newcommand\vname[2]{#1\vmane@space#2}
 
-%% 数式番号付加
-\def\atag{\refstepcounter{equation}\tag{\theequation}}
+
+%% - - - - - - - - - - - - - - - - - - - -
+%%  00main.tex で使用
+%% - - - - - - - - - - - - - - - - - - - -
+
+\usepackage{docmute} % \inputを改良
+
+%% 最強のinputコマンド
+\newcommand{\vInputTeX}{\@dblarg\v@InputTeX}
+\def\v@InputTeX[#1]#2{%
+  \def\pathToFiles{./tex/#1/}
+  \def\input@path{{\pathToFiles}}
+  \graphicspath{{\pathToFiles}}
+  \input{\pathToFiles#2}
+}
+
+%% switch to read eath content
+\newif\iffront
+\newif\ifmain
+\newif\ifback
 
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
-%%   メインの本文以外の部分
+%%  本文以外の部分
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
-
-%% 表紙
 
 %% 巻頭言・編集後記
 %% usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
@@ -142,23 +148,20 @@
   \end{flushright}\par%
 }
 
-%% - - - - - - - - - - - - - - - - - - - - - - - - -
-%%   11nsmr.tex
-%% - - - - - - - - - - - - - - - - - - - - - - - - -
-\newcommand\nsmr{西村宗悟}
-
-% define tani command
-\makeatletter % open at mark
-  \newcommand\tani{\@ifstar\stani\nstani}
-\makeatother % close at mark
-\newcommand\nstani[1]{\,\mathrm{#1}}
-\newcommand\stani[1]{\,\mathrm{[#1]}}
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
-%%   nkym.tex
+%%  nkym.tex
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 
-% in math environment
+%% 数式番号付加
+\def\atag{\refstepcounter{equation}\tag{\theequation}}
+
+%% 単位をローマン体にするコマンド
+\newcommand\tani{\@ifstar\s@tani\ns@tani}
+\newcommand\ns@tani[1]{\,\mathrm{#1}} % star
+\newcommand\s@tani[1]{\,\mathrm{[#1]}} % no star
+
+%% in math environment
 \newcommand\dsum{\sum\limits} % sum in text line
 \newcommand\naraba{\,\,\,\Rightarrow\,\,\,}
 \newcommand\spc{\,\,} % 程良いスペース。
@@ -174,7 +177,7 @@
 \newcommand\hyo[1]{表\ref{tab:#1}}
 \newcommand\setu[1]{\ref{sec:#1}節}
 \newcommand\subsetu[1]{\ref{subsec:#1}節}
-\newcommand\zenkakko[1]{\!\!（\,#1\,）\!\!}
+% \newcommand\zenkakko[1]{\!\!（\,#1\,）\!\!}
 \newcommand\ftj[1]{{\bfseries #1}}
 % \newcommand\migi{→~}
 
@@ -187,16 +190,17 @@
 %% tikz
 % \usepackage{tikz}
 % \usepackage{xcolor}
+\usepackage{gnuplot-lua-tikz}
 \usetikzlibrary{quotes,angles,arrows}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{calc}
-\usepackage{gnuplot-lua-tikz}
 
+%% あとで図を入れる目印
 \newcommand\karizu[1]{\begin{center}（図：#1）\end{center}}
 
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
-%%   Yoshida
+%%  Yoshida
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 % \usepackage{amsmath}
 \usepackage{multicol}
@@ -204,13 +208,14 @@
 % \usepackage{subfigure} %% 消していい？ subcaption.styと競合 (nkym)
 % \usepackage{here}
 
+
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
-%%   Fukuda
+%%  Fukuda
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 \newcommand\shiki[1]{(\ref{eq:#1})式}
 
 
 
-%
-% EOF
-%
+%%
+%% EOF
+%%
