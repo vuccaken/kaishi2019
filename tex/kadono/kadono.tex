@@ -44,14 +44,14 @@
       % 1
       \begin{minipage}{0.5\hsize}
           \begin{center}
-          \includegraphics[clip, width=4.5cm]{kadono/cryotronics.png}
+          \includegraphics[clip, width=4.5cm]{img/cryotronics.png}
           \hspace{1.6cm} [A]\ セルノックス温度センサ
           \end{center}
       \end{minipage}
       % 2
       \begin{minipage}{0.5\hsize}
           \begin{center}
-          \includegraphics[clip, width=6cm]{kadono/CXチャート1.png}
+          \includegraphics[clip, width=6cm]{img/CX-chart-1.png}
           \hspace{1.6cm} [B]\ センサーの抵抗温度特性
           \end{center}
       \end{minipage}
@@ -61,6 +61,7 @@
       \label{fig:cryotronics}
   \end{center}
 \end{figure}
+
 セルノックス温度計の大きさは図\ref{fig:cryotronics}の[A]にある通りとて小さいです。セルノックスは低温特に数ケルビンの極低温領域に強い温度計です。摂氏でいうと$-270\ ^\circ \rm{C}$付近です。\ref{fig:cryotronics}の[B]にセルノックスの温度と抵抗値の特性をのせています。色の違いは種類の違いです。このグラフを見ると温度と抵抗値のグラフが直線ではなく幅を持っています。これはセルノックスの温度計自体にこれだけの抵抗値の誤差があるということではありません。個体差がこれくらいの幅を持っているということです。この温度計を買うとものと一緒に温度と抵抗値のデータがついてきます。このデータは企業側が測定してくれたデータです。このデータを使って校正することによって温度を正確に測定することができます。というように、絶対温度を測定するのは難しくどうしても相対温度を測定することになってしまいます。
 
 \section{フォノン君}
@@ -69,9 +70,10 @@
 まず考えたいのが、固体の中でも、一つの原子のみで構成されている単結晶です。
 最初から三次元で考えるとよくわからなくなるので、原子同士がばねで一列につながっている状態を考えます(図\ref{fig:bane})。\par
 
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[height=2cm]{kadono/bane.pdf}  % width
+  \includegraphics[height=2cm]{img/bane.pdf}  % width
   \caption{一次元の結晶}
   \label{fig:bane}
 \end{figure}
@@ -107,6 +109,7 @@
 量子力学によると、すべてのものは粒子と波の二重性を示すらしいです。この考えを今回の格子振動に適用して、粒子として考えることができます。この粒子のことをフォノン(phonon)と言います。
 
 
+
 \section{比熱とか熱伝導率とか}
 ここからは、固体中の熱物性、特に比熱、熱伝導率、について書いていきたいと思います。
 \subsection{比熱}
@@ -114,6 +117,7 @@
 固体の比熱について考えるためには統計力学の知識が必要ですが、それは参考文献に任せて次に進みます。比熱は、$\frac{\mathrm{d}U}{\mathrm{d}T}$
 \subsection{熱伝導率}
 \section{ちょっと変わった話}
+
 結晶において低温の熱物性について考えて来ました。前のセクションでいった温度依存性がすべての結晶でいえるのかというと実は例外があります。私の研究テーマになっているのですが、単結晶であってもなぜか結晶とは違う温度依存性を持つ物質がこの世の中には存在しています。リラクサー強誘電体というものです。
 
 \begin{figure}[htbp]
@@ -121,13 +125,13 @@
       \begin{tabular}{c}  
       \begin{minipage}{0.5\hsize}
           \begin{center}
-          \includegraphics[clip, width=6cm]{kadono/リラクサー熱伝導率.pdf}
+          \includegraphics[clip, width=6cm]{img/relaxor-thermal-conductivity.pdf}
           \hspace{1.6cm} [A]熱伝導率の温度依存性
       \end{center}
   \end{minipage}
   \begin{minipage}{0.5\hsize}
       \begin{center}
-          \includegraphics[clip, width=6cm]{kadono/リラクサー比熱.pdf}
+          \includegraphics[clip, width=6cm]{img/relaxor-heat-capacity.pdf}
           \hspace{1.6cm} [B]比熱の温度依存性
       \end{center}
       \end{minipage}
@@ -136,6 +140,8 @@
       \label{fig:lena}
   \end{center}
 \end{figure}
+
+
 \section{終わりに}
 % \begin{figure}[htbp]
 %   \centering

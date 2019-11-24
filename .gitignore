@@ -3,7 +3,7 @@
 
 
 ## タイプセットしてできたpdfは要らない:
-tex/*.pdf
+tex/*/*.pdf
 /*.pdf
 # !00main.pdf
 # 00main.pdf

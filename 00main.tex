@@ -2,66 +2,59 @@
 %%    This file is "00main.tex"
 %%      ## MAIN TEX FILE ##
 %%
+%%    title: 令和元年度 会誌『白夜』第4号
+%%    author: †物理科学研究会†
+%%
+%%    writers: fukuda, namba, yoshida, fujiki, nkym, HD, kadono
+%%    drop out: fujiwara, sj, nishimura
+%%
 
-%%    † 2019年度　物理科学研究会　会誌 †
-%%          『白夜』 第4号
-
-%% 10 members:
-%%    nsmr, nkym, kadono, sj, abe,
-%%    fukuda, yoshida, namba, fujiki, fujiwara
 
 %% typeset: platex -> dvipdfmx
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
 
 \usepackage[analog]{vuccaken}
-\usepackage{v-hyperref} % 自作。内部でhyperrefを読み込んでる
+\usepackage{v-hyperref} % 内部でhyperrefを読み込んでる
 \usepackage{vuccaken2019}
 
-\newif\iffront
-\newif\ifmain
-\newif\ifback
+\tocfalse % 各ファイルのtocを非表示に
 
+%% switch to read contents
 \fronttrue
 \maintrue
 \backtrue
 
-% \newcommand\vReadTeXFile[1]{\ReadTeXFile{tex/#1}}
-\newcommand\vReadTeXFile[1]{\input{tex/#1}}
-
-\tocfalse % 各ファイルのtocを非表示に
-
-\begin{document} % - - - - - - - - - - - - - - - - - - - - - -
+\begin{document} % - - - - - - - - - - - - - - - - - -
 
 \iffront
   \frontmatter
-  \vReadTeXFile{01hyoshi-omote}
-  \vReadTeXFile{02hyoshi-naka}
-  \vReadTeXFile{03kantogon}
-  \tableofcontents % 目次出力
+  \vInputTeX[_BK]{01-frontCover} % 表紙（表）
+  \vInputTeX[_BK]{02-insideCover} % 表紙（中）
+  \vInputTeX[_BK]{03-kantogen} % 巻頭言
+  \tableofcontents % 目次
 \fi
 
 \mainmatter
 \ifmain
-  % \vReadTeXFile{50template}
-  \vReadTeXFile{fukuda}
-  \vReadTeXFile{namba}
-  \vReadTeXFile{fujiki}
-  % \vReadTeXFile{kfuji}
-  \vReadTeXFile{yoshida}
-  % \vReadTeXFile{Jyo}
-  \vReadTeXFile{nkym}
-  \vReadTeXFile{robocon}
-  \vReadTeXFile{kadono}
+  \vInputTeX[_templete]{template}
+  \vInputTeX{fukuda}
+  \vInputTeX{namba}
+  \vInputTeX{fujiki}
+  % \vInputTeX{kfuji}
+  \vInputTeX{yoshida}
+  \vInputTeX{nkym}
+  \vInputTeX{robocon}
+  \vInputTeX{kadono}
 \fi
 
 \ifback
   \backmatter
-  \vReadTeXFile{04hensyukoki} % odd
-  \vReadTeXFile{05okuduke} % even
-  \vReadTeXFile{06hyoshi-ura} % even
+  \vInputTeX[_BK]{04-hensyukoki} % 編集後記
+  \vInputTeX[_BK]{05-okuduke} % 奥付
+  \vInputTeX[_BK]{06-backCover} % 表紙（裏）
 \fi
 
-\end{document} % - - - - - - - - - - - - - - - - - - - - - -
-%
-% お疲れさまです
-%
+\end{document} % - - - - - - - - - - - - - - - - - -
+%%
+%% お疲れさまです
+%%
