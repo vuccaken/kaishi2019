@@ -1,8 +1,8 @@
 # kaishi2019
-2019年度会誌
+弊研究会の2019年度会誌のリポジトリです。
 - [vuccaken new HP](https://vuccaken.github.io)
 
-設定の詳細は[wiki](https://github.com/vuccaken/kaishi2019/wiki/)を見てください。
+設定などの詳細は[wiki](https://github.com/vuccaken/kaishi2019/wiki/)を見てください。
 
 
 ## まずはじめにすること
@@ -11,6 +11,7 @@
 
 1. texのインストール（texlive 2019）
     - ここからインストール： http://www.tug.org/texlive/acquire-netinstall.html
+        - Internetからのインストールで、userのディレクトリ名に非アスキー（日本語）が使われているとエラーが出ました。参考までに、一応メモ。
 2. githubのアカウントを作成
 3. githubのorganizationのvuccakenに参加する（招待してもらう）
 
@@ -22,28 +23,26 @@
 
 ### tex編
 
-1. `/tex/` の中に、自分の名前やそれに準ずる名前でtexファイルを作成。
-    - 例： `/tex/nkym.tex`
-  
-2. `/src/` の中には、画像とかを置くためのディレクトリを作成。
-    - 例： `/src/nkym/`
-    - それ以下のサブディレクトリは自由に構成して良い。
-      - 例：
-      ```
-      /src/
-        `- nkym/
-            |- img/
-            |- fig/
-            `- program/
-      ```
+1. `/tex/` の中に **自分の名前やそれに準ずる名前** でディレクトリ（フォルダ）を作り、その中にtexファイルを作成。
+    - 例： `/tex/nkym/nkym.tex`
 
-3. 作成したtexファイルに、`/tex/50template.tex` の内容をそのままコピペして、適宜編集する。
+2. 作成したtexファイルに、`/tex/_templete/template.tex` の内容をそのままコピペする。
 
-4. あとはいつも通りtexを書いていくだけ。
-    - ただし、画像などのソースのパスは `[directory name]/[file name]` とすること。
-    - 例： `\includegraphics{nkym/hensuki.png}`
+3. あとはいつも通りtexを書いていくだけ。
+    - 注意： `/tex/*/*.pdf` は git では無視するよう設定しているので、画像ファイルを直置きせずに `img/` などのサブディレクトリに入れておくと安心。
+        - 例：
+          ```
+          /tex/nkym/
+                |- nkym.tex
+                |- img/
+                |  `- image01.jpg
+                `- fig/
+                    |- figure01.pdf
+                    `- figure02.png
+          ```
 
-5. 作業が終われば、忘れずに commit & push する。次に作業を再開する時は、リモートのリポジトリに変更がないか、ちゃんと fetch & pull する！　
+
+1. 作業が終われば、忘れずに commit & push する。次に作業を再開する時は、リモートのリポジトリに変更がないか、ちゃんと fetch & pull する！　
 
 ## タイプセット手順
 
@@ -55,42 +54,44 @@
 
 公式サイトからDL: https://code.visualstudio.com
 
-#### 2. vscodeの拡張機能 `latex workshop` をインストール
+#### 2. vscodeの拡張機能 `Latex Workshop` をインストール
 
-vscodeを開いて、左の四角いアイコンをクリックして、`latex workshop` と検索してインストール。
+vscodeを開き、左の四角いアイコンをクリックして、`latex workshop` と検索してインストール。
+
+`LaTeX language support` もインストールしておくとよい。
 
 #### 3. タイプセット
 
-設定ファイルはこちらで用意済みなので、あとは `kaishi2019/` をvscodeで開いて、キーバインド `cmd + alt + B` (winだと `ctrl + alt + B` )でタイプセット！
+`Latex Workshop` の設定ははこちらで用意済みなので、あとはクローンした `kaishi2019/` をvscodeで開いて、キーバインド `cmd + alt + B` でタイプセット！（windowsの人は `cmd` を `ctrl` で読み替えてください。）
 
-また、`cmd + alt + V` ( `ctrl + alt + V` )でPDFをプレビューできます。
+また、`cmd + alt + V` でPDFをプレビューできます。
 
-synctexは、プレビューしたPDFを `cmd` ( `ctrl` )を押しながらクリックするか、 `cmd + alt + J` ( `ctrl + alt + J` )で使用することができます。
+synctexは、プレビューしたPDFを `cmd` を押しながらクリックするか、ソースを表示して `cmd + alt + J` で使用することができます。
 
 
 ### 方法2 latexmk
 
-`.latexmkrc` というのが設定ファイルです。ここで、 `./sty` と `../sty` にパスを通しています。
+上のvscodeの方法でも結局latexmkを使っているのですが、ここではそれをターミナルから直接実行する方法を述べます。
 
-#### macの場合（多分）
+`.latexmkrc` というのがlatexmkの設定ファイルです。ここで、 `./sty/` と `../sty/` と `../../sty/` にパスを通しています。
 
-上のvscodeの方法でも結局latexmkを使っているのだが、ここではそれをターミナルから直接実行する。
+#### macの場合
 
 ターミナルで `kaishi2019/` へ移動する。
 
-```
+```shell
 cd (略)/github/kaishi2019
 ```
 
 移動できたら次のコマンドでlatexmkを実行する。
 
-```
-latexmk tex/nkym.tex
+```shell
+latexmk tex/nkym/nkym.tex
 ```
 
 or
 
-```
+```shell
 latexmk 00main.tex
 ```
 
@@ -105,21 +106,20 @@ latexmkには以下のようなオプションがある。
 optionは次のようにして使う。
 
 ```
-latexmk -pvc 00main.tex
+latexmk -pvc tex/nkym/nkym.tex
 ```
 
 #### winの場合
 
-なんか、上の方法を部室のpc (win) で試したら無理だった。
-`latexmk` コマンドで、親ディレクトリからサブディレクトリ以下のtexファイルを指定するとなぜかエラーが出る。
+windowsだと、サブディレクトリ以下のtexファイルを指定して `latexmk` を実行するとなぜかエラーが出る。
 
-解決策として、一応サブディレクトリにもlatexmkの設定ファイルを置いたので ( `/tex/.latexmkrc` )、サブディレクトリに移動してからコマンド打ってください。
+設定ファイル `.latexmkrc` を `/tex/` 以下の自分のディレクトリにコピーし、サブディレクトリに移動してからコマンド打ってください。
 
 あと、pdfを出力するには、オプション `-pdfdvi` を付けてください。
 
 ```
-cd (略) /kaishi2019/tex
-latexmk -pdfdvi robocon.tex
+cd (略) tex/nkym/
+latexmk -pdfdvi nkym.tex
 ```
 
 winはくそなので、vscodeで環境作ってやってください......
@@ -127,35 +127,38 @@ winはくそなので、vscodeで環境作ってやってください......
 
 ### 方法3 platex -> dvipdfmx
 
-ターミナルで自分のPCにクローンした `kaishi2019/` へ移動。
+defaultだと、repositoryにおいてある`/sty/vuccaken.sty` などの自作sty fileを見つけることができない（pathが通っていない）ので、`platex` を実行する前にpathを通す必要がある。
 
-defaultだと、styファイルなどはカレントディレクトリにおいておけば参照してくれるが、サブディレクトリ以下は探索してくれない。
-ということで、サブディレクトリにパスを通す。
+texの環境変数 `TEXINPUTS` にpath `/sty/` を追加する。
 
 macだと
 
-```
-export TEXINPUTS='.//;'
+```shell
+export TEXINPUTS='./sty/;'
 ```
 
 winだと
 
-```
-set TEXINPUTS='.//;'
+```shell
+set TEXINPUTS='./sty/;'
 ```
 
 この手順は、ターミナルを起動するたびに行わなければならない。
-それが面倒なら、ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。
-または、 `texmf.cnf` とかでググってください。
+それが面倒なら、 ~~ログインシェルの設定ファイル（ `.bash_profile` とか）に上のコマンドを書いてください。または、 `texmf.cnf` とかでググってください。~~  
+latexmk を用いてタイプセットした方が楽です。
 
 パスが通ればあとは普通に `platex` -> `dvipdfmx` を実行すればよい。
 
-```
-platex tex/nkym.tex
-dvipdfmx tex/nkym.dvi
+ターミナルで自分のPCにクローンした `kaishi2019/` へ移動して
+
+```shell
+platex tex/nkym/nkym.tex
+dvipdfmx tex/nkym/nkym.dvi
 ```
 
-```
+or
+
+```shell
 platex 00main.tex
 dvipdfmx 00main.dvi
 ```
