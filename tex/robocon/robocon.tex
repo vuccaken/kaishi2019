@@ -44,35 +44,42 @@
 % figureのパスには注意してください．
 \subsection{設計目的}
 包装されたお菓子などの軽量なワークを素早くハンドリングするロボットアームの，ロボットベースに対して垂直にとった軸周りに素早く回転するアーム部分を設計したい．回転軸周りのトルク$\tau =1.0 \times 10^3 \tani*{Nm}$とし，重力方向の最大変位を$1.0 \times 10^{-2} \tani*{m}$以下に抑えることを目指して設計する．また，アームの先には，実際に製作するロボットが備える機構とハンドを簡略化し，$2.0 \tani*{kg}$の荷重がかかるパーツを接続する．
+
 \subsection{使用材料}
 アームに使用する材料はアルミ合金とする．主に用いるアルミは6000系で，押し出し加工性に優れ，強度が良好で軽量であるという特徴を持つ．これは設計目的にある素早く動くという要求を慣性モーメントの小ささで満たし，重力方向の最大変位を抑えるという要求を縦弾性係数が満たすと期待できるからである．他にも板材として2000系アルミ合金を用いるが，6000系アルミ合金に比べて強度が高く，使用する部分の殆どが回転軸に近い場所であり慣性抵抗の違いが小さく，また6000系アルミ合金を長手方向に渡って非常に多く使うのでそのひずみの様子重要視したいという理由で今回は全体を6000系アルミとしてモデルを簡単にして計算する．以降，密度$\rho=2.70\times 10^{-6}\tani*{kg/mm^3}$，縦弾性係数$E=68.90 \tani*{GPa}$，許容最大応力を$\sigma=2.75×10^{5} \tani*{MPa}$とする．安全率はこのアームがロボットの最も基にあり衝撃が加わる可能性がある箇所なので，余裕を見て$f=15.00$とする．
+
 \subsection{座標系}\label{座標系}
 基準座標系をロボットベースの底面とし，リンク座標系を円筒状面の中心に設け，手先座標系はリンクの先端中央部とし，解析を行う．参考となるロボットの構造を図\ref{fig:座標系}に示す．
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot01.png}
+  % \includegraphics[width=12cm]{img/robot01.png}
+  \includegraphics[width=.85\textwidth]{img/robot01.png}
   \caption{座標系}
   \label{fig:座標系}
 \end{figure}
+
 \subsection{基準}\label{基準}
 ロボットベースは，1辺$2.00\times10^{-1} \tani*{m}$の立方体に直径$1.20\times10^{-1} \tani*{m}$で，$z$軸方向に上面から$7.00\times10^{-2} \tani*{m}$の深さの円筒を切り抜いた形状のものとする．形状を図\ref{fig:ロボットベース}に示す．
 ロボットアームの，ロボットベースの円筒状の中心から手先までの距離については$1.0\tani*{m}$に固定とし，ロボットハンドとジョイントの形状はロボットアームに合わせて変更する．また，ジョイントの重量は無視し，ハンドの重量は$2.0\tani*{kg}$で固定とする．
 ベースとアームを接続するジョイント，ロボットアーム，ロボットハンドの形状については複雑であるので，それぞれ図\ref{fig:ジョイント}，図\ref{fig:ロボットアーム}，図\ref{fig:ロボットハンド}に必要な寸法を示す．
 \begin{figure}[H]
   \centering
-  \includegraphics[width=11cm]{img/robot02.png}
+  % \includegraphics[width=11cm]{img/robot02.png}
+  \includegraphics[width=.85\textwidth]{img/robot02.png}
   \caption{ロボットベース}
   \label{fig:ロボットベース}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=12cm]{img/robot03.png}
+  % \includegraphics[width=12cm]{img/robot03.png}
+  \includegraphics[width=.9\textwidth]{img/robot03.png}
   \caption{ジョイント}
   \label{fig:ジョイント}
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot04.png}
+  % \includegraphics[width=10cm]{img/robot04.png}
+  \includegraphics[width=.9\textwidth]{img/robot04.png}
   \caption{ロボットアーム}
   \label{fig:ロボットアーム}
 \end{figure}
@@ -82,11 +89,12 @@
   \caption{ロボットハンド}
   \label{fig:ロボットハンド}
 \end{figure}
+
 このロボットアームを機構解析した結果，\ref{座標系}項で定義した手先座標系に関する手先角加速度，手先角速度，手先角度変化，手先加速度が以下の図\ref{Basic Arm 手先角加速度}から図\ref{fig:Basic Arm 手先加速度}までのグラフに示すように得られた．
 また，構造解析結果として，最大主応力，最大フォンミーゼス応力，変位が図\ref{fig:Basic Arm 最大主応力}，図\ref{fig:Basic Arm 最大フォンミーゼス応力}，図\ref{fig:Basic Arm 変位}のように得られた．
 数値をまとめて表\ref{tbl:Basic Arm 解析結果}に示す．
 
-\begin{table}[H]
+\begin{table}[thb]
   \centering
   \caption{Basic Arm 解析結果}
   \label{tbl:Basic Arm 解析結果}
@@ -96,48 +104,56 @@ $1.82$&$4.29\times 10^{-1}$&$4.29\times 10^{-1}$&$7.71\times 10^6$&$1.25\times 1
   \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12.6cm]{img/robot06.png}
+  % \includegraphics[width=12.6cm]{img/robot06.png}
+  \includegraphics[width=.7\textwidth]{img/robot06.png}
   \caption{Basic Arm 手先角加速度}
   \label{Basic Arm 手先角加速度}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot07.png}
+  % \includegraphics[width=12cm]{img/robot07.png}
+  \includegraphics[width=.7\textwidth]{img/robot07.png}
   \caption{Basic Arm 手先角速度}
   \label{fig:Basic Arm 手先角速度}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot08.png}
+  % \includegraphics[width=12cm]{img/robot08.png}
+  \includegraphics[width=.7\textwidth]{img/robot08.png}
   \caption{Basic Arm 手先角度変化}
   \label{fig:Basic Arm 手先角度変化2}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot09.png}
+  % \includegraphics[width=12cm]{img/robot09.png}
+  \includegraphics[width=.7\textwidth]{img/robot09.png}
   \caption{Basic Arm 手先加速度}
   \label{fig:Basic Arm 手先加速度}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot10.png}
+  % \includegraphics[width=12cm]{img/robot10.png}
+  \includegraphics[width=.7\textwidth]{img/robot10.png}
   \caption{Basic Arm 最大主応力}
   \label{fig:Basic Arm 最大主応力}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot11.png}
+  % \includegraphics[width=12cm]{img/robot11.png}
+  \includegraphics[width=.7\textwidth]{img/robot11.png}
   \caption{Basic Arm 最大フォンミーゼス応力}
   \label{fig:Basic Arm 最大フォンミーゼス応力}
 \end{figure}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=12cm]{img/robot12.png}
+  % \includegraphics[width=12cm]{img/robot12.png}
+  \includegraphics[width=.7\textwidth]{img/robot12.png}
   \caption{Basic Arm 変位}
   \label{fig:Basic Arm 変位}
 \end{figure}
+
 \clearpage
 \section{設計}
 \subsection{数式}\label{数式}
@@ -168,7 +184,7 @@ $1.82$&$4.29\times 10^{-1}$&$4.29\times 10^{-1}$&$7.71\times 10^6$&$1.25\times 1
 \end{align}
 以降では，基本的にこれらの式を用いて，理論的解析を行うものとする．
 
-
+\clearpage %
 \subsection{リンク形状の変更}
 まず，基準としたロボットアームが最大変位の要求を満たさなかったので，高剛性な形に変更し，そこからさらに高速化を目指して変更していくことを考える．アーム先端までの長さについては\ref{基準}項で定めているので変更はせず，現在のアームを2段重ねにしたような形状に変更する．詳細の寸法については複雑であるので，具体的な形状と共に図\ref{fig:Harder Arm}に示す．このリンクの各パラメータについて表\ref{tbl:Harder Arm パラメータ}にまとめた．また，\abesec{数式}の数式を用いて求めた結果を表\ref{tbl:各理論値}にまとめる．
 \begin{table}[H]
@@ -192,13 +208,14 @@ $2.87$&$3.01\times 10^{-13}$&$3.01\times 10^{-13}$&$1.92\times 10$&$3.32\times 1
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=10cm]{img/robot13.png}
+  % \includegraphics[width=10cm]{img/robot13.png}
+  \includegraphics[width=.8\textwidth]{img/robot13.png}
   \caption{Harder Arm}
   \label{fig:Harder Arm}
 \end{figure}
 
 このロボットアームを機構解析した結果，アーム先端に設定した手先座標系に関する手先角加速度，手先角速度，手先角度変化，手先加速度が以下の図\ref{fig:Harder Arm 手先角加速度}から\ref{fig:Harder Arm 手先加速度}までのグラフに示すように得られた．また，構造解析結果として，最大主応力，最大フォンミーゼス応力，変位が図\ref{fig:Harder Arm 最大主応力}，\ref{fig:Harder Arm 最大フォンミーゼス応力}，\ref{fig:Harder Arm 変位} のように得られた．数値をまとめて表\ref{tbl:Harder Arm 解析結果}に示す．
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Harder Arm 解析結果}
   \label{tbl:Harder Arm 解析結果}
@@ -207,65 +224,82 @@ $2.87$&$3.01\times 10^{-13}$&$3.01\times 10^{-13}$&$1.92\times 10$&$3.32\times 1
     $3.40$&$4.09\times 10^{-1}$&$4.09\times 10^{-1}$&$3.62\times 10^6$&$9.23\times 10^{-4}$\\ \hline
   \end{tabular}
 \end{table}
-
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot14.png}
+  % \includegraphics[width=12cm]{img/robot14.png}
+  \includegraphics[width=.8\textwidth]{img/robot14.png}
   \caption{Harder Arm 手先角加速度}
   \label{fig:Harder Arm 手先角加速度}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot15.png}
+  % \includegraphics[width=12cm]{img/robot15.png}
+  \includegraphics[width=.8\textwidth]{img/robot15.png}
   \caption{Harder Arm 手先角速度}
   \label{fig:Harder Arm 手先角速度}
 \end{figure}
-\begin{figure}[htbp]
+%
+% \null\vspace*{\fill}
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot16.png}
+  % \includegraphics[width=12cm]{img/robot16.png}
+  \includegraphics[width=.8\textwidth]{img/robot16.png}
   \caption{Basic Arm 手先角度変化}
   \label{fig:Basic Arm 手先角度変化}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot17.png}
+  % \includegraphics[width=12cm]{img/robot17.png}
+  \includegraphics[width=.8\textwidth]{img/robot17.png}
   \caption{Harder Arm 手先加速度}
   \label{fig:Harder Arm 手先加速度}
 \end{figure}
-\begin{figure}[htbp]
+% \vspace*{\fill}\null\clearpage
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot18.png}
+  % \includegraphics[width=12cm]{img/robot18.png}
+  \includegraphics[width=.65\textwidth]{img/robot18.png}
   \caption{Harder Arm 最大主応力}
   \label{fig:Harder Arm 最大主応力}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=12cm]{img/robot19.png}
+  % \includegraphics[width=12cm]{img/robot19.png}
+  \includegraphics[width=.65\textwidth]{img/robot19.png}
   \caption{Harder Arm 最大フォンミーゼス応力}
   \label{fig:Harder Arm 最大フォンミーゼス応力}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=13cm]{img/robot20.png}
+  % \includegraphics[width=13cm]{img/robot20.png}
+  \includegraphics[width=.68\textwidth]{img/robot20.png}
   \caption{Harder Arm 変位}
   \label{fig:Harder Arm 変位}
 \end{figure}
+%
 基準としたアームと重力方向の変位を抑えたアームの2つからパラメータを作成する．左縦軸に高さ$h$を，右縦軸に幅$b$をとり，横軸に加速度$\alpha$をとってグラフを書くと，図\ref{fig:alpha-h, alpha-b グラフ}のようになる．グラフの右下に交点を寄せつつ，強度が要求を満たすように設計していく．
-\begin{figure}[htbp]
+%
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=13cm]{img/robot21.png}
+  % \includegraphics[width=13cm]{img/robot21.png}
+  \includegraphics[width=.7\textwidth]{img/robot21.png}
   \caption{$\alpha-h, \alpha-b$グラフ}
   \label{fig:alpha-h, alpha-b グラフ}
 \end{figure}
 
-\clearpage
+% \clearpage
 \subsection{最終形状}
 最終的に，以下に示す形状のリンクを設計した．Speedy Arm を図\ref{fig:Speedy Arm 形状と寸法}に示す．また，アセンブリを図\ref{fig:Speedy Arm アセンブリ図}に示す．
 このロボットアームを機構解析した結果，アーム先端に設定した手先座標系に関する手先角加速度，手先角速度，手先角度変化，手先加速度が以下の図\ref{fig:Speedy Arm 手先角加速度}から図\ref{fig:Harder Arm 手先加速度2}までのグラフに示すように得られた．
 また，構造解析結果として，最大主応力，最大フォンミーゼス応力，変位が図\ref{fig:Speedy Arm最大主応力}，図\ref{fig:Speedy Arm最大フォンミーゼス応力}，図\ref{fig:Speedy Arm変位}のように得られた．
 その他に得られた数値もまとめて表\ref{tbl:Speedy Arm 解析結果}に示す．
-
-
+%
 \begin{table}[H]
   \small
   \centering
@@ -276,89 +310,103 @@ $2.87$&$3.01\times 10^{-13}$&$3.01\times 10^{-13}$&$1.92\times 10$&$3.32\times 1
 $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 10^{-3}$&$1.02\times10^8$\\ \hline
   \end{tabular}
 \end{table}
-
-
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot22.png}
+  % \includegraphics[width=10cm]{img/robot22.png}
+  \includegraphics[width=.8\textwidth]{img/robot22.png}
   \caption{Speedy Arm 形状と寸法}
   \label{fig:Speedy Arm 形状と寸法}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=8cm]{img/robot23.png}
+  % \includegraphics[width=8cm]{img/robot23.png}
+  \includegraphics[width=.7\textwidth]{img/robot23.png}
   \caption{Speedy Arm アセンブリ図}
   \label{fig:Speedy Arm アセンブリ図}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot24.png}
+  % \includegraphics[width=10cm]{img/robot24.png}
+  \includegraphics[width=.68\textwidth]{img/robot24.png}
   \caption{Speedy Arm 手先角加速度}
   \label{fig:Speedy Arm 手先角加速度}
 \end{figure}
-\begin{figure}[htbp]
+%
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot25.png}
+  % \includegraphics[width=10cm]{img/robot25.png}
+  \includegraphics[width=.68\textwidth]{img/robot25.png}
   \caption{Speedy Arm 手先角速度}
   \label{fig:Speedy Arm 手先角速度}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot26.png}
+  % \includegraphics[width=10cm]{img/robot26.png}
+  \includegraphics[width=.68\textwidth]{img/robot26.png}
   \caption{Speedy Arm 手先角度変化}
   \label{fig:Speedy Arm 手先角度変化}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot27.png}
+  % \includegraphics[width=10cm]{img/robot27.png}
+  \includegraphics[width=.68\textwidth]{img/robot27.png}
   \caption{Harder Arm 手先加速度}
   \label{fig:Harder Arm 手先加速度2}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot28.png}
+  % \includegraphics[width=10cm]{img/robot28.png}
+  \includegraphics[width=.65\textwidth]{img/robot28.png}
   \caption{Speedy Arm最大主応力}
   \label{fig:Speedy Arm最大主応力}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot29.png}
+  % \includegraphics[width=10cm]{img/robot29.png}
+  \includegraphics[width=.65\textwidth]{img/robot29.png}
   \caption{Speedy Arm最大フォンミーゼス応力}
   \label{fig:Speedy Arm最大フォンミーゼス応力}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=10cm]{img/robot30.png}
+  % \includegraphics[width=10cm]{img/robot30.png}
+  \includegraphics[width=.7\textwidth]{img/robot30.png}
   \caption{Speedy Arm変位}
   \label{fig:Speedy Arm変位}
 \end{figure}
+
 \subsection{確認}
 解析解に基づいて得られた解が正しいと予想されるかどうかを確認する．最終形状に適用した形状についての重要なパラメータとなる数値の理論値と数値解との比較を以て数値解の確認とする．先ず，ロボットアームの角加速度，角速度，手先角加速度，手先角速度，手先速度を算出する式の重要なパラメータである慣性モーメントについて確かめる．以降では，簡略化のために理論解，数値解をそれぞれ$I_S,\,I_{\tilde{S}},\,I_{S_0}$と表記する．\abesec{数式}の式を用いて図\ref{fig:Speedy Arm 形状と寸法}に示す寸法を参照しながらアームの形状をいくつかの正の密度と負の密度を持つ複数の長方形に分割し，それぞれのアームの回転軸周りの慣性モーメントを計算すると
-
 \begin{align}
-  I_S &=\sum_{i=1}^{n} \left\{ \frac{1}{12} \rho l_ib_ih_i(l_i^2+b_i^2)+\rho l_ib_ih_ix^2 \right\} \notag\\
-      &=1.25\times10^8\tani*{g\,mm^2}
+  I_S =\sum_{i=1}^{n} \left\{ \frac{1}{12} \rho l_ib_ih_i(l_i^2+b_i^2)+\rho l_ib_ih_ix^2 \right\} % \notag \\
+      =1.25\times10^8\tani*{g\,mm^2}
 \end{align}
 となる．また，表\ref{tbl:Speedy Arm 解析結果}を参照して
 \begin{align}
-  I_S &= I_{S_0}+Mx^2 \notag \\
-      &= 1.26\times10^8\tani*{g\,mm^2}
+  I_S = I_{S_0}+Mx^2 % \notag \\
+      = 1.26\times10^8\tani*{g\,mm^2}
 \end{align}
 ただし，$x$の値は$1.49\times10^2 \tani*{mm}$であり，数値解による重心から回転軸までの距離である．両数値はほぼ一致しており，各数値解の値は正しいと言える．\par
 最大応力については，形状が複雑である為に応力の理論解を求めることは難しいので数値解を信用して評価する場合，設計したすべての構造は応力については十分に要件を満たしていることは図\ref{fig:alpha-sigma_xグラフ}に示す通り，明らかである．また，Speedy ArmはBasic Arm で達成できなかった変位の制限について，$2.19\times10^{-3} \tani*{m}$と十分に満たしており，更にHarder Armより手先角加速度が大きいので，ロボットアームは十分に高速化され，設計目標に達したと言える．
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=13cm]{img/robot31.png}
+  % \includegraphics[width=13cm]{img/robot31.png}
+  \includegraphics[width=.9\textwidth]{img/robot31.png}
   \caption{$\alpha-\sigma_x$グラフ}
   \label{fig:alpha-sigma_xグラフ}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=13cm]{img/robot32.png}
+  % \includegraphics[width=13cm]{img/robot32.png}
+  \includegraphics[width=.9\textwidth]{img/robot32.png}
   \caption{$\alpha-\delta_z$グラフ}
   \label{fig:alpha-delta_zグラフ}
 \end{figure}
+
 \section{終わりに}
 \begin{itemize}
 \item シミュレータを用いた設計を行う際には，どんな複雑な設計を行う前にもそのシミュレータをテストできる簡単なモデルを用意してテストをした方がよい．
@@ -370,9 +418,10 @@ $1.07$&$4.25\times 10^{-1}$&$4.25\times 10^{-1}$&$9.28\times 10^6$&$2.19\times 1
 
 \section{付録}
 計算した結果を用いて実際に以下に示すロボットアームを設計した．
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=10cm]{img/robot33.png}
+  % \includegraphics[width=10cm]{img/robot33.png}
+  \includegraphics[width=.75\textwidth]{img/robot33.png}
 \end{figure}
 
 %% 参考文献はありません
