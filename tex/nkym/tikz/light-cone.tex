@@ -1,0 +1,60 @@
+%%
+%% 光子の偏光軸
+
+\documentclass[border=3pt,tikz,dvipdfmx,10pt]{standalone}
+% \documentclass[dvipdfmx,10pt]{jsbook}
+
+\usepackage{tikz}
+% \usetikzlibrary{quotes,angles,arrows}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+%
+\begin{document}
+%
+
+\begin{tikzpicture}
+  [
+    x=30mm, y=30mm,
+    line cap=round, line join=round,
+    axis/.style={black, >=latex, ->},
+  ]
+\small
+
+\def\X{2}
+\def\CT{1.4}
+\coordinate (O) at (0,0);
+\draw[axis] (O) ++(-.1,0) -- ++(1.1*\X,0) node[right] {$x$};
+\draw[axis] (O) ++(0,-.1) -- ++(0,.9*\CT) node[above] {$ct$};
+
+% \coordinate (A) at (.3*\X,.2*\X);
+% \node[below] at (A) {A};
+% \def\tmax{\X}
+% \draw (A)++(-\tmax,\tmax) -- (A) -- ++(\tmax,\tmax);
+\def\eventCT{.15*\CT}
+\def\tmax{.5*\CT}
+
+\newcommand\lightCone[2]{
+  \coordinate (#1) at (#2,\eventCT);
+  \node[below] at (#1) {#1};
+  \draw[thick] (#1)++(-\tmax,\tmax) -- (#1) -- ++(\tmax,\tmax);
+}
+\def\centerX{.5*\X}
+\def\aaaa{.25*\CT}
+\lightCone{A}{\centerX -\aaaa}
+\lightCone{B}{\centerX +\aaaa}
+
+\def\intscCT{\eventCT+\aaaa}
+\node[above=15pt] at (\centerX,\intscCT) {共通未来};
+\draw[dashed] (-.5,\eventCT) -- (\X,\eventCT);
+\draw[dashed] (-.5,\intscCT) -- (\X,\intscCT);
+
+\draw[<->,>=stealth] (-.1,\eventCT) -- (-.1,\intscCT);
+% \def\centerCT{.5*\intscCT + .5*\eventCT}
+\def\centerCT{11.5mm}
+\node[left=10pt, text width=10mm,align=center] at (0,\centerCT) {AとBは独立};
+
+\end{tikzpicture}
+
+%
+%
+\end{document}
