@@ -17,7 +17,10 @@
 \begin{document} % 以下本文
 
 \mokuji{2} % 目次出力
-
+\kaishititle%
+  {流体中の物体に働く揚力}% title
+  {物理科学科1回生}% 所属
+  {\vname{難波}{潤}}% name
 % - - - - - - - - - - - - - - - - - - - - - - - - %
 \kaishititle%
   {流体中の物体に働く揚力}% title
@@ -96,6 +99,7 @@
 これを変形すると
 \begin{align}
   p-p_\infty = \frac{\rho(U^2-V^2)}{2}
+  \label{eq:9}
 \end{align}
 この$V$を円柱が回転する場合と回転しない場合との複素ポテンシャルからそれぞれ求めていく。
 
@@ -113,11 +117,12 @@
   W(z) = Ue^{-i\alpha}z
 \end{align}
 原点を円柱の中心とする二次元ポテンシャルにおいて$x$軸と平行な方向に流れる流体を考えた場合、$W(z) = Uz$である。
-二重吹き出しは、流線が$y$軸上に中心を持ち、原点を通る円群で表される流れであり、図1.3のように表される。
+二重吹き出しは、流線が$y$軸上に中心を持ち、原点を通る円群で表される流れであり、図\ref{fig:3}のように表される。
 \begin{figure}[ht]
   \centering
   \includegraphics[width=60mm]{img/ryuutai2.png}
   \caption{二重吹き出しの例}
+  \label{fig:3}
 \end{figure}
 今回の場合では$W(z) = \frac{R^2U}{z}$と表すことができる。これらを重ね合わせ、
 \begin{align}
@@ -141,7 +146,7 @@
   V = \sqrt{u^2+v^2}
     = 2U|\sin\theta|
 \end{align}
-この$V$を(1.9)式に代入し、$L$を求めると
+この$V$を(\ref{eq:9})式に代入し、$L$を求めると
 \begin{align}
   p - p_\infty = \frac{\rho U^2(1 - 4\sin^2\theta)}{2}
 \end{align}
@@ -174,11 +179,12 @@
     = -(2U\sin\theta + \frac{\Gamma}{2\pi R})\cos\theta,\\
   V &= \sqrt{u^2 + v^2} = \qty|2U\sin\theta + \frac{\Gamma}{2\pi R}|
 \end{align}
-これを(1.9)式に代入し、$L$を求めると、
+これを(\ref{eq:9})式に代入し、$L$を求めると、
 \begin{align}
   p - p_\infty &= \frac{\rho U^2}{2}[1 - 4\qty(\sin\theta + \frac{\Gamma}{4\pi RU})^2],\\
   L &= -\frac{\rho U^2R}{2}\int_0^{2\pi} \qty[1 - 4\qty(\sin\theta + \frac{\Gamma}{4\pi RU})^2]\sin\theta d\theta %\\
     = \rho U\Gamma
+  \label{eq:26}
 \end{align}
 従って、回転する円柱に働く揚力は、流体の密度、流速、循環の積で表すことができる。
 
@@ -193,7 +199,7 @@
   \Gamma = 2\pi RV_\theta
 \end{align}
 となる。この円柱が毎秒$n$回転しているとき、$V_\theta = 2\pi Rn$と求められる。
-また、(1.26)式でも求めた通り、循環がある一様流から物体は揚力を受けるが、これをクッタ―ジューコフスキーの定理という。
+また、(\ref{eq:26})式でも求めた通り、循環がある一様流から物体は揚力を受けるが、これをクッタ―ジューコフスキーの定理という。
 球技においても、ボールを回転させ、循環が生じることにより変化が生まれる。
 
 \section{翼に働く揚力}
@@ -204,9 +210,10 @@
 飛行機の翼は以下のような構造をしており、大きな特徴として、流線型をしている、反りがある、迎え角がある、の３つが挙げられ、それぞれに意味が有る。
 「反り」とはその名の通り翼の湾曲であり、背面は膨らんで、腹面はへこんだ形状をしている。
 迎え角とは翼の前縁と後縁とを結んだ直線と流れの方向とのなす角である。
+\vspace{2zw} %% 調整
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=80mm]{img/ryuutai4.png}
+  \includegraphics[width=70mm]{img/ryuutai4.png}
   \caption{翼の模式図}
 \end{figure}
 
@@ -237,10 +244,12 @@
 要するに、翼の上面では翼が流体を下向きに引っ張り、下面では翼は流体を下向きに押している、という風に捉えることができる。
 このとき、翼は作用反作用の原理で空気を下に引き付ける代わりに自身を上に引き上げている。
 この引き上げる力が揚力であり、飛行機にとって欠かせない力となる。
+\vspace{2zw} %% 調整
 \begin{figure}[ht]
   \centering
   \includegraphics[width=70mm]{img/ryuutai7.png}
   \caption{翼まわりの流れ}
+  \label{fig:7}
 \end{figure}
 
 \subsection{迎え角}
@@ -280,7 +289,7 @@
   \caption{理想流体としての流れと後縁にできる渦}
 \end{figure}
 \subsection{定常状態の場合}
-図(1.7)に示された定常状態の流れは、流体が物体のまわりをまっすぐ流れていく一様流のような回転しない流れ\footnote{渦なし流れともいう}と流体が物体のまわりを回転している流れ\footnote{渦流れともいう}の重ね合わせたものになる。
+図\ref{fig:7}に示された定常状態の流れは、流体が物体のまわりをまっすぐ流れていく一様流のような回転しない流れ\footnote{渦なし流れともいう}と流体が物体のまわりを回転している流れ\footnote{渦流れともいう}の重ね合わせたものになる。
 後者の循環が$\Gamma $であるとき、翼の揚力は$\rho U\Gamma$となる。
 \par
 従って、翼が静止流体中を進行すると、翼まわりに循環が起こり、揚力が生じる。
