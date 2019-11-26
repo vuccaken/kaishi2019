@@ -208,6 +208,31 @@
 % \usepackage{subfigure} %% 消していい？ subcaption.styと競合 (nkym)
 % \usepackage{here}
 
+%% 打つのがめんどくさかったので
+\newcommand\rmA{\mathrm{A}}
+\newcommand\rmB{\mathrm{B}}
+\newcommand\rmC{\mathrm{C}}
+
+%% ホントはenumerate環境で番号出して参照もlatexに任せるのがスマート。
+\newcommand\maru[1]{\textcircled{\scriptsize{}#1}}
+
+%% space入れた方が見やすいかなぁと。
+%% 嫌なら戻しても。
+\newcommand\fal[1]{\forall#1\,}
+\newcommand\ext[1]{\exists#1\,}
+
+%% 和文用のダブルクオーテーションを出すマクロ。一回しか使ってませんが。
+%% そもそも和文にクオーテーションという概念はない希ガス。
+%% 和文だと代わりに「」かな？
+\newcommand\DQ[1]{“#1”}
+
+%% その場しのぎです。定理環境とかでググるとベター。
+%% itemize環境で "※注意", "定義" とか出してたとこを置き換えてます。
+\newenvironment{TEIRI}[1]{
+  \itemize
+  \item [\headfont #1]
+}{\enditemize}
+
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
 %%  Fukuda
