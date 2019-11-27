@@ -132,21 +132,26 @@
 
 %% 巻頭言・編集後記
 %% usage: \hensyukoki{巻頭言 or 編集後記}{学部}{名前}{日付}
-\newenvironment{preface}[4]{%
+\newenvironment{preface}[5]{%
   \newcommand\pf@name{#1}%
-  \newcommand\pf@belong{#2}%
-  \newcommand\pf@author{#3}%
-  \newcommand\pf@date{#4}%
+  \newcommand\pf@position{#2}%
+  \newcommand\pf@belong{#3}%
+  \newcommand\pf@author{#4}%
+  \newcommand\pf@date{#5}%
   \cleardoublepage%
   % \section*{\pf@name}\@mkboth{}{\pf@name}% 本文では section
   \chapter*{\pf@name}\@mkboth{\pf@name}{}% 本文では chapter
   \addcontentsline{toc}{chapter}{\pf@name}% 目次では chapter
 }{%
   \begin{flushright}%
-    {\bfseries \pf@date}\\
-    {\bfseries \pf@belong\hspace{1zw}\pf@author}%
+    \bfseries
+    \pf@date\par
+    \pf@position\hspace{1zw}\ignorespaces
+    \pf@belong\hspace{1zw}\pf@author
   \end{flushright}\par%
 }
+
+\newcommand\vuccaken{\@ifstar{物理科学研究会}{vuccaken}}
 
 
 %% - - - - - - - - - - - - - - - - - - - - - - - - -
