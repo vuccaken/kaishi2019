@@ -98,7 +98,7 @@
 \begin{align}
   A(x) = A_0 \sin (kx + \phi)
 \end{align}
-となります。波数$k (= 2\pi/\lambda)$は、単位長さあたりに含まれる1波長分の波の数に$2\pi$をかけた量である。さあ、ここで波数$k$というものをわざわざ導入しました。どうしてこんなものを導入するのか疑問に思う人がいると思います。大学では友達以上にであう波数$k$がどういうものを示しているのでしょうか。\par
+となります。波数$k (= 2\pi/\lambda)$は、単位長さあたりに含まれる1波長分の波の数に$2\pi$をかけた量である。さあ、ここで波数$k$というものをわざわざ導入しました。どうしてこんなものを導入するのか疑問に思う人がいると思います。大学では友達以上にであう波数$k$がどういうものを示しているのでしょうか。この波数$k$というものは距離を位相に変換するツールの役割をしています。つまり、この波数$k$というものを用いることによって空間における波の変動を記述することができます。波数という概念はいろんなものを記述できるので物理の世界ではめっちゃ使います。\par
 この波数が波の進行方向を含んだ波数ベクトル$\bm{k}$という形にして、空間波の式は次のようになる。
 \begin{align}
   u(\bm{r},t) = u_0 \exp(i(\bm{k} \cdot \bm{r} - \omega t))
@@ -106,30 +106,51 @@
 ここで、$u_0$は振幅、$\bm{k}$は波数ベクトル、$\bm{r}$は位置ベクトル、$\omega$は角周波数。\par
 今回は一次元を考えているので、式\ref{eq:satom}の解として次のような進行波を予想します。
 \begin{align}
-  u_s = u_0 \exp\{i(sKa - \omega t)\}
+  u_s = u_0 \exp\{i(ska - \omega t)\}
 \end{align}
 これを、式\ref{eq:satom}に代入すると、
 \begin{align}
-  -M\omega^2 &= K\{\exp(iKa) + \exp(-iKa) - 2\} \\
-             &= -2K\left(1-\frac{\exp(iKa) + \exp(-iKa)}{2}\right) \\
+  -M\omega^2 &= K\{\exp(ika) + \exp(-ika) - 2\} \\
+             &= -2K\left(1-\frac{\exp(ika) + \exp(-ika)}{2}\right) \\
              &= -2K(1-\cos ka)\\
              &= -4K\sin^2\frac{ka}{2}
 \end{align}
-したがって、角振動数$\omega$と波数$\bm{k}$の関係には次のような関係がある。このグラフを図\ref{fig:bunnsan}
+したがって、角振動数$\omega$と波数$k$の関係には次のような関係がある。
 \begin{align}
   \omega = 2 \sqrt{\frac{K}{M}} \left| \sin \frac{ka}{2}\right|
 \end{align}
+上の式のグラフを図\ref{fig:bunnsan}に示す。
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=10cm]{img/bunsann.pdf}  % width
   \caption{分散関係}
   \label{fig:bunnsan}
 \end{figure}
+このような$\omega$と$k$の関係は分散関係と呼ばれます。この分散関係を見るといろんなことがわかります。図\ref{fig:bunnsan}を見ると明らかなように周期関数になっています。ある$k_r$に対して周期$\frac{2\pi}{a}$分だけ大きな波数$k_r' = k_r + \frac{2\pi}{a}$に対す解を求めると
+\begin{align}
+  u_s &= u_0 \exp\{i(sk_r'a - \omega t)\}\\
+      &= u_0 \exp \left[i\left\{s \left(k_r + \frac{2\pi}{a}\right)a-\omega t\right\}\right]\\
+      & = u_0 \exp {i(sk_ra + 2s\pi - \omega t)}\\
+      & = u_0 \exp {i(sk_ra -\omega t)}
+\end{align}
+となり、波数$k_r$の場合の解と一致する。つまり、周期$\frac{2\pi}{a}$で繰り返して結局同じ階になるので分散関係については１周期分だけを考えれば十分である。この１周期を$-\frac{2\pi}{a} < k\leq \frac{2\pi}{a}$をとることが多い。この範囲を第１ブリルアンゾーンと相当する。ブリルアンゾーンについてはここではあんまり関係ないので聞き流してください。\par
+ここでもう少し図\ref{fig:bunnsan}について詳しく見ていきたいと思います。波数$k$が$0$に近い領域、つまり長波長の範囲($ka \ll 1$)では、$\sin \frac{ka}{2} \simeq \frac{ka}{2}$であることから、
+\begin{align}
+  \omega = a \sqrt{\frac{K}{M}}k
+\end{align}
+と近似することができる。つまり$\omega$と$k$は比例している。比例定数(グラフの傾き)について注目すると
+\begin{align}
+  \frac{\omega}{k} =a \sqrt{\frac{K}{M}}= \frac{2\pi\nu}{2\pi/\lambda} = \nu \lambda = v
+\end{align}
+であるので、グラフの傾きは音速$v$になる。今回求めた格子振動のモードを音響モードと呼びます。
 
 \subsection{量子化}
-量子力学によると、すべてのものは粒子と波の二重性を示すらしいです。この考えを今回の格子振動に適用して、粒子として考えることができます。この粒子のことをフォノン(phonon)と言います。
-
-
+量子力学によると、すべてのものは粒子と波の二重性を示すらしいです。この考えを今回の格子振動に適用して、粒子として考えることができます。この粒子のことをフォノン(phonon)と言います。\par
+量子化について詳しく話したいと思っていたのですが、自分が予想以上に理解していないのとそもそも量子力学は理解できないものだと気が付いたので調和振動しのエネルギーの話だけ考えます。各振動数$\omega$の調和振動子のエネルギー$E$は
+\begin{align}
+  E = \left(n + \frac{1}{2}\right)\hbar \omega
+\end{align}
+であらわせます。ここで$n$は0以上の整数、$\hbar$はプランク定数を$2\pi$で割ったものである。これについて補足すると、$n = 0$のときでもエネルギーはゼロにならないこのエネルギーを零点エネルギーと解釈されている。粒子的な観点からこれをフォノンの個数に相当すると考えます。
 
 \section{比熱とか熱伝導率とか}
 ここからは、固体中の熱物性、特に比熱、熱伝導率、について書いていきたいと思います。
@@ -147,13 +168,13 @@
       \begin{tabular}{c}  
       \begin{minipage}{0.5\hsize}
           \begin{center}
-            \includegraphics[clip, width=6cm]{img/relaxor-heat-capacity.pdf}
+            \includegraphics[clip, width=5cm]{img/relaxor-heat-capacity.pdf}
             \hspace{1.6cm} [B]比熱の温度依存性
           \end{center}
         \end{minipage}
         \begin{minipage}{0.5\hsize}
           \begin{center}
-            \includegraphics[clip, width=6cm]{img/relaxor-thermal-conductivity.pdf}
+            \includegraphics[clip, width=5cm]{img/relaxor-thermal-conductivity.pdf}
             \hspace{1.6cm} [A]熱伝導率の温度依存性
       \end{center}
       \end{minipage}
