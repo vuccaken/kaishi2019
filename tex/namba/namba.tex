@@ -70,8 +70,8 @@
 この$W$を複素ポテンシャルといい、複素座標を$z = x+iy$と定義すれば$W$を$z$の関数として表すことができ、次の式が成り立つ。
 \begin{align}
   \frac{dW}{dz}
-  = \frac{dW}{dz} \frac{\partial z}{\partial x}
-  = \frac{\partial W}{\partial z}
+  = \frac{\partial W}{\partial x} \frac{dx}{dz}
+  = \frac{\partial W}{\partial x}
   = \frac{\partial\phi}{\partial x} + i\frac{\partial\psi}{\partial x}
   = u - iv
 \end{align}
@@ -129,7 +129,7 @@
 \begin{align}
   \frac{dW(z)}{dz}
   &= U - \frac{R^2U}{z^2}
-  = U - \frac{R^2U}{r^2}e^{-2i\theta} \\
+  = U - \frac{R^2U}{r^2}e^{-2i\theta} \notag \\
   &= U - \frac{R^2u}{r^2}(\cos2\theta - i\sin2\theta)
   = u - iv
 \end{align}
@@ -178,7 +178,7 @@
 \end{align}
 これを(\ref{eq:9})式に代入し、$L$を求めると、
 \begin{align}
-  p - p_\infty &= \frac{\rho U^2}{2}[1 - 4\qty(\sin\theta + \frac{\Gamma}{4\pi RU})^2],\\
+  p - p_\infty &= \frac{\rho U^2}{2} \qty[1 - 4\qty(\sin\theta + \frac{\Gamma}{4\pi RU})^2],\\
   L &= -\frac{\rho U^2R}{2}\int_0^{2\pi} \qty[1 - 4\qty(\sin\theta + \frac{\Gamma}{4\pi RU})^2]\sin\theta d\theta %\\
     = \rho U\Gamma
   \label{eq:26}
