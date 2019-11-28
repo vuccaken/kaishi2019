@@ -175,7 +175,35 @@
 格子比熱の式を求めることができた。
 \subsubsection*{デバイモデル}
 式\ref{eq:totemonemutai}で求める求めた格子比熱の式のままでは比熱の温度依存性や物質による比熱の違いなど具体的なことについては考察できない。様々な近似の方法はありますが、今回は低温の比熱について説明することができるデバイモデルについて考えていきます。\par
-
+分散関係が$k = 0$付近では、$\omega_q = v_q k$と近似することができました。このデバイモデルは、全域で成り立つという仮定をしたモデルのことを言う。ここで、モードの違いで音速はすべて同じと仮定する。このようにモードの種類は気にしないこととする。したがって式\ref{eq:totemonemutai}は、
+\begin{align}
+  C &= \pdv{T} \frac{3V}{(2\pi)^3} \int\frac{\hbar v k}{\exp \left(\frac{\hbar v k}{k_BT}\right)-1 }\dd{\bm{k}}\\
+  & = \frac{3V}{(2\pi)^3} \int \frac{\hbar^2 v^2 k ^2}{k_B T ^2}  \frac{\exp \left(\frac{\hbar v k}{k_BT}\right)}{\left\{\exp \left(\frac{\hbar v k}{k_BT}\right)-1 \right\}^2}\dd{\bm{k}}\\
+  &= \frac{3V}{(2\pi)^3} \int \frac{\hbar^2 v^2 k ^2}{k_B T ^2}  \frac{\exp \left(\frac{\hbar v k}{k_BT}\right)}{\left\{\exp \left(\frac{\hbar v k}{k_BT}\right)-1 \right\}^2} 4 \pi k^2 \dd k\\
+  &= \frac{3V}{2\pi^2} \int \frac{\hbar^2 v^2 k ^4}{k_B T ^2}  \frac{\exp \left(\frac{\hbar v k}{k_BT}\right)}{\left\{\exp \left(\frac{\hbar v k}{k_BT}\right)-1 \right\}^2}  \dd {k}
+  \label{eq:daigakutoutyaku}
+\end{align}
+となる。ここで、被積分関数は逆格子空間において、原点を中心に球対象になることを使って１変数の$k$についての積分に置き換えている。\par
+この積分は逆格子空間の基本単位胞にわたって行うべきであるが、デバイモデルでは格子振動の各振動数の上限をデバイ各振動数$\omega_D$としている。
+\begin{align}
+  \Theta_D = \frac{\hbar \omega_D}{k_B}
+\end{align}
+この条件を利用して積分範囲を半径$k_D=\frac{\omega_D}{v} = \frac{k_B\Theta_D}{\hbar v}$内の球の内部に変更する。\par
+この仮定の下で、$x = \frac{\hbar v k}{k_B T}$として変数変換すると、 式\ref{eq:daigakutoutyaku}は
+\begin{align}
+  C = 9Nk_B\left(\frac{T}{\Theta_D}\right)^3\int_0^{\Theta_D/T}\frac{x^4\mathrm{e^x}}{(\mathrm{e}^x -1)^2}\dd{x}
+\end{align}
+となる。\par
+極低温領域($T \ll \Theta_D$)では、積分範囲の条件を$\infty$であると近似し、さらに
+\begin{align}
+  \int_0^\infty \frac{x^4 \mathrm{e}^x}{(\mathrm{e}^x-1)^2}\dd{x} = \frac{4\pi^4}{15}
+\end{align}
+であることを用いると
+\begin{align}
+  C &= \frac{12\pi^4}{5}Nk_B\left(\frac{T}{\Theta}\right)^3 \\
+  &\propto T^3  
+\end{align}
+となる。固体の比熱は温度の$T$の3乗に比例して増加する。この結果は実験結果ととてもよく一致しており、大体の結晶でこのデバイの$T^3$則に従うことが知られている。
 \subsection{熱伝導率}
 
 
