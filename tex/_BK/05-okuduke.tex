@@ -15,52 +15,61 @@
 \markboth{}{} % headerのchaper nameとsection nameを消す
 \clearpage % 右開きじゃなくて良い
 
-\noindent
-{\large \bfseries 物理科学研究会の略歴}
-\begin{table}[H]
-  \begin{tabular}{ll}
-    1949年 & 核物理研究会として発足 \\
-    1973年 & 現存する最古の会誌 出版 \\
-    2000年 & 物理科学研究会に改名   \\
-    2016年 & 会誌「白夜 第一号」出版 \\
-    2017年 & OB会の開催           \\
-          & 会誌「白夜 第二号」出版 \\
-    2018年 & 会誌「白夜 第三号」出版 \\
-    2019年 & 会誌「白夜 第四号」出版 \\
-          & OB会の開催（予定）
-  \end{tabular}
-\end{table}
+\noindent%
+{\headfont\large 物理科学研究会の略歴}
+\par\vspace{.5zw}%
+
+\begin{tabular}{ll}
+  1949年 & 核物理研究会として発足 \\
+  1973年 & 現存する最古の会誌 出版 \\
+  2000年 & 物理科学研究会に改名   \\
+  2016年 & 会誌「白夜 第一号」出版 \\
+  2017年 & OB会の開催           \\
+        & 会誌「白夜 第二号」出版 \\
+  2018年 & 会誌「白夜 第三号」出版 \\
+  2019年 & 会誌「白夜 第四号」出版 \\
+        & OB会の開催（予定）
+\end{tabular}
+
 
 \vfill
 
-{\bfseries 令和元年度 物理科学研究会誌}\par
-{\large \bfseries 白夜 第四号}\vspace{-1zw}\\
-\hrulefill \par
-2019年12月1日\hspace{2zw}初版発行\par
-% 2018年11月30日 \quad 第2版発行
+\noindent%
+\hspace{2zw}{\headfont 令和元年度 物理科学研究会誌}
+\par\noindent%
+\hspace{2zw}{\headfont\large 白夜 第四号}
 
-\vspace{1.5zw}
+\vspace{\baselineskip}\vspace{-1zw}
+\hrule\hrule
 
-\begin{minipage}{0.17\hsize}
-    % \vspace{16.5zw}
-    \hspace{1zw}
-\end{minipage}
-\begin{minipage}{0.6\hsize}
-  \begin{itemize}
-    \item[{\bfseries 編集・表紙イラスト}：] \vname{中山}{敦貴}
-    % \item[{\bfseries 表紙イラスト}：] \vname{西村}{宗悟} %% 締め切りアウト
-    \item[{\bfseries 発行所}：] 立命館大学 物理科学研究会
-    \item[ ] 〒525-8577 滋賀県 草津市 野路東 1-1-1
-    \item[ ] 立命館大学 BKC アクトα サークルルーム6
-    \item[ ] メール： \url{vuccaken@gmail.com}
-    \item[ ] ホームページ： \url{vuccaken.github.io}
-    \item[ ] Twitter： \url{@vuccaken}
-  \end{itemize}
-\end{minipage}
+{ %% \setlength の効果範囲
+  \setlength{\tabcolsep}{0em} % tabular horizontal padding
 
-\par \vspace{0.5zw}
-\hrulefill \par
-% Printed in Japan
+  \newcolumntype{P}{>{\hspace{2zw}}r}
+  \newcolumntype{R}{>{\:}r}
+  \newcolumntype{L}{>{\hspace{2zw}}l}
+  \noindent
+  \begin{tabularx}{\textwidth}{PRRL}
+    2019年 & 12月 & 1日 & 初版発行 \\
+    % 2020年 & 1月 & 1日 & 第2版発行
+  \end{tabularx}
+
+  \vspace{1zw}\noindent
+  \begin{tabularx}{\textwidth}{Pl}
+    {\headfont 表紙イラスト}： & \fjwr \\
+    {\headfont 編集}： & \nkym \\
+    {\headfont 発行所}： & 立命館大学 物理科学研究会 \\
+      & 〒525-8577 滋賀県 草津市 野路東 1-1-1 \\
+      & 立命館大学 BKC アクトα サークルルーム6 \\
+      & メール： \url{vuccaken@gmail.com} \\
+      & ホームページ： \url{vuccaken.github.io} \\
+      & Twitter： \url{@vuccaken}
+  \end{tabularx}
+}
+
+\hrule\hrule
+
+%% - - - - - - - - - - -
 
 \end{document}
 

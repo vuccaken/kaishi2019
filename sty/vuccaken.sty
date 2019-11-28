@@ -26,6 +26,8 @@
   \newcommand{\texorpdfstring}[2]{#1}
 \fi
 
+%% 強調のフォントのデフォルト値。必要であれば上書き。
+\newcommand\vEmphFont{\bfseries}
 
 %%                        %%
 %%      kaishi title      %%
@@ -36,8 +38,8 @@
   \vchapter{#2\hspace{1zw}#3}{#1}
   \vspace{-40pt}
   \begin{flushright}
-    {\bfseries \large #2} \\ \vspace{3pt} %所属
-    {\bfseries \large #3} \\ \vspace{30pt} %名前
+    {\vEmphFont \large #2} \\ \vspace{3pt} %所属
+    {\vEmphFont \large #3} \\ \vspace{30pt} %名前
   \end{flushright}}
 
 %% \vchapter{name}{title}
@@ -129,7 +131,7 @@
     \endgroup
   \fi}
 
-%% 目次chapterで、英語、数字も太字にする。
+%% 見出しのフォント。 jsclsass: \gtfamily\sffamily
 \renewcommand{\headfont}{\bfseries}
 
 
