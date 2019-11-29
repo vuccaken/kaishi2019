@@ -1,14 +1,16 @@
 %%
-%%    This file is "00main.tex"
+%%    This file is "kaishi2019.tex"
 %%      ## MAIN TEX FILE ##
 %%
-%%    title: 令和元年度 会誌『白夜』第4号
-%%    author: †物理科学研究会†
+%%       title: 令和元年度 会誌『白夜』第4号
+%%      author: †物理科学研究会†
 %%
-%%    writers: fukuda, namba, yoshida, fujiki, nkym, HD, kadono
+%%     writers: fukuda, namba, yoshida, fujiki, nkym, HD, kadono
 %%    drop out: fujiwara, sj, nishimura
 %%
-
+%%    cover illustrator: fujiwara
+%%               editer: nkym
+%%
 
 %% typeset: platex -> dvipdfmx
 \documentclass[10pt,b5paper,papersize,dvipdfmx]{jsbook}
@@ -28,10 +30,10 @@
 
 \iffront
   \frontmatter
-  \vInputTeX[_BK]{01-frontCover} % 表紙（表）
+  \vInputTeX[_BK]{01-frontCover}  % 表紙（表）
   \vInputTeX[_BK]{02-insideCover} % 表紙（中）
-  \vInputTeX[_BK]{03-kantogen} % 巻頭言
-  \tableofcontents % 目次
+  \vInputTeX[_BK]{03-kantogen}    % 巻頭言
+  \tableofcontents                % 目次
 \fi
 
 \mainmatter
@@ -50,8 +52,8 @@
 \ifback
   \backmatter
   \vInputTeX[_BK]{04-hensyukoki} % 編集後記
-  \vInputTeX[_BK]{05-okuduke} % 奥付
-  \vInputTeX[_BK]{06-backCover} % 表紙（裏）
+  \vInputTeX[_BK]{05-okuduke}    % 奥付
+  \vInputTeX[_BK]{06-backCover}  % 表紙（裏）
 \fi
 
 \end{document} % - - - - - - - - - - - - - - - - - -

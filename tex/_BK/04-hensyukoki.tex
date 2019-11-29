@@ -54,11 +54,11 @@
 
 \begin{verbatim}
   \newcommand{\vInputTeX}{\@dblarg\v@InputTeX}
-  \def\v@InputTeX[#1]#2{
-    \def\pathToFiles{./tex/#1/}
-    \def\input@path{{\pathToFiles}}
-    \graphicspath{{\pathToFiles}}
-    \input{\pathToFiles#2}}
+  \def\v@InputTeX[#1]#2{             % 引数が1つだけなら #1 = #2
+    \def\pathToFiles{./tex/#1/}      % 自作。オプションから引数をとる
+    \def\input@path{{\pathToFiles}}  % \inputなどのソース探索パスを追加
+    \graphicspath{{\pathToFiles}}    % \includegraphicsのソース探索パス
+    \input{\pathToFiles#2}}          % documute.styによって改良済み
 \end{verbatim}
 
 上のディレクトリ構造の例だと\verb|\vInputTeX[dir02]{file02}|のようにして使用します。他の人と画像のファイル名が被っても大丈夫なようになっています。
@@ -68,7 +68,7 @@
 \footnote{
   2019年度会誌のrepository: \url{https://github.com/vuccaken/kaishi2019}
 }。
-去年までは、変更があるたびslackにuploadするという面倒臭いことをしていたので、かなり開発はスムーズになったと思います（何度か進捗が消滅するミスはありましたが）。
+去年までは、変更があるたびslackにuploadするという面倒臭いことをしていたので、開発はかなりスムーズになったと思います（何度か進捗が消滅するミスはありましたが）。
 
 あとは、弊研究会のホームページのリニューアル
 \footnote{
