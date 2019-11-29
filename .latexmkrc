@@ -7,3 +7,4 @@ $dvipdf           = 'dvipdfmx %O -o %D %S';
 # .sty を探索する場所を追加
 $ENV{'TEXINPUTS'} = ""; # initialize value
 $ENV{'TEXINPUTS'} = './sty//;' . '../sty//;' . '../sty//;' . $ENV{'TEXINPUTS'};
+$ENV{'OPENTYPEFONTS'} = './fonts//;' . '../fonts//;' . '../../fonts//;' . $ENV{'OPENTYPEFONTS'}; # fonts path
