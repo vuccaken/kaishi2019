@@ -1,3 +1,5 @@
+初版：2019年11月29日
+
 # kaishi2019
 弊研究会の2019年度会誌のリポジトリです。
 - [vuccaken new HP](https://vuccaken.github.io)
