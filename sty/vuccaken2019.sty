@@ -16,6 +16,11 @@
 \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
+\IfFileExists{SourceHanSans-Regular.otf}{ % sans
+  \IfFileExists{SourceHanSerif-Regular.otf}{ % sans serif
+    \usepackage[sourcehan]{pxchfon} % 源ノフォント
+  }{}}{}
+%%
 % \renewcommand\kanjifamilydefault{\gtdefault} % ゴシック
 % \renewcommand\familydefault{\sfdefault} % sans serif
 % \usepackage{newtxtext,newtxmath} % 数式のフォント
