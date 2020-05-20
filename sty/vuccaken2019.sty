@@ -13,7 +13,7 @@
 %% - - - - - - - - - - - - - - - - - - - -
 
 %% FONT
-\usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
+% \usepackage[T1]{fontenc} % font encoding を変更: OT1 → T1
 \usepackage{lmodern} % Latin Modern フォントを使う
 \usepackage[expert,deluxe]{otf} % font
 \usepackage[sourcehan,unicode]{pxchfon} % 源ノフォント
@@ -37,6 +37,7 @@
 % \graphicspath{{./src/}{../src/}}% グラフのソース探索パス
 % \usepackage{wrapfig} % 文章中に図
 \usepackage{here} % option H で図を強制出力
+\usepackage{support-caption} % kill warning for caption.sty
 \usepackage{subcaption} % subfigure env
 \captionsetup{labelsep=quad, margin=5zw} % caption setting
 \captionsetup[sub]{subrefformat=parens,labelsep=quad} % subcaption setting
