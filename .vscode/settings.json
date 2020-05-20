@@ -1,23 +1,40 @@
+//
+// latexmk with vscode で kaishi をタイプセットするための
+// settings.json のテンプレートです。
+// 「TEX」->「Build LaTeX project」->「Recipe: kaishi」でタイプセットできます。
+//
 {
   // latex
   "latex-workshop.latex.tools": [
+    // For kaishi
     {
-      "name": "latexmk",
+      "name": "latexmk(platex) for kaishi",
       "command": "latexmk",
       "args": [
-        "-e", "$latex = q/platex %O -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error -shell-escape %S/",
-        "-e", "$bibtex = q/pbibtex %O %B/",
-        "-e", "$biber = q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/",
-        "-e", "$makeindex = q/mendex %O -o %D %S/",
-        "-e", "$dvipdf = q/dvipdfmx %O -o %D %S/",
-        "-norc",
-        "-pdfdvi",
-        "%DOC%",
-        "-e", "$ENV{'TEXINPUTS'} = './sty//;' . '../sty//;' . '../../sty//;' . $ENV{'TEXINPUTS'}",
-        "-e", "$ENV{'OPENTYPEFONTS'} = './fonts//;' . '../fonts//;' . '../../fonts//;' . $ENV{'OPENTYPEFONTS'}",
+        "-g",
+        "-e", "$latex                = 'platex %O -synctex=1 -file-line-error -halt-on-error %S'",
+        "-e", "$bibtex               = 'pbibtex %O %B'",
+        "-e", "$biber                = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B'",
+        "-e", "$makeindex            = 'pmendex %O -o %D %S'",
+        "-e", "$dvipdf               = 'dvipdfmx %O -o %D %S';",
+        "-e", "$ENV{'TEXINPUTS'}     = './sty//;' . '../sty//;' . '../../sty//;' . './tex//;' . '../../tex//;'",
+        "-e", "$ENV{'OPENTYPEFONTS'} = './fonts//;' . '../fonts//;' . '../../fonts//;'",
+        "-pdfdvi", // generate pdf by dvipdf
+        "%DOC%"
       ]
-    }
+    },
   ],
+  "latex-workshop.latex.recipes": [
+    // For kaishi
+    {
+      "name": "kaishi",
+      "tools": [
+        "latexmk(platex) for kaishi"
+      ]
+    },
+  ],
+  "latex-workshop.latex.recipe.default": "lastUsed",
+  "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux",
@@ -30,6 +47,12 @@
     "*.nav", "*.snm", // beamer
     "*.cpt" // cprotect.sty
   ],
+  "latex-workshop.message.update.show": false,
+  "latex-workshop.message.badbox.show": false,
+  "latex-workshop.message.warning.show": false,
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.backgroundColor": "#202020", // 背景色
   // syntax coloring
   "files.associations": {
     "*.sty": "latex", "*.ltx": "latex", "*.def": "latex",
